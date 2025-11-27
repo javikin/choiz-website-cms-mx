@@ -56,14 +56,14 @@ interface LandingPageClientProps {
 
 // Section renderer - renders the appropriate component based on _template
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function renderSection(section: any, index: number, sections: any[]) {
+function renderSection(section: any, index: number, parentData: any) {
   // Get template name from _template or __typename
   const templateName =
     section._template ||
     section.__typename?.replace("LandingSections", "").toLowerCase();
 
-  // Generate tinaField for this section
-  const sectionTinaField = tinaField(sections, index);
+  // Generate tinaField for this section using parent data
+  const sectionTinaField = tinaField(parentData, "sections", index);
 
   switch (templateName) {
     case "hero":
@@ -232,7 +232,7 @@ export function LandingPageClient(props: LandingPageClientProps) {
 
       <main>
         {sections.map((section, index) =>
-          section ? renderSection(section, index, sections) : null
+          section ? renderSection(section, index, data) : null
         )}
       </main>
 
