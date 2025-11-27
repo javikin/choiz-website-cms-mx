@@ -1,0 +1,12 @@
+export { Hero } from "./Hero";
+export { Certifications } from "./Certifications";
+export { Testimonials } from "./Testimonials";
+export { Problem } from "./Problem";
+export { Products } from "./Products";
+export { Ingredients } from "./Ingredients";
+export { Effectiveness } from "./Effectiveness";
+export { WhyChoose } from "./WhyChoose";
+export { Guarantee } from "./Guarantee";
+export { HowItWorks } from "./HowItWorks";
+export { FinalCta } from "./FinalCta";
+export { Footer } from "./Footer";
