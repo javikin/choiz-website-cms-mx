@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import useEmblaCarousel from "embla-carousel-react";
+import useEmblaCarousel, { type EmblaViewportRefType } from "embla-carousel-react";
 
 // ============================================
 // TYPES
@@ -144,7 +144,7 @@ function IngredientsCarousel({
   emblaRef,
 }: {
   items: Ingredient[];
-  emblaRef: React.RefObject<HTMLDivElement | null>;
+  emblaRef: EmblaViewportRefType;
 }) {
   return (
     <div className="overflow-hidden" ref={emblaRef}>
