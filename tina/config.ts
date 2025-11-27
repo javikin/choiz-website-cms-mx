@@ -1047,8 +1047,8 @@ export default defineConfig({
                     label: "Pasos",
                     list: true,
                     ui: {
-                      itemProps: (item: { title?: string }, index: number) => ({
-                        label: item?.title ? `${index + 1}. ${item.title}` : `Paso ${index + 1}`,
+                      itemProps: (item: { title?: string }) => ({
+                        label: item?.title || "Nuevo paso",
                       }),
                       max: LIMITS.MAX_STEPS,
                     },
