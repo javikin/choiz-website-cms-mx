@@ -80,10 +80,10 @@ const seoFields: TinaField[] = [
         },
       },
       {
-        type: "image",
+        type: "string",
         name: "ogImage",
         label: "Imagen para Redes Sociales (og:image)",
-        description: "Imagen que se muestra al compartir en Facebook, Twitter, etc. (1200x630px recomendado)",
+        description: "Ruta de imagen (ej: /images/og-image.jpg). 1200x630px recomendado",
       },
       {
         type: "string",
@@ -200,10 +200,10 @@ const testimonialVideoTemplate: Template = {
       },
     },
     {
-      type: "image",
+      type: "string",
       name: "backgroundImage",
       label: "Foto del Cliente",
-      description: "Imagen de fondo de la tarjeta (363x589px recomendado)",
+      description: "Ruta de imagen (ej: /images/testimonial.jpg). 363x589px recomendado",
     },
     {
       type: "string",
@@ -245,9 +245,10 @@ const testimonialVideoTemplate: Template = {
       },
     },
     {
-      type: "image",
+      type: "string",
       name: "productImage",
       label: "Imagen del Producto",
+      description: "Ruta de imagen (ej: /images/product.png)",
     },
   ],
 };
@@ -303,10 +304,10 @@ const productTemplate: Template = {
       ],
     },
     {
-      type: "image",
+      type: "string",
       name: "image",
       label: "Imagen del Producto",
-      description: "Imagen principal (500x500px recomendado)",
+      description: "Ruta de imagen (ej: /images/product.png). 500x500px recomendado",
     },
     {
       type: "string",
@@ -359,10 +360,10 @@ const ingredientTemplate: Template = {
       },
     },
     {
-      type: "image",
+      type: "string",
       name: "image",
       label: "Imagen",
-      description: "Foto o ilustracion del ingrediente",
+      description: "Ruta de imagen (ej: /images/ingredients/minoxidil.jpg)",
     },
   ],
 };
@@ -393,9 +394,10 @@ const scienceCardTemplate: Template = {
       },
     },
     {
-      type: "image",
+      type: "string",
       name: "illustration",
       label: "Ilustracion",
+      description: "Ruta de imagen (ej: /images/illustration.svg)",
     },
   ],
 };
@@ -432,10 +434,10 @@ const stepTemplate: Template = {
       },
     },
     {
-      type: "image",
+      type: "string",
       name: "icon",
       label: "Icono",
-      description: "Icono o imagen del paso",
+      description: "Ruta de icono (ej: /images/icons/step.svg)",
     },
   ],
 };
@@ -472,9 +474,10 @@ const valuePropTemplate: Template = {
       },
     },
     {
-      type: "image",
+      type: "string",
       name: "icon",
       label: "Icono",
+      description: "Ruta de icono (ej: /images/icons/icon.svg)",
     },
   ],
 };
@@ -554,10 +557,10 @@ const heroBlock: Template = {
     },
     ...ctaFields,
     {
-      type: "image",
+      type: "string",
       name: "backgroundImage",
       label: "Imagen de Fondo",
-      description: "Imagen lateral del hero (1200x800px recomendado)",
+      description: "Ruta de imagen (ej: /images/hero-bg.jpg). 1200x800px recomendado",
     },
   ],
 };
@@ -745,10 +748,10 @@ export default defineConfig({
             },
             fields: [
               {
-                type: "image",
+                type: "string",
                 name: "logo",
                 label: "Logo",
-                description: "Logo del sitio (SVG recomendado)",
+                description: "Ruta del logo (ej: /images/logo.svg)",
               },
               ...ctaFields,
             ],
@@ -809,9 +812,10 @@ export default defineConfig({
                   },
                   ...ctaFields,
                   {
-                    type: "image",
+                    type: "string",
                     name: "backgroundImage",
                     label: "Imagen de Fondo",
+                    description: "Ruta de imagen (ej: /images/hero-bg.jpg)",
                   },
                 ],
               },
@@ -837,7 +841,7 @@ export default defineConfig({
                       max: LIMITS.MAX_BADGES,
                     },
                     fields: [
-                      { type: "image", name: "logo", label: "Logo" },
+                      { type: "string", name: "logo", label: "Logo", description: "Ruta de imagen (ej: /images/logo.png)" },
                       { type: "string", name: "label", label: "Texto/Licencia" },
                     ],
                   },
@@ -877,7 +881,7 @@ export default defineConfig({
                   { type: "string", name: "stat", label: "Estadistica Principal" },
                   { type: "string", name: "statDescription", label: "Descripcion de la Estadistica", ui: { component: "textarea" } },
                   { type: "string", name: "explanation", label: "Explicacion Cientifica", ui: { component: "textarea" } },
-                  { type: "image", name: "illustration", label: "Ilustracion DHT" },
+                  { type: "string", name: "illustration", label: "Ilustracion DHT", description: "Ruta de imagen (ej: /images/dht.svg)" },
                   {
                     type: "object",
                     name: "hairLossTypes",
@@ -901,7 +905,7 @@ export default defineConfig({
                           { value: "Difusa", label: "Difusa" },
                         ],
                       },
-                      { type: "image", name: "icon", label: "Icono" },
+                      { type: "string", name: "icon", label: "Icono", description: "Ruta de icono (ej: /images/icons/icon.svg)" },
                     ],
                   },
                 ],
@@ -1086,7 +1090,7 @@ export default defineConfig({
                   },
                 ],
               },
-              { type: "image", name: "logo", label: "Logo" },
+              { type: "string", name: "logo", label: "Logo", description: "Ruta del logo (ej: /images/logo-white.svg)" },
               { type: "string", name: "copyright", label: "Copyright" },
               {
                 type: "object",
@@ -1094,7 +1098,7 @@ export default defineConfig({
                 label: "Certificaciones",
                 list: true,
                 fields: [
-                  { type: "image", name: "logo", label: "Logo" },
+                  { type: "string", name: "logo", label: "Logo", description: "Ruta de imagen (ej: /images/cert-logo.png)" },
                   { type: "string", name: "label", label: "Etiqueta" },
                 ],
               },
