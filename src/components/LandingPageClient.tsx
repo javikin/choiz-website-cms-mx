@@ -58,9 +58,13 @@ interface LandingPageClientProps {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function renderSection(section: any, index: number, parentData: any) {
   // Get template name from _template or __typename
-  const templateName =
-    section._template ||
-    section.__typename?.replace("LandingSections", "").toLowerCase();
+  // Note: _template comes as-is (e.g., "hero"), __typename comes as "LandingSectionsHero"
+  let templateName = section._template;
+  if (!templateName && section.__typename) {
+    // Extract the template name and convert first letter to lowercase
+    const extracted = section.__typename.replace("LandingSections", "");
+    templateName = extracted.charAt(0).toLowerCase() + extracted.slice(1);
+  }
 
   // Generate tinaField for this section using parent data
   const sectionTinaField = tinaField(parentData, "sections", index);
