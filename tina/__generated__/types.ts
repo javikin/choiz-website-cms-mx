@@ -439,13 +439,6 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type ImageFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type BooleanFilter = {
   eq?: InputMaybe<Scalars['Boolean']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -454,14 +447,14 @@ export type BooleanFilter = {
 export type LandingSeoFilter = {
   metaTitle?: InputMaybe<StringFilter>;
   metaDescription?: InputMaybe<StringFilter>;
-  ogImage?: InputMaybe<ImageFilter>;
+  ogImage?: InputMaybe<StringFilter>;
   ogType?: InputMaybe<StringFilter>;
   canonicalUrl?: InputMaybe<StringFilter>;
   noIndex?: InputMaybe<BooleanFilter>;
 };
 
 export type LandingNavbarFilter = {
-  logo?: InputMaybe<ImageFilter>;
+  logo?: InputMaybe<StringFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
 };
@@ -476,11 +469,11 @@ export type LandingSectionsHeroFilter = {
   benefits?: InputMaybe<LandingSectionsHeroBenefitsFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<ImageFilter>;
+  backgroundImage?: InputMaybe<StringFilter>;
 };
 
 export type LandingSectionsCertificationsBadgesFilter = {
-  logo?: InputMaybe<ImageFilter>;
+  logo?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
 };
 
@@ -501,12 +494,12 @@ export type NumberFilter = {
 
 export type LandingSectionsTestimonialsVideosFilter = {
   name?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<ImageFilter>;
+  backgroundImage?: InputMaybe<StringFilter>;
   videoUrl?: InputMaybe<StringFilter>;
   rating?: InputMaybe<NumberFilter>;
   productName?: InputMaybe<StringFilter>;
   productDescription?: InputMaybe<StringFilter>;
-  productImage?: InputMaybe<ImageFilter>;
+  productImage?: InputMaybe<StringFilter>;
 };
 
 export type LandingSectionsTestimonialsFilter = {
@@ -521,7 +514,7 @@ export type LandingSectionsTestimonialsFilter = {
 
 export type LandingSectionsProblemHairLossTypesFilter = {
   name?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<ImageFilter>;
+  icon?: InputMaybe<StringFilter>;
 };
 
 export type LandingSectionsProblemFilter = {
@@ -529,7 +522,7 @@ export type LandingSectionsProblemFilter = {
   stat?: InputMaybe<StringFilter>;
   statDescription?: InputMaybe<StringFilter>;
   explanation?: InputMaybe<StringFilter>;
-  illustration?: InputMaybe<ImageFilter>;
+  illustration?: InputMaybe<StringFilter>;
   hairLossTypes?: InputMaybe<LandingSectionsProblemHairLossTypesFilter>;
 };
 
@@ -540,7 +533,7 @@ export type LandingSectionsProductsItemsTagsFilter = {
 export type LandingSectionsProductsItemsFilter = {
   name?: InputMaybe<StringFilter>;
   tags?: InputMaybe<LandingSectionsProductsItemsTagsFilter>;
-  image?: InputMaybe<ImageFilter>;
+  image?: InputMaybe<StringFilter>;
   selectText?: InputMaybe<StringFilter>;
   moreText?: InputMaybe<StringFilter>;
   link?: InputMaybe<StringFilter>;
@@ -554,7 +547,7 @@ export type LandingSectionsProductsFilter = {
 export type LandingSectionsIngredientsItemsFilter = {
   name?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  image?: InputMaybe<ImageFilter>;
+  image?: InputMaybe<StringFilter>;
 };
 
 export type LandingSectionsIngredientsFilter = {
@@ -583,7 +576,7 @@ export type LandingSectionsEffectivenessFilter = {
 export type LandingSectionsWhyChooseValuePropsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<ImageFilter>;
+  icon?: InputMaybe<StringFilter>;
 };
 
 export type LandingSectionsWhyChooseFilter = {
@@ -602,7 +595,7 @@ export type LandingSectionsGuaranteeFilter = {
 export type LandingSectionsHowItWorksStepsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<ImageFilter>;
+  icon?: InputMaybe<StringFilter>;
 };
 
 export type LandingSectionsHowItWorksFilter = {
@@ -639,7 +632,7 @@ export type LandingFooterSocialLinksFilter = {
 };
 
 export type LandingFooterCertificationsFilter = {
-  logo?: InputMaybe<ImageFilter>;
+  logo?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
 };
 
@@ -670,7 +663,7 @@ export type LandingFooterCompanyLinksFilter = {
 
 export type LandingFooterFilter = {
   socialLinks?: InputMaybe<LandingFooterSocialLinksFilter>;
-  logo?: InputMaybe<ImageFilter>;
+  logo?: InputMaybe<StringFilter>;
   copyright?: InputMaybe<StringFilter>;
   certifications?: InputMaybe<LandingFooterCertificationsFilter>;
   legalLinks?: InputMaybe<LandingFooterLegalLinksFilter>;
@@ -774,17 +767,17 @@ export type BlocksSectionsHeroBlockFilter = {
   benefits?: InputMaybe<BlocksSectionsHeroBlockBenefitsFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<ImageFilter>;
+  backgroundImage?: InputMaybe<StringFilter>;
 };
 
 export type BlocksSectionsTestimonialsBlockVideosFilter = {
   name?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<ImageFilter>;
+  backgroundImage?: InputMaybe<StringFilter>;
   videoUrl?: InputMaybe<StringFilter>;
   rating?: InputMaybe<NumberFilter>;
   productName?: InputMaybe<StringFilter>;
   productDescription?: InputMaybe<StringFilter>;
-  productImage?: InputMaybe<ImageFilter>;
+  productImage?: InputMaybe<StringFilter>;
 };
 
 export type BlocksSectionsTestimonialsBlockFilter = {

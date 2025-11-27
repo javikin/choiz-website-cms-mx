@@ -314,13 +314,6 @@ input StringFilter {
   in: [String]
 }
 
-input ImageFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
 input BooleanFilter {
   eq: Boolean
   exists: Boolean
@@ -329,14 +322,14 @@ input BooleanFilter {
 input LandingSeoFilter {
   metaTitle: StringFilter
   metaDescription: StringFilter
-  ogImage: ImageFilter
+  ogImage: StringFilter
   ogType: StringFilter
   canonicalUrl: StringFilter
   noIndex: BooleanFilter
 }
 
 input LandingNavbarFilter {
-  logo: ImageFilter
+  logo: StringFilter
   ctaText: StringFilter
   ctaLink: StringFilter
 }
@@ -351,11 +344,11 @@ input LandingSectionsHeroFilter {
   benefits: LandingSectionsHeroBenefitsFilter
   ctaText: StringFilter
   ctaLink: StringFilter
-  backgroundImage: ImageFilter
+  backgroundImage: StringFilter
 }
 
 input LandingSectionsCertificationsBadgesFilter {
-  logo: ImageFilter
+  logo: StringFilter
   label: StringFilter
 }
 
@@ -376,12 +369,12 @@ input NumberFilter {
 
 input LandingSectionsTestimonialsVideosFilter {
   name: StringFilter
-  backgroundImage: ImageFilter
+  backgroundImage: StringFilter
   videoUrl: StringFilter
   rating: NumberFilter
   productName: StringFilter
   productDescription: StringFilter
-  productImage: ImageFilter
+  productImage: StringFilter
 }
 
 input LandingSectionsTestimonialsFilter {
@@ -396,7 +389,7 @@ input LandingSectionsTestimonialsFilter {
 
 input LandingSectionsProblemHairLossTypesFilter {
   name: StringFilter
-  icon: ImageFilter
+  icon: StringFilter
 }
 
 input LandingSectionsProblemFilter {
@@ -404,7 +397,7 @@ input LandingSectionsProblemFilter {
   stat: StringFilter
   statDescription: StringFilter
   explanation: StringFilter
-  illustration: ImageFilter
+  illustration: StringFilter
   hairLossTypes: LandingSectionsProblemHairLossTypesFilter
 }
 
@@ -415,7 +408,7 @@ input LandingSectionsProductsItemsTagsFilter {
 input LandingSectionsProductsItemsFilter {
   name: StringFilter
   tags: LandingSectionsProductsItemsTagsFilter
-  image: ImageFilter
+  image: StringFilter
   selectText: StringFilter
   moreText: StringFilter
   link: StringFilter
@@ -429,7 +422,7 @@ input LandingSectionsProductsFilter {
 input LandingSectionsIngredientsItemsFilter {
   name: StringFilter
   description: StringFilter
-  image: ImageFilter
+  image: StringFilter
 }
 
 input LandingSectionsIngredientsFilter {
@@ -458,7 +451,7 @@ input LandingSectionsEffectivenessFilter {
 input LandingSectionsWhyChooseValuePropsFilter {
   title: StringFilter
   description: StringFilter
-  icon: ImageFilter
+  icon: StringFilter
 }
 
 input LandingSectionsWhyChooseFilter {
@@ -477,7 +470,7 @@ input LandingSectionsGuaranteeFilter {
 input LandingSectionsHowItWorksStepsFilter {
   title: StringFilter
   description: StringFilter
-  icon: ImageFilter
+  icon: StringFilter
 }
 
 input LandingSectionsHowItWorksFilter {
@@ -514,7 +507,7 @@ input LandingFooterSocialLinksFilter {
 }
 
 input LandingFooterCertificationsFilter {
-  logo: ImageFilter
+  logo: StringFilter
   label: StringFilter
 }
 
@@ -545,7 +538,7 @@ input LandingFooterCompanyLinksFilter {
 
 input LandingFooterFilter {
   socialLinks: LandingFooterSocialLinksFilter
-  logo: ImageFilter
+  logo: StringFilter
   copyright: StringFilter
   certifications: LandingFooterCertificationsFilter
   legalLinks: LandingFooterLegalLinksFilter
@@ -640,17 +633,17 @@ input BlocksSectionsHeroBlockFilter {
   benefits: BlocksSectionsHeroBlockBenefitsFilter
   ctaText: StringFilter
   ctaLink: StringFilter
-  backgroundImage: ImageFilter
+  backgroundImage: StringFilter
 }
 
 input BlocksSectionsTestimonialsBlockVideosFilter {
   name: StringFilter
-  backgroundImage: ImageFilter
+  backgroundImage: StringFilter
   videoUrl: StringFilter
   rating: NumberFilter
   productName: StringFilter
   productDescription: StringFilter
-  productImage: ImageFilter
+  productImage: StringFilter
 }
 
 input BlocksSectionsTestimonialsBlockFilter {
