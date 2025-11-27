@@ -1,11 +1,13 @@
 import { defineConfig, type Template, type TinaField } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
-const branch =
+// Ensure branch name is trimmed to avoid newline issues in build
+const branch = (
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
-  "main";
+  "main"
+).trim();
 
 // Check if we're in local development mode
 const isLocalDevelopment = process.env.TINA_PUBLIC_IS_LOCAL === "true";
