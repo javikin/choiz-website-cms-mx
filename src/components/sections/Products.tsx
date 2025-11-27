@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import useEmblaCarousel from "embla-carousel-react";
+import useEmblaCarousel, { type EmblaViewportRefType } from "embla-carousel-react";
 import { useCallback, useState } from "react";
 import { ChevronRight } from "lucide-react";
 
@@ -187,7 +187,7 @@ function ProductsCarousel({
   scrollNext,
 }: {
   items: Product[];
-  emblaRef: React.RefObject<HTMLDivElement | null>;
+  emblaRef: EmblaViewportRefType;
   scrollNext: () => void;
 }) {
   return (
