@@ -1,6 +1,6 @@
 // tina/config.ts
 import { defineConfig } from "tinacms";
-var branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || "main";
+var branch = (process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || "main").trim();
 var isLocalDevelopment = process.env.TINA_PUBLIC_IS_LOCAL === "true";
 var LIMITS = {
   // Textos
@@ -669,27 +669,6 @@ var config_default = defineConfig({
             label: "Secciones de la Pagina",
             description: "Arrastra para reordenar las secciones",
             list: true,
-            ui: {
-              itemProps: (item) => {
-                const templateName = item?._template || item?.__typename?.replace("LandingSections", "") || "Seccion";
-                const labels = {
-                  hero: "Hero",
-                  certifications: "Certificaciones",
-                  testimonials: "Testimoniales",
-                  problem: "Problema",
-                  products: "Productos",
-                  ingredients: "Ingredientes",
-                  effectiveness: "Efectividad",
-                  whyChoose: "Por Que Elegirnos",
-                  guarantee: "Garantia",
-                  howItWorks: "Como Funciona",
-                  finalCta: "CTA Final"
-                };
-                return {
-                  label: labels[templateName] || templateName
-                };
-              }
-            },
             templates: [
               // HERO
               {
@@ -949,8 +928,8 @@ var config_default = defineConfig({
                     label: "Pasos",
                     list: true,
                     ui: {
-                      itemProps: (item, index) => ({
-                        label: item?.title ? `${index + 1}. ${item.title}` : `Paso ${index + 1}`
+                      itemProps: (item) => ({
+                        label: item?.title || "Nuevo paso"
                       }),
                       max: LIMITS.MAX_STEPS
                     },
