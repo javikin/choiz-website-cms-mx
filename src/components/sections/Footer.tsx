@@ -8,6 +8,7 @@ import {
   Youtube,
   Linkedin,
 } from "lucide-react";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -111,7 +112,7 @@ function FooterLogo({ src }: { src: string }) {
   return (
     <div className="mb-6">
       <Image
-        src={src}
+        src={normalizeImageUrl(src)}
         alt="Choiz"
         width={134}
         height={41}
@@ -133,7 +134,7 @@ function CertificationImage({ cert }: { cert: Certification }) {
   if (!cert.logo) return null;
   return (
     <Image
-      src={cert.logo}
+      src={normalizeImageUrl(cert.logo)}
       alt={cert.label || "Certificación"}
       width={114}
       height={27}

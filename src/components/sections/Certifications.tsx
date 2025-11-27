@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -33,7 +34,7 @@ function CofeprisLogo({ src }: { src: string }) {
   return (
     <div className="h-[54px] flex items-center">
       <Image
-        src={src}
+        src={normalizeImageUrl(src)}
         alt="COFEPRIS - Comisión Federal para la Protección contra Riesgos Sanitarios"
         width={234}
         height={54}

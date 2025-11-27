@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -97,7 +98,7 @@ function BackgroundImage({ src, alt }: { src?: string; alt?: string }) {
     <div className="absolute inset-0 bg-[#D9D9D9]">
       {src && (
         <Image
-          src={src}
+          src={normalizeImageUrl(src)}
           alt={alt || "Testimonio"}
           fill
           className="object-cover"
@@ -115,7 +116,7 @@ function ProductImage({ src, alt }: { src?: string; alt?: string }) {
   return (
     <div className="w-[104px] h-[132px] -mt-[52px]">
       <Image
-        src={src}
+        src={normalizeImageUrl(src)}
         alt={alt || "Producto"}
         width={104}
         height={132}

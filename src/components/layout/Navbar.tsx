@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { normalizeImageUrl } from "@/lib/images";
 
 interface NavbarProps {
   logo?: string;
@@ -43,7 +44,7 @@ export function Navbar({
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src={logo}
+              src={normalizeImageUrl(logo)}
               alt="Choiz"
               width={104}
               height={32}

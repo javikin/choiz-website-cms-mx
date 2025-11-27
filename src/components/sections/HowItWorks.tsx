@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FileText, UserCheck, Truck, MessageCircle } from "lucide-react";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -86,7 +87,7 @@ const ICON_COMPONENTS = [FileText, UserCheck, Truck, MessageCircle];
 function CustomIcon({ src }: { src: string }) {
   return (
     <Image
-      src={src}
+      src={normalizeImageUrl(src)}
       alt=""
       width={28}
       height={28}

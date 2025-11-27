@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import useEmblaCarousel, { type EmblaViewportRefType } from "embla-carousel-react";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -107,7 +108,7 @@ function IngredientImage({ src, alt }: { src?: string; alt?: string }) {
   if (!src) return <IngredientImagePlaceholder />;
   return (
     <Image
-      src={src}
+      src={normalizeImageUrl(src)}
       alt={alt || "Ingrediente"}
       width={176}
       height={129}

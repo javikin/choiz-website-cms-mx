@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -133,10 +134,11 @@ function HeroCTA({ text, href }: { text: string; href: string }) {
 
 // Desktop background image
 function DesktopBackground({ src }: { src: string }) {
+  const normalizedSrc = normalizeImageUrl(src);
   return (
     <div className="absolute right-0 top-0 bottom-0 w-[60%] max-w-[667px] hidden lg:block">
       <Image
-        src={src}
+        src={normalizedSrc}
         alt="Tratamiento capilar Choiz"
         fill
         className="object-contain object-right-bottom"
@@ -149,10 +151,11 @@ function DesktopBackground({ src }: { src: string }) {
 
 // Mobile background image
 function MobileBackground({ src }: { src: string }) {
+  const normalizedSrc = normalizeImageUrl(src);
   return (
     <div className="lg:hidden absolute inset-0 z-0">
       <Image
-        src={src}
+        src={normalizedSrc}
         alt=""
         fill
         className="object-cover object-right-top opacity-30"

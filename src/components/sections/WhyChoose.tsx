@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Stethoscope, Truck, User } from "lucide-react";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -42,7 +43,7 @@ const ICON_COMPONENTS = [Stethoscope, Truck, User];
 function CustomIcon({ src }: { src: string }) {
   return (
     <Image
-      src={src}
+      src={normalizeImageUrl(src)}
       alt=""
       width={69}
       height={60}

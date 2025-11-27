@@ -5,6 +5,7 @@ import Link from "next/link";
 import useEmblaCarousel, { type EmblaViewportRefType } from "embla-carousel-react";
 import { useCallback, useState } from "react";
 import { ChevronRight } from "lucide-react";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -88,7 +89,7 @@ function ProductImage({ src, alt }: { src?: string; alt?: string }) {
   if (!src) return <ProductImagePlaceholder />;
   return (
     <Image
-      src={src}
+      src={normalizeImageUrl(src)}
       alt={alt || "Producto"}
       width={225}
       height={286}

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ChevronUp } from "lucide-react";
+import { normalizeImageUrl } from "@/lib/images";
 
 // ============================================
 // TYPES
@@ -140,7 +141,7 @@ function IllustrationCard({ illustration }: { illustration?: string }) {
     <div className="relative w-[480px] h-[340px] bg-white border border-[#F0F0F0] rounded-[32px] overflow-hidden flex-shrink-0">
       {illustration ? (
         <Image
-          src={illustration}
+          src={normalizeImageUrl(illustration)}
           alt="Ilustración de pérdida de cabello por DHT"
           fill
           className="object-contain"
@@ -322,7 +323,7 @@ function HairLossTypeIcon({ icon, name }: { icon?: string; name?: string }) {
     return (
       <div className="w-[72px] h-[110px] flex items-center justify-center flex-shrink-0">
         <Image
-          src={icon}
+          src={normalizeImageUrl(icon)}
           alt={name || "Tipo de alopecia"}
           width={72}
           height={110}
