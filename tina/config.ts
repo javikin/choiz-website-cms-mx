@@ -704,14 +704,9 @@ export default defineConfig({
 
   contentApiUrlOverride: isLocalDevelopment ? "/api/tina/gql" : undefined,
 
-  // Media Library - Git-based para usar imágenes del repositorio
-  media: {
-    // Usar loadCustomStore para Git-based media en lugar de TinaCloud
-    tina: {
-      mediaRoot: "images",
-      publicFolder: "public",
-    },
-  },
+  // Media Library - deshabilitado para usar imágenes del repositorio directamente
+  // Las imágenes se referencian con rutas absolutas como /images/...
+  // No usar media.tina para evitar transformación de URLs a assets.tina.io
 
   schema: {
     collections: [
