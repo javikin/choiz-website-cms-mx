@@ -1,0 +1,466 @@
+.footer {
+  width: 100%;
+  background: white;
+  box-shadow: 0px 1px 34px rgba(16, 24, 40, 0.08);
+  border-top: 1px solid #E8E8E8;
+}
+
+/* ============================================
+   DESKTOP LAYOUT (768px and above)
+   ============================================ */
+.desktopLayout {
+  display: none;
+  padding: 72px;
+  border-top-left-radius: 56px;
+  border-top-right-radius: 56px;
+}
+
+@media (min-width: 768px) {
+  .desktopLayout {
+    display: block;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  align-items: center;
+}
+
+.mainContent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+/* App Card */
+.appCard {
+  width: 331px;
+  height: 459px;
+  position: relative;
+  background: linear-gradient(219deg, white 0%, #F5F3FF 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.appCardContent {
+  position: absolute;
+  left: 50%;
+  top: 44px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.appText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.appTitle {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #3B3345;
+  text-align: center;
+  margin: 0;
+}
+
+.appSubtitle {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  color: #7D7D7D;
+  text-align: center;
+  margin: 0;
+}
+
+.storeButtons {
+  display: flex;
+  gap: 18px;
+}
+
+.storeBadge {
+  width: 72px;
+  height: auto;
+}
+
+.appImageWrapper {
+  position: absolute;
+  left: 81px;
+  bottom: 0;
+}
+
+.appImage {
+  width: 226px;
+  height: 290px;
+  object-fit: contain;
+}
+
+/* Links Grid */
+.linksGrid {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  gap: 56px;
+}
+
+.linksColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 162px;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.linkLabel {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #B1B1B1;
+}
+
+.linkItem {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #3B3345;
+  text-decoration: none;
+}
+
+.linkItem:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #E8E8E8;
+}
+
+/* Certifications */
+.certLogos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.certDivider {
+  width: 1px;
+  height: 28px;
+  background: #E8E8E8;
+}
+
+/* Social and Copyright */
+.socialAndCopyright {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  background: #3B3345;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.socialIcon:hover {
+  background: #6042AA;
+}
+
+.copyright {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #B1B1B1;
+  margin: 0;
+}
+
+/* Logo */
+.logoWrapper {
+  width: 100%;
+  max-width: 1056px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  max-height: 325px;
+  object-fit: contain;
+}
+
+/* ============================================
+   MOBILE LAYOUT (below 768px)
+   ============================================ */
+.mobileLayout {
+  display: block;
+  padding: 64px 16px 32px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+
+@media (min-width: 768px) {
+  .mobileLayout {
+    display: none;
+  }
+}
+
+.mobileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Mobile App Card */
+.mobileAppCard {
+  width: 100%;
+  height: 459px;
+  position: relative;
+  background: linear-gradient(219deg, white 0%, #F5F3FF 100%);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.mobileAppHeader {
+  position: absolute;
+  left: 50%;
+  top: 35px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobileAppTitle {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #3B3345;
+  text-align: center;
+  margin: 0;
+}
+
+.mobileAppSubtitle {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #7D7D7D;
+  text-align: center;
+  margin: 0;
+}
+
+.mobileDownloadBtn {
+  position: absolute;
+  left: 50%;
+  top: 105px;
+  transform: translateX(-50%);
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid #E8E8E8;
+  border-radius: 80px;
+  box-shadow: 0px 1px 34px rgba(16, 24, 40, 0.08);
+  font-family: var(--font-larsseit), "Larsseit", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #292929;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mobileAppImageWrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.mobileAppImage {
+  width: 243px;
+  height: 307px;
+  object-fit: contain;
+}
+
+/* Mobile Accordion */
+.mobileAccordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobileSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobileSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.mobileSectionLabel {
+  flex: 1;
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #B1B1B1;
+  text-align: left;
+}
+
+.mobileToggleIcon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #B1B1B1;
+}
+
+.mobileSectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobileLinkItem {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3B3345;
+  text-decoration: none;
+}
+
+.mobileLinkItem:hover {
+  text-decoration: underline;
+}
+
+.mobileDivider {
+  width: 100%;
+  height: 1px;
+  background: #E8E8E8;
+}
+
+/* Mobile Certifications */
+.mobileCertifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mobileCertLabel {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #B1B1B1;
+}
+
+.mobileCertLogos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 33px;
+}
+
+.mobileCertDivider {
+  width: 1px;
+  height: 27px;
+  background: #E8E8E8;
+}
+
+/* Mobile Social */
+.mobileSocialLinks {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mobileSocialIcon {
+  width: 40px;
+  height: 40px;
+  background: #3B3345;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.mobileSocialIcon:hover {
+  background: #6042AA;
+}
+
+/* Mobile Copyright */
+.mobileCopyright {
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #B1B1B1;
+  text-align: center;
+  margin: 0;
+}
+
+/* Mobile Logo */
+.mobileLogoWrapper {
+  width: 100%;
+  height: 106px;
+  position: relative;
+}
+
+.mobileLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,234 @@
+/* Activos Section - Responsive Styles */
+
+.section {
+  background: white;
+  padding: 48px 0;
+}
+
+/* ============================================
+   DESKTOP LAYOUT
+   ============================================ */
+
+.desktopLayout {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 72px;
+  }
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.titleDesktop {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 44px;
+  margin: 0;
+}
+
+.highlight {
+  color: #6042AA;
+}
+
+.normal {
+  color: #3B3345;
+}
+
+.ctaDesktop {
+  flex-shrink: 0;
+  height: 56px;
+  padding: 0 32px;
+  background: #292929;
+  color: #FCFCFD;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.ctaDesktop:hover {
+  opacity: 0.9;
+}
+
+.cardsRowDesktop {
+  display: flex;
+  justify-content: flex-start;
+  gap: 32px;
+  width: 100%;
+}
+
+/* ============================================
+   MOBILE LAYOUT
+   ============================================ */
+
+.mobileLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .mobileLayout {
+    display: none;
+  }
+}
+
+.titleMobile {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: center;
+  margin: 0;
+}
+
+.cardsScrollMobile {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+.cardsScrollMobile::-webkit-scrollbar {
+  display: none;
+}
+
+.ctaMobile {
+  width: 100%;
+  height: 56px;
+  padding: 0 24px;
+  background: #292929;
+  color: #FCFCFD;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.ctaMobile:hover {
+  opacity: 0.9;
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+
+.card {
+  flex-shrink: 0;
+  width: 190px;
+  padding: 24px 20px;
+  background: white;
+  box-shadow: 0px 1px 34px rgba(16, 24, 40, 0.08);
+  border-radius: 24px;
+  border: 1px solid #F4F4F4;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 229px;
+    padding: 32px 24px;
+    border-radius: 29px;
+    gap: 19px;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .cardContent {
+    gap: 8px;
+    min-height: 100px;
+  }
+}
+
+.activoName {
+  color: #3B3345;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .activoName {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.activoDescription {
+  color: #686868;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .activoDescription {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.imageContainer {
+  width: 140px;
+  height: 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .imageContainer {
+    width: 169px;
+    height: 96px;
+  }
+}
+
+.activoImage {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}

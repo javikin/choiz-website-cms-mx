@@ -26,6 +26,7 @@ fragment LandingParts on Landing {
       }
       ctaText
       ctaLink
+      priceText
       backgroundImage
     }
     ... on LandingSectionsCertifications {
@@ -139,6 +140,131 @@ fragment LandingParts on Landing {
       ctaText
       ctaLink
     }
+    ... on LandingSectionsActivos {
+      headline
+      highlightText
+      ctaText
+      ctaLink
+      activos {
+        __typename
+        name
+        description
+        image
+      }
+    }
+    ... on LandingSectionsFormulas {
+      headline
+      highlightText
+      formulas {
+        __typename
+        name
+        image
+        tags {
+          __typename
+          text
+          variant
+        }
+        ctaText
+        ctaLink
+      }
+    }
+    ... on LandingSectionsSuccessStories {
+      highlightText
+      normalText
+      ctaPrimaryText
+      ctaPrimaryLink
+      ctaSecondaryText
+      ctaSecondaryLink
+      testimonials {
+        __typename
+        name
+        age
+        quote
+        beforeImage
+        afterImage
+        monthsBefore
+        monthsAfter
+      }
+    }
+    ... on LandingSectionsVideoTestimonials {
+      headline
+      highlightText
+      ctaText
+      ctaLink
+      videos {
+        __typename
+        name
+        backgroundImage
+        videoUrl
+      }
+    }
+    ... on LandingSectionsHowItWorksNew {
+      headline
+      ctaText
+      ctaLink
+      steps {
+        __typename
+        title
+        description
+        image
+      }
+    }
+    ... on LandingSectionsFinalCtaNew {
+      headline
+      ctaText
+      ctaLink
+      backgroundImage
+    }
+    ... on LandingSectionsFaq {
+      headline
+      highlightText
+      items {
+        __typename
+        question
+        answer
+      }
+    }
+    ... on LandingSectionsFooterNew {
+      appTitle
+      appSubtitle
+      appImage
+      companyLinks {
+        __typename
+        text
+        url
+      }
+      founders {
+        __typename
+        name
+      }
+      resourceLinks {
+        __typename
+        text
+        url
+      }
+      phone
+      email
+      hoursLabel
+      hoursValue
+      treatmentLinks {
+        __typename
+        text
+        url
+      }
+      legalLinks {
+        __typename
+        text
+        url
+      }
+      cofeprisCode
+      socialLinks {
+        __typename
+        platform
+        url
+      }
+      copyright
+      logoImage
+    }
   }
   footer {
     __typename
@@ -197,6 +323,7 @@ fragment BlocksParts on Blocks {
       ctaText
       ctaLink
       backgroundImage
+      backgroundImageMobile
     }
     ... on BlocksSectionsTestimonialsBlock {
       headline

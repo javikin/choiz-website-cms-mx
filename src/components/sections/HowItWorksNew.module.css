@@ -1,0 +1,323 @@
+/* ============================================
+   HOW IT WORKS NEW SECTION
+   ============================================ */
+
+.section {
+  width: 100%;
+}
+
+/* ============================================
+   DESKTOP LAYOUT
+   ============================================ */
+
+.desktopLayout {
+  display: none;
+  padding: 72px;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .desktopLayout {
+    display: flex;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* Header with Title, CTA and Nav */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 44px;
+  color: #3b3345;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Desktop CTA Button */
+.ctaButton {
+  display: flex;
+  height: 48px;
+  padding: 0 24px;
+  background: #292929;
+  border-radius: 32px;
+  align-items: center;
+  justify-content: center;
+  color: #fcfcfd;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.ctaButton:hover {
+  background: #1a1a1a;
+}
+
+/* Desktop Navigation Arrows */
+.desktopNavArrows {
+  display: flex;
+  gap: 16px;
+}
+
+.desktopNavButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 27px;
+  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.desktopNavButton:hover:not(:disabled) {
+  background: #e8e8e8;
+}
+
+.navButtonDisabled {
+  background: #fcfcfc;
+  cursor: not-allowed;
+}
+
+/* Cards Container - Desktop */
+.cardsContainer {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cardsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
+   MOBILE LAYOUT
+   ============================================ */
+
+.mobileLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 16px;
+  background: #f4f4f4;
+}
+
+@media (min-width: 768px) {
+  .mobileLayout {
+    display: none;
+  }
+}
+
+.mobileTitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 34px;
+  text-align: center;
+  color: #3b3345;
+}
+
+/* Mobile Carousel */
+.mobileCarousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 calc(50% - 136px);
+  width: 100%;
+}
+
+.mobileCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
+   STEP CARD
+   ============================================ */
+
+.card {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  scroll-snap-align: center;
+}
+
+/* Phone Container */
+.phoneContainer {
+  position: relative;
+  width: 200px;
+  height: 340px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+@media (max-width: 767px) {
+  .phoneContainer {
+    width: 272px;
+    height: 460px;
+  }
+}
+
+.phoneImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Step Info */
+.stepInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .stepInfo {
+    max-width: 200px;
+  }
+}
+
+/* Step Badge */
+.stepBadge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #6042aa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Step Content */
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .stepContent {
+    max-width: 272px;
+  }
+}
+
+.stepTitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #3b3345;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .stepTitle {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.stepDescription {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #6c6c6c;
+  margin: 0;
+}
+
+/* ============================================
+   PAGINATION DOTS (Mobile)
+   ============================================ */
+
+.paginationDots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  transition: background 0.2s ease;
+}
+
+.dotActive {
+  background: #6042aa;
+}
+
+/* ============================================
+   CTA BUTTON (Mobile)
+   ============================================ */
+
+.mobileCta {
+  width: 100%;
+}
+
+.mobileCtaButton {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  padding: 0 24px;
+  background: #292929;
+  border-radius: 32px;
+  align-items: center;
+  justify-content: center;
+  color: #fcfcfd;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.mobileCtaButton:hover {
+  background: #1a1a1a;
+}

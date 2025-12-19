@@ -1,353 +1,301 @@
 {
   "navbar": {
-    "logo": "/uploads/images/choiz-logo.svg",
-    "ctaText": "Comenzar",
+    "logo": "/images/choiz-logo.svg",
+    "ctaText": "Comienza hoy",
     "ctaLink": "/quiz"
   },
   "sections": [
     {
-      "badge": "+ 10k vieron resultados en 2024",
-      "headline": "Recupera tu cabello en 90 dias ",
+      "badge": "+20.000 personas ya vieron resultados",
+      "headline": "El tratamiento más efectivo de México para la caída del cabello",
       "benefits": [
         {
-          "text": "dasdasdasdasd"
+          "text": "Resultados en 90 - 180 días"
         },
         {
-          "text": "100% en línea y con envío gratuito."
+          "text": "Científicamente comprobado"
         },
         {
-          "text": "Desde $562/mes."
+          "text": "100% en línea, con envío gratis"
         }
       ],
-      "ctaText": "Ver si soy apto",
+      "ctaText": "Comienza hoy",
       "ctaLink": "/quiz",
-      "backgroundImage": "/uploads/images/hero-background.jpg",
+      "priceText": "Desde $467/mes",
+      "backgroundImage": "/images/bg-hero-desk.png",
+      "backgroundImageMobile": "/images/bg-hero-mobile.png",
       "_template": "hero"
-    },
-    {
-      "headline": "Historias reales, resultados reales",
-      "subheadline": "Descubre cómo nuestros usuarios transformaron su cabello con Choiz.",
-      "videos": [
-        {
-          "name": "Bernardo Gutiérrez",
-          "backgroundImage": "/uploads/images/testimonial-1.jpg",
-          "videoUrl": "https://example.com/video1",
-          "rating": 5,
-          "productName": "Hair Blends Cápsula",
-          "productDescription": "Dutasterida + Minoxidil + Biotina",
-          "productImage": "/uploads/images/product.png"
-        },
-        {
-          "name": "Salvador Toreza",
-          "backgroundImage": "/uploads/images/testimonial-1.jpg",
-          "videoUrl": "https://example.com/video2",
-          "rating": 5,
-          "productName": "Hair Blends Gel",
-          "productDescription": "Dutasterida + Minoxidil",
-          "productImage": "/uploads/images/product.png"
-        },
-        {
-          "name": "Hector Lee",
-          "backgroundImage": "/uploads/images/testimonial-1.jpg",
-          "videoUrl": "https://example.com/video3",
-          "rating": 5,
-          "productName": "Hair Blends Cápsula",
-          "productDescription": "Dutasterida + Minoxidil + Biotina",
-          "productImage": "/uploads/images/product.png"
-        }
-      ],
-      "ctaText": "Comenzar mi tratamiento",
-      "ctaLink": "/quiz",
-      "moreText": "Ver más testimonios",
-      "moreLink": "/testimonios",
-      "_template": "testimonials"
     },
     {
       "title": "Aprobados y certificados por",
       "badges": [
         {
-          "logo": "/uploads/images/cofepris-logo.png",
-          "label": "sdasdasdasd"
+          "logo": "/images/cofepris-logo.png",
+          "label": "Lic. 2421055036X00214"
         },
         {
-          "logo": "/uploads/images/profeco-logo.png",
+          "logo": "/images/profeco-logo.png",
           "label": "Folio DA24MT62411053"
         }
       ],
       "_template": "certifications"
     },
     {
-      "headline": "¿Por qué perdemos el cabello?",
-      "stat": "50%",
-      "statDescription": "El 50% de los mexicanos sufren de Alopecia por herencia o genética.",
-      "explanation": "La DHT (una hormona masculina) encoge los folículos pilosos, provocando la caída del cabello y, finalmente, la calvicie.",
-      "illustration": "/uploads/images/dht-illustration.svg",
-      "hairLossTypes": [
+      "highlightText": "+20.000 personas",
+      "normalText": "ya obtuvieron resultados",
+      "ctaPrimaryText": "Comienza hoy",
+      "ctaPrimaryLink": "/quiz",
+      "ctaSecondaryText": "Ver más casos de éxito",
+      "ctaSecondaryLink": "/casos-exito",
+      "testimonials": [
         {
-          "name": "Entradas y coronilla",
-          "icon": "/uploads/images/icons/alopecia-entradas-coronilla.svg"
+          "name": "Roberto",
+          "age": 26,
+          "quote": "Llevo 3 meses de tratamiento y ya comienzo a ver avances, sin efectos secundarios y de fácil aplicación, estoy atento de ver los resultados a largo plazo.",
+          "beforeImage": "/images/testimonials/roberto-before.jpg",
+          "afterImage": "/images/testimonials/roberto-after.jpg",
+          "monthsBefore": 0,
+          "monthsAfter": 3
         },
         {
-          "name": "Coronilla",
-          "icon": "/uploads/images/icons/alopecia-coronilla.svg"
+          "name": "Sergio",
+          "age": 26,
+          "quote": "Uso Choiz hace 7 meses y la verdad es que estoy teniendo muy buenos resultados. Excelentes productos.",
+          "beforeImage": "/images/testimonials/sergio-before.jpg",
+          "afterImage": "/images/testimonials/sergio-after.jpg",
+          "monthsBefore": 0,
+          "monthsAfter": 7
         },
         {
-          "name": "Entradas",
-          "icon": "/uploads/images/icons/alopecia-entradas.svg"
+          "name": "Fernando",
+          "age": 46,
+          "quote": "Efectividad contra la caída y sin ningún efecto secundario, estoy muy contento de tomar la decisión de probarlo y de mantener la constancia de uso.",
+          "beforeImage": "/images/testimonials/fernando-before.jpg",
+          "afterImage": "/images/testimonials/fernando-after.jpg",
+          "monthsBefore": 0,
+          "monthsAfter": 10
+        },
+        {
+          "name": "Rafael",
+          "age": 36,
+          "quote": "Apenas voy a terminar mi tratamiento de 3 meses. La verdad mi mejor opción fue conocer choiz.",
+          "beforeImage": "/images/testimonials/rafael-before.jpg",
+          "afterImage": "/images/testimonials/rafael-after.jpg",
+          "monthsBefore": 0,
+          "monthsAfter": 3
         }
       ],
-      "_template": "problem"
+      "_template": "successStories"
     },
     {
-      "headline": "Recupera tu cabello y confianza con tratamientos personalizados que se adaptan a tus necesidades",
-      "items": [
+      "headline": "Creamos",
+      "highlightText": "fórmulas personalizadas",
+      "formulas": [
         {
-          "name": "Dutasterida + Minoxidil + Biotina",
+          "name": "Dutasteride 0.5mg + Minoxidil 1.25/2.5/3.75/5mg + Biotina 2.5mg (Oral)",
+          "image": "/images/products/capsulas-1.png",
           "tags": [
-            {
-              "text": "Cápsula"
-            },
-            {
-              "text": "Más vendido"
-            }
+            { "text": "Cápsulas", "variant": "purple" },
+            { "text": "Fácil adopción", "variant": "blue" }
           ],
-          "image": "/uploads/images/product.png",
-          "selectText": "Seleccionar",
-          "moreText": "Ver más",
-          "link": "/productos/capsula"
+          "ctaText": "Ver si soy apto",
+          "ctaLink": "/quiz"
         },
         {
-          "name": "Dutasterida + Minoxidil + Biotina",
+          "name": "Dutasteride 0.25% + Minoxidil 7% + Tretinoína 0.0125% (Tópico)",
+          "image": "/images/products/locion-1.png",
           "tags": [
-            {
-              "text": "Tópico"
-            },
-            {
-              "text": "Más vendido"
-            }
+            { "text": "Loción", "variant": "purple" }
           ],
-          "image": "/uploads/images/product.png",
-          "selectText": "Seleccionar",
-          "moreText": "Leer más",
-          "link": "/productos/gel"
+          "ctaText": "Ver si soy apto",
+          "ctaLink": "/quiz"
+        },
+        {
+          "name": "Finasterida 1mg + Minoxidil 2.5/3.75/5mg (Oral)",
+          "image": "/images/products/capsulas-2.png",
+          "tags": [
+            { "text": "Cápsulas", "variant": "purple" },
+            { "text": "Fácil adopción", "variant": "blue" }
+          ],
+          "ctaText": "Ver si soy apto",
+          "ctaLink": "/quiz"
+        },
+        {
+          "name": "Minoxidil 2.5/3.75/5mg (Oral)",
+          "image": "/images/products/capsulas-3.png",
+          "tags": [
+            { "text": "Cápsulas", "variant": "purple" },
+            { "text": "Fácil adopción", "variant": "blue" }
+          ],
+          "ctaText": "Ver si soy apto",
+          "ctaLink": "/quiz"
         }
       ],
-      "_template": "products"
+      "_template": "formulas"
     },
     {
-      "headline": "El secreto del éxito: nuestros ingredientes de alta calidad",
-      "items": [
+      "headline": "Utilizamos activos de calidad y con",
+      "highlightText": "evidencia científica",
+      "ctaText": "Encontrar mi fórmula personalizada",
+      "ctaLink": "/quiz",
+      "activos": [
+        {
+          "name": "Dutasterida",
+          "description": "Detiene la caída y promueve el crecimiento del folículo",
+          "image": "/images/activos/dutasterida.png"
+        },
         {
           "name": "Minoxidil",
           "description": "Reactiva los folículos dañados y favorece la circulación sanguínea",
-          "image": "/uploads/images/ingredients/minoxidil.jpg"
-        },
-        {
-          "name": "Biotina",
-          "description": "Mejora el grosor y la textura del cabello",
-          "image": "/uploads/images/ingredients/biotina.jpg"
-        },
-        {
-          "name": "Tretinoína",
-          "description": "Mejora la absorción del Minoxidil",
-          "image": "/uploads/images/ingredients/tretinoina.jpg"
+          "image": "/images/activos/minoxidil.png"
         },
         {
           "name": "Finasterida",
           "description": "Detiene la caída y promueve el crecimiento del folículo",
-          "image": "/uploads/images/ingredients/finasterida.jpg"
+          "image": "/images/activos/finasterida.png"
         },
         {
-          "name": "Hidrocortisona",
-          "description": "Disminuye la inflamación del cuero cabelludo durante el tratamiento",
-          "image": "/uploads/images/ingredients/hidrocortisona.jpg"
+          "name": "Biotina",
+          "description": "Mejora el grosor y la textura del cabello",
+          "image": "/images/activos/biotina.png"
+        },
+        {
+          "name": "Tretinoína",
+          "description": "Mejora la absorción del Minoxidil",
+          "image": "/images/activos/tretinoina.png"
         }
       ],
-      "ctaText": "Ver tratamientos",
-      "ctaLink": "/productos",
-      "_template": "ingredients"
+      "_template": "activos"
     },
     {
-      "headline": "Fórmulas clínicamente comprobadas en la recuperación del cabello",
-      "chartTitle": "Efectividad de los tratamientos",
-      "stats": [
+      "headline": "No lo decimos nosotros, lo dicen",
+      "highlightText": "nuestros usuarios",
+      "ctaText": "Comienza hoy",
+      "ctaLink": "/quiz",
+      "videos": [
         {
-          "label": "Combinados",
-          "percentage": 94
+          "name": "Usuario 1",
+          "backgroundImage": "/images/testimonials/video-1.jpg",
+          "videoUrl": "#"
         },
         {
-          "label": "Finasterida/Dutasterida",
-          "percentage": 90
+          "name": "Usuario 2",
+          "backgroundImage": "/images/testimonials/video-2.jpg",
+          "videoUrl": "#"
         },
         {
-          "label": "Minoxidil",
-          "percentage": 73
+          "name": "Usuario 3",
+          "backgroundImage": "/images/testimonials/video-3.jpg",
+          "videoUrl": "#"
         }
       ],
-      "conclusion": "94% de los usuarios que combinaron Dutasterida/Finasterida y Minoxidil obtuvieron resultados.",
-      "sourcesTitle": "Estudios citados",
-      "sources": "¹ PubMed Central, Opciones de tratamiento para la alopecia androgénica, 2021. ²American Hair Loss Association, Duasteride, 2024.",
-      "ctaText": "Ver tratamientos",
-      "ctaLink": "/productos",
-      "_template": "effectiveness"
+      "_template": "videoTestimonials"
     },
     {
-      "headline": "Por qué elegir Choiz",
-      "valueProps": [
-        {
-          "title": "Seguimiento médico online 24/7",
-          "description": "Atención completa y continua, sin costo extra y desde nuestra app.",
-          "icon": "/uploads/images/icons/medical.svg"
-        },
-        {
-          "title": "Envío gratis y discreto a tu puerta",
-          "description": "Recibes tu tratamiento donde tu quieras 100% gratis.",
-          "icon": "/uploads/images/icons/shipping.svg"
-        },
-        {
-          "title": "Tratamiento 100% personalizado",
-          "description": "Tu fórmula y reabastos, ajustados a tus necesidades personales.",
-          "icon": "/uploads/images/icons/personalized.svg"
-        }
-      ],
-      "ctaText": "Ver tratamientos",
-      "ctaLink": "/productos",
-      "_template": "whyChoose"
-    },
-    {
-      "days": "180",
-      "headline": "Garantía de éxito asegurada",
-      "description": "Estamos seguros de que recuperarás tu cabello y sino te devolvemos tu dinero. Términos y condiciones",
-      "_template": "guarantee"
-    },
-    {
-      "headline": "Cómo funciona",
+      "headline": "Cómo funciona Choiz",
+      "ctaText": "Comenzar hoy",
+      "ctaLink": "/quiz",
       "steps": [
         {
-          "title": "Completa el formulario",
-          "description": "Obtén una recomendación inicial respondiendo algunas preguntas sobre tu historial médico y grado de Alopecia.",
-          "icon": "/uploads/images/icons/form.svg"
+          "title": "Completa el cuestionario",
+          "description": "Contestar el formulario te tomará 5 minutos. Tus respuestas nos permitirán crear una formula personalizada",
+          "image": "/images/how-it-works/step-1.png"
         },
         {
-          "title": "Aprobación médica",
-          "description": "Completado el pago, nuestro equipo médico revisará tu solicitud y confirmará el diagnóstico del tratamiento indicado para ti.",
-          "icon": "/uploads/images/icons/medical-approval.svg"
+          "title": "Recibe tu diagnóstico",
+          "description": "Tendrás una consulta con un doctor que evaluará tu caso y formulará un tratamiento a tu medida.",
+          "image": "/images/how-it-works/step-2.png"
         },
         {
-          "title": "Envío del tratamiento",
-          "description": "Creamos el medicamento con tu fórmula personalizada y la enviamos en 72hs, de forma segura y gratuita.",
-          "icon": "/uploads/images/icons/delivery.svg"
+          "title": "Enviamos el tratamiento",
+          "description": "Recibe en tu puerta una cajita con tu tratamiento, incluye: cápsulas, loción, shampoo y vitaminas.",
+          "image": "/images/how-it-works/step-3.png"
         },
         {
-          "title": "Acompañamiento constante",
-          "description": "A través de nuestra app obtendrás acompañamiento médico asegurándote la efectividad del tratamiento.",
-          "icon": "/uploads/images/icons/support.svg"
+          "title": "Monitoreamos tus resultados",
+          "description": "Realizamos seguimiento a tu evolución para ajustar tu plan si es necesario.",
+          "image": "/images/how-it-works/step-4.png"
         }
       ],
-      "ctaText": "Comenzar ahora",
-      "ctaLink": "/quiz",
-      "_template": "howItWorks"
+      "_template": "howItWorksNew"
     },
     {
-      "headline": "Recuperar tu cabello es una realidad con Choiz",
-      "subheadline": "Inicia el formulario y comienza a ver resultados, sino te devolvemos tu dinero.",
-      "ctaText": "Comenzar ahora",
-      "ctaLink": "/quiz",
-      "_template": "finalCta"
+      "headline": "¿Tienes preguntas? Aquí te dejamos",
+      "highlightText": "respuestas",
+      "items": [
+        {
+          "question": "¿Qué es la Alopecia Androgénica?",
+          "answer": "La Alopecia Androgénica es una condición genética que causa la pérdida progresiva del cabello, principalmente en el cuero cabelludo. Esta forma de alopecia es común en los hombres y se caracteriza por el adelgazamiento del cabello en la parte superior y frontal de la cabeza, lo que se denomina comúnmente como calvicie."
+        },
+        {
+          "question": "¿Cuál es la causa más común de caída de cabello en hombres?",
+          "answer": "La causa más común es la Alopecia Androgénica, que afecta aproximadamente al 50% de los hombres mayores de 50 años. Esta condición está relacionada con factores genéticos y hormonales, específicamente con la sensibilidad de los folículos pilosos a la dihidrotestosterona (DHT)."
+        },
+        {
+          "question": "¿La Alopecia tiene cura?",
+          "answer": "Actualmente no existe una cura definitiva para la alopecia androgénica, pero existen tratamientos muy efectivos que pueden detener la caída del cabello y estimular el crecimiento de nuevo cabello. La clave está en comenzar el tratamiento lo antes posible."
+        },
+        {
+          "question": "¿Qué tratamientos sirven para la caída del cabello?",
+          "answer": "Los tratamientos más efectivos incluyen Minoxidil (que estimula el crecimiento capilar), Finasterida y Dutasterida (que bloquean la DHT), y tratamientos tópicos combinados. En Choiz creamos fórmulas personalizadas que combinan estos activos según tu caso específico."
+        },
+        {
+          "question": "¿Cómo funciona la Dutasterida?",
+          "answer": "La Dutasterida es un inhibidor de la enzima 5-alfa reductasa que reduce los niveles de DHT (la hormona responsable de la miniaturización del folículo). Es más potente que la Finasterida ya que bloquea ambos tipos de la enzima, logrando una reducción de DHT de hasta el 90%."
+        },
+        {
+          "question": "¿Cuánto tiempo dura el tratamiento para la alopecia masculina y cuando puedo ver resultados?",
+          "answer": "El tratamiento es continuo para mantener los resultados. Generalmente, se empiezan a notar mejoras significativas entre los 3 y 6 meses de uso constante. La mayoría de nuestros usuarios reportan resultados visibles a partir del tercer mes de tratamiento."
+        }
+      ],
+      "_template": "faq"
     },
     {
-      "badge": "+ 10k vieron resultados",
-      "headline": "Recupera tu cabello en 180 dias",
-      "ctaText": "Ver si soy apto",
+      "headline": "Recupera tu cabello y tu confianza con Choiz",
+      "ctaText": "Comienza hoy",
       "ctaLink": "/quiz",
-      "_template": "hero"
-    }
-  ],
-  "footer": {
-    "socialLinks": [
-      {
-        "platform": "Facebook",
-        "url": "https://facebook.com/choiz"
-      },
-      {
-        "platform": "Instagram",
-        "url": "https://instagram.com/choiz"
-      },
-      {
-        "platform": "TikTok",
-        "url": "https://tiktok.com/@choiz"
-      },
-      {
-        "platform": "YouTube",
-        "url": "https://youtube.com/choiz"
-      },
-      {
-        "platform": "LinkedIn",
-        "url": "https://linkedin.com/company/choiz"
-      }
-    ],
-    "logo": "/uploads/images/choiz-logo-white.svg",
-    "copyright": "© CHOIZ XCALE HEALTH S.A de C.V. Todos los derechos reservados.",
-    "certifications": [
-      {
-        "logo": "/uploads/images/cofepris-logo.png",
-        "label": ""
-      },
-      {
-        "logo": "/uploads/images/profeco-logo.png",
-        "label": ""
-      }
-    ],
-    "legalLinks": [
-      {
-        "text": "Políticas de privacidad",
-        "url": "/privacidad"
-      },
-      {
-        "text": "Términos y condiciones",
-        "url": "/terminos"
-      },
-      {
-        "text": "Consentimiento de Telemedicina",
-        "url": "/telemedicina"
-      },
-      {
-        "text": "COFEPRIS 2421055036X00214",
-        "url": "#"
-      }
-    ],
-    "resourceLinks": [
-      {
-        "text": "Blog",
-        "url": "/blog"
-      },
-      {
-        "text": "Preguntas frecuentes",
-        "url": "/faq"
-      }
-    ],
-    "founders": [
-      {
-        "name": "Franco Lacrampette"
-      },
-      {
-        "name": "Ignacio D'Anunzio"
-      }
-    ],
-    "contact": {
+      "backgroundImage": "/images/hero-man-optimized.jpg",
+      "_template": "finalCtaNew"
+    },
+    {
+      "appTitle": "Tu salud en un solo lugar",
+      "appSubtitle": "Descarga la app",
+      "appImage": "/images/app-mockup.png",
+      "companyLinks": [
+        { "text": "Sobre nosotros", "url": "/nosotros" },
+        { "text": "Trabaja con nosotros", "url": "/empleos" }
+      ],
+      "founders": [
+        { "name": "Franco Lacrampette" },
+        { "name": "Ignacio D'Anunzio" }
+      ],
+      "resourceLinks": [
+        { "text": "Blog", "url": "/blog" },
+        { "text": "Preguntas frecuentes", "url": "/faq" }
+      ],
       "phone": "+52 1 55 9225 6335",
       "email": "hola@choiz.com.mx",
-      "hours": "Lunes a Viernes de 07 a 22 hs"
-    },
-    "companyLinks": [
-      {
-        "text": "Sobre nosotros",
-        "url": "/sobre-nosotros"
-      },
-      {
-        "text": "Trabaja con nosotros",
-        "url": "/carreras"
-      }
-    ]
-  }
+      "hoursLabel": "Lunes a Viernes",
+      "hoursValue": "07 a 22 hs",
+      "treatmentLinks": [
+        { "text": "Alopecia", "url": "/alopecia" },
+        { "text": "Pérdida de peso", "url": "/perdida-peso" }
+      ],
+      "legalLinks": [
+        { "text": "Políticas de privacidad", "url": "/privacidad" },
+        { "text": "Términos y condiciones", "url": "/terminos" },
+        { "text": "Consentimiento de Telemedicina", "url": "/telemedicina" }
+      ],
+      "cofeprisCode": "COFEPRIS 2421055036X00214",
+      "socialLinks": [
+        { "platform": "instagram", "url": "https://instagram.com/choiz" },
+        { "platform": "facebook", "url": "https://facebook.com/choiz" },
+        { "platform": "tiktok", "url": "https://tiktok.com/@choiz" },
+        { "platform": "linkedin", "url": "https://linkedin.com/company/choiz" }
+      ],
+      "copyright": "© CHOIZ XCALE HEALTH S.A de C.V.. Todos los derechos reservados.",
+      "logoImage": "/images/choiz-logo-gray.svg",
+      "_template": "footerNew"
+    }
+  ]
 }

@@ -212,6 +212,7 @@ export type LandingSectionsHero = {
   benefits?: Maybe<Array<Maybe<LandingSectionsHeroBenefits>>>;
   ctaText?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
+  priceText?: Maybe<Scalars['String']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
 };
 
@@ -364,7 +365,174 @@ export type LandingSectionsFinalCta = {
   ctaLink?: Maybe<Scalars['String']['output']>;
 };
 
-export type LandingSections = LandingSectionsHero | LandingSectionsCertifications | LandingSectionsTestimonials | LandingSectionsProblem | LandingSectionsProducts | LandingSectionsIngredients | LandingSectionsEffectiveness | LandingSectionsWhyChoose | LandingSectionsGuarantee | LandingSectionsHowItWorks | LandingSectionsFinalCta;
+export type LandingSectionsActivosActivos = {
+  __typename?: 'LandingSectionsActivosActivos';
+  name: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsActivos = {
+  __typename?: 'LandingSectionsActivos';
+  headline?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  ctaText?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  activos?: Maybe<Array<Maybe<LandingSectionsActivosActivos>>>;
+};
+
+export type LandingSectionsFormulasFormulasTags = {
+  __typename?: 'LandingSectionsFormulasFormulasTags';
+  text?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFormulasFormulas = {
+  __typename?: 'LandingSectionsFormulasFormulas';
+  name: Scalars['String']['output'];
+  image?: Maybe<Scalars['String']['output']>;
+  tags?: Maybe<Array<Maybe<LandingSectionsFormulasFormulasTags>>>;
+  ctaText?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFormulas = {
+  __typename?: 'LandingSectionsFormulas';
+  headline?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  formulas?: Maybe<Array<Maybe<LandingSectionsFormulasFormulas>>>;
+};
+
+export type LandingSectionsSuccessStoriesTestimonials = {
+  __typename?: 'LandingSectionsSuccessStoriesTestimonials';
+  name: Scalars['String']['output'];
+  age?: Maybe<Scalars['Float']['output']>;
+  quote?: Maybe<Scalars['String']['output']>;
+  beforeImage?: Maybe<Scalars['String']['output']>;
+  afterImage?: Maybe<Scalars['String']['output']>;
+  monthsBefore?: Maybe<Scalars['Float']['output']>;
+  monthsAfter?: Maybe<Scalars['Float']['output']>;
+};
+
+export type LandingSectionsSuccessStories = {
+  __typename?: 'LandingSectionsSuccessStories';
+  highlightText?: Maybe<Scalars['String']['output']>;
+  normalText?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryText?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryText?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  testimonials?: Maybe<Array<Maybe<LandingSectionsSuccessStoriesTestimonials>>>;
+};
+
+export type LandingSectionsVideoTestimonialsVideos = {
+  __typename?: 'LandingSectionsVideoTestimonialsVideos';
+  name: Scalars['String']['output'];
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  videoUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsVideoTestimonials = {
+  __typename?: 'LandingSectionsVideoTestimonials';
+  headline?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  ctaText?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  videos?: Maybe<Array<Maybe<LandingSectionsVideoTestimonialsVideos>>>;
+};
+
+export type LandingSectionsHowItWorksNewSteps = {
+  __typename?: 'LandingSectionsHowItWorksNewSteps';
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsHowItWorksNew = {
+  __typename?: 'LandingSectionsHowItWorksNew';
+  headline?: Maybe<Scalars['String']['output']>;
+  ctaText?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  steps?: Maybe<Array<Maybe<LandingSectionsHowItWorksNewSteps>>>;
+};
+
+export type LandingSectionsFinalCtaNew = {
+  __typename?: 'LandingSectionsFinalCtaNew';
+  headline?: Maybe<Scalars['String']['output']>;
+  ctaText?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFaqItems = {
+  __typename?: 'LandingSectionsFaqItems';
+  question?: Maybe<Scalars['String']['output']>;
+  answer?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFaq = {
+  __typename?: 'LandingSectionsFaq';
+  headline?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingSectionsFaqItems>>>;
+};
+
+export type LandingSectionsFooterNewCompanyLinks = {
+  __typename?: 'LandingSectionsFooterNewCompanyLinks';
+  text?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFooterNewFounders = {
+  __typename?: 'LandingSectionsFooterNewFounders';
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFooterNewResourceLinks = {
+  __typename?: 'LandingSectionsFooterNewResourceLinks';
+  text?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFooterNewTreatmentLinks = {
+  __typename?: 'LandingSectionsFooterNewTreatmentLinks';
+  text?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFooterNewLegalLinks = {
+  __typename?: 'LandingSectionsFooterNewLegalLinks';
+  text?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFooterNewSocialLinks = {
+  __typename?: 'LandingSectionsFooterNewSocialLinks';
+  platform?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSectionsFooterNew = {
+  __typename?: 'LandingSectionsFooterNew';
+  appTitle?: Maybe<Scalars['String']['output']>;
+  appSubtitle?: Maybe<Scalars['String']['output']>;
+  appImage?: Maybe<Scalars['String']['output']>;
+  companyLinks?: Maybe<Array<Maybe<LandingSectionsFooterNewCompanyLinks>>>;
+  founders?: Maybe<Array<Maybe<LandingSectionsFooterNewFounders>>>;
+  resourceLinks?: Maybe<Array<Maybe<LandingSectionsFooterNewResourceLinks>>>;
+  phone?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  hoursLabel?: Maybe<Scalars['String']['output']>;
+  hoursValue?: Maybe<Scalars['String']['output']>;
+  treatmentLinks?: Maybe<Array<Maybe<LandingSectionsFooterNewTreatmentLinks>>>;
+  legalLinks?: Maybe<Array<Maybe<LandingSectionsFooterNewLegalLinks>>>;
+  cofeprisCode?: Maybe<Scalars['String']['output']>;
+  socialLinks?: Maybe<Array<Maybe<LandingSectionsFooterNewSocialLinks>>>;
+  copyright?: Maybe<Scalars['String']['output']>;
+  logoImage?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingSections = LandingSectionsHero | LandingSectionsCertifications | LandingSectionsTestimonials | LandingSectionsProblem | LandingSectionsProducts | LandingSectionsIngredients | LandingSectionsEffectiveness | LandingSectionsWhyChoose | LandingSectionsGuarantee | LandingSectionsHowItWorks | LandingSectionsFinalCta | LandingSectionsActivos | LandingSectionsFormulas | LandingSectionsSuccessStories | LandingSectionsVideoTestimonials | LandingSectionsHowItWorksNew | LandingSectionsFinalCtaNew | LandingSectionsFaq | LandingSectionsFooterNew;
 
 export type LandingFooterSocialLinks = {
   __typename?: 'LandingFooterSocialLinks';
@@ -469,6 +637,7 @@ export type LandingSectionsHeroFilter = {
   benefits?: InputMaybe<LandingSectionsHeroBenefitsFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
+  priceText?: InputMaybe<StringFilter>;
   backgroundImage?: InputMaybe<StringFilter>;
 };
 
@@ -612,6 +781,152 @@ export type LandingSectionsFinalCtaFilter = {
   ctaLink?: InputMaybe<StringFilter>;
 };
 
+export type LandingSectionsActivosActivosFilter = {
+  name?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  image?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsActivosFilter = {
+  headline?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  ctaText?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  activos?: InputMaybe<LandingSectionsActivosActivosFilter>;
+};
+
+export type LandingSectionsFormulasFormulasTagsFilter = {
+  text?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFormulasFormulasFilter = {
+  name?: InputMaybe<StringFilter>;
+  image?: InputMaybe<StringFilter>;
+  tags?: InputMaybe<LandingSectionsFormulasFormulasTagsFilter>;
+  ctaText?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFormulasFilter = {
+  headline?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  formulas?: InputMaybe<LandingSectionsFormulasFormulasFilter>;
+};
+
+export type LandingSectionsSuccessStoriesTestimonialsFilter = {
+  name?: InputMaybe<StringFilter>;
+  age?: InputMaybe<NumberFilter>;
+  quote?: InputMaybe<StringFilter>;
+  beforeImage?: InputMaybe<StringFilter>;
+  afterImage?: InputMaybe<StringFilter>;
+  monthsBefore?: InputMaybe<NumberFilter>;
+  monthsAfter?: InputMaybe<NumberFilter>;
+};
+
+export type LandingSectionsSuccessStoriesFilter = {
+  highlightText?: InputMaybe<StringFilter>;
+  normalText?: InputMaybe<StringFilter>;
+  ctaPrimaryText?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondaryText?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  testimonials?: InputMaybe<LandingSectionsSuccessStoriesTestimonialsFilter>;
+};
+
+export type LandingSectionsVideoTestimonialsVideosFilter = {
+  name?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<StringFilter>;
+  videoUrl?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsVideoTestimonialsFilter = {
+  headline?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  ctaText?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  videos?: InputMaybe<LandingSectionsVideoTestimonialsVideosFilter>;
+};
+
+export type LandingSectionsHowItWorksNewStepsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  image?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsHowItWorksNewFilter = {
+  headline?: InputMaybe<StringFilter>;
+  ctaText?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  steps?: InputMaybe<LandingSectionsHowItWorksNewStepsFilter>;
+};
+
+export type LandingSectionsFinalCtaNewFilter = {
+  headline?: InputMaybe<StringFilter>;
+  ctaText?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFaqItemsFilter = {
+  question?: InputMaybe<StringFilter>;
+  answer?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFaqFilter = {
+  headline?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingSectionsFaqItemsFilter>;
+};
+
+export type LandingSectionsFooterNewCompanyLinksFilter = {
+  text?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFooterNewFoundersFilter = {
+  name?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFooterNewResourceLinksFilter = {
+  text?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFooterNewTreatmentLinksFilter = {
+  text?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFooterNewLegalLinksFilter = {
+  text?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFooterNewSocialLinksFilter = {
+  platform?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type LandingSectionsFooterNewFilter = {
+  appTitle?: InputMaybe<StringFilter>;
+  appSubtitle?: InputMaybe<StringFilter>;
+  appImage?: InputMaybe<StringFilter>;
+  companyLinks?: InputMaybe<LandingSectionsFooterNewCompanyLinksFilter>;
+  founders?: InputMaybe<LandingSectionsFooterNewFoundersFilter>;
+  resourceLinks?: InputMaybe<LandingSectionsFooterNewResourceLinksFilter>;
+  phone?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  hoursLabel?: InputMaybe<StringFilter>;
+  hoursValue?: InputMaybe<StringFilter>;
+  treatmentLinks?: InputMaybe<LandingSectionsFooterNewTreatmentLinksFilter>;
+  legalLinks?: InputMaybe<LandingSectionsFooterNewLegalLinksFilter>;
+  cofeprisCode?: InputMaybe<StringFilter>;
+  socialLinks?: InputMaybe<LandingSectionsFooterNewSocialLinksFilter>;
+  copyright?: InputMaybe<StringFilter>;
+  logoImage?: InputMaybe<StringFilter>;
+};
+
 export type LandingSectionsFilter = {
   hero?: InputMaybe<LandingSectionsHeroFilter>;
   certifications?: InputMaybe<LandingSectionsCertificationsFilter>;
@@ -624,6 +939,14 @@ export type LandingSectionsFilter = {
   guarantee?: InputMaybe<LandingSectionsGuaranteeFilter>;
   howItWorks?: InputMaybe<LandingSectionsHowItWorksFilter>;
   finalCta?: InputMaybe<LandingSectionsFinalCtaFilter>;
+  activos?: InputMaybe<LandingSectionsActivosFilter>;
+  formulas?: InputMaybe<LandingSectionsFormulasFilter>;
+  successStories?: InputMaybe<LandingSectionsSuccessStoriesFilter>;
+  videoTestimonials?: InputMaybe<LandingSectionsVideoTestimonialsFilter>;
+  howItWorksNew?: InputMaybe<LandingSectionsHowItWorksNewFilter>;
+  finalCtaNew?: InputMaybe<LandingSectionsFinalCtaNewFilter>;
+  faq?: InputMaybe<LandingSectionsFaqFilter>;
+  footerNew?: InputMaybe<LandingSectionsFooterNewFilter>;
 };
 
 export type LandingFooterSocialLinksFilter = {
@@ -706,6 +1029,7 @@ export type BlocksSectionsHeroBlock = {
   ctaText?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
+  backgroundImageMobile?: Maybe<Scalars['String']['output']>;
 };
 
 export type BlocksSectionsTestimonialsBlockVideos = {
@@ -768,6 +1092,7 @@ export type BlocksSectionsHeroBlockFilter = {
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   backgroundImage?: InputMaybe<StringFilter>;
+  backgroundImageMobile?: InputMaybe<StringFilter>;
 };
 
 export type BlocksSectionsTestimonialsBlockVideosFilter = {
@@ -935,6 +1260,7 @@ export type LandingSectionsHeroMutation = {
   benefits?: InputMaybe<Array<InputMaybe<LandingSectionsHeroBenefitsMutation>>>;
   ctaText?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
+  priceText?: InputMaybe<Scalars['String']['input']>;
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1068,6 +1394,152 @@ export type LandingSectionsFinalCtaMutation = {
   ctaLink?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type LandingSectionsActivosActivosMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsActivosMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  ctaText?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  activos?: InputMaybe<Array<InputMaybe<LandingSectionsActivosActivosMutation>>>;
+};
+
+export type LandingSectionsFormulasFormulasTagsMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFormulasFormulasMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<LandingSectionsFormulasFormulasTagsMutation>>>;
+  ctaText?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFormulasMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  formulas?: InputMaybe<Array<InputMaybe<LandingSectionsFormulasFormulasMutation>>>;
+};
+
+export type LandingSectionsSuccessStoriesTestimonialsMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  age?: InputMaybe<Scalars['Float']['input']>;
+  quote?: InputMaybe<Scalars['String']['input']>;
+  beforeImage?: InputMaybe<Scalars['String']['input']>;
+  afterImage?: InputMaybe<Scalars['String']['input']>;
+  monthsBefore?: InputMaybe<Scalars['Float']['input']>;
+  monthsAfter?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type LandingSectionsSuccessStoriesMutation = {
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  normalText?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryText?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryText?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  testimonials?: InputMaybe<Array<InputMaybe<LandingSectionsSuccessStoriesTestimonialsMutation>>>;
+};
+
+export type LandingSectionsVideoTestimonialsVideosMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  videoUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsVideoTestimonialsMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  ctaText?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  videos?: InputMaybe<Array<InputMaybe<LandingSectionsVideoTestimonialsVideosMutation>>>;
+};
+
+export type LandingSectionsHowItWorksNewStepsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsHowItWorksNewMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  ctaText?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  steps?: InputMaybe<Array<InputMaybe<LandingSectionsHowItWorksNewStepsMutation>>>;
+};
+
+export type LandingSectionsFinalCtaNewMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  ctaText?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFaqItemsMutation = {
+  question?: InputMaybe<Scalars['String']['input']>;
+  answer?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFaqMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingSectionsFaqItemsMutation>>>;
+};
+
+export type LandingSectionsFooterNewCompanyLinksMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFooterNewFoundersMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFooterNewResourceLinksMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFooterNewTreatmentLinksMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFooterNewLegalLinksMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFooterNewSocialLinksMutation = {
+  platform?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingSectionsFooterNewMutation = {
+  appTitle?: InputMaybe<Scalars['String']['input']>;
+  appSubtitle?: InputMaybe<Scalars['String']['input']>;
+  appImage?: InputMaybe<Scalars['String']['input']>;
+  companyLinks?: InputMaybe<Array<InputMaybe<LandingSectionsFooterNewCompanyLinksMutation>>>;
+  founders?: InputMaybe<Array<InputMaybe<LandingSectionsFooterNewFoundersMutation>>>;
+  resourceLinks?: InputMaybe<Array<InputMaybe<LandingSectionsFooterNewResourceLinksMutation>>>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  hoursLabel?: InputMaybe<Scalars['String']['input']>;
+  hoursValue?: InputMaybe<Scalars['String']['input']>;
+  treatmentLinks?: InputMaybe<Array<InputMaybe<LandingSectionsFooterNewTreatmentLinksMutation>>>;
+  legalLinks?: InputMaybe<Array<InputMaybe<LandingSectionsFooterNewLegalLinksMutation>>>;
+  cofeprisCode?: InputMaybe<Scalars['String']['input']>;
+  socialLinks?: InputMaybe<Array<InputMaybe<LandingSectionsFooterNewSocialLinksMutation>>>;
+  copyright?: InputMaybe<Scalars['String']['input']>;
+  logoImage?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type LandingSectionsMutation = {
   hero?: InputMaybe<LandingSectionsHeroMutation>;
   certifications?: InputMaybe<LandingSectionsCertificationsMutation>;
@@ -1080,6 +1552,14 @@ export type LandingSectionsMutation = {
   guarantee?: InputMaybe<LandingSectionsGuaranteeMutation>;
   howItWorks?: InputMaybe<LandingSectionsHowItWorksMutation>;
   finalCta?: InputMaybe<LandingSectionsFinalCtaMutation>;
+  activos?: InputMaybe<LandingSectionsActivosMutation>;
+  formulas?: InputMaybe<LandingSectionsFormulasMutation>;
+  successStories?: InputMaybe<LandingSectionsSuccessStoriesMutation>;
+  videoTestimonials?: InputMaybe<LandingSectionsVideoTestimonialsMutation>;
+  howItWorksNew?: InputMaybe<LandingSectionsHowItWorksNewMutation>;
+  finalCtaNew?: InputMaybe<LandingSectionsFinalCtaNewMutation>;
+  faq?: InputMaybe<LandingSectionsFaqMutation>;
+  footerNew?: InputMaybe<LandingSectionsFooterNewMutation>;
 };
 
 export type LandingFooterSocialLinksMutation = {
@@ -1147,6 +1627,7 @@ export type BlocksSectionsHeroBlockMutation = {
   ctaText?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  backgroundImageMobile?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type BlocksSectionsTestimonialsBlockVideosMutation = {
@@ -1195,16 +1676,16 @@ export type BlocksMutation = {
   sections?: InputMaybe<Array<InputMaybe<BlocksSectionsMutation>>>;
 };
 
-export type LandingPartsFragment = { __typename: 'Landing', seo?: { __typename: 'LandingSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, ogType?: string | null, canonicalUrl?: string | null, noIndex?: boolean | null } | null, navbar?: { __typename: 'LandingNavbar', logo?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, sections?: Array<{ __typename: 'LandingSectionsHero', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'LandingSectionsHeroBenefits', text?: string | null } | null> | null } | { __typename: 'LandingSectionsCertifications', title?: string | null, badges?: Array<{ __typename: 'LandingSectionsCertificationsBadges', logo?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingSectionsTestimonials', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'LandingSectionsProblem', headline?: string | null, stat?: string | null, statDescription?: string | null, explanation?: string | null, illustration?: string | null, hairLossTypes?: Array<{ __typename: 'LandingSectionsProblemHairLossTypes', name?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsProducts', headline?: string | null, items?: Array<{ __typename: 'LandingSectionsProductsItems', name: string, image?: string | null, selectText?: string | null, moreText?: string | null, link?: string | null, tags?: Array<{ __typename: 'LandingSectionsProductsItemsTags', text?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsIngredients', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'LandingSectionsIngredientsItems', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsEffectiveness', headline?: string | null, chartTitle?: string | null, conclusion?: string | null, sourcesTitle?: string | null, sources?: string | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'LandingSectionsEffectivenessStats', label?: string | null, percentage?: number | null } | null> | null } | { __typename: 'LandingSectionsWhyChoose', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, valueProps?: Array<{ __typename: 'LandingSectionsWhyChooseValueProps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsGuarantee', days?: string | null, headline?: string | null, description?: string | null } | { __typename: 'LandingSectionsHowItWorks', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksSteps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCta', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null } | null> | null, footer?: { __typename: 'LandingFooter', logo?: string | null, copyright?: string | null, socialLinks?: Array<{ __typename: 'LandingFooterSocialLinks', platform?: string | null, url?: string | null } | null> | null, certifications?: Array<{ __typename: 'LandingFooterCertifications', logo?: string | null, label?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingFooterLegalLinks', text: string, url: string } | null> | null, resourceLinks?: Array<{ __typename: 'LandingFooterResourceLinks', text: string, url: string } | null> | null, founders?: Array<{ __typename: 'LandingFooterFounders', name?: string | null } | null> | null, contact?: { __typename: 'LandingFooterContact', phone?: string | null, email?: string | null, hours?: string | null } | null, companyLinks?: Array<{ __typename: 'LandingFooterCompanyLinks', text: string, url: string } | null> | null } | null };
+export type LandingPartsFragment = { __typename: 'Landing', seo?: { __typename: 'LandingSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, ogType?: string | null, canonicalUrl?: string | null, noIndex?: boolean | null } | null, navbar?: { __typename: 'LandingNavbar', logo?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, sections?: Array<{ __typename: 'LandingSectionsHero', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, priceText?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'LandingSectionsHeroBenefits', text?: string | null } | null> | null } | { __typename: 'LandingSectionsCertifications', title?: string | null, badges?: Array<{ __typename: 'LandingSectionsCertificationsBadges', logo?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingSectionsTestimonials', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'LandingSectionsProblem', headline?: string | null, stat?: string | null, statDescription?: string | null, explanation?: string | null, illustration?: string | null, hairLossTypes?: Array<{ __typename: 'LandingSectionsProblemHairLossTypes', name?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsProducts', headline?: string | null, items?: Array<{ __typename: 'LandingSectionsProductsItems', name: string, image?: string | null, selectText?: string | null, moreText?: string | null, link?: string | null, tags?: Array<{ __typename: 'LandingSectionsProductsItemsTags', text?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsIngredients', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'LandingSectionsIngredientsItems', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsEffectiveness', headline?: string | null, chartTitle?: string | null, conclusion?: string | null, sourcesTitle?: string | null, sources?: string | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'LandingSectionsEffectivenessStats', label?: string | null, percentage?: number | null } | null> | null } | { __typename: 'LandingSectionsWhyChoose', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, valueProps?: Array<{ __typename: 'LandingSectionsWhyChooseValueProps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsGuarantee', days?: string | null, headline?: string | null, description?: string | null } | { __typename: 'LandingSectionsHowItWorks', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksSteps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCta', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null } | { __typename: 'LandingSectionsActivos', headline?: string | null, highlightText?: string | null, ctaText?: string | null, ctaLink?: string | null, activos?: Array<{ __typename: 'LandingSectionsActivosActivos', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsFormulas', headline?: string | null, highlightText?: string | null, formulas?: Array<{ __typename: 'LandingSectionsFormulasFormulas', name: string, image?: string | null, ctaText?: string | null, ctaLink?: string | null, tags?: Array<{ __typename: 'LandingSectionsFormulasFormulasTags', text?: string | null, variant?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsSuccessStories', highlightText?: string | null, normalText?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, testimonials?: Array<{ __typename: 'LandingSectionsSuccessStoriesTestimonials', name: string, age?: number | null, quote?: string | null, beforeImage?: string | null, afterImage?: string | null, monthsBefore?: number | null, monthsAfter?: number | null } | null> | null } | { __typename: 'LandingSectionsVideoTestimonials', headline?: string | null, highlightText?: string | null, ctaText?: string | null, ctaLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsVideoTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null } | null> | null } | { __typename: 'LandingSectionsHowItWorksNew', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksNewSteps', title: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCtaNew', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null } | { __typename: 'LandingSectionsFaq', headline?: string | null, highlightText?: string | null, items?: Array<{ __typename: 'LandingSectionsFaqItems', question?: string | null, answer?: string | null } | null> | null } | { __typename: 'LandingSectionsFooterNew', appTitle?: string | null, appSubtitle?: string | null, appImage?: string | null, phone?: string | null, email?: string | null, hoursLabel?: string | null, hoursValue?: string | null, cofeprisCode?: string | null, copyright?: string | null, logoImage?: string | null, companyLinks?: Array<{ __typename: 'LandingSectionsFooterNewCompanyLinks', text?: string | null, url?: string | null } | null> | null, founders?: Array<{ __typename: 'LandingSectionsFooterNewFounders', name?: string | null } | null> | null, resourceLinks?: Array<{ __typename: 'LandingSectionsFooterNewResourceLinks', text?: string | null, url?: string | null } | null> | null, treatmentLinks?: Array<{ __typename: 'LandingSectionsFooterNewTreatmentLinks', text?: string | null, url?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingSectionsFooterNewLegalLinks', text?: string | null, url?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'LandingSectionsFooterNewSocialLinks', platform?: string | null, url?: string | null } | null> | null } | null> | null, footer?: { __typename: 'LandingFooter', logo?: string | null, copyright?: string | null, socialLinks?: Array<{ __typename: 'LandingFooterSocialLinks', platform?: string | null, url?: string | null } | null> | null, certifications?: Array<{ __typename: 'LandingFooterCertifications', logo?: string | null, label?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingFooterLegalLinks', text: string, url: string } | null> | null, resourceLinks?: Array<{ __typename: 'LandingFooterResourceLinks', text: string, url: string } | null> | null, founders?: Array<{ __typename: 'LandingFooterFounders', name?: string | null } | null> | null, contact?: { __typename: 'LandingFooterContact', phone?: string | null, email?: string | null, hours?: string | null } | null, companyLinks?: Array<{ __typename: 'LandingFooterCompanyLinks', text: string, url: string } | null> | null } | null };
 
-export type BlocksPartsFragment = { __typename: 'Blocks', title: string, sections?: Array<{ __typename: 'BlocksSectionsHeroBlock', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'BlocksSectionsHeroBlockBenefits', text: string } | null> | null } | { __typename: 'BlocksSectionsTestimonialsBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'BlocksSectionsTestimonialsBlockVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'BlocksSectionsCtaBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'BlocksSectionsGuaranteeBlock', days?: string | null, headline?: string | null, description?: string | null } | null> | null };
+export type BlocksPartsFragment = { __typename: 'Blocks', title: string, sections?: Array<{ __typename: 'BlocksSectionsHeroBlock', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, backgroundImageMobile?: string | null, benefits?: Array<{ __typename: 'BlocksSectionsHeroBlockBenefits', text: string } | null> | null } | { __typename: 'BlocksSectionsTestimonialsBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'BlocksSectionsTestimonialsBlockVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'BlocksSectionsCtaBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'BlocksSectionsGuaranteeBlock', days?: string | null, headline?: string | null, description?: string | null } | null> | null };
 
 export type LandingQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type LandingQuery = { __typename?: 'Query', landing: { __typename: 'Landing', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'LandingSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, ogType?: string | null, canonicalUrl?: string | null, noIndex?: boolean | null } | null, navbar?: { __typename: 'LandingNavbar', logo?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, sections?: Array<{ __typename: 'LandingSectionsHero', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'LandingSectionsHeroBenefits', text?: string | null } | null> | null } | { __typename: 'LandingSectionsCertifications', title?: string | null, badges?: Array<{ __typename: 'LandingSectionsCertificationsBadges', logo?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingSectionsTestimonials', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'LandingSectionsProblem', headline?: string | null, stat?: string | null, statDescription?: string | null, explanation?: string | null, illustration?: string | null, hairLossTypes?: Array<{ __typename: 'LandingSectionsProblemHairLossTypes', name?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsProducts', headline?: string | null, items?: Array<{ __typename: 'LandingSectionsProductsItems', name: string, image?: string | null, selectText?: string | null, moreText?: string | null, link?: string | null, tags?: Array<{ __typename: 'LandingSectionsProductsItemsTags', text?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsIngredients', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'LandingSectionsIngredientsItems', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsEffectiveness', headline?: string | null, chartTitle?: string | null, conclusion?: string | null, sourcesTitle?: string | null, sources?: string | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'LandingSectionsEffectivenessStats', label?: string | null, percentage?: number | null } | null> | null } | { __typename: 'LandingSectionsWhyChoose', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, valueProps?: Array<{ __typename: 'LandingSectionsWhyChooseValueProps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsGuarantee', days?: string | null, headline?: string | null, description?: string | null } | { __typename: 'LandingSectionsHowItWorks', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksSteps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCta', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null } | null> | null, footer?: { __typename: 'LandingFooter', logo?: string | null, copyright?: string | null, socialLinks?: Array<{ __typename: 'LandingFooterSocialLinks', platform?: string | null, url?: string | null } | null> | null, certifications?: Array<{ __typename: 'LandingFooterCertifications', logo?: string | null, label?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingFooterLegalLinks', text: string, url: string } | null> | null, resourceLinks?: Array<{ __typename: 'LandingFooterResourceLinks', text: string, url: string } | null> | null, founders?: Array<{ __typename: 'LandingFooterFounders', name?: string | null } | null> | null, contact?: { __typename: 'LandingFooterContact', phone?: string | null, email?: string | null, hours?: string | null } | null, companyLinks?: Array<{ __typename: 'LandingFooterCompanyLinks', text: string, url: string } | null> | null } | null } };
+export type LandingQuery = { __typename?: 'Query', landing: { __typename: 'Landing', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'LandingSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, ogType?: string | null, canonicalUrl?: string | null, noIndex?: boolean | null } | null, navbar?: { __typename: 'LandingNavbar', logo?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, sections?: Array<{ __typename: 'LandingSectionsHero', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, priceText?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'LandingSectionsHeroBenefits', text?: string | null } | null> | null } | { __typename: 'LandingSectionsCertifications', title?: string | null, badges?: Array<{ __typename: 'LandingSectionsCertificationsBadges', logo?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingSectionsTestimonials', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'LandingSectionsProblem', headline?: string | null, stat?: string | null, statDescription?: string | null, explanation?: string | null, illustration?: string | null, hairLossTypes?: Array<{ __typename: 'LandingSectionsProblemHairLossTypes', name?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsProducts', headline?: string | null, items?: Array<{ __typename: 'LandingSectionsProductsItems', name: string, image?: string | null, selectText?: string | null, moreText?: string | null, link?: string | null, tags?: Array<{ __typename: 'LandingSectionsProductsItemsTags', text?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsIngredients', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'LandingSectionsIngredientsItems', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsEffectiveness', headline?: string | null, chartTitle?: string | null, conclusion?: string | null, sourcesTitle?: string | null, sources?: string | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'LandingSectionsEffectivenessStats', label?: string | null, percentage?: number | null } | null> | null } | { __typename: 'LandingSectionsWhyChoose', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, valueProps?: Array<{ __typename: 'LandingSectionsWhyChooseValueProps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsGuarantee', days?: string | null, headline?: string | null, description?: string | null } | { __typename: 'LandingSectionsHowItWorks', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksSteps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCta', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null } | { __typename: 'LandingSectionsActivos', headline?: string | null, highlightText?: string | null, ctaText?: string | null, ctaLink?: string | null, activos?: Array<{ __typename: 'LandingSectionsActivosActivos', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsFormulas', headline?: string | null, highlightText?: string | null, formulas?: Array<{ __typename: 'LandingSectionsFormulasFormulas', name: string, image?: string | null, ctaText?: string | null, ctaLink?: string | null, tags?: Array<{ __typename: 'LandingSectionsFormulasFormulasTags', text?: string | null, variant?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsSuccessStories', highlightText?: string | null, normalText?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, testimonials?: Array<{ __typename: 'LandingSectionsSuccessStoriesTestimonials', name: string, age?: number | null, quote?: string | null, beforeImage?: string | null, afterImage?: string | null, monthsBefore?: number | null, monthsAfter?: number | null } | null> | null } | { __typename: 'LandingSectionsVideoTestimonials', headline?: string | null, highlightText?: string | null, ctaText?: string | null, ctaLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsVideoTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null } | null> | null } | { __typename: 'LandingSectionsHowItWorksNew', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksNewSteps', title: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCtaNew', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null } | { __typename: 'LandingSectionsFaq', headline?: string | null, highlightText?: string | null, items?: Array<{ __typename: 'LandingSectionsFaqItems', question?: string | null, answer?: string | null } | null> | null } | { __typename: 'LandingSectionsFooterNew', appTitle?: string | null, appSubtitle?: string | null, appImage?: string | null, phone?: string | null, email?: string | null, hoursLabel?: string | null, hoursValue?: string | null, cofeprisCode?: string | null, copyright?: string | null, logoImage?: string | null, companyLinks?: Array<{ __typename: 'LandingSectionsFooterNewCompanyLinks', text?: string | null, url?: string | null } | null> | null, founders?: Array<{ __typename: 'LandingSectionsFooterNewFounders', name?: string | null } | null> | null, resourceLinks?: Array<{ __typename: 'LandingSectionsFooterNewResourceLinks', text?: string | null, url?: string | null } | null> | null, treatmentLinks?: Array<{ __typename: 'LandingSectionsFooterNewTreatmentLinks', text?: string | null, url?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingSectionsFooterNewLegalLinks', text?: string | null, url?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'LandingSectionsFooterNewSocialLinks', platform?: string | null, url?: string | null } | null> | null } | null> | null, footer?: { __typename: 'LandingFooter', logo?: string | null, copyright?: string | null, socialLinks?: Array<{ __typename: 'LandingFooterSocialLinks', platform?: string | null, url?: string | null } | null> | null, certifications?: Array<{ __typename: 'LandingFooterCertifications', logo?: string | null, label?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingFooterLegalLinks', text: string, url: string } | null> | null, resourceLinks?: Array<{ __typename: 'LandingFooterResourceLinks', text: string, url: string } | null> | null, founders?: Array<{ __typename: 'LandingFooterFounders', name?: string | null } | null> | null, contact?: { __typename: 'LandingFooterContact', phone?: string | null, email?: string | null, hours?: string | null } | null, companyLinks?: Array<{ __typename: 'LandingFooterCompanyLinks', text: string, url: string } | null> | null } | null } };
 
 export type LandingConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1216,14 +1697,14 @@ export type LandingConnectionQueryVariables = Exact<{
 }>;
 
 
-export type LandingConnectionQuery = { __typename?: 'Query', landingConnection: { __typename?: 'LandingConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LandingConnectionEdges', cursor: string, node?: { __typename: 'Landing', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'LandingSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, ogType?: string | null, canonicalUrl?: string | null, noIndex?: boolean | null } | null, navbar?: { __typename: 'LandingNavbar', logo?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, sections?: Array<{ __typename: 'LandingSectionsHero', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'LandingSectionsHeroBenefits', text?: string | null } | null> | null } | { __typename: 'LandingSectionsCertifications', title?: string | null, badges?: Array<{ __typename: 'LandingSectionsCertificationsBadges', logo?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingSectionsTestimonials', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'LandingSectionsProblem', headline?: string | null, stat?: string | null, statDescription?: string | null, explanation?: string | null, illustration?: string | null, hairLossTypes?: Array<{ __typename: 'LandingSectionsProblemHairLossTypes', name?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsProducts', headline?: string | null, items?: Array<{ __typename: 'LandingSectionsProductsItems', name: string, image?: string | null, selectText?: string | null, moreText?: string | null, link?: string | null, tags?: Array<{ __typename: 'LandingSectionsProductsItemsTags', text?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsIngredients', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'LandingSectionsIngredientsItems', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsEffectiveness', headline?: string | null, chartTitle?: string | null, conclusion?: string | null, sourcesTitle?: string | null, sources?: string | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'LandingSectionsEffectivenessStats', label?: string | null, percentage?: number | null } | null> | null } | { __typename: 'LandingSectionsWhyChoose', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, valueProps?: Array<{ __typename: 'LandingSectionsWhyChooseValueProps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsGuarantee', days?: string | null, headline?: string | null, description?: string | null } | { __typename: 'LandingSectionsHowItWorks', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksSteps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCta', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null } | null> | null, footer?: { __typename: 'LandingFooter', logo?: string | null, copyright?: string | null, socialLinks?: Array<{ __typename: 'LandingFooterSocialLinks', platform?: string | null, url?: string | null } | null> | null, certifications?: Array<{ __typename: 'LandingFooterCertifications', logo?: string | null, label?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingFooterLegalLinks', text: string, url: string } | null> | null, resourceLinks?: Array<{ __typename: 'LandingFooterResourceLinks', text: string, url: string } | null> | null, founders?: Array<{ __typename: 'LandingFooterFounders', name?: string | null } | null> | null, contact?: { __typename: 'LandingFooterContact', phone?: string | null, email?: string | null, hours?: string | null } | null, companyLinks?: Array<{ __typename: 'LandingFooterCompanyLinks', text: string, url: string } | null> | null } | null } | null } | null> | null } };
+export type LandingConnectionQuery = { __typename?: 'Query', landingConnection: { __typename?: 'LandingConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LandingConnectionEdges', cursor: string, node?: { __typename: 'Landing', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'LandingSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, ogType?: string | null, canonicalUrl?: string | null, noIndex?: boolean | null } | null, navbar?: { __typename: 'LandingNavbar', logo?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, sections?: Array<{ __typename: 'LandingSectionsHero', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, priceText?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'LandingSectionsHeroBenefits', text?: string | null } | null> | null } | { __typename: 'LandingSectionsCertifications', title?: string | null, badges?: Array<{ __typename: 'LandingSectionsCertificationsBadges', logo?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingSectionsTestimonials', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'LandingSectionsProblem', headline?: string | null, stat?: string | null, statDescription?: string | null, explanation?: string | null, illustration?: string | null, hairLossTypes?: Array<{ __typename: 'LandingSectionsProblemHairLossTypes', name?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsProducts', headline?: string | null, items?: Array<{ __typename: 'LandingSectionsProductsItems', name: string, image?: string | null, selectText?: string | null, moreText?: string | null, link?: string | null, tags?: Array<{ __typename: 'LandingSectionsProductsItemsTags', text?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsIngredients', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'LandingSectionsIngredientsItems', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsEffectiveness', headline?: string | null, chartTitle?: string | null, conclusion?: string | null, sourcesTitle?: string | null, sources?: string | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'LandingSectionsEffectivenessStats', label?: string | null, percentage?: number | null } | null> | null } | { __typename: 'LandingSectionsWhyChoose', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, valueProps?: Array<{ __typename: 'LandingSectionsWhyChooseValueProps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsGuarantee', days?: string | null, headline?: string | null, description?: string | null } | { __typename: 'LandingSectionsHowItWorks', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksSteps', title: string, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCta', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null } | { __typename: 'LandingSectionsActivos', headline?: string | null, highlightText?: string | null, ctaText?: string | null, ctaLink?: string | null, activos?: Array<{ __typename: 'LandingSectionsActivosActivos', name: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsFormulas', headline?: string | null, highlightText?: string | null, formulas?: Array<{ __typename: 'LandingSectionsFormulasFormulas', name: string, image?: string | null, ctaText?: string | null, ctaLink?: string | null, tags?: Array<{ __typename: 'LandingSectionsFormulasFormulasTags', text?: string | null, variant?: string | null } | null> | null } | null> | null } | { __typename: 'LandingSectionsSuccessStories', highlightText?: string | null, normalText?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, testimonials?: Array<{ __typename: 'LandingSectionsSuccessStoriesTestimonials', name: string, age?: number | null, quote?: string | null, beforeImage?: string | null, afterImage?: string | null, monthsBefore?: number | null, monthsAfter?: number | null } | null> | null } | { __typename: 'LandingSectionsVideoTestimonials', headline?: string | null, highlightText?: string | null, ctaText?: string | null, ctaLink?: string | null, videos?: Array<{ __typename: 'LandingSectionsVideoTestimonialsVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null } | null> | null } | { __typename: 'LandingSectionsHowItWorksNew', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, steps?: Array<{ __typename: 'LandingSectionsHowItWorksNewSteps', title: string, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingSectionsFinalCtaNew', headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null } | { __typename: 'LandingSectionsFaq', headline?: string | null, highlightText?: string | null, items?: Array<{ __typename: 'LandingSectionsFaqItems', question?: string | null, answer?: string | null } | null> | null } | { __typename: 'LandingSectionsFooterNew', appTitle?: string | null, appSubtitle?: string | null, appImage?: string | null, phone?: string | null, email?: string | null, hoursLabel?: string | null, hoursValue?: string | null, cofeprisCode?: string | null, copyright?: string | null, logoImage?: string | null, companyLinks?: Array<{ __typename: 'LandingSectionsFooterNewCompanyLinks', text?: string | null, url?: string | null } | null> | null, founders?: Array<{ __typename: 'LandingSectionsFooterNewFounders', name?: string | null } | null> | null, resourceLinks?: Array<{ __typename: 'LandingSectionsFooterNewResourceLinks', text?: string | null, url?: string | null } | null> | null, treatmentLinks?: Array<{ __typename: 'LandingSectionsFooterNewTreatmentLinks', text?: string | null, url?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingSectionsFooterNewLegalLinks', text?: string | null, url?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'LandingSectionsFooterNewSocialLinks', platform?: string | null, url?: string | null } | null> | null } | null> | null, footer?: { __typename: 'LandingFooter', logo?: string | null, copyright?: string | null, socialLinks?: Array<{ __typename: 'LandingFooterSocialLinks', platform?: string | null, url?: string | null } | null> | null, certifications?: Array<{ __typename: 'LandingFooterCertifications', logo?: string | null, label?: string | null } | null> | null, legalLinks?: Array<{ __typename: 'LandingFooterLegalLinks', text: string, url: string } | null> | null, resourceLinks?: Array<{ __typename: 'LandingFooterResourceLinks', text: string, url: string } | null> | null, founders?: Array<{ __typename: 'LandingFooterFounders', name?: string | null } | null> | null, contact?: { __typename: 'LandingFooterContact', phone?: string | null, email?: string | null, hours?: string | null } | null, companyLinks?: Array<{ __typename: 'LandingFooterCompanyLinks', text: string, url: string } | null> | null } | null } | null } | null> | null } };
 
 export type BlocksQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type BlocksQuery = { __typename?: 'Query', blocks: { __typename: 'Blocks', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, sections?: Array<{ __typename: 'BlocksSectionsHeroBlock', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'BlocksSectionsHeroBlockBenefits', text: string } | null> | null } | { __typename: 'BlocksSectionsTestimonialsBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'BlocksSectionsTestimonialsBlockVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'BlocksSectionsCtaBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'BlocksSectionsGuaranteeBlock', days?: string | null, headline?: string | null, description?: string | null } | null> | null } };
+export type BlocksQuery = { __typename?: 'Query', blocks: { __typename: 'Blocks', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, sections?: Array<{ __typename: 'BlocksSectionsHeroBlock', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, backgroundImageMobile?: string | null, benefits?: Array<{ __typename: 'BlocksSectionsHeroBlockBenefits', text: string } | null> | null } | { __typename: 'BlocksSectionsTestimonialsBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'BlocksSectionsTestimonialsBlockVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'BlocksSectionsCtaBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'BlocksSectionsGuaranteeBlock', days?: string | null, headline?: string | null, description?: string | null } | null> | null } };
 
 export type BlocksConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1235,7 +1716,7 @@ export type BlocksConnectionQueryVariables = Exact<{
 }>;
 
 
-export type BlocksConnectionQuery = { __typename?: 'Query', blocksConnection: { __typename?: 'BlocksConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BlocksConnectionEdges', cursor: string, node?: { __typename: 'Blocks', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, sections?: Array<{ __typename: 'BlocksSectionsHeroBlock', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, benefits?: Array<{ __typename: 'BlocksSectionsHeroBlockBenefits', text: string } | null> | null } | { __typename: 'BlocksSectionsTestimonialsBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'BlocksSectionsTestimonialsBlockVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'BlocksSectionsCtaBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'BlocksSectionsGuaranteeBlock', days?: string | null, headline?: string | null, description?: string | null } | null> | null } | null } | null> | null } };
+export type BlocksConnectionQuery = { __typename?: 'Query', blocksConnection: { __typename?: 'BlocksConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BlocksConnectionEdges', cursor: string, node?: { __typename: 'Blocks', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, sections?: Array<{ __typename: 'BlocksSectionsHeroBlock', badge?: string | null, headline?: string | null, ctaText?: string | null, ctaLink?: string | null, backgroundImage?: string | null, backgroundImageMobile?: string | null, benefits?: Array<{ __typename: 'BlocksSectionsHeroBlockBenefits', text: string } | null> | null } | { __typename: 'BlocksSectionsTestimonialsBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, moreText?: string | null, moreLink?: string | null, videos?: Array<{ __typename: 'BlocksSectionsTestimonialsBlockVideos', name: string, backgroundImage?: string | null, videoUrl?: string | null, rating?: number | null, productName?: string | null, productDescription?: string | null, productImage?: string | null } | null> | null } | { __typename: 'BlocksSectionsCtaBlock', headline?: string | null, subheadline?: string | null, ctaText?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'BlocksSectionsGuaranteeBlock', days?: string | null, headline?: string | null, description?: string | null } | null> | null } | null } | null> | null } };
 
 export const LandingPartsFragmentDoc = gql`
     fragment LandingParts on Landing {
@@ -1266,6 +1747,7 @@ export const LandingPartsFragmentDoc = gql`
       }
       ctaText
       ctaLink
+      priceText
       backgroundImage
     }
     ... on LandingSectionsCertifications {
@@ -1379,6 +1861,131 @@ export const LandingPartsFragmentDoc = gql`
       ctaText
       ctaLink
     }
+    ... on LandingSectionsActivos {
+      headline
+      highlightText
+      ctaText
+      ctaLink
+      activos {
+        __typename
+        name
+        description
+        image
+      }
+    }
+    ... on LandingSectionsFormulas {
+      headline
+      highlightText
+      formulas {
+        __typename
+        name
+        image
+        tags {
+          __typename
+          text
+          variant
+        }
+        ctaText
+        ctaLink
+      }
+    }
+    ... on LandingSectionsSuccessStories {
+      highlightText
+      normalText
+      ctaPrimaryText
+      ctaPrimaryLink
+      ctaSecondaryText
+      ctaSecondaryLink
+      testimonials {
+        __typename
+        name
+        age
+        quote
+        beforeImage
+        afterImage
+        monthsBefore
+        monthsAfter
+      }
+    }
+    ... on LandingSectionsVideoTestimonials {
+      headline
+      highlightText
+      ctaText
+      ctaLink
+      videos {
+        __typename
+        name
+        backgroundImage
+        videoUrl
+      }
+    }
+    ... on LandingSectionsHowItWorksNew {
+      headline
+      ctaText
+      ctaLink
+      steps {
+        __typename
+        title
+        description
+        image
+      }
+    }
+    ... on LandingSectionsFinalCtaNew {
+      headline
+      ctaText
+      ctaLink
+      backgroundImage
+    }
+    ... on LandingSectionsFaq {
+      headline
+      highlightText
+      items {
+        __typename
+        question
+        answer
+      }
+    }
+    ... on LandingSectionsFooterNew {
+      appTitle
+      appSubtitle
+      appImage
+      companyLinks {
+        __typename
+        text
+        url
+      }
+      founders {
+        __typename
+        name
+      }
+      resourceLinks {
+        __typename
+        text
+        url
+      }
+      phone
+      email
+      hoursLabel
+      hoursValue
+      treatmentLinks {
+        __typename
+        text
+        url
+      }
+      legalLinks {
+        __typename
+        text
+        url
+      }
+      cofeprisCode
+      socialLinks {
+        __typename
+        platform
+        url
+      }
+      copyright
+      logoImage
+    }
   }
   footer {
     __typename
@@ -1438,6 +2045,7 @@ export const BlocksPartsFragmentDoc = gql`
       ctaText
       ctaLink
       backgroundImage
+      backgroundImageMobile
     }
     ... on BlocksSectionsTestimonialsBlock {
       headline
@@ -1648,7 +2256,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "https://content.tinajs.io/1.6/content/311aec47-e715-4391-8dc0-60716c09479b/github/main",
+        url: "http://localhost:4001/graphql",
         queries,
       })
     )

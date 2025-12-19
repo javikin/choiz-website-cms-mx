@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { normalizeImageUrl } from "@/lib/images";
+import styles from "./Hero.module.css";
 
 // ============================================
 // TYPES
@@ -14,7 +15,9 @@ interface HeroProps {
   benefits?: Array<{ text?: string }>;
   ctaText?: string;
   ctaLink?: string;
+  priceText?: string;
   backgroundImage?: string;
+  backgroundImageMobile?: string;
   tinaField?: string;
 }
 
@@ -22,147 +25,25 @@ interface HeroProps {
 // SUB-COMPONENTS
 // ============================================
 
-// Check icon for benefits list
+// Check icon (24x24 circle with checkmark)
 function CheckIcon() {
   return (
-    <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-      <div
-        className="absolute w-5 h-5 left-[2px] top-[2px] rounded-full"
-        style={{
-          outline: "1.8px solid white",
-          outlineOffset: "-0.9px",
-        }}
-      />
-      <svg
-        className="absolute left-[9px] top-[9px]"
-        width="7"
-        height="7"
-        viewBox="0 0 7 7"
-        fill="none"
-      >
-        <path
-          d="M1 3.5L2.5 5L6 1.5"
-          stroke="white"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
-  );
-}
-
-// Badge text component
-function HeroBadge({ text }: { text?: string }) {
-  if (!text) return null;
-  return (
-    <p
-      className="text-[20px] text-[#E8E8E8] tracking-[0.8px] leading-[17px]"
-      style={{ fontWeight: 400 }}
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      className="shrink-0"
     >
-      {text}
-    </p>
-  );
-}
-
-// Headline with highlighted word
-function HeroHeadline({ headline }: { headline: string }) {
-  const renderHeadline = () => {
-    if (headline.includes("cabello")) {
-      const parts = headline.split("cabello");
-      return (
-        <>
-          <span className="text-[#F0F9FF]">{parts[0]}</span>
-          <span className="text-[#EAE1FF]">cabello</span>
-          <span className="text-[#F0F9FF]">{parts[1]}</span>
-        </>
-      );
-    }
-    return <span className="text-[#F0F9FF]">{headline}</span>;
-  };
-
-  return (
-    <h1
-      className="text-[40px] md:text-[60px] leading-[1.1] md:leading-[66px]"
-      style={{ fontWeight: 500 }}
-    >
-      {renderHeadline()}
-    </h1>
-  );
-}
-
-// Single benefit item
-function BenefitItem({ text }: { text?: string }) {
-  if (!text) return null;
-  return (
-    <div className="flex items-center gap-[15px]">
-      <CheckIcon />
-      <p
-        className="text-[18px] md:text-[20px] text-white leading-[32px]"
-        style={{ fontWeight: 400 }}
-      >
-        {text}
-      </p>
-    </div>
-  );
-}
-
-// Benefits list
-function BenefitsList({ benefits }: { benefits: Array<{ text?: string }> }) {
-  if (benefits.length === 0) return null;
-  return (
-    <div className="flex flex-col gap-6">
-      {benefits.map((benefit, index) => (
-        <BenefitItem key={index} text={benefit.text} />
-      ))}
-    </div>
-  );
-}
-
-// CTA Button
-function HeroCTA({ text, href }: { text: string; href: string }) {
-  return (
-    <Link
-      href={href}
-      className="inline-flex items-center justify-center w-full md:w-[380px] h-[80px] px-6 bg-[#292929] hover:bg-[#1a1a1a] text-white text-[20px] rounded-[80px] transition-colors"
-      style={{ fontWeight: 400 }}
-    >
-      {text}
-    </Link>
-  );
-}
-
-// Desktop background image
-function DesktopBackground({ src }: { src: string }) {
-  const normalizedSrc = normalizeImageUrl(src);
-  return (
-    <div className="absolute right-0 top-0 bottom-0 w-[60%] max-w-[667px] hidden lg:block">
-      <Image
-        src={normalizedSrc}
-        alt="Tratamiento capilar Choiz"
-        fill
-        className="object-contain object-right-bottom"
-        priority
-        sizes="(max-width: 1024px) 0vw, 667px"
+      <circle cx="12" cy="12" r="10" stroke="#FCFCFD" strokeWidth="1.5" />
+      <path
+        d="M8 12L11 15L16 9"
+        stroke="#FCFCFD"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-    </div>
-  );
-}
-
-// Mobile background image
-function MobileBackground({ src }: { src: string }) {
-  const normalizedSrc = normalizeImageUrl(src);
-  return (
-    <div className="lg:hidden absolute inset-0 z-0">
-      <Image
-        src={normalizedSrc}
-        alt=""
-        fill
-        className="object-cover object-right-top opacity-30"
-        priority
-        sizes="100vw"
-      />
-    </div>
+    </svg>
   );
 }
 
@@ -171,39 +52,110 @@ function MobileBackground({ src }: { src: string }) {
 // ============================================
 
 export function Hero({
-  badge = "+ 10k vieron resultados en 2024",
-  headline = "Recupera tu cabello en 180 días",
+  badge = "+20.000 personas ya vieron resultados",
+  headline = "El tratamiento más efectivo de México para la caída del cabello",
   benefits = [
-    { text: "Fórmulas personalizadas y científicamente comprobadas." },
-    { text: "100% en línea y con envío gratuito." },
-    { text: "Desde $562/mes." },
+    { text: "Resultados en 90 - 180 días" },
+    { text: "Científicamente comprobado" },
+    { text: "100% en línea, con envío gratis" },
   ],
-  ctaText = "Ver si soy apto",
+  ctaText = "Comienza hoy",
   ctaLink = "/quiz",
-  backgroundImage = "/images/hero-man.png",
+  priceText = "Desde $467/mes",
+  backgroundImage = "/images/bg-hero-desk.png",
+  backgroundImageMobile = "/images/bg-hero-mobile.png",
   tinaField,
 }: HeroProps) {
+  const normalizedSrc = normalizeImageUrl(backgroundImage);
+  const normalizedSrcMobile = normalizeImageUrl(backgroundImageMobile);
+
   return (
-    <section className="relative min-h-[650px] bg-[#7c72b2] overflow-hidden" data-tina-field={tinaField}>
-      <DesktopBackground src={backgroundImage} />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-[72px] pt-[120px] pb-[72px]">
-        <div className="flex flex-col gap-12 max-w-[600px]">
-          {/* Top section: Badge + Headline */}
-          <div className="flex flex-col gap-12">
-            <div className="flex flex-col gap-[42px]">
-              <HeroBadge text={badge} />
-              <HeroHeadline headline={headline} />
-            </div>
-            <BenefitsList benefits={benefits} />
-          </div>
-
-          <HeroCTA text={ctaText} href={ctaLink} />
-        </div>
+    <section
+      className="relative w-full min-h-[820px] md:min-h-0 md:h-[645px] overflow-hidden rounded-bl-[24px] rounded-br-[24px] md:rounded-bl-[64px] md:rounded-br-[54px]"
+      data-tina-field={tinaField}
+    >
+      {/* Background - Mobile */}
+      <div className="absolute inset-0 block md:hidden">
+        <Image
+          src={normalizedSrcMobile}
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+          quality={90}
+        />
       </div>
 
-      <MobileBackground src={backgroundImage} />
+      {/* Background - Desktop */}
+      <div className="absolute inset-0 hidden md:block">
+        <Image
+          src={normalizedSrc}
+          alt=""
+          fill
+          className="object-cover object-[70%_center]"
+          priority
+          sizes="100vw"
+          quality={90}
+        />
+      </div>
+
+      {/* Content - Single responsive section */}
+      {/* Mobile: relative, pt-102px, px-16px, max-w-343px */}
+      {/* Desktop: absolute, top-166px, left-207px, w-576px */}
+      <div className={styles.heroContent}>
+        <div className="max-w-[343px] md:max-w-none flex flex-col gap-6 md:gap-10">
+          {/* Badge */}
+          <div className="inline-flex items-center h-8 md:h-12 px-4 md:px-[21px] bg-[rgba(255,255,255,0.31)] rounded-[32px] gap-2 w-fit">
+            <span className="text-[14px] md:text-[16px] leading-[17px] md:leading-5 text-[#FCFCFD] font-normal text-center whitespace-nowrap">
+              {badge}
+            </span>
+          </div>
+
+          {/* Headline + Benefits wrapper */}
+          <div className="flex flex-col gap-6">
+            {/* Headline */}
+            <h1
+              className="w-full md:w-[588px] text-[32px] md:text-[40px] font-medium leading-[34px] md:leading-[44px] tracking-[-0.64px] md:tracking-[-0.8px] text-[#FAFAFA] md:text-[#FCFCFD]"
+              style={{ fontFamily: 'var(--font-dm-sans), system-ui, sans-serif' }}
+            >
+              {headline}
+            </h1>
+
+            {/* Benefits */}
+            <div className="w-full flex flex-col gap-3 md:gap-4">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckIcon />
+                  <span className="text-[18px] md:text-[20px] leading-[22px] md:leading-6 text-[#FCFCFD] font-normal">
+                    {benefit.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="w-full flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+            {/* Button */}
+            <Link
+              href={ctaLink}
+              className="w-full md:w-[202px] h-14 px-6 md:px-8 flex items-center justify-center bg-[rgba(246,245,245,0.95)] hover:bg-white rounded-[32px] text-[#222222] md:text-[#383838] text-[16px] font-medium leading-5 transition-colors"
+            >
+              {ctaText}
+            </Link>
+
+            {/* Price */}
+            {priceText && (
+              <div className="w-full md:w-auto h-8 md:h-auto flex items-center justify-center">
+                <span className="text-[16px] leading-5 text-[#FCFCFD] font-normal text-center">
+                  {priceText}
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

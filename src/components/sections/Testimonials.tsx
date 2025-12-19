@@ -102,6 +102,8 @@ function BackgroundImage({ src, alt }: { src?: string; alt?: string }) {
           alt={alt || "Testimonio"}
           fill
           className="object-cover"
+          sizes="363px"
+          loading="lazy"
         />
       )}
       {/* Overlay for better text readability */}
@@ -114,13 +116,15 @@ function BackgroundImage({ src, alt }: { src?: string; alt?: string }) {
 function ProductImage({ src, alt }: { src?: string; alt?: string }) {
   if (!src) return null;
   return (
-    <div className="w-[104px] h-[132px] -mt-[52px]">
+    <div className="w-[104px] h-[132px] -mt-[52px] relative">
       <Image
         src={normalizeImageUrl(src)}
         alt={alt || "Producto"}
         width={104}
         height={132}
         className="w-full h-full object-contain"
+        sizes="104px"
+        loading="lazy"
       />
     </div>
   );

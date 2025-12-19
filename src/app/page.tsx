@@ -1,5 +1,6 @@
+import { draftMode } from "next/headers";
 import client from "../../tina/__generated__/client";
-import { LandingPageClient } from "@/components/LandingPageClient";
+import { LandingPageStatic } from "@/components/LandingPageStatic";
 
 const query = `query landing($relativePath: String!) {
   landing(relativePath: $relativePath) {
@@ -18,6 +19,7 @@ const query = `query landing($relativePath: String!) {
         benefits { __typename text }
         ctaText
         ctaLink
+        priceText
         backgroundImage
       }
       ... on LandingSectionsCertifications {
@@ -84,6 +86,69 @@ const query = `query landing($relativePath: String!) {
         ctaText
         ctaLink
       }
+      ... on LandingSectionsSuccessStories {
+        highlightText
+        normalText
+        ctaPrimaryText
+        ctaPrimaryLink
+        ctaSecondaryText
+        ctaSecondaryLink
+        testimonials { __typename name age quote beforeImage afterImage monthsBefore monthsAfter }
+      }
+      ... on LandingSectionsFormulas {
+        headline
+        highlightText
+        formulas { __typename name image tags { __typename text variant } ctaText ctaLink }
+      }
+      ... on LandingSectionsActivos {
+        headline
+        highlightText
+        ctaText
+        ctaLink
+        activos { __typename name description image }
+      }
+      ... on LandingSectionsVideoTestimonials {
+        headline
+        highlightText
+        ctaText
+        ctaLink
+        videos { __typename name backgroundImage videoUrl }
+      }
+      ... on LandingSectionsHowItWorksNew {
+        headline
+        ctaText
+        ctaLink
+        steps { __typename title description image }
+      }
+      ... on LandingSectionsFinalCtaNew {
+        headline
+        ctaText
+        ctaLink
+        backgroundImage
+      }
+      ... on LandingSectionsFaq {
+        headline
+        highlightText
+        items { __typename question answer }
+      }
+      ... on LandingSectionsFooterNew {
+        appTitle
+        appSubtitle
+        appImage
+        companyLinks { __typename text url }
+        founders { __typename name }
+        resourceLinks { __typename text url }
+        phone
+        email
+        hoursLabel
+        hoursValue
+        treatmentLinks { __typename text url }
+        legalLinks { __typename text url }
+        cofeprisCode
+        socialLinks { __typename platform url }
+        copyright
+        logoImage
+      }
     }
     footer { __typename socialLinks { __typename platform url } logo copyright certifications { __typename logo label } legalLinks { __typename text url } resourceLinks { __typename text url } founders { __typename name } contact { __typename phone email hours } companyLinks { __typename text url } }
   }
@@ -92,13 +157,21 @@ const query = `query landing($relativePath: String!) {
 const variables = { relativePath: "home.json" };
 
 export default async function Home() {
+  const { isEnabled: isDraftMode } = await draftMode();
   const result = await client.queries.landing(variables);
 
-  return (
-    <LandingPageClient
-      query={query}
-      variables={variables}
-      data={result.data}
-    />
-  );
+  // In draft mode (TinaCMS visual editing), load the client component with useTina
+  if (isDraftMode) {
+    const { LandingPageClient } = await import("@/components/LandingPageClient");
+    return (
+      <LandingPageClient
+        query={query}
+        variables={variables}
+        data={result.data}
+      />
+    );
+  }
+
+  // In production, use the static version (no TinaCMS client JS)
+  return <LandingPageStatic data={result.data} />;
 }

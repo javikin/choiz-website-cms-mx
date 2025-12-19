@@ -1,0 +1,32 @@
+/* Certifications Section - Responsive Styles */
+
+/* Desktop Layout Container */
+.desktopLayout {
+  display: none;
+}
+
+/* Mobile Layout Container */
+.mobileLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Responsive breakpoint */
+@media (min-width: 768px) {
+  .desktopLayout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 32px 72px;
+    border-radius: 32px;
+  }
+
+  .mobileLayout {
+    display: none;
+  }
+}

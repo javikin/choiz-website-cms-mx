@@ -478,8 +478,14 @@ var heroBlock = {
     {
       type: "string",
       name: "backgroundImage",
-      label: "Imagen de Fondo",
-      description: "Ruta de imagen (ej: /images/hero-bg.jpg). 1200x800px recomendado"
+      label: "Imagen de Fondo (Desktop)",
+      description: "Ruta de imagen desktop (ej: /images/bg-hero-desk.png). 1440x645px recomendado"
+    },
+    {
+      type: "string",
+      name: "backgroundImageMobile",
+      label: "Imagen de Fondo (Mobile)",
+      description: "Ruta de imagen mobile (ej: /images/bg-hero-mobile.png). 375x820px recomendado"
     }
   ]
 };
@@ -674,23 +680,26 @@ var config_default = defineConfig({
                 label: "Hero Section",
                 ui: {
                   defaultItem: {
-                    badge: "+ 10k vieron resultados",
-                    headline: "Recupera tu cabello en 180 dias",
-                    ctaText: "Ver si soy apto",
-                    ctaLink: "/quiz"
+                    badge: "+20,000 personas ya vieron resultados",
+                    headline: "El tratamiento mas efectivo de Mexico para la caida del cabello",
+                    ctaText: "Comienza hoy",
+                    ctaLink: "/quiz",
+                    priceText: "Desde $467/mes"
                   }
                 },
                 fields: [
                   {
                     type: "string",
                     name: "badge",
-                    label: "Badge Superior"
+                    label: "Badge Superior",
+                    description: "Texto que aparece en el badge (ej: +20,000 personas ya vieron resultados)"
                   },
                   {
                     type: "string",
                     name: "headline",
                     label: "Titulo Principal",
-                    ui: { component: "textarea" }
+                    ui: { component: "textarea" },
+                    description: "Titulo principal del hero (max 100 caracteres recomendado)"
                   },
                   {
                     type: "object",
@@ -714,9 +723,15 @@ var config_default = defineConfig({
                   ...ctaFields,
                   {
                     type: "string",
+                    name: "priceText",
+                    label: "Texto de Precio",
+                    description: "Texto que aparece junto al boton (ej: Desde $467/mes)"
+                  },
+                  {
+                    type: "string",
                     name: "backgroundImage",
                     label: "Imagen de Fondo",
-                    description: "Ruta de imagen (ej: /images/hero-bg.jpg)"
+                    description: "Ruta de imagen (ej: /images/hero-background.jpg)"
                   }
                 ]
               },
@@ -945,6 +960,358 @@ var config_default = defineConfig({
                   { type: "string", name: "headline", label: "Titulo" },
                   { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
                   ...ctaFields
+                ]
+              },
+              // ACTIVOS (INGREDIENTES CIENTIFICOS)
+              {
+                name: "activos",
+                label: "Activos Cientificos",
+                ui: {
+                  defaultItem: {
+                    headline: "Utilizamos activos de calidad y con",
+                    highlightText: "evidencia cient\xEDfica",
+                    ctaText: "Encontrar mi f\xF3rmula personalizada",
+                    ctaLink: "/quiz"
+                  }
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo" },
+                  { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: evidencia cient\xEDfica)" },
+                  { type: "string", name: "ctaText", label: "Texto del Boton" },
+                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+                  {
+                    type: "object",
+                    name: "activos",
+                    label: "Activos",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => ({
+                        label: item?.name || "Nuevo activo"
+                      }),
+                      max: 6
+                    },
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre del Activo", required: true },
+                      { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+                      { type: "string", name: "image", label: "Imagen", description: "Ruta de imagen (ej: /images/activos/dutasterida.png)" }
+                    ]
+                  }
+                ]
+              },
+              // FORMULAS PERSONALIZADAS
+              {
+                name: "formulas",
+                label: "Formulas Personalizadas",
+                ui: {
+                  defaultItem: {
+                    headline: "Creamos",
+                    highlightText: "f\xF3rmulas personalizadas"
+                  }
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo (ej: Creamos)" },
+                  { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: f\xF3rmulas personalizadas)" },
+                  {
+                    type: "object",
+                    name: "formulas",
+                    label: "Formulas",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => ({
+                        label: item?.name || "Nueva formula"
+                      }),
+                      max: 6
+                    },
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre de la Formula", required: true, ui: { component: "textarea" } },
+                      { type: "string", name: "image", label: "Imagen del Producto", description: "Ruta de imagen (ej: /images/products/capsulas.png)" },
+                      {
+                        type: "object",
+                        name: "tags",
+                        label: "Etiquetas",
+                        list: true,
+                        ui: {
+                          itemProps: (item) => ({
+                            label: item?.text || "Nueva etiqueta"
+                          }),
+                          max: 3
+                        },
+                        fields: [
+                          { type: "string", name: "text", label: "Texto de la Etiqueta" },
+                          {
+                            type: "string",
+                            name: "variant",
+                            label: "Variante de Color",
+                            options: [
+                              { value: "purple", label: "Morado (tipo de producto)" },
+                              { value: "blue", label: "Azul (beneficio)" }
+                            ]
+                          }
+                        ]
+                      },
+                      { type: "string", name: "ctaText", label: "Texto del Boton" },
+                      { type: "string", name: "ctaLink", label: "Enlace del Boton" }
+                    ]
+                  }
+                ]
+              },
+              // CASOS DE EXITO (Before/After)
+              {
+                name: "successStories",
+                label: "Casos de Exito (Before/After)",
+                ui: {
+                  defaultItem: {
+                    highlightText: "+20.000 personas",
+                    normalText: "ya obtuvieron resultados",
+                    ctaPrimaryText: "Comienza hoy",
+                    ctaPrimaryLink: "/quiz",
+                    ctaSecondaryText: "Ver mas casos de exito",
+                    ctaSecondaryLink: "/casos-exito"
+                  }
+                },
+                fields: [
+                  { type: "string", name: "highlightText", label: "Texto Destacado (ej: +20.000 personas)" },
+                  { type: "string", name: "normalText", label: "Texto Normal (ej: ya obtuvieron resultados)" },
+                  { type: "string", name: "ctaPrimaryText", label: "Texto CTA Primario" },
+                  { type: "string", name: "ctaPrimaryLink", label: "Enlace CTA Primario" },
+                  { type: "string", name: "ctaSecondaryText", label: "Texto CTA Secundario" },
+                  { type: "string", name: "ctaSecondaryLink", label: "Enlace CTA Secundario" },
+                  {
+                    type: "object",
+                    name: "testimonials",
+                    label: "Testimonios (Before/After)",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => ({
+                        label: item?.name || "Nuevo testimonio"
+                      }),
+                      max: LIMITS.MAX_TESTIMONIALS
+                    },
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre", required: true },
+                      { type: "number", name: "age", label: "Edad" },
+                      { type: "string", name: "quote", label: "Testimonio/Cita", ui: { component: "textarea" } },
+                      { type: "string", name: "beforeImage", label: "Imagen Antes", description: "Ruta de imagen (ej: /images/testimonials/nombre-before.jpg)" },
+                      { type: "string", name: "afterImage", label: "Imagen Despues", description: "Ruta de imagen (ej: /images/testimonials/nombre-after.jpg)" },
+                      { type: "number", name: "monthsBefore", label: "Meses Antes (generalmente 0)" },
+                      { type: "number", name: "monthsAfter", label: "Meses Despues (duracion del tratamiento)" }
+                    ]
+                  }
+                ]
+              },
+              // VIDEO TESTIMONIOS (nuestros usuarios)
+              {
+                name: "videoTestimonials",
+                label: "Video Testimonios (Nuestros Usuarios)",
+                ui: {
+                  defaultItem: {
+                    headline: "No lo decimos nosotros, lo dicen",
+                    highlightText: "nuestros usuarios",
+                    ctaText: "Comienza hoy",
+                    ctaLink: "/quiz"
+                  }
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo" },
+                  { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: nuestros usuarios)" },
+                  { type: "string", name: "ctaText", label: "Texto del Boton (Mobile)" },
+                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+                  {
+                    type: "object",
+                    name: "videos",
+                    label: "Videos",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => ({
+                        label: item?.name || "Nuevo video"
+                      }),
+                      max: 6
+                    },
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre del Usuario", required: true },
+                      { type: "string", name: "backgroundImage", label: "Imagen de Fondo", description: "Ruta de imagen (ej: /images/testimonials/video-1.jpg)" },
+                      { type: "string", name: "videoUrl", label: "URL del Video", description: "Link de YouTube, Vimeo o video directo" }
+                    ]
+                  }
+                ]
+              },
+              // COMO FUNCIONA CHOIZ (nuevo diseño con phone mockups)
+              {
+                name: "howItWorksNew",
+                label: "Como Funciona Choiz (Nuevo)",
+                ui: {
+                  defaultItem: {
+                    headline: "C\xF3mo funciona Choiz",
+                    ctaText: "Comenzar hoy",
+                    ctaLink: "/quiz"
+                  }
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo", description: "Titulo de la seccion (ej: C\xF3mo funciona Choiz)" },
+                  { type: "string", name: "ctaText", label: "Texto del Boton" },
+                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+                  {
+                    type: "object",
+                    name: "steps",
+                    label: "Pasos",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => ({
+                        label: item?.title || "Nuevo paso"
+                      }),
+                      max: 6
+                    },
+                    fields: [
+                      { type: "string", name: "title", label: "Titulo del Paso", required: true },
+                      { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+                      { type: "string", name: "image", label: "Imagen del Mockup", description: "Ruta de imagen del mockup del telefono (ej: /images/how-it-works/step-1.png)" }
+                    ]
+                  }
+                ]
+              },
+              // CTA FINAL NUEVO (con imagen de fondo)
+              {
+                name: "finalCtaNew",
+                label: "CTA Final (Nuevo con Imagen)",
+                ui: {
+                  defaultItem: {
+                    headline: "Recupera tu cabello y tu confianza con Choiz",
+                    ctaText: "Comienza hoy",
+                    ctaLink: "/quiz"
+                  }
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo", description: "Titulo principal (ej: Recupera tu cabello y tu confianza con Choiz)" },
+                  { type: "string", name: "ctaText", label: "Texto del Boton" },
+                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+                  { type: "string", name: "backgroundImage", label: "Imagen de Fondo", description: "Ruta de imagen (ej: /images/final-cta-bg.jpg). 1024x318px recomendado para desktop" }
+                ]
+              },
+              // FAQ - PREGUNTAS FRECUENTES
+              {
+                name: "faq",
+                label: "Preguntas Frecuentes (FAQ)",
+                ui: {
+                  defaultItem: {
+                    headline: "\xBFTienes preguntas? Aqu\xED te dejamos",
+                    highlightText: "respuestas"
+                  }
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo", description: "Texto antes de la palabra resaltada" },
+                  { type: "string", name: "highlightText", label: "Texto Resaltado", description: "Palabra en color morado (ej: respuestas)" },
+                  {
+                    type: "object",
+                    name: "items",
+                    label: "Preguntas",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => ({
+                        label: item?.question || "Nueva pregunta"
+                      })
+                    },
+                    fields: [
+                      { type: "string", name: "question", label: "Pregunta" },
+                      { type: "string", name: "answer", label: "Respuesta", ui: { component: "textarea" } }
+                    ]
+                  }
+                ]
+              },
+              // FOOTER NUEVO
+              {
+                name: "footerNew",
+                label: "Footer (Nuevo)",
+                ui: {
+                  defaultItem: {
+                    appTitle: "Tu salud en un solo lugar",
+                    appSubtitle: "Descarga la app",
+                    phone: "+52 1 55 9225 6335",
+                    email: "hola@choiz.com.mx",
+                    hoursLabel: "Lunes a Viernes",
+                    hoursValue: "07 a 22 hs",
+                    cofeprisCode: "COFEPRIS 2421055036X00214",
+                    copyright: "\xA9 CHOIZ XCALE HEALTH S.A de C.V.. Todos los derechos reservados."
+                  }
+                },
+                fields: [
+                  // App Promo
+                  { type: "string", name: "appTitle", label: "Titulo App" },
+                  { type: "string", name: "appSubtitle", label: "Subtitulo App" },
+                  { type: "string", name: "appImage", label: "Imagen App", description: "Mockup del telefono" },
+                  // Company Links
+                  {
+                    type: "object",
+                    name: "companyLinks",
+                    label: "Links Compa\xF1ia",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "text", label: "Texto" },
+                      { type: "string", name: "url", label: "URL" }
+                    ]
+                  },
+                  // Founders
+                  {
+                    type: "object",
+                    name: "founders",
+                    label: "Fundadores",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre" }
+                    ]
+                  },
+                  // Resource Links
+                  {
+                    type: "object",
+                    name: "resourceLinks",
+                    label: "Links Recursos",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "text", label: "Texto" },
+                      { type: "string", name: "url", label: "URL" }
+                    ]
+                  },
+                  // Contact
+                  { type: "string", name: "phone", label: "Telefono" },
+                  { type: "string", name: "email", label: "Email" },
+                  // Hours
+                  { type: "string", name: "hoursLabel", label: "Dias Atencion" },
+                  { type: "string", name: "hoursValue", label: "Horario" },
+                  // Treatment Links
+                  {
+                    type: "object",
+                    name: "treatmentLinks",
+                    label: "Links Tratamientos",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "text", label: "Texto" },
+                      { type: "string", name: "url", label: "URL" }
+                    ]
+                  },
+                  // Legal Links
+                  {
+                    type: "object",
+                    name: "legalLinks",
+                    label: "Links Legales",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "text", label: "Texto" },
+                      { type: "string", name: "url", label: "URL" }
+                    ]
+                  },
+                  { type: "string", name: "cofeprisCode", label: "Codigo COFEPRIS" },
+                  // Social Links
+                  {
+                    type: "object",
+                    name: "socialLinks",
+                    label: "Redes Sociales",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "platform", label: "Plataforma", options: ["instagram", "facebook", "tiktok", "linkedin"] },
+                      { type: "string", name: "url", label: "URL" }
+                    ]
+                  },
+                  { type: "string", name: "copyright", label: "Copyright" },
+                  { type: "string", name: "logoImage", label: "Imagen Logo Footer", description: "Logo grande al final del footer" }
                 ]
               }
             ]

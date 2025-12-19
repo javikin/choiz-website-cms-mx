@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { normalizeImageUrl } from "@/lib/images";
+import styles from "./Certifications.module.css";
 
 // ============================================
 // TYPES
@@ -9,112 +9,8 @@ import { normalizeImageUrl } from "@/lib/images";
 
 interface CertificationsProps {
   title?: string;
-  badges?: Array<{
-    logo?: string;
-    label?: string;
-  }>;
+  licenseNumber?: string;
   tinaField?: string;
-}
-
-// ============================================
-// SUB-COMPONENTS
-// ============================================
-
-// Section Title
-function SectionTitle({ text }: { text: string }) {
-  return (
-    <p className="text-[20px] text-[#7D7D7D] text-center leading-[50px]">
-      {text}
-    </p>
-  );
-}
-
-// COFEPRIS Logo (from image)
-function CofeprisLogo({ src }: { src: string }) {
-  return (
-    <div className="h-[54px] flex items-center">
-      <Image
-        src={normalizeImageUrl(src)}
-        alt="COFEPRIS - Comisión Federal para la Protección contra Riesgos Sanitarios"
-        width={234}
-        height={54}
-        className="h-[54px] w-auto object-contain"
-      />
-    </div>
-  );
-}
-
-// PROFECO Logo (text-based)
-function ProfecoLogo() {
-  return (
-    <div className="flex items-center gap-2">
-      <div className="flex flex-col">
-        <span className="text-[#8B1538] text-[24px] font-bold tracking-tight leading-none">
-          PROFECO
-        </span>
-        <span className="text-[#7D7D7D] text-[8px] leading-tight">
-          PROCURADURÍA FEDERAL
-        </span>
-        <span className="text-[#7D7D7D] text-[8px] leading-tight">
-          DEL CONSUMIDOR
-        </span>
-      </div>
-    </div>
-  );
-}
-
-// Distintivo Digital Checkmark Icon
-function DistintivoCheckIcon() {
-  return (
-    <div className="relative w-[40px] h-[40px]">
-      <svg viewBox="0 0 40 40" fill="none" className="w-full h-full">
-        <circle cx="20" cy="20" r="18" stroke="#8B8B00" strokeWidth="2" fill="none" />
-        <path
-          d="M12 20L17 25L28 14"
-          stroke="#8B8B00"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-      </svg>
-    </div>
-  );
-}
-
-// Distintivo Digital Logo (text-based with icon)
-function DistintivoDigitalLogo() {
-  return (
-    <div className="flex items-center gap-2">
-      <DistintivoCheckIcon />
-      <div className="flex flex-col">
-        <span className="text-[#7D7D7D] text-[10px] leading-tight">DISTINTIVO</span>
-        <span className="text-[#1D1D1B] text-[18px] font-bold leading-tight tracking-tight">
-          DIGITAL
-        </span>
-      </div>
-    </div>
-  );
-}
-
-// Vertical Separator Line
-function VerticalSeparator() {
-  return (
-    <div className="hidden md:block w-px h-[50px] bg-[#E8E8E8]" />
-  );
-}
-
-// Logos Container
-function LogosContainer({ cofeprisLogo }: { cofeprisLogo: string }) {
-  return (
-    <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
-      <CofeprisLogo src={cofeprisLogo} />
-      <VerticalSeparator />
-      <ProfecoLogo />
-      <VerticalSeparator />
-      <DistintivoDigitalLogo />
-    </div>
-  );
 }
 
 // ============================================
@@ -123,17 +19,96 @@ function LogosContainer({ cofeprisLogo }: { cofeprisLogo: string }) {
 
 export function Certifications({
   title = "Aprobados y certificados por",
-  badges = [],
+  licenseNumber = "Licencia N° 09014110009",
   tinaField,
 }: CertificationsProps) {
-  const cofeprisLogo = badges.find(b => b.logo?.includes('cofepris'))?.logo || "/images/cofepris-logo.png";
-
   return (
-    <section className="py-[34px] bg-white" data-tina-field={tinaField}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-[72px]">
-        <div className="flex flex-col items-center gap-[34px]">
-          <SectionTitle text={title} />
-          <LogosContainer cofeprisLogo={cofeprisLogo} />
+    <section
+      className="bg-white py-8"
+      data-tina-field={tinaField}
+    >
+      {/* Desktop Layout */}
+      <div className={styles.desktopLayout}>
+        {/* Title */}
+        <p className="text-[18px] leading-[22px] text-[#B1B1B1] font-normal whitespace-nowrap">
+          {title}
+        </p>
+
+        {/* Logos Container */}
+        <div className="flex items-center gap-10">
+          {/* COFEPRIS */}
+          <div className="h-[59px] flex items-center">
+            <Image
+              src="/images/cofepris.svg"
+              alt="COFEPRIS - Comisión Federal para la Protección contra Riesgos Sanitarios"
+              width={246}
+              height={59}
+              className="h-[59px] w-auto object-contain"
+            />
+          </div>
+
+          {/* PROFECO */}
+          <div className="h-[64px] flex items-center">
+            <Image
+              src="/images/profeco.svg"
+              alt="PROFECO - Procuraduría Federal del Consumidor"
+              width={161}
+              height={64}
+              className="h-[64px] w-auto object-contain"
+            />
+          </div>
+
+          {/* Distintivo Digital */}
+          <div className="h-[50px] flex items-center">
+            <Image
+              src="/images/distintivo.svg"
+              alt="Distintivo Digital"
+              width={195}
+              height={50}
+              className="h-[50px] w-auto object-contain"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Layout */}
+      <div className={styles.mobileLayout}>
+        {/* Title */}
+        <p className="text-[14px] leading-[17px] text-[#7D7D7D] font-normal text-center">
+          {title}
+        </p>
+
+        {/* Logos and License Container */}
+        <div className="flex flex-col items-center gap-3">
+          {/* Logos Row */}
+          <div className="flex items-center justify-center gap-5 w-[302px]">
+            {/* COFEPRIS */}
+            <div className="h-[28px] flex items-center">
+              <Image
+                src="/images/cofepris.svg"
+                alt="COFEPRIS"
+                width={120}
+                height={28}
+                className="h-[28px] w-auto object-contain"
+              />
+            </div>
+
+            {/* PROFECO */}
+            <div className="h-[20px] flex items-center">
+              <Image
+                src="/images/profeco.svg"
+                alt="PROFECO"
+                width={97}
+                height={20}
+                className="h-[20px] w-auto object-contain"
+              />
+            </div>
+          </div>
+
+          {/* License Number */}
+          <p className="text-[10px] leading-[15px] text-[#B1B1B1] font-normal">
+            {licenseNumber}
+          </p>
         </div>
       </div>
     </section>

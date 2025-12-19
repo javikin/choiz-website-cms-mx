@@ -115,6 +115,7 @@ type LandingSectionsHero {
   benefits: [LandingSectionsHeroBenefits]
   ctaText: String
   ctaLink: String
+  priceText: String
   backgroundImage: String
 }
 
@@ -248,7 +249,153 @@ type LandingSectionsFinalCta {
   ctaLink: String
 }
 
-union LandingSections = LandingSectionsHero | LandingSectionsCertifications | LandingSectionsTestimonials | LandingSectionsProblem | LandingSectionsProducts | LandingSectionsIngredients | LandingSectionsEffectiveness | LandingSectionsWhyChoose | LandingSectionsGuarantee | LandingSectionsHowItWorks | LandingSectionsFinalCta
+type LandingSectionsActivosActivos {
+  name: String!
+  description: String
+  image: String
+}
+
+type LandingSectionsActivos {
+  headline: String
+  highlightText: String
+  ctaText: String
+  ctaLink: String
+  activos: [LandingSectionsActivosActivos]
+}
+
+type LandingSectionsFormulasFormulasTags {
+  text: String
+  variant: String
+}
+
+type LandingSectionsFormulasFormulas {
+  name: String!
+  image: String
+  tags: [LandingSectionsFormulasFormulasTags]
+  ctaText: String
+  ctaLink: String
+}
+
+type LandingSectionsFormulas {
+  headline: String
+  highlightText: String
+  formulas: [LandingSectionsFormulasFormulas]
+}
+
+type LandingSectionsSuccessStoriesTestimonials {
+  name: String!
+  age: Float
+  quote: String
+  beforeImage: String
+  afterImage: String
+  monthsBefore: Float
+  monthsAfter: Float
+}
+
+type LandingSectionsSuccessStories {
+  highlightText: String
+  normalText: String
+  ctaPrimaryText: String
+  ctaPrimaryLink: String
+  ctaSecondaryText: String
+  ctaSecondaryLink: String
+  testimonials: [LandingSectionsSuccessStoriesTestimonials]
+}
+
+type LandingSectionsVideoTestimonialsVideos {
+  name: String!
+  backgroundImage: String
+  videoUrl: String
+}
+
+type LandingSectionsVideoTestimonials {
+  headline: String
+  highlightText: String
+  ctaText: String
+  ctaLink: String
+  videos: [LandingSectionsVideoTestimonialsVideos]
+}
+
+type LandingSectionsHowItWorksNewSteps {
+  title: String!
+  description: String
+  image: String
+}
+
+type LandingSectionsHowItWorksNew {
+  headline: String
+  ctaText: String
+  ctaLink: String
+  steps: [LandingSectionsHowItWorksNewSteps]
+}
+
+type LandingSectionsFinalCtaNew {
+  headline: String
+  ctaText: String
+  ctaLink: String
+  backgroundImage: String
+}
+
+type LandingSectionsFaqItems {
+  question: String
+  answer: String
+}
+
+type LandingSectionsFaq {
+  headline: String
+  highlightText: String
+  items: [LandingSectionsFaqItems]
+}
+
+type LandingSectionsFooterNewCompanyLinks {
+  text: String
+  url: String
+}
+
+type LandingSectionsFooterNewFounders {
+  name: String
+}
+
+type LandingSectionsFooterNewResourceLinks {
+  text: String
+  url: String
+}
+
+type LandingSectionsFooterNewTreatmentLinks {
+  text: String
+  url: String
+}
+
+type LandingSectionsFooterNewLegalLinks {
+  text: String
+  url: String
+}
+
+type LandingSectionsFooterNewSocialLinks {
+  platform: String
+  url: String
+}
+
+type LandingSectionsFooterNew {
+  appTitle: String
+  appSubtitle: String
+  appImage: String
+  companyLinks: [LandingSectionsFooterNewCompanyLinks]
+  founders: [LandingSectionsFooterNewFounders]
+  resourceLinks: [LandingSectionsFooterNewResourceLinks]
+  phone: String
+  email: String
+  hoursLabel: String
+  hoursValue: String
+  treatmentLinks: [LandingSectionsFooterNewTreatmentLinks]
+  legalLinks: [LandingSectionsFooterNewLegalLinks]
+  cofeprisCode: String
+  socialLinks: [LandingSectionsFooterNewSocialLinks]
+  copyright: String
+  logoImage: String
+}
+
+union LandingSections = LandingSectionsHero | LandingSectionsCertifications | LandingSectionsTestimonials | LandingSectionsProblem | LandingSectionsProducts | LandingSectionsIngredients | LandingSectionsEffectiveness | LandingSectionsWhyChoose | LandingSectionsGuarantee | LandingSectionsHowItWorks | LandingSectionsFinalCta | LandingSectionsActivos | LandingSectionsFormulas | LandingSectionsSuccessStories | LandingSectionsVideoTestimonials | LandingSectionsHowItWorksNew | LandingSectionsFinalCtaNew | LandingSectionsFaq | LandingSectionsFooterNew
 
 type LandingFooterSocialLinks {
   platform: String
@@ -344,6 +491,7 @@ input LandingSectionsHeroFilter {
   benefits: LandingSectionsHeroBenefitsFilter
   ctaText: StringFilter
   ctaLink: StringFilter
+  priceText: StringFilter
   backgroundImage: StringFilter
 }
 
@@ -487,6 +635,152 @@ input LandingSectionsFinalCtaFilter {
   ctaLink: StringFilter
 }
 
+input LandingSectionsActivosActivosFilter {
+  name: StringFilter
+  description: StringFilter
+  image: StringFilter
+}
+
+input LandingSectionsActivosFilter {
+  headline: StringFilter
+  highlightText: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  activos: LandingSectionsActivosActivosFilter
+}
+
+input LandingSectionsFormulasFormulasTagsFilter {
+  text: StringFilter
+  variant: StringFilter
+}
+
+input LandingSectionsFormulasFormulasFilter {
+  name: StringFilter
+  image: StringFilter
+  tags: LandingSectionsFormulasFormulasTagsFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+}
+
+input LandingSectionsFormulasFilter {
+  headline: StringFilter
+  highlightText: StringFilter
+  formulas: LandingSectionsFormulasFormulasFilter
+}
+
+input LandingSectionsSuccessStoriesTestimonialsFilter {
+  name: StringFilter
+  age: NumberFilter
+  quote: StringFilter
+  beforeImage: StringFilter
+  afterImage: StringFilter
+  monthsBefore: NumberFilter
+  monthsAfter: NumberFilter
+}
+
+input LandingSectionsSuccessStoriesFilter {
+  highlightText: StringFilter
+  normalText: StringFilter
+  ctaPrimaryText: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondaryText: StringFilter
+  ctaSecondaryLink: StringFilter
+  testimonials: LandingSectionsSuccessStoriesTestimonialsFilter
+}
+
+input LandingSectionsVideoTestimonialsVideosFilter {
+  name: StringFilter
+  backgroundImage: StringFilter
+  videoUrl: StringFilter
+}
+
+input LandingSectionsVideoTestimonialsFilter {
+  headline: StringFilter
+  highlightText: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  videos: LandingSectionsVideoTestimonialsVideosFilter
+}
+
+input LandingSectionsHowItWorksNewStepsFilter {
+  title: StringFilter
+  description: StringFilter
+  image: StringFilter
+}
+
+input LandingSectionsHowItWorksNewFilter {
+  headline: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  steps: LandingSectionsHowItWorksNewStepsFilter
+}
+
+input LandingSectionsFinalCtaNewFilter {
+  headline: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  backgroundImage: StringFilter
+}
+
+input LandingSectionsFaqItemsFilter {
+  question: StringFilter
+  answer: StringFilter
+}
+
+input LandingSectionsFaqFilter {
+  headline: StringFilter
+  highlightText: StringFilter
+  items: LandingSectionsFaqItemsFilter
+}
+
+input LandingSectionsFooterNewCompanyLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input LandingSectionsFooterNewFoundersFilter {
+  name: StringFilter
+}
+
+input LandingSectionsFooterNewResourceLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input LandingSectionsFooterNewTreatmentLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input LandingSectionsFooterNewLegalLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input LandingSectionsFooterNewSocialLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+}
+
+input LandingSectionsFooterNewFilter {
+  appTitle: StringFilter
+  appSubtitle: StringFilter
+  appImage: StringFilter
+  companyLinks: LandingSectionsFooterNewCompanyLinksFilter
+  founders: LandingSectionsFooterNewFoundersFilter
+  resourceLinks: LandingSectionsFooterNewResourceLinksFilter
+  phone: StringFilter
+  email: StringFilter
+  hoursLabel: StringFilter
+  hoursValue: StringFilter
+  treatmentLinks: LandingSectionsFooterNewTreatmentLinksFilter
+  legalLinks: LandingSectionsFooterNewLegalLinksFilter
+  cofeprisCode: StringFilter
+  socialLinks: LandingSectionsFooterNewSocialLinksFilter
+  copyright: StringFilter
+  logoImage: StringFilter
+}
+
 input LandingSectionsFilter {
   hero: LandingSectionsHeroFilter
   certifications: LandingSectionsCertificationsFilter
@@ -499,6 +793,14 @@ input LandingSectionsFilter {
   guarantee: LandingSectionsGuaranteeFilter
   howItWorks: LandingSectionsHowItWorksFilter
   finalCta: LandingSectionsFinalCtaFilter
+  activos: LandingSectionsActivosFilter
+  formulas: LandingSectionsFormulasFilter
+  successStories: LandingSectionsSuccessStoriesFilter
+  videoTestimonials: LandingSectionsVideoTestimonialsFilter
+  howItWorksNew: LandingSectionsHowItWorksNewFilter
+  finalCtaNew: LandingSectionsFinalCtaNewFilter
+  faq: LandingSectionsFaqFilter
+  footerNew: LandingSectionsFooterNewFilter
 }
 
 input LandingFooterSocialLinksFilter {
@@ -577,6 +879,7 @@ type BlocksSectionsHeroBlock {
   ctaText: String
   ctaLink: String
   backgroundImage: String
+  backgroundImageMobile: String
 }
 
 type BlocksSectionsTestimonialsBlockVideos {
@@ -634,6 +937,7 @@ input BlocksSectionsHeroBlockFilter {
   ctaText: StringFilter
   ctaLink: StringFilter
   backgroundImage: StringFilter
+  backgroundImageMobile: StringFilter
 }
 
 input BlocksSectionsTestimonialsBlockVideosFilter {
@@ -741,6 +1045,7 @@ input LandingSectionsHeroMutation {
   benefits: [LandingSectionsHeroBenefitsMutation]
   ctaText: String
   ctaLink: String
+  priceText: String
   backgroundImage: String
 }
 
@@ -874,6 +1179,152 @@ input LandingSectionsFinalCtaMutation {
   ctaLink: String
 }
 
+input LandingSectionsActivosActivosMutation {
+  name: String
+  description: String
+  image: String
+}
+
+input LandingSectionsActivosMutation {
+  headline: String
+  highlightText: String
+  ctaText: String
+  ctaLink: String
+  activos: [LandingSectionsActivosActivosMutation]
+}
+
+input LandingSectionsFormulasFormulasTagsMutation {
+  text: String
+  variant: String
+}
+
+input LandingSectionsFormulasFormulasMutation {
+  name: String
+  image: String
+  tags: [LandingSectionsFormulasFormulasTagsMutation]
+  ctaText: String
+  ctaLink: String
+}
+
+input LandingSectionsFormulasMutation {
+  headline: String
+  highlightText: String
+  formulas: [LandingSectionsFormulasFormulasMutation]
+}
+
+input LandingSectionsSuccessStoriesTestimonialsMutation {
+  name: String
+  age: Float
+  quote: String
+  beforeImage: String
+  afterImage: String
+  monthsBefore: Float
+  monthsAfter: Float
+}
+
+input LandingSectionsSuccessStoriesMutation {
+  highlightText: String
+  normalText: String
+  ctaPrimaryText: String
+  ctaPrimaryLink: String
+  ctaSecondaryText: String
+  ctaSecondaryLink: String
+  testimonials: [LandingSectionsSuccessStoriesTestimonialsMutation]
+}
+
+input LandingSectionsVideoTestimonialsVideosMutation {
+  name: String
+  backgroundImage: String
+  videoUrl: String
+}
+
+input LandingSectionsVideoTestimonialsMutation {
+  headline: String
+  highlightText: String
+  ctaText: String
+  ctaLink: String
+  videos: [LandingSectionsVideoTestimonialsVideosMutation]
+}
+
+input LandingSectionsHowItWorksNewStepsMutation {
+  title: String
+  description: String
+  image: String
+}
+
+input LandingSectionsHowItWorksNewMutation {
+  headline: String
+  ctaText: String
+  ctaLink: String
+  steps: [LandingSectionsHowItWorksNewStepsMutation]
+}
+
+input LandingSectionsFinalCtaNewMutation {
+  headline: String
+  ctaText: String
+  ctaLink: String
+  backgroundImage: String
+}
+
+input LandingSectionsFaqItemsMutation {
+  question: String
+  answer: String
+}
+
+input LandingSectionsFaqMutation {
+  headline: String
+  highlightText: String
+  items: [LandingSectionsFaqItemsMutation]
+}
+
+input LandingSectionsFooterNewCompanyLinksMutation {
+  text: String
+  url: String
+}
+
+input LandingSectionsFooterNewFoundersMutation {
+  name: String
+}
+
+input LandingSectionsFooterNewResourceLinksMutation {
+  text: String
+  url: String
+}
+
+input LandingSectionsFooterNewTreatmentLinksMutation {
+  text: String
+  url: String
+}
+
+input LandingSectionsFooterNewLegalLinksMutation {
+  text: String
+  url: String
+}
+
+input LandingSectionsFooterNewSocialLinksMutation {
+  platform: String
+  url: String
+}
+
+input LandingSectionsFooterNewMutation {
+  appTitle: String
+  appSubtitle: String
+  appImage: String
+  companyLinks: [LandingSectionsFooterNewCompanyLinksMutation]
+  founders: [LandingSectionsFooterNewFoundersMutation]
+  resourceLinks: [LandingSectionsFooterNewResourceLinksMutation]
+  phone: String
+  email: String
+  hoursLabel: String
+  hoursValue: String
+  treatmentLinks: [LandingSectionsFooterNewTreatmentLinksMutation]
+  legalLinks: [LandingSectionsFooterNewLegalLinksMutation]
+  cofeprisCode: String
+  socialLinks: [LandingSectionsFooterNewSocialLinksMutation]
+  copyright: String
+  logoImage: String
+}
+
 input LandingSectionsMutation {
   hero: LandingSectionsHeroMutation
   certifications: LandingSectionsCertificationsMutation
@@ -886,6 +1337,14 @@ input LandingSectionsMutation {
   guarantee: LandingSectionsGuaranteeMutation
   howItWorks: LandingSectionsHowItWorksMutation
   finalCta: LandingSectionsFinalCtaMutation
+  activos: LandingSectionsActivosMutation
+  formulas: LandingSectionsFormulasMutation
+  successStories: LandingSectionsSuccessStoriesMutation
+  videoTestimonials: LandingSectionsVideoTestimonialsMutation
+  howItWorksNew: LandingSectionsHowItWorksNewMutation
+  finalCtaNew: LandingSectionsFinalCtaNewMutation
+  faq: LandingSectionsFaqMutation
+  footerNew: LandingSectionsFooterNewMutation
 }
 
 input LandingFooterSocialLinksMutation {
@@ -953,6 +1412,7 @@ input BlocksSectionsHeroBlockMutation {
   ctaText: String
   ctaLink: String
   backgroundImage: String
+  backgroundImageMobile: String
 }
 
 input BlocksSectionsTestimonialsBlockVideosMutation {

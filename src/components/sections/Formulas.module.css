@@ -1,0 +1,231 @@
+/* Formulas Section - Responsive Styles */
+
+.section {
+  background: white;
+  padding: 48px 0;
+}
+
+/* ============================================
+   DESKTOP LAYOUT
+   ============================================ */
+
+.desktopLayout {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 72px;
+  }
+}
+
+.titleContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.titleDesktop {
+  max-width: 666px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 44px;
+  margin: 0;
+}
+
+.highlight {
+  color: #6042AA;
+}
+
+.normal {
+  color: #3B3345;
+}
+
+.cardsRowDesktop {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* ============================================
+   MOBILE LAYOUT
+   ============================================ */
+
+.mobileLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .mobileLayout {
+    display: none;
+  }
+}
+
+.titleMobile {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: center;
+  margin: 0;
+}
+
+.cardsScrollMobile {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+.cardsScrollMobile::-webkit-scrollbar {
+  display: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #E6E6E6;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dotActive {
+  background: #A0A0A0;
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+
+.card {
+  flex-shrink: 0;
+  width: 297px;
+  padding: 20px 16px;
+  background: white;
+  box-shadow: 0px 1px 34px rgba(16, 24, 40, 0.08);
+  border-radius: 32px;
+  border: 1px solid #F4F4F4;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-snap-align: start;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 225px;
+  background: #F9F9F9;
+  border-radius: 16px;
+}
+
+.tagsContainer {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+
+.tag {
+  padding: 8px 12px;
+  border-radius: 80px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tagPurple {
+  background: #F5F1FF;
+  color: #6042AA;
+}
+
+.tagBlue {
+  background: #EBF6FF;
+  color: #155CAC;
+}
+
+.productImageWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImage {
+  object-fit: contain;
+}
+
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.productName {
+  color: #3B3345;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  margin: 0;
+}
+
+.cardCta {
+  width: 100%;
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  padding: 0 24px;
+  background: #292929;
+  color: #FCFCFD;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 32px;
+  transition: opacity 0.2s;
+}
+
+.ctaButton:hover {
+  opacity: 0.9;
+}

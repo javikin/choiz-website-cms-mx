@@ -94,6 +94,8 @@ function ProductImage({ src, alt }: { src?: string; alt?: string }) {
       width={225}
       height={286}
       className="object-contain"
+      sizes="225px"
+      loading="lazy"
     />
   );
 }

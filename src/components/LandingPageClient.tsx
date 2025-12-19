@@ -79,7 +79,9 @@ function renderSection(section: any, index: number, parentData: any) {
           benefits={cleanArray(section.benefits)}
           ctaText={section.ctaText || undefined}
           ctaLink={section.ctaLink || undefined}
+          priceText={section.priceText || undefined}
           backgroundImage={section.backgroundImage || undefined}
+          backgroundImageMobile={section.backgroundImageMobile || undefined}
           tinaField={sectionTinaField}
         />
       );
@@ -240,18 +242,22 @@ export function LandingPageClient(props: LandingPageClientProps) {
         )}
       </main>
 
-      <Footer
-        socialLinks={cleanArray(data?.footer?.socialLinks)}
-        logo={data?.footer?.logo || undefined}
-        copyright={data?.footer?.copyright || undefined}
-        certifications={cleanArray(data?.footer?.certifications)}
-        legalLinks={cleanArray(data?.footer?.legalLinks)}
-        resourceLinks={cleanArray(data?.footer?.resourceLinks)}
-        founders={cleanArray(data?.footer?.founders)}
-        contact={cleanObject(data?.footer?.contact)}
-        companyLinks={cleanArray(data?.footer?.companyLinks)}
-        tinaField={data?.footer ? tinaField(data, "footer") : undefined}
-      />
+{/* Footer temporalmente deshabilitado
+      {data?.footer && (
+        <Footer
+          socialLinks={cleanArray(data?.footer?.socialLinks)}
+          logo={data?.footer?.logo || undefined}
+          copyright={data?.footer?.copyright || undefined}
+          certifications={cleanArray(data?.footer?.certifications)}
+          legalLinks={cleanArray(data?.footer?.legalLinks)}
+          resourceLinks={cleanArray(data?.footer?.resourceLinks)}
+          founders={cleanArray(data?.footer?.founders)}
+          contact={cleanObject(data?.footer?.contact)}
+          companyLinks={cleanArray(data?.footer?.companyLinks)}
+          tinaField={tinaField(data, "footer")}
+        />
+      )}
+      */}
     </>
   );
 }

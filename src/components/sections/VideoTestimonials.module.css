@@ -1,0 +1,230 @@
+/* ============================================
+   VIDEO TESTIMONIALS SECTION
+   ============================================ */
+
+.section {
+  width: 100%;
+}
+
+/* ============================================
+   DESKTOP LAYOUT
+   ============================================ */
+
+.desktopLayout {
+  display: none;
+  padding: 72px;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+}
+
+@media (min-width: 768px) {
+  .desktopLayout {
+    display: flex;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.titleContainer {
+  width: 100%;
+  max-width: 666px;
+}
+
+.title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 44px;
+}
+
+.titleNormal {
+  color: #3b3345;
+}
+
+.titleHighlight {
+  color: #6042aa;
+}
+
+/* Cards Container - Desktop */
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ============================================
+   MOBILE LAYOUT
+   ============================================ */
+
+.mobileLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 16px;
+  background: #f4f4f4;
+}
+
+@media (min-width: 768px) {
+  .mobileLayout {
+    display: none;
+  }
+}
+
+.mobileTitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 34px;
+  text-align: center;
+}
+
+/* Mobile Carousel */
+.mobileCarousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 16px;
+  width: 100%;
+  justify-content: center;
+}
+
+.mobileCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
+   VIDEO CARD
+   ============================================ */
+
+.card {
+  flex-shrink: 0;
+  width: 323px;
+  scroll-snap-align: center;
+}
+
+.cardInner {
+  width: 323px;
+  height: 438px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  background: white;
+  box-shadow: 0px 1px 34px rgba(16, 24, 40, 0.08);
+  outline: 1px solid #f4f4f4;
+  outline-offset: -1px;
+  cursor: pointer;
+}
+
+.cardInner:hover .playButton {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.imageContainer {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #d9d9d9;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.77) 100%);
+  pointer-events: none;
+}
+
+/* Play Button */
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+/* ============================================
+   NAVIGATION ARROWS (Mobile)
+   ============================================ */
+
+.navArrows {
+  display: flex;
+  gap: 24px;
+}
+
+.navButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 27px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.navButton:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.navButtonDisabled {
+  background: #fcfcfc;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   CTA BUTTON (Mobile)
+   ============================================ */
+
+.mobileCta {
+  width: 100%;
+}
+
+.ctaButton {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  padding: 0 24px;
+  background: #292929;
+  border-radius: 32px;
+  align-items: center;
+  justify-content: center;
+  color: #fcfcfd;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.ctaButton:hover {
+  background: #1a1a1a;
+}
