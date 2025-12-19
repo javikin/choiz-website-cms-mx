@@ -62,8 +62,8 @@ export function Hero({
   ctaText = "Comienza hoy",
   ctaLink = "/quiz",
   priceText = "Desde $467/mes",
-  backgroundImage = "/images/bg-hero-desk.png",
-  backgroundImageMobile = "/images/bg-hero-mobile.png",
+  backgroundImage = "/images/bg-hero-desk.webp",
+  backgroundImageMobile = "/images/bg-hero-mobile.webp",
   tinaField,
 }: HeroProps) {
   const normalizedSrc = normalizeImageUrl(backgroundImage);

@@ -22,7 +22,8 @@
       "ctaText": "Comienza hoy",
       "ctaLink": "/quiz",
       "priceText": "Desde $467/mes",
-      "backgroundImage": "/images/bg-hero-desk.png",
+      "backgroundImage": "/images/bg-hero-desk.webp",
+      "backgroundImageMobile": "/images/bg-hero-mobile.webp",
       "_template": "hero"
     },
     {

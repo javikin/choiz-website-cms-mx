@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 // DM Sans para headlines (como en Figma)
@@ -52,12 +53,22 @@ export default function RootLayout({
         <link rel="preconnect" href="https://assets.tina.io" />
         <link rel="dns-prefetch" href="https://assets.tina.io" />
 
-        {/* Preload de imagen hero LCP */}
+        {/* Preload de imagen hero LCP - Mobile */}
         <link
           rel="preload"
           as="image"
-          href="/images/hero-products.jpg"
-          type="image/jpeg"
+          href="/images/bg-hero-mobile.webp"
+          type="image/webp"
+          media="(max-width: 767px)"
+          fetchPriority="high"
+        />
+        {/* Preload de imagen hero LCP - Desktop */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/bg-hero-desk.webp"
+          type="image/webp"
+          media="(min-width: 768px)"
           fetchPriority="high"
         />
       </head>
@@ -65,6 +76,7 @@ export default function RootLayout({
         className={`${dmSans.variable} ${inter.variable} antialiased`}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
