@@ -8,7 +8,7 @@ const query = `query landing($relativePath: String!) {
     }
     __typename
     seo { __typename metaTitle metaDescription ogImage ogType canonicalUrl noIndex }
-    navbar { __typename logo ctaText ctaLink }
+    navbar { __typename variant logo ctaText ctaLink loginLink }
     sections {
       __typename
       ... on LandingSectionsHero {
