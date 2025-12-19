@@ -1,0 +1,460 @@
+/* ============================================
+   CTA TIMER SECTION
+   ============================================ */
+
+.section {
+  width: 100%;
+}
+
+/* ============================================
+   DESKTOP LAYOUT
+   ============================================ */
+
+.desktopLayout {
+  display: none;
+  padding: 72px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .desktopLayout {
+    display: flex;
+  }
+}
+
+/* Base Container */
+.container {
+  width: 100%;
+  max-width: 1024px;
+  min-height: 400px;
+  position: relative;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 64px;
+}
+
+/* Variant-specific containers */
+.countdownContainer {
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  box-shadow: 0 20px 50px rgba(124, 58, 237, 0.3);
+}
+
+.urgencyContainer {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  box-shadow: 0 20px 50px rgba(220, 38, 38, 0.3);
+}
+
+.limitedContainer {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  box-shadow: 0 20px 50px rgba(8, 145, 178, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  max-width: 800px;
+  text-align: center;
+}
+
+.headline {
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 52px;
+  margin: 0;
+}
+
+.subheadline {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Limited Badge */
+.limitedBadge {
+  display: inline-flex;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   TIMER DISPLAY - COUNTDOWN VARIANT
+   ============================================ */
+
+.timerGrid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+}
+
+.timeBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px 24px;
+  min-width: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.timeValue {
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 52px;
+  margin: 0;
+}
+
+.timeLabel {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.timeSeparator {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "DM Sans", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+/* ============================================
+   TIMER DISPLAY - INLINE VARIANTS (URGENCY & LIMITED)
+   ============================================ */
+
+.inlineTimer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.inlineTimeUnit {
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 36px;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ============================================
+   CTA BUTTON - DESKTOP
+   ============================================ */
+
+.ctaButton {
+  display: flex;
+  height: 64px;
+  padding: 0 48px;
+  background: #ffffff;
+  border-radius: 32px;
+  align-items: center;
+  justify-content: center;
+  color: #7c3aed;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ctaButton:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Variant-specific button colors */
+.urgency .ctaButton {
+  color: #dc2626;
+}
+
+.limited .ctaButton {
+  color: #0891b2;
+}
+
+/* ============================================
+   EXPIRED MESSAGE
+   ============================================ */
+
+.expiredMessage {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: center;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ============================================
+   MOBILE LAYOUT
+   ============================================ */
+
+.mobileLayout {
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .mobileLayout {
+    display: none;
+  }
+}
+
+/* Base Mobile Container */
+.mobileContainer {
+  width: 100%;
+  max-width: 343px;
+  min-height: 500px;
+  position: relative;
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+}
+
+/* Mobile Variant-specific containers */
+.mobileCountdown {
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.3);
+}
+
+.mobileUrgency {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  box-shadow: 0 12px 30px rgba(220, 38, 38, 0.3);
+}
+
+.mobileLimited {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  box-shadow: 0 12px 30px rgba(8, 145, 178, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Content */
+.mobileContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.mobileHeadline {
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 36px;
+  margin: 0;
+}
+
+.mobileSubheadline {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+
+/* Mobile Limited Badge */
+.mobileLimitedBadge {
+  display: inline-flex;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile Timer - Countdown Variant */
+@media (max-width: 767px) {
+  .timerGrid {
+    gap: 8px;
+  }
+
+  .timeBox {
+    min-width: 70px;
+    padding: 16px 12px;
+  }
+
+  .timeValue {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .timeLabel {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .timeSeparator {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+/* Mobile Timer - Inline Variants */
+@media (max-width: 767px) {
+  .inlineTimer {
+    gap: 8px;
+    padding: 12px 20px;
+  }
+
+  .inlineTimeUnit {
+    font-size: 24px;
+    line-height: 28px;
+    min-width: 48px;
+  }
+}
+
+/* ============================================
+   MOBILE CTA BUTTON
+   ============================================ */
+
+.mobileCtaButton {
+  display: flex;
+  width: 100%;
+  max-width: 295px;
+  height: 56px;
+  padding: 0 32px;
+  background: #ffffff;
+  border-radius: 32px;
+  align-items: center;
+  justify-content: center;
+  color: #7c3aed;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mobileCtaButton:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile variant-specific button colors */
+.mobileUrgency .mobileCtaButton {
+  color: #dc2626;
+}
+
+.mobileLimited .mobileCtaButton {
+  color: #0891b2;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Small mobile devices */
+@media (max-width: 374px) {
+  .mobileHeadline {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .timeBox {
+    min-width: 60px;
+    padding: 12px 8px;
+  }
+
+  .timeValue {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .inlineTimeUnit {
+    font-size: 20px;
+    line-height: 24px;
+    min-width: 40px;
+  }
+}
+
+/* Large tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding: 48px;
+  }
+
+  .headline {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  .timeValue {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  .timeBox {
+    min-width: 90px;
+    padding: 18px 20px;
+  }
+}

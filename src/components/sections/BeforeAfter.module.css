@@ -1,0 +1,259 @@
+/* ============================================
+   BeforeAfter Section Styles
+   ============================================ */
+
+.section {
+  padding: 4rem 1rem;
+  background: var(--color-background, #ffffff);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.headline {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #1a1a2e);
+  margin: 0 0 0.75rem;
+}
+
+.subheadline {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary, #4a4a68);
+  margin: 0;
+}
+
+/* ============================================
+   Slider Variant
+   ============================================ */
+
+.sliderLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.sliderCard {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  cursor: ew-resize;
+  user-select: none;
+  overflow: hidden;
+}
+
+.imageWrapper,
+.beforeWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.beforeWrapper {
+  z-index: 2;
+}
+
+.label {
+  position: absolute;
+  bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.labelBefore {
+  left: 1rem;
+}
+
+.labelAfter {
+  right: 1rem;
+}
+
+.sliderHandle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.sliderButton {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: var(--color-primary, #6b21a8);
+}
+
+.sliderButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   Case Info
+   ============================================ */
+
+.caseInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.caseName {
+  font-weight: 600;
+  color: var(--color-text-primary, #1a1a2e);
+}
+
+.caseDuration {
+  color: var(--color-primary, #6b21a8);
+  font-weight: 500;
+}
+
+.caseProduct {
+  color: var(--color-text-secondary, #4a4a68);
+  font-size: 0.875rem;
+}
+
+.testimonial {
+  padding: 1rem 1.5rem 1.5rem;
+  font-style: italic;
+  color: var(--color-text-secondary, #4a4a68);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================
+   Side by Side Variant
+   ============================================ */
+
+.sideBySideLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sideBySideCard {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.sideBySideImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.sideBySideImage {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+/* ============================================
+   Grid Variant
+   ============================================ */
+
+.gridLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.gridLayout .sideBySideCard {
+  height: 100%;
+}
+
+/* ============================================
+   Disclaimer
+   ============================================ */
+
+.disclaimer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #6b7280);
+  margin-top: 2rem;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .headline {
+    font-size: 1.5rem;
+  }
+
+  .sliderButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sliderButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .caseInfo {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .gridLayout {
+    grid-template-columns: 1fr;
+  }
+}

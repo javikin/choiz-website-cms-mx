@@ -1431,6 +1431,393 @@ export default defineConfig({
                   { type: "string", name: "logoImage", label: "Imagen Logo Footer", description: "Logo grande al final del footer" },
                 ],
               },
+              // HERO VIDEO
+              {
+                name: "heroVideo",
+                label: "Hero con Video",
+                ui: {
+                  defaultItem: {
+                    variant: "background",
+                    headline: "Recupera tu cabello con ciencia",
+                    ctaText: "Comenzar ahora",
+                    ctaLink: "/quiz",
+                  },
+                },
+                fields: [
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "fullscreen", label: "Pantalla completa" },
+                      { value: "background", label: "Video de fondo" },
+                      { value: "inline", label: "Video al lado del texto" },
+                    ],
+                  },
+                  { type: "string", name: "badge", label: "Badge Superior" },
+                  { type: "string", name: "headline", label: "Titulo", ui: { component: "textarea" } },
+                  { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
+                  ...ctaFields,
+                  { type: "string", name: "videoUrl", label: "URL del Video", description: "YouTube, Vimeo o video directo" },
+                  { type: "string", name: "posterImage", label: "Imagen de Respaldo", description: "Imagen mientras carga el video" },
+                ],
+              },
+              // STATS (Estadisticas)
+              {
+                name: "stats",
+                label: "Estadisticas (Numeros Grandes)",
+                ui: {
+                  defaultItem: {
+                    headline: "Nuestros resultados hablan por si solos",
+                  },
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo" },
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "default", label: "Normal" },
+                      { value: "cards", label: "Tarjetas" },
+                      { value: "minimal", label: "Minimalista" },
+                    ],
+                  },
+                  {
+                    type: "object",
+                    name: "stats",
+                    label: "Estadisticas",
+                    list: true,
+                    ui: {
+                      itemProps: (item: { label?: string }) => ({
+                        label: item?.label || "Nueva estadistica",
+                      }),
+                      max: 4,
+                    },
+                    fields: [
+                      { type: "string", name: "value", label: "Valor (ej: +10,000)", required: true },
+                      { type: "string", name: "label", label: "Descripcion", required: true },
+                      { type: "string", name: "icon", label: "Icono (opcional)" },
+                    ],
+                  },
+                ],
+              },
+              // CTA TIMER (Countdown)
+              {
+                name: "ctaTimer",
+                label: "CTA con Cuenta Regresiva",
+                ui: {
+                  defaultItem: {
+                    variant: "countdown",
+                    headline: "Oferta por tiempo limitado",
+                    ctaText: "Aprovechar ahora",
+                    ctaLink: "/quiz",
+                  },
+                },
+                fields: [
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "countdown", label: "Cuenta regresiva grande" },
+                      { value: "urgency", label: "Texto de urgencia" },
+                      { value: "limited", label: "Stock limitado" },
+                    ],
+                  },
+                  { type: "string", name: "headline", label: "Titulo" },
+                  { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
+                  { type: "datetime", name: "endDate", label: "Fecha de Fin", description: "Cuando termina la oferta" },
+                  ...ctaFields,
+                  { type: "string", name: "limitedText", label: "Texto de Stock (solo variante limited)", description: "Ej: Solo 10 lugares disponibles" },
+                ],
+              },
+              // PRESS LOGOS
+              {
+                name: "pressLogos",
+                label: "Logos de Prensa/Medios",
+                ui: {
+                  defaultItem: {
+                    headline: "Como se ha visto en",
+                    variant: "static",
+                  },
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo" },
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "static", label: "Estatico" },
+                      { value: "slider", label: "Carrusel automatico" },
+                    ],
+                  },
+                  {
+                    type: "object",
+                    name: "logos",
+                    label: "Logos",
+                    list: true,
+                    ui: {
+                      itemProps: (item: { name?: string }) => ({
+                        label: item?.name || "Nuevo logo",
+                      }),
+                      max: 10,
+                    },
+                    fields: [
+                      { type: "string", name: "image", label: "Imagen del Logo", required: true },
+                      { type: "string", name: "name", label: "Nombre del Medio", required: true },
+                      { type: "string", name: "url", label: "URL del Articulo (opcional)" },
+                    ],
+                  },
+                ],
+              },
+              // PRODUCT COMPARISON
+              {
+                name: "productComparison",
+                label: "Comparacion de Productos",
+                ui: {
+                  defaultItem: {
+                    headline: "Compara nuestros kits",
+                    variant: "table",
+                  },
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo" },
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "table", label: "Tabla" },
+                      { value: "cards", label: "Tarjetas" },
+                    ],
+                  },
+                  {
+                    type: "object",
+                    name: "products",
+                    label: "Productos",
+                    list: true,
+                    ui: {
+                      itemProps: (item: { name?: string }) => ({
+                        label: item?.name || "Nuevo producto",
+                      }),
+                      max: 4,
+                    },
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre", required: true },
+                      { type: "string", name: "price", label: "Precio" },
+                      { type: "string", name: "priceNote", label: "Nota del Precio (ej: /mes)" },
+                      { type: "string", name: "ctaText", label: "Texto del Boton" },
+                      { type: "string", name: "ctaLink", label: "Enlace" },
+                      { type: "boolean", name: "isRecommended", label: "Es Recomendado?" },
+                    ],
+                  },
+                  {
+                    type: "object",
+                    name: "features",
+                    label: "Caracteristicas a Comparar",
+                    list: true,
+                    ui: {
+                      itemProps: (item: { name?: string }) => ({
+                        label: item?.name || "Nueva caracteristica",
+                      }),
+                    },
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre de la Caracteristica", required: true },
+                      {
+                        type: "object",
+                        name: "included",
+                        label: "Incluido por Producto",
+                        list: true,
+                        fields: [
+                          { type: "boolean", name: "value", label: "Incluido?" },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              // BEFORE/AFTER (Slider Comparativo)
+              {
+                name: "beforeAfter",
+                label: "Antes/Despues (Slider)",
+                ui: {
+                  defaultItem: {
+                    headline: "Resultados reales de clientes",
+                    subheadline: "Desliza para comparar",
+                    variant: "slider",
+                  },
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo" },
+                  { type: "string", name: "subheadline", label: "Subtitulo" },
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "slider", label: "Slider (deslizable)" },
+                      { value: "sideBySide", label: "Lado a lado" },
+                      { value: "grid", label: "Cuadricula (multiples casos)" },
+                    ],
+                  },
+                  {
+                    type: "object",
+                    name: "cases",
+                    label: "Casos Before/After",
+                    list: true,
+                    ui: {
+                      itemProps: (item: { name?: string }) => ({
+                        label: item?.name || "Nuevo caso",
+                      }),
+                      max: 6,
+                    },
+                    fields: [
+                      { type: "string", name: "beforeImage", label: "Imagen Antes", required: true },
+                      { type: "string", name: "afterImage", label: "Imagen Despues", required: true },
+                      { type: "string", name: "name", label: "Nombre del Cliente" },
+                      { type: "string", name: "duration", label: "Duracion del Tratamiento (ej: 6 meses)" },
+                      { type: "string", name: "product", label: "Producto Usado" },
+                      { type: "string", name: "testimonial", label: "Testimonio", ui: { component: "textarea" } },
+                    ],
+                  },
+                ],
+              },
+              // BENEFITS (Por que elegirnos)
+              {
+                name: "benefits",
+                label: "Beneficios (Por que elegirnos)",
+                ui: {
+                  defaultItem: {
+                    headline: "¿Por que elegir Choiz?",
+                    variant: "default",
+                  },
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo" },
+                  { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "default", label: "Grid con iconos" },
+                      { value: "cards", label: "Tarjetas elevadas" },
+                      { value: "list", label: "Lista compacta" },
+                      { value: "comparison", label: "Comparacion (nosotros vs otros)" },
+                    ],
+                  },
+                  { type: "string", name: "competitorName", label: "Nombre del Competidor (solo variante comparison)", description: "Ej: Otros, Competencia, Tratamientos tradicionales" },
+                  {
+                    type: "object",
+                    name: "benefits",
+                    label: "Lista de Beneficios",
+                    list: true,
+                    ui: {
+                      itemProps: (item: { title?: string }) => ({
+                        label: item?.title || "Nuevo beneficio",
+                      }),
+                      max: 8,
+                    },
+                    fields: [
+                      { type: "string", name: "icon", label: "Icono (ruta de imagen)" },
+                      { type: "string", name: "title", label: "Titulo", required: true },
+                      { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+                      { type: "boolean", name: "competitorHas", label: "El competidor lo tiene? (solo variante comparison)" },
+                    ],
+                  },
+                ],
+              },
+              // GUARANTEE NEW (con variantes)
+              {
+                name: "guaranteeNew",
+                label: "Garantia (Nuevo Diseño)",
+                ui: {
+                  defaultItem: {
+                    days: "180",
+                    headline: "Garantia de exito asegurada",
+                    description: "Si no ves resultados, te devolvemos tu dinero.",
+                    variant: "default",
+                  },
+                },
+                fields: [
+                  { type: "string", name: "days", label: "Dias de Garantia" },
+                  { type: "string", name: "headline", label: "Titulo" },
+                  { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "default", label: "Normal (badge + texto)" },
+                      { value: "centered", label: "Centrado" },
+                      { value: "minimal", label: "Minimalista" },
+                    ],
+                  },
+                  { type: "string", name: "ctaText", label: "Texto del Boton (opcional)" },
+                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+                  { type: "string", name: "termsLink", label: "Enlace a Terminos", description: "Por defecto: /terminos" },
+                ],
+              },
+              // REVIEWS
+              {
+                name: "reviews",
+                label: "Reviews y Calificaciones",
+                ui: {
+                  defaultItem: {
+                    headline: "Lo que dicen nuestros clientes",
+                    variant: "stats",
+                    averageRating: 4.8,
+                    totalReviews: 1247,
+                  },
+                },
+                fields: [
+                  { type: "string", name: "headline", label: "Titulo" },
+                  {
+                    type: "string",
+                    name: "variant",
+                    label: "Variante",
+                    options: [
+                      { value: "compact", label: "Compacto (solo estrellas)" },
+                      { value: "detailed", label: "Detallado (reviews completas)" },
+                      { value: "stats", label: "Estadisticas (numero grande)" },
+                    ],
+                  },
+                  { type: "number", name: "averageRating", label: "Rating Promedio (1-5)" },
+                  { type: "number", name: "totalReviews", label: "Total de Reviews" },
+                  {
+                    type: "object",
+                    name: "breakdown",
+                    label: "Desglose por Estrellas",
+                    list: true,
+                    ui: { max: 5 },
+                    fields: [
+                      { type: "number", name: "stars", label: "Estrellas (1-5)" },
+                      { type: "number", name: "percentage", label: "Porcentaje" },
+                    ],
+                  },
+                  {
+                    type: "object",
+                    name: "reviews",
+                    label: "Reviews Individuales",
+                    list: true,
+                    ui: {
+                      itemProps: (item: { name?: string }) => ({
+                        label: item?.name || "Nuevo review",
+                      }),
+                      max: 10,
+                    },
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre", required: true },
+                      { type: "string", name: "date", label: "Fecha" },
+                      { type: "number", name: "rating", label: "Calificacion (1-5)" },
+                      { type: "string", name: "text", label: "Texto del Review", ui: { component: "textarea" } },
+                      { type: "string", name: "productName", label: "Producto (opcional)" },
+                    ],
+                  },
+                ],
+              },
             ],
           },
 
