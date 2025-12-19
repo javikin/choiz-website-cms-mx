@@ -7,9 +7,15 @@ import styles from "./Certifications.module.css";
 // TYPES
 // ============================================
 
+interface Badge {
+  logo?: string;
+  label?: string;
+}
+
 interface CertificationsProps {
   title?: string;
   licenseNumber?: string;
+  badges?: Badge[];
   tinaField?: string;
 }
 
@@ -20,8 +26,12 @@ interface CertificationsProps {
 export function Certifications({
   title = "Aprobados y certificados por",
   licenseNumber = "Licencia N° 09014110009",
+  badges,
   tinaField,
 }: CertificationsProps) {
+  // badges prop is accepted but we use hardcoded logos for this design
+  // The prop is kept for TinaCMS compatibility
+  void badges;
   return (
     <section
       className="bg-white py-8"

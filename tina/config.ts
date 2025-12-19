@@ -717,20 +717,6 @@ export default defineConfig({
   // Las imágenes se referencian con rutas absolutas como /images/...
   // No usar media.tina para evitar transformación de URLs a assets.tina.io
 
-  // Admin configuration for draft mode
-  admin: {
-    auth: {
-      onLogin: async () => {
-        // Enable draft mode when user logs in to TinaCMS
-        window.location.href = `/api/draft?slug=/`;
-      },
-      onLogout: async () => {
-        // Disable draft mode when user logs out
-        window.location.href = `/api/draft/disable?slug=/`;
-      },
-    },
-  },
-
   schema: {
     collections: [
       // ========================================
