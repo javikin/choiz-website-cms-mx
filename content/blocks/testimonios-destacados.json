@@ -1,0 +1,32 @@
+{
+  "title": "Testimonios Destacados",
+  "sections": [
+    {
+      "_template": "testimonialsBlock",
+      "headline": "Lo que dicen nuestros clientes",
+      "subheadline": "Miles de personas ya recuperaron su confianza con Choiz",
+      "videos": [
+        {
+          "name": "Carlos M.",
+          "backgroundImage": "/images/testimonials/carlos.jpg",
+          "videoUrl": "https://youtube.com/watch?v=example1",
+          "rating": 5,
+          "productName": "Kit Completo Choiz",
+          "productDescription": "Tratamiento personalizado para alopecia androgenetica"
+        },
+        {
+          "name": "Roberto G.",
+          "backgroundImage": "/images/testimonials/roberto.jpg",
+          "videoUrl": "https://youtube.com/watch?v=example2",
+          "rating": 5,
+          "productName": "Formula Topica",
+          "productDescription": "Minoxidil + Finasteride topico"
+        }
+      ],
+      "ctaText": "Ver mas testimonios",
+      "ctaLink": "/testimonios",
+      "moreText": "Conoce mas historias",
+      "moreLink": "/casos-exito"
+    }
+  ]
+}

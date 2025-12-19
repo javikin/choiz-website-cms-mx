@@ -1,0 +1,33 @@
+{
+  "title": "Hero Promocion Navidad",
+  "sections": [
+    {
+      "_template": "heroBlock",
+      "badge": "Oferta de Temporada",
+      "headline": "Recupera tu cabello con 20% de descuento",
+      "benefits": [
+        { "text": "Envio gratis en toda la republica" },
+        { "text": "Garantia de 180 dias" },
+        { "text": "Atencion medica 24/7" }
+      ],
+      "ctaText": "Aprovechar oferta",
+      "ctaLink": "/quiz?promo=navidad",
+      "backgroundImage": "/images/bg-hero-desk.png",
+      "backgroundImageMobile": "/images/bg-hero-mobile.png"
+    },
+    {
+      "_template": "guaranteeBlock",
+      "days": "180",
+      "headline": "Garantia total de satisfaccion",
+      "description": "Si no ves resultados en 180 dias, te devolvemos el 100% de tu dinero. Sin preguntas."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "No te quedes sin tu descuento",
+      "subheadline": "Oferta valida hasta el 31 de diciembre",
+      "ctaText": "Comenzar ahora",
+      "ctaLink": "/quiz?promo=navidad",
+      "variant": "highlight"
+    }
+  ]
+}
