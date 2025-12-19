@@ -15,6 +15,14 @@ import {
   HowItWorks,
   FinalCta,
   Footer,
+  SuccessStories,
+  Formulas,
+  Activos,
+  VideoTestimonials,
+  HowItWorksNew,
+  FinalCtaNew,
+  FAQ,
+  FooterNew,
 } from "@/components/sections";
 import type { LandingQuery } from "../../tina/__generated__/types";
 
@@ -206,6 +214,117 @@ function renderSection(section: any, index: number, parentData: any) {
           subheadline={section.subheadline || undefined}
           ctaText={section.ctaText || undefined}
           ctaLink={section.ctaLink || undefined}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "successStories":
+      return (
+        <SuccessStories
+          key={index}
+          highlightText={section.highlightText || undefined}
+          normalText={section.normalText || undefined}
+          ctaPrimaryText={section.ctaPrimaryText || undefined}
+          ctaPrimaryLink={section.ctaPrimaryLink || undefined}
+          ctaSecondaryText={section.ctaSecondaryText || undefined}
+          ctaSecondaryLink={section.ctaSecondaryLink || undefined}
+          testimonials={cleanArray(section.testimonials)}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "formulas":
+      return (
+        <Formulas
+          key={index}
+          headline={section.headline || undefined}
+          highlightText={section.highlightText || undefined}
+          formulas={cleanArray(section.formulas)}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "activos":
+      return (
+        <Activos
+          key={index}
+          headline={section.headline || undefined}
+          highlightText={section.highlightText || undefined}
+          ctaText={section.ctaText || undefined}
+          ctaLink={section.ctaLink || undefined}
+          activos={cleanArray(section.activos)}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "videoTestimonials":
+      return (
+        <VideoTestimonials
+          key={index}
+          headline={section.headline || undefined}
+          highlightText={section.highlightText || undefined}
+          ctaText={section.ctaText || undefined}
+          ctaLink={section.ctaLink || undefined}
+          videos={cleanArray(section.videos)}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "howItWorksNew":
+      return (
+        <HowItWorksNew
+          key={index}
+          headline={section.headline || undefined}
+          ctaText={section.ctaText || undefined}
+          ctaLink={section.ctaLink || undefined}
+          steps={cleanArray(section.steps)}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "finalCtaNew":
+      return (
+        <FinalCtaNew
+          key={index}
+          headline={section.headline || undefined}
+          ctaText={section.ctaText || undefined}
+          ctaLink={section.ctaLink || undefined}
+          backgroundImage={section.backgroundImage || undefined}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "faq":
+      return (
+        <FAQ
+          key={index}
+          headline={section.headline || undefined}
+          highlightText={section.highlightText || undefined}
+          items={cleanArray(section.items)}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "footerNew":
+      return (
+        <FooterNew
+          key={index}
+          appTitle={section.appTitle || undefined}
+          appSubtitle={section.appSubtitle || undefined}
+          appImage={section.appImage || undefined}
+          companyLinks={cleanArray(section.companyLinks)}
+          founders={cleanArray(section.founders)}
+          resourceLinks={cleanArray(section.resourceLinks)}
+          phone={section.phone || undefined}
+          email={section.email || undefined}
+          hoursLabel={section.hoursLabel || undefined}
+          hoursValue={section.hoursValue || undefined}
+          treatmentLinks={cleanArray(section.treatmentLinks)}
+          legalLinks={cleanArray(section.legalLinks)}
+          cofeprisCode={section.cofeprisCode || undefined}
+          socialLinks={cleanArray(section.socialLinks)}
+          copyright={section.copyright || undefined}
+          logoImage={section.logoImage || undefined}
           tinaField={sectionTinaField}
         />
       );
