@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "variant": "default",
+    "variant": "minimal",
     "logo": "/images/choiz-logo.svg",
     "ctaText": "Comienza hoy",
     "ctaLink": "/quiz",
@@ -25,7 +25,6 @@
       "ctaLink": "/quiz",
       "priceText": "Desde $467/mes",
       "backgroundImage": "/images/bg-hero-desk.webp",
-      "backgroundImageMobile": "/images/bg-hero-mobile.webp",
       "_template": "hero"
     },
     {
