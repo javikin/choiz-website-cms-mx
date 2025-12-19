@@ -1,6 +1,4 @@
-import { draftMode } from "next/headers";
 import client from "../../tina/__generated__/client";
-import { LandingPageStatic } from "@/components/LandingPageStatic";
 
 const query = `query landing($relativePath: String!) {
   landing(relativePath: $relativePath) {
@@ -157,24 +155,16 @@ const query = `query landing($relativePath: String!) {
 const variables = { relativePath: "home.json" };
 
 export default async function Home() {
-  const { isEnabled: isDraftMode } = await draftMode();
   const result = await client.queries.landing(variables);
 
-  // Check if we're in development mode for TinaCMS local editing
-  const isLocalDevelopment = process.env.NODE_ENV === "development";
-
-  // In draft mode OR local development (TinaCMS visual editing), load the client component with useTina
-  if (isDraftMode || isLocalDevelopment) {
-    const { LandingPageClient } = await import("@/components/LandingPageClient");
-    return (
-      <LandingPageClient
-        query={query}
-        variables={variables}
-        data={result.data}
-      />
-    );
-  }
-
-  // In production, use the static version (no TinaCMS client JS)
-  return <LandingPageStatic data={result.data} />;
+  // Always use LandingPageClient which includes useTina hook for visual editing
+  // TinaCMS handles detection of edit mode internally via iframe communication
+  const { LandingPageClient } = await import("@/components/LandingPageClient");
+  return (
+    <LandingPageClient
+      query={query}
+      variables={variables}
+      data={result.data}
+    />
+  );
 }
