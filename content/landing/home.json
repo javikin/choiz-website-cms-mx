@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "variant": "minimal",
+    "variant": "default",
     "logo": "/images/choiz-logo.svg",
     "ctaText": "Comienza hoy",
     "ctaLink": "/quiz",
