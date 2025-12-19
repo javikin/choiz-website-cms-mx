@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
   },
 
+  // Rewrites para TinaCMS admin
+  async rewrites() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/index.html",
+      },
+    ];
+  },
+
   // Headers de cache para assets estáticos
   async headers() {
     return [

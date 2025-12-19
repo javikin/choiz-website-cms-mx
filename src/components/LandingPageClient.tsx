@@ -2,6 +2,7 @@
 
 import { useTina, tinaField } from "tinacms/dist/react";
 import { Navbar } from "@/components/layout/Navbar";
+import { NavbarMinimal } from "@/components/layout/NavbarMinimal";
 import {
   Hero,
   Certifications,
@@ -346,14 +347,25 @@ export function LandingPageClient(props: LandingPageClientProps) {
   const data = tinaData.landing;
   const sections = data?.sections || [];
 
+  // Determine which navbar variant to render
+  const navbarVariant = data?.navbar?.variant || "default";
+
   return (
     <>
-      <Navbar
-        logo={data?.navbar?.logo || undefined}
-        ctaText={data?.navbar?.ctaText || undefined}
-        ctaLink={data?.navbar?.ctaLink || undefined}
-        tinaField={data?.navbar ? tinaField(data, "navbar") : undefined}
-      />
+      {navbarVariant === "minimal" ? (
+        <NavbarMinimal
+          logo={data?.navbar?.logo || undefined}
+          loginLink={data?.navbar?.loginLink || undefined}
+          tinaField={data?.navbar ? tinaField(data, "navbar") : undefined}
+        />
+      ) : (
+        <Navbar
+          logo={data?.navbar?.logo || undefined}
+          ctaText={data?.navbar?.ctaText || undefined}
+          ctaLink={data?.navbar?.ctaLink || undefined}
+          tinaField={data?.navbar ? tinaField(data, "navbar") : undefined}
+        />
+      )}
 
       <main>
         {sections.map((section, index) =>

@@ -255,6 +255,7 @@ export function FooterNew({
                         className={styles.socialIcon}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`Síguenos en ${social.platform}`}
                       >
                         {getSocialIcon(social.platform)}
                       </Link>
@@ -495,6 +496,7 @@ export function FooterNew({
                 className={styles.mobileSocialIcon}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Síguenos en ${social.platform}`}
               >
                 {getSocialIcon(social.platform)}
               </Link>

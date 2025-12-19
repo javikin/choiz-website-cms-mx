@@ -152,17 +152,30 @@
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 44px;
+  height: 44px;
   border-radius: 9999px;
-  background: #E6E6E6;
+  background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
   transition: background 0.2s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dotActive {
+.dot::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #E6E6E6;
+  transition: background 0.2s;
+}
+
+.dotActive::after {
   background: #A0A0A0;
 }
 
@@ -338,7 +351,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
-  color: #7D7D7D;
+  color: #5C5C5C;
   margin: 0;
 }
 

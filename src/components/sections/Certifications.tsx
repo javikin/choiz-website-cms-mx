@@ -40,7 +40,7 @@ export function Certifications({
       {/* Desktop Layout */}
       <div className={styles.desktopLayout}>
         {/* Title */}
-        <p className="text-[18px] leading-[22px] text-[#B1B1B1] font-normal whitespace-nowrap">
+        <p className="text-[18px] leading-[22px] text-[#6B6B6B] font-normal whitespace-nowrap">
           {title}
         </p>
 
@@ -84,7 +84,7 @@ export function Certifications({
       {/* Mobile Layout */}
       <div className={styles.mobileLayout}>
         {/* Title */}
-        <p className="text-[14px] leading-[17px] text-[#7D7D7D] font-normal text-center">
+        <p className="text-[14px] leading-[17px] text-[#6B6B6B] font-normal text-center">
           {title}
         </p>
 
@@ -116,7 +116,7 @@ export function Certifications({
           </div>
 
           {/* License Number */}
-          <p className="text-[10px] leading-[15px] text-[#B1B1B1] font-normal">
+          <p className="text-[10px] leading-[15px] text-[#6B6B6B] font-normal">
             {licenseNumber}
           </p>
         </div>
