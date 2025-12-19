@@ -11,9 +11,11 @@ fragment LandingParts on Landing {
   }
   navbar {
     __typename
+    variant
     logo
     ctaText
     ctaLink
+    loginLink
   }
   sections {
     __typename

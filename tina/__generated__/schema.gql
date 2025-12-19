@@ -100,9 +100,11 @@ type LandingSeo {
 }
 
 type LandingNavbar {
+  variant: String
   logo: String
   ctaText: String
   ctaLink: String
+  loginLink: String
 }
 
 type LandingSectionsHeroBenefits {
@@ -476,9 +478,11 @@ input LandingSeoFilter {
 }
 
 input LandingNavbarFilter {
+  variant: StringFilter
   logo: StringFilter
   ctaText: StringFilter
   ctaLink: StringFilter
+  loginLink: StringFilter
 }
 
 input LandingSectionsHeroBenefitsFilter {
@@ -1030,9 +1034,11 @@ input LandingSeoMutation {
 }
 
 input LandingNavbarMutation {
+  variant: String
   logo: String
   ctaText: String
   ctaLink: String
+  loginLink: String
 }
 
 input LandingSectionsHeroBenefitsMutation {

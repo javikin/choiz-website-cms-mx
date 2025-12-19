@@ -650,18 +650,36 @@ var config_default = defineConfig({
             description: "Barra de navegacion superior",
             ui: {
               defaultItem: {
+                variant: "default",
                 ctaText: "Comenzar",
-                ctaLink: "/quiz"
+                ctaLink: "/quiz",
+                loginLink: "/login"
               }
             },
             fields: [
+              {
+                type: "string",
+                name: "variant",
+                label: "Estilo del Menu",
+                description: "Selecciona el estilo de navegacion",
+                options: [
+                  { value: "default", label: "Transparente con CTA (Hero)" },
+                  { value: "minimal", label: "Blanco minimalista (iconos)" }
+                ]
+              },
               {
                 type: "string",
                 name: "logo",
                 label: "Logo",
                 description: "Ruta del logo (ej: /images/logo.svg)"
               },
-              ...ctaFields
+              ...ctaFields,
+              {
+                type: "string",
+                name: "loginLink",
+                label: "Enlace de Login (solo minimal)",
+                description: "URL para el icono de usuario (ej: /login)"
+              }
             ]
           },
           // ----------------------------------------
