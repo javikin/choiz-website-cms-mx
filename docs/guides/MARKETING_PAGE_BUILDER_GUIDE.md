@@ -1,7 +1,7 @@
 # Guía de Page Builder para Marketing
 
 **Estado:** 🟢 Activo - Guía de Usuario
-**Última actualización:** 2025-12-09
+**Última actualización:** 2025-12-19
 **Audiencia:** Equipo de Marketing (no técnico)
 
 ---
@@ -268,11 +268,68 @@ Breakdown:
 **Cuándo usar:** Resultados visuales (fotos antes/después)
 
 **Variantes:**
-- **Slider**: Deslizable para comparar
+- **Slider**: Deslizable para comparar (interactivo)
 - **Side by Side**: Dos fotos lado a lado
-- **Grid**: Múltiples casos
+- **Grid**: Múltiples casos en cuadrícula
+
+**Campos:**
+- Imagen antes
+- Imagen después
+- Nombre del cliente
+- Duración del tratamiento
+- Producto usado
+- Testimonio (opcional)
 
 **Tip:** Usa fotos reales de clientes, no stock
+
+#### Stats Block
+
+**Cuándo usar:** Mostrar números de impacto (credibilidad)
+
+**Variantes:**
+- **Default**: Números sin fondo
+- **Cards**: Tarjetas con sombra
+- **Minimal**: Compacto, sin decoración
+
+**Campos:**
+- Título de sección
+- Lista de estadísticas (máx 4):
+  - Valor (ej: "+20,000")
+  - Descripción (ej: "Personas tratadas")
+  - Icono (opcional)
+
+**Ejemplo:**
+```
+Variante: Cards
+Stats:
+  - "+20,000" → "Personas tratadas"
+  - "90%" → "Tasa de satisfacción"
+  - "180 días" → "Promedio de resultados"
+  - "100%" → "En línea"
+```
+
+**Tip:** Los números se animan al hacer scroll
+
+#### Press Logos Block
+
+**Cuándo usar:** Mostrar menciones en medios (credibilidad)
+
+**Variantes:**
+- **Static**: Logos fijos en fila
+- **Slider**: Carrusel automático
+
+**Campos:**
+- Título (ej: "Como se ha visto en")
+- Lista de logos:
+  - Imagen del logo
+  - Nombre del medio
+  - URL del artículo (opcional)
+
+**Ejemplo:**
+```
+Título: "Mencionado en"
+Logos: Forbes, Expansión, El Financiero, Entrepreneur
+```
 
 ---
 
@@ -383,6 +440,60 @@ Respuesta: "Los primeros resultados visibles suelen aparecer entre 3-6 meses de 
 
 Pregunta: "¿Es seguro el minoxidil?"
 Respuesta: "Sí, el minoxidil es aprobado por COFEPRIS y FDA. Tiene más de 30 años de uso seguro documentado."
+```
+
+#### Benefits Block
+
+**Cuándo usar:** Explicar por qué elegir Choiz
+
+**Variantes:**
+- **Default**: Grid con iconos
+- **Cards**: Tarjetas elevadas con hover
+- **List**: Lista compacta vertical
+- **Comparison**: Tabla nosotros vs competencia
+
+**Campos:**
+- Título de sección
+- Subtítulo (opcional)
+- Lista de beneficios:
+  - Icono
+  - Título
+  - Descripción
+  - ¿Competidor lo tiene? (solo para variante comparison)
+- Nombre del competidor (solo para variante comparison)
+
+**Ejemplo:**
+```
+Variante: Cards
+Beneficios:
+  - "100% en línea" → "Sin salir de casa"
+  - "Médicos certificados" → "Especialistas te acompañan"
+  - "Envío gratis" → "Recibe en tu puerta"
+  - "Garantía de resultados" → "Te devolvemos tu dinero"
+```
+
+#### Guarantee Block
+
+**Cuándo usar:** Mostrar garantía de devolución (reduce fricción)
+
+**Variantes:**
+- **Default**: Badge circular + texto
+- **Centered**: Todo centrado
+- **Minimal**: Compacto, borde sutil
+
+**Campos:**
+- Días de garantía (ej: "180")
+- Título
+- Descripción
+- Botón CTA (opcional)
+- Enlace a términos
+
+**Ejemplo:**
+```
+Días: 180
+Título: "Garantía de éxito asegurada"
+Descripción: "Si no ves resultados, te devolvemos tu dinero"
+CTA: "Comenzar sin riesgo" → /quiz
 ```
 
 #### Steps Block (Cómo Funciona)
@@ -643,6 +754,20 @@ Todas las imágenes están en `public/images/`:
 ---
 
 ## Changelog
+
+### 2025-12-19
+- **+9 nuevos bloques añadidos:**
+  - HeroVideo (fullscreen, background, inline)
+  - Stats (default, cards, minimal)
+  - CtaTimer (countdown, urgency, limited)
+  - PressLogos (static, slider)
+  - ProductComparison (table, cards)
+  - Reviews (compact, detailed, stats)
+  - BeforeAfter (slider, sideBySide, grid)
+  - Benefits (default, cards, list, comparison)
+  - GuaranteeNew (default, centered, minimal)
+- Total de bloques disponibles: **30+**
+- Actualizada documentación de variantes
 
 ### 2025-12-09
 - Versión inicial de la guía
