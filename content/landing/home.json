@@ -6,7 +6,7 @@
   },
   "sections": [
     {
-      "badge": "+20.000 personas ya vieron resultados",
+      "badge": "+30.000 personas ya vieron resultados",
       "headline": "El tratamiento más efectivo de México para la caída del cabello",
       "benefits": [
         {
@@ -23,7 +23,6 @@
       "ctaLink": "/quiz",
       "priceText": "Desde $467/mes",
       "backgroundImage": "/images/bg-hero-desk.png",
-      "backgroundImageMobile": "/images/bg-hero-mobile.png",
       "_template": "hero"
     },
     {
@@ -95,8 +94,14 @@
           "name": "Dutasteride 0.5mg + Minoxidil 1.25/2.5/3.75/5mg + Biotina 2.5mg (Oral)",
           "image": "/images/products/capsulas-1.png",
           "tags": [
-            { "text": "Cápsulas", "variant": "purple" },
-            { "text": "Fácil adopción", "variant": "blue" }
+            {
+              "text": "Cápsulas",
+              "variant": "purple"
+            },
+            {
+              "text": "Fácil adopción",
+              "variant": "blue"
+            }
           ],
           "ctaText": "Ver si soy apto",
           "ctaLink": "/quiz"
@@ -105,7 +110,10 @@
           "name": "Dutasteride 0.25% + Minoxidil 7% + Tretinoína 0.0125% (Tópico)",
           "image": "/images/products/locion-1.png",
           "tags": [
-            { "text": "Loción", "variant": "purple" }
+            {
+              "text": "Loción",
+              "variant": "purple"
+            }
           ],
           "ctaText": "Ver si soy apto",
           "ctaLink": "/quiz"
@@ -114,8 +122,14 @@
           "name": "Finasterida 1mg + Minoxidil 2.5/3.75/5mg (Oral)",
           "image": "/images/products/capsulas-2.png",
           "tags": [
-            { "text": "Cápsulas", "variant": "purple" },
-            { "text": "Fácil adopción", "variant": "blue" }
+            {
+              "text": "Cápsulas",
+              "variant": "purple"
+            },
+            {
+              "text": "Fácil adopción",
+              "variant": "blue"
+            }
           ],
           "ctaText": "Ver si soy apto",
           "ctaLink": "/quiz"
@@ -124,8 +138,14 @@
           "name": "Minoxidil 2.5/3.75/5mg (Oral)",
           "image": "/images/products/capsulas-3.png",
           "tags": [
-            { "text": "Cápsulas", "variant": "purple" },
-            { "text": "Fácil adopción", "variant": "blue" }
+            {
+              "text": "Cápsulas",
+              "variant": "purple"
+            },
+            {
+              "text": "Fácil adopción",
+              "variant": "blue"
+            }
           ],
           "ctaText": "Ver si soy apto",
           "ctaLink": "/quiz"
@@ -262,36 +282,79 @@
       "appSubtitle": "Descarga la app",
       "appImage": "/images/app-mockup.png",
       "companyLinks": [
-        { "text": "Sobre nosotros", "url": "/nosotros" },
-        { "text": "Trabaja con nosotros", "url": "/empleos" }
+        {
+          "text": "Sobre nosotros",
+          "url": "/nosotros"
+        },
+        {
+          "text": "Trabaja con nosotros",
+          "url": "/empleos"
+        }
       ],
       "founders": [
-        { "name": "Franco Lacrampette" },
-        { "name": "Ignacio D'Anunzio" }
+        {
+          "name": "Franco Lacrampette"
+        },
+        {
+          "name": "Ignacio D'Anunzio"
+        }
       ],
       "resourceLinks": [
-        { "text": "Blog", "url": "/blog" },
-        { "text": "Preguntas frecuentes", "url": "/faq" }
+        {
+          "text": "Blog",
+          "url": "/blog"
+        },
+        {
+          "text": "Preguntas frecuentes",
+          "url": "/faq"
+        }
       ],
       "phone": "+52 1 55 9225 6335",
       "email": "hola@choiz.com.mx",
       "hoursLabel": "Lunes a Viernes",
       "hoursValue": "07 a 22 hs",
       "treatmentLinks": [
-        { "text": "Alopecia", "url": "/alopecia" },
-        { "text": "Pérdida de peso", "url": "/perdida-peso" }
+        {
+          "text": "Alopecia",
+          "url": "/alopecia"
+        },
+        {
+          "text": "Pérdida de peso",
+          "url": "/perdida-peso"
+        }
       ],
       "legalLinks": [
-        { "text": "Políticas de privacidad", "url": "/privacidad" },
-        { "text": "Términos y condiciones", "url": "/terminos" },
-        { "text": "Consentimiento de Telemedicina", "url": "/telemedicina" }
+        {
+          "text": "Políticas de privacidad",
+          "url": "/privacidad"
+        },
+        {
+          "text": "Términos y condiciones",
+          "url": "/terminos"
+        },
+        {
+          "text": "Consentimiento de Telemedicina",
+          "url": "/telemedicina"
+        }
       ],
       "cofeprisCode": "COFEPRIS 2421055036X00214",
       "socialLinks": [
-        { "platform": "instagram", "url": "https://instagram.com/choiz" },
-        { "platform": "facebook", "url": "https://facebook.com/choiz" },
-        { "platform": "tiktok", "url": "https://tiktok.com/@choiz" },
-        { "platform": "linkedin", "url": "https://linkedin.com/company/choiz" }
+        {
+          "platform": "instagram",
+          "url": "https://instagram.com/choiz"
+        },
+        {
+          "platform": "facebook",
+          "url": "https://facebook.com/choiz"
+        },
+        {
+          "platform": "tiktok",
+          "url": "https://tiktok.com/@choiz"
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://linkedin.com/company/choiz"
+        }
       ],
       "copyright": "© CHOIZ XCALE HEALTH S.A de C.V.. Todos los derechos reservados.",
       "logoImage": "/images/choiz-logo-gray.svg",
