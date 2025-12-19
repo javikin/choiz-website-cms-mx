@@ -160,8 +160,11 @@ export default async function Home() {
   const { isEnabled: isDraftMode } = await draftMode();
   const result = await client.queries.landing(variables);
 
-  // In draft mode (TinaCMS visual editing), load the client component with useTina
-  if (isDraftMode) {
+  // Check if we're in development mode for TinaCMS local editing
+  const isLocalDevelopment = process.env.NODE_ENV === "development";
+
+  // In draft mode OR local development (TinaCMS visual editing), load the client component with useTina
+  if (isDraftMode || isLocalDevelopment) {
     const { LandingPageClient } = await import("@/components/LandingPageClient");
     return (
       <LandingPageClient

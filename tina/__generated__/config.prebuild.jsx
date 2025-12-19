@@ -620,6 +620,17 @@ var config_default = defineConfig({
   // Media Library - deshabilitado para usar imágenes del repositorio directamente
   // Las imágenes se referencian con rutas absolutas como /images/...
   // No usar media.tina para evitar transformación de URLs a assets.tina.io
+  // Admin configuration for draft mode
+  admin: {
+    auth: {
+      onLogin: async () => {
+        window.location.href = `/api/draft?slug=/`;
+      },
+      onLogout: async () => {
+        window.location.href = `/api/draft/disable?slug=/`;
+      }
+    }
+  },
   schema: {
     collections: [
       // ========================================
