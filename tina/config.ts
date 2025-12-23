@@ -483,7 +483,1101 @@ const valuePropTemplate: Template = {
 };
 
 // ============================================
-// BLOQUES DE SECCION (para reordenar)
+// TEMPLATES DE SECCIONES (reutilizables entre colecciones)
+// ============================================
+
+// Hero Section
+const heroSectionTemplate: Template = {
+  name: "hero",
+  label: "Hero Section",
+  ui: {
+    defaultItem: {
+      badge: "+20,000 personas ya vieron resultados",
+      headline: "El tratamiento mas efectivo de Mexico para la caida del cabello",
+      ctaText: "Comienza hoy",
+      ctaLink: "/quiz",
+      priceText: "Desde $467/mes",
+    },
+  },
+  fields: [
+    {
+      type: "string",
+      name: "badge",
+      label: "Badge Superior",
+      description: "Texto que aparece en el badge (ej: +20,000 personas ya vieron resultados)",
+    },
+    {
+      type: "string",
+      name: "headline",
+      label: "Titulo Principal",
+      ui: { component: "textarea" },
+      description: "Titulo principal del hero (max 100 caracteres recomendado)",
+    },
+    {
+      type: "object",
+      name: "benefits",
+      label: "Lista de Beneficios",
+      list: true,
+      ui: {
+        itemProps: (item: { text?: string }) => ({
+          label: item?.text || "Nuevo beneficio",
+        }),
+        max: LIMITS.MAX_BENEFITS,
+      },
+      fields: [
+        {
+          type: "string",
+          name: "text",
+          label: "Texto",
+        },
+      ],
+    },
+    ...ctaFields,
+    {
+      type: "string",
+      name: "priceText",
+      label: "Texto de Precio",
+      description: "Texto que aparece junto al boton (ej: Desde $467/mes)",
+    },
+    {
+      type: "string",
+      name: "backgroundImage",
+      label: "Imagen de Fondo",
+      description: "Ruta de imagen (ej: /images/hero-background.jpg)",
+    },
+  ],
+};
+
+// Certifications Section
+const certificationsSectionTemplate: Template = {
+  name: "certifications",
+  label: "Certificaciones",
+  fields: [
+    {
+      type: "string",
+      name: "title",
+      label: "Titulo",
+    },
+    {
+      type: "object",
+      name: "badges",
+      label: "Badges",
+      list: true,
+      ui: {
+        itemProps: (item: { label?: string }) => ({
+          label: item?.label || "Nuevo badge",
+        }),
+        max: LIMITS.MAX_BADGES,
+      },
+      fields: [
+        { type: "string", name: "logo", label: "Logo", description: "Ruta de imagen (ej: /images/logo.png)" },
+        { type: "string", name: "label", label: "Texto/Licencia" },
+      ],
+    },
+  ],
+};
+
+// Testimonials Section
+const testimonialsSectionTemplate: Template = {
+  name: "testimonials",
+  label: "Testimoniales",
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
+    {
+      type: "object",
+      name: "videos",
+      label: "Videos",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo testimonio",
+        }),
+        max: LIMITS.MAX_TESTIMONIALS,
+      },
+      fields: testimonialVideoTemplate.fields,
+    },
+    ...ctaFields,
+    { type: "string", name: "moreText", label: "Texto Ver Mas" },
+    { type: "string", name: "moreLink", label: "Enlace Ver Mas" },
+  ],
+};
+
+// Problem Section
+const problemSectionTemplate: Template = {
+  name: "problem",
+  label: "Problema (Por que perdemos cabello)",
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    { type: "string", name: "stat", label: "Estadistica Principal" },
+    { type: "string", name: "statDescription", label: "Descripcion de la Estadistica", ui: { component: "textarea" } },
+    { type: "string", name: "explanation", label: "Explicacion Cientifica", ui: { component: "textarea" } },
+    { type: "string", name: "illustration", label: "Ilustracion DHT", description: "Ruta de imagen (ej: /images/dht.svg)" },
+    {
+      type: "object",
+      name: "hairLossTypes",
+      label: "Tipos de Alopecia",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo tipo",
+        }),
+        max: 4,
+      },
+      fields: [
+        {
+          type: "string",
+          name: "name",
+          label: "Tipo",
+          options: [
+            { value: "Entradas y coronilla", label: "Entradas y coronilla" },
+            { value: "Coronilla", label: "Coronilla" },
+            { value: "Entradas", label: "Entradas" },
+            { value: "Difusa", label: "Difusa" },
+          ],
+        },
+        { type: "string", name: "icon", label: "Icono", description: "Ruta de icono (ej: /images/icons/icon.svg)" },
+      ],
+    },
+  ],
+};
+
+// Products Section
+const productsSectionTemplate: Template = {
+  name: "products",
+  label: "Productos",
+  fields: [
+    { type: "string", name: "headline", label: "Titulo", ui: { component: "textarea" } },
+    {
+      type: "object",
+      name: "items",
+      label: "Lista de Productos",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo producto",
+        }),
+        max: LIMITS.MAX_PRODUCTS,
+      },
+      fields: productTemplate.fields,
+    },
+  ],
+};
+
+// Ingredients Section
+const ingredientsSectionTemplate: Template = {
+  name: "ingredients",
+  label: "Ingredientes",
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    {
+      type: "object",
+      name: "items",
+      label: "Lista de Ingredientes",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo ingrediente",
+        }),
+        max: LIMITS.MAX_INGREDIENTS,
+      },
+      fields: ingredientTemplate.fields,
+    },
+    ...ctaFields,
+  ],
+};
+
+// Effectiveness Section
+const effectivenessSectionTemplate: Template = {
+  name: "effectiveness",
+  label: "Efectividad",
+  fields: [
+    { type: "string", name: "headline", label: "Titulo", ui: { component: "textarea" } },
+    { type: "string", name: "chartTitle", label: "Titulo del Grafico" },
+    {
+      type: "object",
+      name: "stats",
+      label: "Estadisticas",
+      list: true,
+      ui: {
+        itemProps: (item: { label?: string; percentage?: number }) => ({
+          label: item?.label ? `${item.label}: ${item.percentage}%` : "Nueva estadistica",
+        }),
+        max: LIMITS.MAX_STATS,
+      },
+      fields: [
+        { type: "string", name: "label", label: "Etiqueta" },
+        { type: "number", name: "percentage", label: "Porcentaje (0-100)" },
+      ],
+    },
+    { type: "string", name: "conclusion", label: "Conclusion", ui: { component: "textarea" } },
+    { type: "string", name: "sourcesTitle", label: "Titulo de Fuentes" },
+    { type: "string", name: "sources", label: "Fuentes/Referencias", ui: { component: "textarea" } },
+    ...ctaFields,
+  ],
+};
+
+// Why Choose Section
+const whyChooseSectionTemplate: Template = {
+  name: "whyChoose",
+  label: "Por Que Elegirnos",
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    {
+      type: "object",
+      name: "valueProps",
+      label: "Propuestas de Valor",
+      list: true,
+      ui: {
+        itemProps: (item: { title?: string }) => ({
+          label: item?.title || "Nueva propuesta",
+        }),
+        max: LIMITS.MAX_VALUE_PROPS,
+      },
+      fields: valuePropTemplate.fields,
+    },
+    ...ctaFields,
+  ],
+};
+
+// Guarantee Section
+const guaranteeSectionTemplate: Template = {
+  name: "guarantee",
+  label: "Garantia",
+  fields: [
+    { type: "string", name: "days", label: "Dias de Garantia" },
+    { type: "string", name: "headline", label: "Titulo" },
+    { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+  ],
+};
+
+// How It Works Section
+const howItWorksSectionTemplate: Template = {
+  name: "howItWorks",
+  label: "Como Funciona",
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    {
+      type: "object",
+      name: "steps",
+      label: "Pasos",
+      list: true,
+      ui: {
+        itemProps: (item: { title?: string }) => ({
+          label: item?.title || "Nuevo paso",
+        }),
+        max: LIMITS.MAX_STEPS,
+      },
+      fields: stepTemplate.fields,
+    },
+    ...ctaFields,
+  ],
+};
+
+// Final CTA Section
+const finalCtaSectionTemplate: Template = {
+  name: "finalCta",
+  label: "CTA Final",
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
+    ...ctaFields,
+  ],
+};
+
+// Activos Section
+const activosSectionTemplate: Template = {
+  name: "activos",
+  label: "Activos Cientificos",
+  ui: {
+    defaultItem: {
+      headline: "Utilizamos activos de calidad y con",
+      highlightText: "evidencia científica",
+      ctaText: "Encontrar mi fórmula personalizada",
+      ctaLink: "/quiz",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo" },
+    { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: evidencia científica)" },
+    { type: "string", name: "ctaText", label: "Texto del Boton" },
+    { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+    {
+      type: "object",
+      name: "activos",
+      label: "Activos",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo activo",
+        }),
+        max: 6,
+      },
+      fields: [
+        { type: "string", name: "name", label: "Nombre del Activo", required: true },
+        { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+        { type: "string", name: "image", label: "Imagen", description: "Ruta de imagen (ej: /images/activos/dutasterida.png)" },
+      ],
+    },
+  ],
+};
+
+// Formulas Section
+const formulasSectionTemplate: Template = {
+  name: "formulas",
+  label: "Formulas Personalizadas",
+  ui: {
+    defaultItem: {
+      headline: "Creamos",
+      highlightText: "fórmulas personalizadas",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo (ej: Creamos)" },
+    { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: fórmulas personalizadas)" },
+    {
+      type: "object",
+      name: "formulas",
+      label: "Formulas",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nueva formula",
+        }),
+        max: 6,
+      },
+      fields: [
+        { type: "string", name: "name", label: "Nombre de la Formula", required: true, ui: { component: "textarea" } },
+        { type: "string", name: "image", label: "Imagen del Producto", description: "Ruta de imagen (ej: /images/products/capsulas.png)" },
+        {
+          type: "object",
+          name: "tags",
+          label: "Etiquetas",
+          list: true,
+          ui: {
+            itemProps: (item: { text?: string }) => ({
+              label: item?.text || "Nueva etiqueta",
+            }),
+            max: 3,
+          },
+          fields: [
+            { type: "string", name: "text", label: "Texto de la Etiqueta" },
+            {
+              type: "string",
+              name: "variant",
+              label: "Variante de Color",
+              options: [
+                { value: "purple", label: "Morado (tipo de producto)" },
+                { value: "blue", label: "Azul (beneficio)" },
+              ],
+            },
+          ],
+        },
+        { type: "string", name: "ctaText", label: "Texto del Boton" },
+        { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+      ],
+    },
+  ],
+};
+
+// Success Stories Section
+const successStoriesSectionTemplate: Template = {
+  name: "successStories",
+  label: "Casos de Exito (Before/After)",
+  ui: {
+    defaultItem: {
+      highlightText: "+20.000 personas",
+      normalText: "ya obtuvieron resultados",
+      ctaPrimaryText: "Comienza hoy",
+      ctaPrimaryLink: "/quiz",
+      ctaSecondaryText: "Ver mas casos de exito",
+      ctaSecondaryLink: "/casos-exito",
+    },
+  },
+  fields: [
+    { type: "string", name: "highlightText", label: "Texto Destacado (ej: +20.000 personas)" },
+    { type: "string", name: "normalText", label: "Texto Normal (ej: ya obtuvieron resultados)" },
+    { type: "string", name: "ctaPrimaryText", label: "Texto CTA Primario" },
+    { type: "string", name: "ctaPrimaryLink", label: "Enlace CTA Primario" },
+    { type: "string", name: "ctaSecondaryText", label: "Texto CTA Secundario" },
+    { type: "string", name: "ctaSecondaryLink", label: "Enlace CTA Secundario" },
+    {
+      type: "object",
+      name: "testimonials",
+      label: "Testimonios (Before/After)",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo testimonio",
+        }),
+        max: LIMITS.MAX_TESTIMONIALS,
+      },
+      fields: [
+        { type: "string", name: "name", label: "Nombre", required: true },
+        { type: "number", name: "age", label: "Edad" },
+        { type: "string", name: "quote", label: "Testimonio/Cita", ui: { component: "textarea" } },
+        { type: "string", name: "beforeImage", label: "Imagen Antes", description: "Ruta de imagen (ej: /images/testimonials/nombre-before.jpg)" },
+        { type: "string", name: "afterImage", label: "Imagen Despues", description: "Ruta de imagen (ej: /images/testimonials/nombre-after.jpg)" },
+        { type: "number", name: "monthsBefore", label: "Meses Antes (generalmente 0)" },
+        { type: "number", name: "monthsAfter", label: "Meses Despues (duracion del tratamiento)" },
+      ],
+    },
+  ],
+};
+
+// Video Testimonials Section
+const videoTestimonialsSectionTemplate: Template = {
+  name: "videoTestimonials",
+  label: "Video Testimonios (Nuestros Usuarios)",
+  ui: {
+    defaultItem: {
+      headline: "No lo decimos nosotros, lo dicen",
+      highlightText: "nuestros usuarios",
+      ctaText: "Comienza hoy",
+      ctaLink: "/quiz",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo" },
+    { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: nuestros usuarios)" },
+    { type: "string", name: "ctaText", label: "Texto del Boton (Mobile)" },
+    { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+    {
+      type: "object",
+      name: "videos",
+      label: "Videos",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo video",
+        }),
+        max: 6,
+      },
+      fields: [
+        { type: "string", name: "name", label: "Nombre del Usuario", required: true },
+        { type: "string", name: "backgroundImage", label: "Imagen de Fondo", description: "Ruta de imagen (ej: /images/testimonials/video-1.jpg)" },
+        { type: "string", name: "videoUrl", label: "URL del Video", description: "Link de YouTube, Vimeo o video directo" },
+      ],
+    },
+  ],
+};
+
+// How It Works New Section
+const howItWorksNewSectionTemplate: Template = {
+  name: "howItWorksNew",
+  label: "Como Funciona Choiz (Nuevo)",
+  ui: {
+    defaultItem: {
+      headline: "Cómo funciona Choiz",
+      ctaText: "Comenzar hoy",
+      ctaLink: "/quiz",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo", description: "Titulo de la seccion (ej: Cómo funciona Choiz)" },
+    { type: "string", name: "ctaText", label: "Texto del Boton" },
+    { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+    {
+      type: "object",
+      name: "steps",
+      label: "Pasos",
+      list: true,
+      ui: {
+        itemProps: (item: { title?: string }) => ({
+          label: item?.title || "Nuevo paso",
+        }),
+        max: 6,
+      },
+      fields: [
+        { type: "string", name: "title", label: "Titulo del Paso", required: true },
+        { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+        { type: "string", name: "image", label: "Imagen del Mockup", description: "Ruta de imagen del mockup del telefono (ej: /images/how-it-works/step-1.png)" },
+      ],
+    },
+  ],
+};
+
+// Final CTA New Section
+const finalCtaNewSectionTemplate: Template = {
+  name: "finalCtaNew",
+  label: "CTA Final (Nuevo con Imagen)",
+  ui: {
+    defaultItem: {
+      headline: "Recupera tu cabello y tu confianza con Choiz",
+      ctaText: "Comienza hoy",
+      ctaLink: "/quiz",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo", description: "Titulo principal (ej: Recupera tu cabello y tu confianza con Choiz)" },
+    { type: "string", name: "ctaText", label: "Texto del Boton" },
+    { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+    { type: "string", name: "backgroundImage", label: "Imagen de Fondo", description: "Ruta de imagen (ej: /images/final-cta-bg.jpg). 1024x318px recomendado para desktop" },
+  ],
+};
+
+// FAQ Section
+const faqSectionTemplate: Template = {
+  name: "faq",
+  label: "Preguntas Frecuentes (FAQ)",
+  ui: {
+    defaultItem: {
+      headline: "¿Tienes preguntas? Aquí te dejamos",
+      highlightText: "respuestas",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo", description: "Texto antes de la palabra resaltada" },
+    { type: "string", name: "highlightText", label: "Texto Resaltado", description: "Palabra en color morado (ej: respuestas)" },
+    {
+      type: "object",
+      name: "items",
+      label: "Preguntas",
+      list: true,
+      ui: {
+        itemProps: (item: { question?: string }) => ({
+          label: item?.question || "Nueva pregunta",
+        }),
+      },
+      fields: [
+        { type: "string", name: "question", label: "Pregunta" },
+        { type: "string", name: "answer", label: "Respuesta", ui: { component: "textarea" } },
+      ],
+    },
+  ],
+};
+
+// Footer New Section
+const footerNewSectionTemplate: Template = {
+  name: "footerNew",
+  label: "Footer (Nuevo)",
+  ui: {
+    defaultItem: {
+      appTitle: "Tu salud en un solo lugar",
+      appSubtitle: "Descarga la app",
+      phone: "+52 1 55 9225 6335",
+      email: "hola@choiz.com.mx",
+      hoursLabel: "Lunes a Viernes",
+      hoursValue: "07 a 22 hs",
+      cofeprisCode: "COFEPRIS 2421055036X00214",
+      copyright: "© CHOIZ XCALE HEALTH S.A de C.V.. Todos los derechos reservados.",
+    },
+  },
+  fields: [
+    // App Promo
+    { type: "string", name: "appTitle", label: "Titulo App" },
+    { type: "string", name: "appSubtitle", label: "Subtitulo App" },
+    { type: "string", name: "appImage", label: "Imagen App", description: "Mockup del telefono" },
+    // Company Links
+    {
+      type: "object",
+      name: "companyLinks",
+      label: "Links Compañia",
+      list: true,
+      fields: [
+        { type: "string", name: "text", label: "Texto" },
+        { type: "string", name: "url", label: "URL" },
+      ],
+    },
+    // Founders
+    {
+      type: "object",
+      name: "founders",
+      label: "Fundadores",
+      list: true,
+      fields: [
+        { type: "string", name: "name", label: "Nombre" },
+      ],
+    },
+    // Resource Links
+    {
+      type: "object",
+      name: "resourceLinks",
+      label: "Links Recursos",
+      list: true,
+      fields: [
+        { type: "string", name: "text", label: "Texto" },
+        { type: "string", name: "url", label: "URL" },
+      ],
+    },
+    // Contact
+    { type: "string", name: "phone", label: "Telefono" },
+    { type: "string", name: "email", label: "Email" },
+    // Hours
+    { type: "string", name: "hoursLabel", label: "Dias Atencion" },
+    { type: "string", name: "hoursValue", label: "Horario" },
+    // Treatment Links
+    {
+      type: "object",
+      name: "treatmentLinks",
+      label: "Links Tratamientos",
+      list: true,
+      fields: [
+        { type: "string", name: "text", label: "Texto" },
+        { type: "string", name: "url", label: "URL" },
+      ],
+    },
+    // Legal Links
+    {
+      type: "object",
+      name: "legalLinks",
+      label: "Links Legales",
+      list: true,
+      fields: [
+        { type: "string", name: "text", label: "Texto" },
+        { type: "string", name: "url", label: "URL" },
+      ],
+    },
+    { type: "string", name: "cofeprisCode", label: "Codigo COFEPRIS" },
+    // Social Links
+    {
+      type: "object",
+      name: "socialLinks",
+      label: "Redes Sociales",
+      list: true,
+      fields: [
+        { type: "string", name: "platform", label: "Plataforma", options: ["instagram", "facebook", "tiktok", "linkedin"] },
+        { type: "string", name: "url", label: "URL" },
+      ],
+    },
+    { type: "string", name: "copyright", label: "Copyright" },
+    { type: "string", name: "logoImage", label: "Imagen Logo Footer", description: "Logo grande al final del footer" },
+  ],
+};
+
+// Hero Video Section
+const heroVideoSectionTemplate: Template = {
+  name: "heroVideo",
+  label: "Hero con Video",
+  ui: {
+    defaultItem: {
+      variant: "background",
+      headline: "Recupera tu cabello con ciencia",
+      ctaText: "Comenzar ahora",
+      ctaLink: "/quiz",
+    },
+  },
+  fields: [
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "fullscreen", label: "Pantalla completa" },
+        { value: "background", label: "Video de fondo" },
+        { value: "inline", label: "Video al lado del texto" },
+      ],
+    },
+    { type: "string", name: "badge", label: "Badge Superior" },
+    { type: "string", name: "headline", label: "Titulo", ui: { component: "textarea" } },
+    { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
+    ...ctaFields,
+    { type: "string", name: "videoUrl", label: "URL del Video", description: "YouTube, Vimeo o video directo" },
+    { type: "string", name: "posterImage", label: "Imagen de Respaldo", description: "Imagen mientras carga el video" },
+  ],
+};
+
+// Stats Section
+const statsSectionTemplate: Template = {
+  name: "stats",
+  label: "Estadisticas (Numeros Grandes)",
+  ui: {
+    defaultItem: {
+      headline: "Nuestros resultados hablan por si solos",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "default", label: "Normal" },
+        { value: "cards", label: "Tarjetas" },
+        { value: "minimal", label: "Minimalista" },
+      ],
+    },
+    {
+      type: "object",
+      name: "stats",
+      label: "Estadisticas",
+      list: true,
+      ui: {
+        itemProps: (item: { label?: string }) => ({
+          label: item?.label || "Nueva estadistica",
+        }),
+        max: 4,
+      },
+      fields: [
+        { type: "string", name: "value", label: "Valor (ej: +10,000)", required: true },
+        { type: "string", name: "label", label: "Descripcion" },
+        { type: "string", name: "icon", label: "Icono (opcional)" },
+      ],
+    },
+  ],
+};
+
+// CTA Timer Section
+const ctaTimerSectionTemplate: Template = {
+  name: "ctaTimer",
+  label: "CTA con Cuenta Regresiva",
+  ui: {
+    defaultItem: {
+      variant: "countdown",
+      headline: "Oferta por tiempo limitado",
+      ctaText: "Aprovechar ahora",
+      ctaLink: "/quiz",
+    },
+  },
+  fields: [
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "countdown", label: "Cuenta regresiva grande" },
+        { value: "urgency", label: "Texto de urgencia" },
+        { value: "limited", label: "Stock limitado" },
+      ],
+    },
+    { type: "string", name: "headline", label: "Titulo" },
+    { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
+    { type: "datetime", name: "endDate", label: "Fecha de Fin", description: "Cuando termina la oferta" },
+    ...ctaFields,
+    { type: "string", name: "limitedText", label: "Texto de Stock (solo variante limited)", description: "Ej: Solo 10 lugares disponibles" },
+  ],
+};
+
+// Press Logos Section
+const pressLogosSectionTemplate: Template = {
+  name: "pressLogos",
+  label: "Logos de Prensa/Medios",
+  ui: {
+    defaultItem: {
+      headline: "Como se ha visto en",
+      variant: "static",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "static", label: "Estatico" },
+        { value: "slider", label: "Carrusel automatico" },
+      ],
+    },
+    {
+      type: "object",
+      name: "logos",
+      label: "Logos",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo logo",
+        }),
+        max: 10,
+      },
+      fields: [
+        { type: "string", name: "image", label: "Imagen del Logo", required: true },
+        { type: "string", name: "name", label: "Nombre del Medio", required: true },
+        { type: "string", name: "url", label: "URL del Articulo (opcional)" },
+      ],
+    },
+  ],
+};
+
+// Product Comparison Section
+const productComparisonSectionTemplate: Template = {
+  name: "productComparison",
+  label: "Comparacion de Productos",
+  ui: {
+    defaultItem: {
+      headline: "Compara nuestros kits",
+      variant: "table",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "table", label: "Tabla" },
+        { value: "cards", label: "Tarjetas" },
+      ],
+    },
+    {
+      type: "object",
+      name: "products",
+      label: "Productos",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo producto",
+        }),
+        max: 4,
+      },
+      fields: [
+        { type: "string", name: "name", label: "Nombre", required: true },
+        { type: "string", name: "price", label: "Precio" },
+        { type: "string", name: "priceNote", label: "Nota del Precio (ej: /mes)" },
+        { type: "string", name: "ctaText", label: "Texto del Boton" },
+        { type: "string", name: "ctaLink", label: "Enlace" },
+        { type: "boolean", name: "isRecommended", label: "Es Recomendado?" },
+      ],
+    },
+    {
+      type: "object",
+      name: "features",
+      label: "Caracteristicas a Comparar",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nueva caracteristica",
+        }),
+      },
+      fields: [
+        { type: "string", name: "name", label: "Nombre de la Caracteristica", required: true },
+        {
+          type: "object",
+          name: "included",
+          label: "Incluido por Producto",
+          list: true,
+          fields: [
+            { type: "boolean", name: "value", label: "Incluido?" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+// Before After Section
+const beforeAfterSectionTemplate: Template = {
+  name: "beforeAfter",
+  label: "Antes/Despues (Slider)",
+  ui: {
+    defaultItem: {
+      headline: "Resultados reales de clientes",
+      subheadline: "Desliza para comparar",
+      variant: "slider",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    { type: "string", name: "subheadline", label: "Subtitulo" },
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "slider", label: "Slider (deslizable)" },
+        { value: "sideBySide", label: "Lado a lado" },
+        { value: "grid", label: "Cuadricula (multiples casos)" },
+      ],
+    },
+    {
+      type: "object",
+      name: "cases",
+      label: "Casos Before/After",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo caso",
+        }),
+        max: 6,
+      },
+      fields: [
+        { type: "string", name: "beforeImage", label: "Imagen Antes", required: true },
+        { type: "string", name: "afterImage", label: "Imagen Despues", required: true },
+        { type: "string", name: "name", label: "Nombre del Cliente" },
+        { type: "string", name: "duration", label: "Duracion del Tratamiento (ej: 6 meses)" },
+        { type: "string", name: "product", label: "Producto Usado" },
+        { type: "string", name: "testimonial", label: "Testimonio", ui: { component: "textarea" } },
+      ],
+    },
+  ],
+};
+
+// Benefits Section
+const benefitsSectionTemplate: Template = {
+  name: "benefits",
+  label: "Beneficios (Por que elegirnos)",
+  ui: {
+    defaultItem: {
+      headline: "¿Por que elegir Choiz?",
+      variant: "default",
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "default", label: "Grid con iconos" },
+        { value: "cards", label: "Tarjetas elevadas" },
+        { value: "list", label: "Lista compacta" },
+        { value: "comparison", label: "Comparacion (nosotros vs otros)" },
+      ],
+    },
+    { type: "string", name: "competitorName", label: "Nombre del Competidor (solo variante comparison)", description: "Ej: Otros, Competencia, Tratamientos tradicionales" },
+    {
+      type: "object",
+      name: "benefits",
+      label: "Lista de Beneficios",
+      list: true,
+      ui: {
+        itemProps: (item: { title?: string }) => ({
+          label: item?.title || "Nuevo beneficio",
+        }),
+        max: 8,
+      },
+      fields: [
+        { type: "string", name: "icon", label: "Icono (ruta de imagen)" },
+        { type: "string", name: "title", label: "Titulo", required: true },
+        { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+        { type: "boolean", name: "competitorHas", label: "El competidor lo tiene? (solo variante comparison)" },
+      ],
+    },
+  ],
+};
+
+// Guarantee New Section
+const guaranteeNewSectionTemplate: Template = {
+  name: "guaranteeNew",
+  label: "Garantia (Nuevo Diseño)",
+  ui: {
+    defaultItem: {
+      days: "180",
+      headline: "Garantia de exito asegurada",
+      description: "Si no ves resultados, te devolvemos tu dinero.",
+      variant: "default",
+    },
+  },
+  fields: [
+    { type: "string", name: "days", label: "Dias de Garantia" },
+    { type: "string", name: "headline", label: "Titulo" },
+    { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "default", label: "Normal (badge + texto)" },
+        { value: "centered", label: "Centrado" },
+        { value: "minimal", label: "Minimalista" },
+      ],
+    },
+    { type: "string", name: "ctaText", label: "Texto del Boton (opcional)" },
+    { type: "string", name: "ctaLink", label: "Enlace del Boton" },
+    { type: "string", name: "termsLink", label: "Enlace a Terminos", description: "Por defecto: /terminos" },
+  ],
+};
+
+// Reviews Section
+const reviewsSectionTemplate: Template = {
+  name: "reviews",
+  label: "Reviews y Calificaciones",
+  ui: {
+    defaultItem: {
+      headline: "Lo que dicen nuestros clientes",
+      variant: "stats",
+      averageRating: 4.8,
+      totalReviews: 1247,
+    },
+  },
+  fields: [
+    { type: "string", name: "headline", label: "Titulo" },
+    {
+      type: "string",
+      name: "variant",
+      label: "Variante",
+      options: [
+        { value: "compact", label: "Compacto (solo estrellas)" },
+        { value: "detailed", label: "Detallado (reviews completas)" },
+        { value: "stats", label: "Estadisticas (numero grande)" },
+      ],
+    },
+    { type: "number", name: "averageRating", label: "Rating Promedio (1-5)" },
+    { type: "number", name: "totalReviews", label: "Total de Reviews" },
+    {
+      type: "object",
+      name: "breakdown",
+      label: "Desglose por Estrellas",
+      list: true,
+      ui: { max: 5 },
+      fields: [
+        { type: "number", name: "stars", label: "Estrellas (1-5)" },
+        { type: "number", name: "percentage", label: "Porcentaje" },
+      ],
+    },
+    {
+      type: "object",
+      name: "reviews",
+      label: "Reviews Individuales",
+      list: true,
+      ui: {
+        itemProps: (item: { name?: string }) => ({
+          label: item?.name || "Nuevo review",
+        }),
+        max: 10,
+      },
+      fields: [
+        { type: "string", name: "name", label: "Nombre", required: true },
+        { type: "string", name: "date", label: "Fecha" },
+        { type: "number", name: "rating", label: "Calificacion (1-5)" },
+        { type: "string", name: "text", label: "Texto del Review", ui: { component: "textarea" } },
+        { type: "string", name: "productName", label: "Producto (opcional)" },
+      ],
+    },
+  ],
+};
+
+// ============================================
+// ARRAY DE TEMPLATES REUTILIZABLE
+// ============================================
+
+const sectionTemplates: Template[] = [
+  heroSectionTemplate,
+  certificationsSectionTemplate,
+  testimonialsSectionTemplate,
+  problemSectionTemplate,
+  productsSectionTemplate,
+  ingredientsSectionTemplate,
+  effectivenessSectionTemplate,
+  whyChooseSectionTemplate,
+  guaranteeSectionTemplate,
+  howItWorksSectionTemplate,
+  finalCtaSectionTemplate,
+  activosSectionTemplate,
+  formulasSectionTemplate,
+  successStoriesSectionTemplate,
+  videoTestimonialsSectionTemplate,
+  howItWorksNewSectionTemplate,
+  finalCtaNewSectionTemplate,
+  faqSectionTemplate,
+  footerNewSectionTemplate,
+  heroVideoSectionTemplate,
+  statsSectionTemplate,
+  ctaTimerSectionTemplate,
+  pressLogosSectionTemplate,
+  productComparisonSectionTemplate,
+  beforeAfterSectionTemplate,
+  benefitsSectionTemplate,
+  guaranteeNewSectionTemplate,
+  reviewsSectionTemplate,
+];
+
+// ============================================
+// BLOQUES DE SECCION LEGACY (para bloques reutilizables)
 // ============================================
 
 // Bloque: Hero con Imagen
@@ -790,1040 +1884,226 @@ export default defineConfig({
             label: "Secciones de la Pagina",
             description: "Arrastra para reordenar las secciones",
             list: true,
-            templates: [
-              // HERO
-              {
-                name: "hero",
-                label: "Hero Section",
-                ui: {
-                  defaultItem: {
-                    badge: "+20,000 personas ya vieron resultados",
-                    headline: "El tratamiento mas efectivo de Mexico para la caida del cabello",
-                    ctaText: "Comienza hoy",
-                    ctaLink: "/quiz",
-                    priceText: "Desde $467/mes",
-                  },
-                },
-                fields: [
-                  {
-                    type: "string",
-                    name: "badge",
-                    label: "Badge Superior",
-                    description: "Texto que aparece en el badge (ej: +20,000 personas ya vieron resultados)",
-                  },
-                  {
-                    type: "string",
-                    name: "headline",
-                    label: "Titulo Principal",
-                    ui: { component: "textarea" },
-                    description: "Titulo principal del hero (max 100 caracteres recomendado)",
-                  },
-                  {
-                    type: "object",
-                    name: "benefits",
-                    label: "Lista de Beneficios",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { text?: string }) => ({
-                        label: item?.text || "Nuevo beneficio",
-                      }),
-                      max: LIMITS.MAX_BENEFITS,
-                    },
-                    fields: [
-                      {
-                        type: "string",
-                        name: "text",
-                        label: "Texto",
-                      },
-                    ],
-                  },
-                  ...ctaFields,
-                  {
-                    type: "string",
-                    name: "priceText",
-                    label: "Texto de Precio",
-                    description: "Texto que aparece junto al boton (ej: Desde $467/mes)",
-                  },
-                  {
-                    type: "string",
-                    name: "backgroundImage",
-                    label: "Imagen de Fondo",
-                    description: "Ruta de imagen (ej: /images/hero-background.jpg)",
-                  },
-                ],
-              },
-              // CERTIFICACIONES
-              {
-                name: "certifications",
-                label: "Certificaciones",
-                fields: [
-                  {
-                    type: "string",
-                    name: "title",
-                    label: "Titulo",
-                  },
-                  {
-                    type: "object",
-                    name: "badges",
-                    label: "Badges",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { label?: string }) => ({
-                        label: item?.label || "Nuevo badge",
-                      }),
-                      max: LIMITS.MAX_BADGES,
-                    },
-                    fields: [
-                      { type: "string", name: "logo", label: "Logo", description: "Ruta de imagen (ej: /images/logo.png)" },
-                      { type: "string", name: "label", label: "Texto/Licencia" },
-                    ],
-                  },
-                ],
-              },
-              // TESTIMONIALES
-              {
-                name: "testimonials",
-                label: "Testimoniales",
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
-                  {
-                    type: "object",
-                    name: "videos",
-                    label: "Videos",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo testimonio",
-                      }),
-                      max: LIMITS.MAX_TESTIMONIALS,
-                    },
-                    fields: testimonialVideoTemplate.fields,
-                  },
-                  ...ctaFields,
-                  { type: "string", name: "moreText", label: "Texto Ver Mas" },
-                  { type: "string", name: "moreLink", label: "Enlace Ver Mas" },
-                ],
-              },
-              // PROBLEMA
-              {
-                name: "problem",
-                label: "Problema (Por que perdemos cabello)",
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  { type: "string", name: "stat", label: "Estadistica Principal" },
-                  { type: "string", name: "statDescription", label: "Descripcion de la Estadistica", ui: { component: "textarea" } },
-                  { type: "string", name: "explanation", label: "Explicacion Cientifica", ui: { component: "textarea" } },
-                  { type: "string", name: "illustration", label: "Ilustracion DHT", description: "Ruta de imagen (ej: /images/dht.svg)" },
-                  {
-                    type: "object",
-                    name: "hairLossTypes",
-                    label: "Tipos de Alopecia",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo tipo",
-                      }),
-                      max: 4,
-                    },
-                    fields: [
-                      {
-                        type: "string",
-                        name: "name",
-                        label: "Tipo",
-                        options: [
-                          { value: "Entradas y coronilla", label: "Entradas y coronilla" },
-                          { value: "Coronilla", label: "Coronilla" },
-                          { value: "Entradas", label: "Entradas" },
-                          { value: "Difusa", label: "Difusa" },
-                        ],
-                      },
-                      { type: "string", name: "icon", label: "Icono", description: "Ruta de icono (ej: /images/icons/icon.svg)" },
-                    ],
-                  },
-                ],
-              },
-              // PRODUCTOS
-              {
-                name: "products",
-                label: "Productos",
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo", ui: { component: "textarea" } },
-                  {
-                    type: "object",
-                    name: "items",
-                    label: "Lista de Productos",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo producto",
-                      }),
-                      max: LIMITS.MAX_PRODUCTS,
-                    },
-                    fields: productTemplate.fields,
-                  },
-                ],
-              },
-              // INGREDIENTES
-              {
-                name: "ingredients",
-                label: "Ingredientes",
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  {
-                    type: "object",
-                    name: "items",
-                    label: "Lista de Ingredientes",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo ingrediente",
-                      }),
-                      max: LIMITS.MAX_INGREDIENTS,
-                    },
-                    fields: ingredientTemplate.fields,
-                  },
-                  ...ctaFields,
-                ],
-              },
-              // EFECTIVIDAD
-              {
-                name: "effectiveness",
-                label: "Efectividad",
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo", ui: { component: "textarea" } },
-                  { type: "string", name: "chartTitle", label: "Titulo del Grafico" },
-                  {
-                    type: "object",
-                    name: "stats",
-                    label: "Estadisticas",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { label?: string; percentage?: number }) => ({
-                        label: item?.label ? `${item.label}: ${item.percentage}%` : "Nueva estadistica",
-                      }),
-                      max: LIMITS.MAX_STATS,
-                    },
-                    fields: [
-                      { type: "string", name: "label", label: "Etiqueta" },
-                      { type: "number", name: "percentage", label: "Porcentaje (0-100)" },
-                    ],
-                  },
-                  { type: "string", name: "conclusion", label: "Conclusion", ui: { component: "textarea" } },
-                  { type: "string", name: "sourcesTitle", label: "Titulo de Fuentes" },
-                  { type: "string", name: "sources", label: "Fuentes/Referencias", ui: { component: "textarea" } },
-                  ...ctaFields,
-                ],
-              },
-              // POR QUE ELEGIRNOS
-              {
-                name: "whyChoose",
-                label: "Por Que Elegirnos",
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  {
-                    type: "object",
-                    name: "valueProps",
-                    label: "Propuestas de Valor",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { title?: string }) => ({
-                        label: item?.title || "Nueva propuesta",
-                      }),
-                      max: LIMITS.MAX_VALUE_PROPS,
-                    },
-                    fields: valuePropTemplate.fields,
-                  },
-                  ...ctaFields,
-                ],
-              },
-              // GARANTIA
-              {
-                name: "guarantee",
-                label: "Garantia",
-                fields: [
-                  { type: "string", name: "days", label: "Dias de Garantia" },
-                  { type: "string", name: "headline", label: "Titulo" },
-                  { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-                ],
-              },
-              // COMO FUNCIONA
-              {
-                name: "howItWorks",
-                label: "Como Funciona",
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  {
-                    type: "object",
-                    name: "steps",
-                    label: "Pasos",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { title?: string }) => ({
-                        label: item?.title || "Nuevo paso",
-                      }),
-                      max: LIMITS.MAX_STEPS,
-                    },
-                    fields: stepTemplate.fields,
-                  },
-                  ...ctaFields,
-                ],
-              },
-              // CTA FINAL
-              {
-                name: "finalCta",
-                label: "CTA Final",
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
-                  ...ctaFields,
-                ],
-              },
-              // ACTIVOS (INGREDIENTES CIENTIFICOS)
-              {
-                name: "activos",
-                label: "Activos Cientificos",
-                ui: {
-                  defaultItem: {
-                    headline: "Utilizamos activos de calidad y con",
-                    highlightText: "evidencia científica",
-                    ctaText: "Encontrar mi fórmula personalizada",
-                    ctaLink: "/quiz",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo" },
-                  { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: evidencia científica)" },
-                  { type: "string", name: "ctaText", label: "Texto del Boton" },
-                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
-                  {
-                    type: "object",
-                    name: "activos",
-                    label: "Activos",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo activo",
-                      }),
-                      max: 6,
-                    },
-                    fields: [
-                      { type: "string", name: "name", label: "Nombre del Activo", required: true },
-                      { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-                      { type: "string", name: "image", label: "Imagen", description: "Ruta de imagen (ej: /images/activos/dutasterida.png)" },
-                    ],
-                  },
-                ],
-              },
-              // FORMULAS PERSONALIZADAS
-              {
-                name: "formulas",
-                label: "Formulas Personalizadas",
-                ui: {
-                  defaultItem: {
-                    headline: "Creamos",
-                    highlightText: "fórmulas personalizadas",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo (ej: Creamos)" },
-                  { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: fórmulas personalizadas)" },
-                  {
-                    type: "object",
-                    name: "formulas",
-                    label: "Formulas",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nueva formula",
-                      }),
-                      max: 6,
-                    },
-                    fields: [
-                      { type: "string", name: "name", label: "Nombre de la Formula", required: true, ui: { component: "textarea" } },
-                      { type: "string", name: "image", label: "Imagen del Producto", description: "Ruta de imagen (ej: /images/products/capsulas.png)" },
-                      {
-                        type: "object",
-                        name: "tags",
-                        label: "Etiquetas",
-                        list: true,
-                        ui: {
-                          itemProps: (item: { text?: string }) => ({
-                            label: item?.text || "Nueva etiqueta",
-                          }),
-                          max: 3,
-                        },
-                        fields: [
-                          { type: "string", name: "text", label: "Texto de la Etiqueta" },
-                          {
-                            type: "string",
-                            name: "variant",
-                            label: "Variante de Color",
-                            options: [
-                              { value: "purple", label: "Morado (tipo de producto)" },
-                              { value: "blue", label: "Azul (beneficio)" },
-                            ],
-                          },
-                        ],
-                      },
-                      { type: "string", name: "ctaText", label: "Texto del Boton" },
-                      { type: "string", name: "ctaLink", label: "Enlace del Boton" },
-                    ],
-                  },
-                ],
-              },
-              // CASOS DE EXITO (Before/After)
-              {
-                name: "successStories",
-                label: "Casos de Exito (Before/After)",
-                ui: {
-                  defaultItem: {
-                    highlightText: "+20.000 personas",
-                    normalText: "ya obtuvieron resultados",
-                    ctaPrimaryText: "Comienza hoy",
-                    ctaPrimaryLink: "/quiz",
-                    ctaSecondaryText: "Ver mas casos de exito",
-                    ctaSecondaryLink: "/casos-exito",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "highlightText", label: "Texto Destacado (ej: +20.000 personas)" },
-                  { type: "string", name: "normalText", label: "Texto Normal (ej: ya obtuvieron resultados)" },
-                  { type: "string", name: "ctaPrimaryText", label: "Texto CTA Primario" },
-                  { type: "string", name: "ctaPrimaryLink", label: "Enlace CTA Primario" },
-                  { type: "string", name: "ctaSecondaryText", label: "Texto CTA Secundario" },
-                  { type: "string", name: "ctaSecondaryLink", label: "Enlace CTA Secundario" },
-                  {
-                    type: "object",
-                    name: "testimonials",
-                    label: "Testimonios (Before/After)",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo testimonio",
-                      }),
-                      max: LIMITS.MAX_TESTIMONIALS,
-                    },
-                    fields: [
-                      { type: "string", name: "name", label: "Nombre", required: true },
-                      { type: "number", name: "age", label: "Edad" },
-                      { type: "string", name: "quote", label: "Testimonio/Cita", ui: { component: "textarea" } },
-                      { type: "string", name: "beforeImage", label: "Imagen Antes", description: "Ruta de imagen (ej: /images/testimonials/nombre-before.jpg)" },
-                      { type: "string", name: "afterImage", label: "Imagen Despues", description: "Ruta de imagen (ej: /images/testimonials/nombre-after.jpg)" },
-                      { type: "number", name: "monthsBefore", label: "Meses Antes (generalmente 0)" },
-                      { type: "number", name: "monthsAfter", label: "Meses Despues (duracion del tratamiento)" },
-                    ],
-                  },
-                ],
-              },
-              // VIDEO TESTIMONIOS (nuestros usuarios)
-              {
-                name: "videoTestimonials",
-                label: "Video Testimonios (Nuestros Usuarios)",
-                ui: {
-                  defaultItem: {
-                    headline: "No lo decimos nosotros, lo dicen",
-                    highlightText: "nuestros usuarios",
-                    ctaText: "Comienza hoy",
-                    ctaLink: "/quiz",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo (parte 1)", description: "Primera parte del titulo" },
-                  { type: "string", name: "highlightText", label: "Texto Destacado", description: "Texto en morado (ej: nuestros usuarios)" },
-                  { type: "string", name: "ctaText", label: "Texto del Boton (Mobile)" },
-                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
-                  {
-                    type: "object",
-                    name: "videos",
-                    label: "Videos",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo video",
-                      }),
-                      max: 6,
-                    },
-                    fields: [
-                      { type: "string", name: "name", label: "Nombre del Usuario", required: true },
-                      { type: "string", name: "backgroundImage", label: "Imagen de Fondo", description: "Ruta de imagen (ej: /images/testimonials/video-1.jpg)" },
-                      { type: "string", name: "videoUrl", label: "URL del Video", description: "Link de YouTube, Vimeo o video directo" },
-                    ],
-                  },
-                ],
-              },
-              // COMO FUNCIONA CHOIZ (nuevo diseño con phone mockups)
-              {
-                name: "howItWorksNew",
-                label: "Como Funciona Choiz (Nuevo)",
-                ui: {
-                  defaultItem: {
-                    headline: "Cómo funciona Choiz",
-                    ctaText: "Comenzar hoy",
-                    ctaLink: "/quiz",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo", description: "Titulo de la seccion (ej: Cómo funciona Choiz)" },
-                  { type: "string", name: "ctaText", label: "Texto del Boton" },
-                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
-                  {
-                    type: "object",
-                    name: "steps",
-                    label: "Pasos",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { title?: string }) => ({
-                        label: item?.title || "Nuevo paso",
-                      }),
-                      max: 6,
-                    },
-                    fields: [
-                      { type: "string", name: "title", label: "Titulo del Paso", required: true },
-                      { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-                      { type: "string", name: "image", label: "Imagen del Mockup", description: "Ruta de imagen del mockup del telefono (ej: /images/how-it-works/step-1.png)" },
-                    ],
-                  },
-                ],
-              },
-              // CTA FINAL NUEVO (con imagen de fondo)
-              {
-                name: "finalCtaNew",
-                label: "CTA Final (Nuevo con Imagen)",
-                ui: {
-                  defaultItem: {
-                    headline: "Recupera tu cabello y tu confianza con Choiz",
-                    ctaText: "Comienza hoy",
-                    ctaLink: "/quiz",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo", description: "Titulo principal (ej: Recupera tu cabello y tu confianza con Choiz)" },
-                  { type: "string", name: "ctaText", label: "Texto del Boton" },
-                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
-                  { type: "string", name: "backgroundImage", label: "Imagen de Fondo", description: "Ruta de imagen (ej: /images/final-cta-bg.jpg). 1024x318px recomendado para desktop" },
-                ],
-              },
-              // FAQ - PREGUNTAS FRECUENTES
-              {
-                name: "faq",
-                label: "Preguntas Frecuentes (FAQ)",
-                ui: {
-                  defaultItem: {
-                    headline: "¿Tienes preguntas? Aquí te dejamos",
-                    highlightText: "respuestas",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo", description: "Texto antes de la palabra resaltada" },
-                  { type: "string", name: "highlightText", label: "Texto Resaltado", description: "Palabra en color morado (ej: respuestas)" },
-                  {
-                    type: "object",
-                    name: "items",
-                    label: "Preguntas",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { question?: string }) => ({
-                        label: item?.question || "Nueva pregunta",
-                      }),
-                    },
-                    fields: [
-                      { type: "string", name: "question", label: "Pregunta" },
-                      { type: "string", name: "answer", label: "Respuesta", ui: { component: "textarea" } },
-                    ],
-                  },
-                ],
-              },
-              // FOOTER NUEVO
-              {
-                name: "footerNew",
-                label: "Footer (Nuevo)",
-                ui: {
-                  defaultItem: {
-                    appTitle: "Tu salud en un solo lugar",
-                    appSubtitle: "Descarga la app",
-                    phone: "+52 1 55 9225 6335",
-                    email: "hola@choiz.com.mx",
-                    hoursLabel: "Lunes a Viernes",
-                    hoursValue: "07 a 22 hs",
-                    cofeprisCode: "COFEPRIS 2421055036X00214",
-                    copyright: "© CHOIZ XCALE HEALTH S.A de C.V.. Todos los derechos reservados.",
-                  },
-                },
-                fields: [
-                  // App Promo
-                  { type: "string", name: "appTitle", label: "Titulo App" },
-                  { type: "string", name: "appSubtitle", label: "Subtitulo App" },
-                  { type: "string", name: "appImage", label: "Imagen App", description: "Mockup del telefono" },
-                  // Company Links
-                  {
-                    type: "object",
-                    name: "companyLinks",
-                    label: "Links Compañia",
-                    list: true,
-                    fields: [
-                      { type: "string", name: "text", label: "Texto" },
-                      { type: "string", name: "url", label: "URL" },
-                    ],
-                  },
-                  // Founders
-                  {
-                    type: "object",
-                    name: "founders",
-                    label: "Fundadores",
-                    list: true,
-                    fields: [
-                      { type: "string", name: "name", label: "Nombre" },
-                    ],
-                  },
-                  // Resource Links
-                  {
-                    type: "object",
-                    name: "resourceLinks",
-                    label: "Links Recursos",
-                    list: true,
-                    fields: [
-                      { type: "string", name: "text", label: "Texto" },
-                      { type: "string", name: "url", label: "URL" },
-                    ],
-                  },
-                  // Contact
-                  { type: "string", name: "phone", label: "Telefono" },
-                  { type: "string", name: "email", label: "Email" },
-                  // Hours
-                  { type: "string", name: "hoursLabel", label: "Dias Atencion" },
-                  { type: "string", name: "hoursValue", label: "Horario" },
-                  // Treatment Links
-                  {
-                    type: "object",
-                    name: "treatmentLinks",
-                    label: "Links Tratamientos",
-                    list: true,
-                    fields: [
-                      { type: "string", name: "text", label: "Texto" },
-                      { type: "string", name: "url", label: "URL" },
-                    ],
-                  },
-                  // Legal Links
-                  {
-                    type: "object",
-                    name: "legalLinks",
-                    label: "Links Legales",
-                    list: true,
-                    fields: [
-                      { type: "string", name: "text", label: "Texto" },
-                      { type: "string", name: "url", label: "URL" },
-                    ],
-                  },
-                  { type: "string", name: "cofeprisCode", label: "Codigo COFEPRIS" },
-                  // Social Links
-                  {
-                    type: "object",
-                    name: "socialLinks",
-                    label: "Redes Sociales",
-                    list: true,
-                    fields: [
-                      { type: "string", name: "platform", label: "Plataforma", options: ["instagram", "facebook", "tiktok", "linkedin"] },
-                      { type: "string", name: "url", label: "URL" },
-                    ],
-                  },
-                  { type: "string", name: "copyright", label: "Copyright" },
-                  { type: "string", name: "logoImage", label: "Imagen Logo Footer", description: "Logo grande al final del footer" },
-                ],
-              },
-              // HERO VIDEO
-              {
-                name: "heroVideo",
-                label: "Hero con Video",
-                ui: {
-                  defaultItem: {
-                    variant: "background",
-                    headline: "Recupera tu cabello con ciencia",
-                    ctaText: "Comenzar ahora",
-                    ctaLink: "/quiz",
-                  },
-                },
-                fields: [
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "fullscreen", label: "Pantalla completa" },
-                      { value: "background", label: "Video de fondo" },
-                      { value: "inline", label: "Video al lado del texto" },
-                    ],
-                  },
-                  { type: "string", name: "badge", label: "Badge Superior" },
-                  { type: "string", name: "headline", label: "Titulo", ui: { component: "textarea" } },
-                  { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
-                  ...ctaFields,
-                  { type: "string", name: "videoUrl", label: "URL del Video", description: "YouTube, Vimeo o video directo" },
-                  { type: "string", name: "posterImage", label: "Imagen de Respaldo", description: "Imagen mientras carga el video" },
-                ],
-              },
-              // STATS (Estadisticas)
-              {
-                name: "stats",
-                label: "Estadisticas (Numeros Grandes)",
-                ui: {
-                  defaultItem: {
-                    headline: "Nuestros resultados hablan por si solos",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "default", label: "Normal" },
-                      { value: "cards", label: "Tarjetas" },
-                      { value: "minimal", label: "Minimalista" },
-                    ],
-                  },
-                  {
-                    type: "object",
-                    name: "stats",
-                    label: "Estadisticas",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { label?: string }) => ({
-                        label: item?.label || "Nueva estadistica",
-                      }),
-                      max: 4,
-                    },
-                    fields: [
-                      { type: "string", name: "value", label: "Valor (ej: +10,000)", required: true },
-                      { type: "string", name: "label", label: "Descripcion", required: true },
-                      { type: "string", name: "icon", label: "Icono (opcional)" },
-                    ],
-                  },
-                ],
-              },
-              // CTA TIMER (Countdown)
-              {
-                name: "ctaTimer",
-                label: "CTA con Cuenta Regresiva",
-                ui: {
-                  defaultItem: {
-                    variant: "countdown",
-                    headline: "Oferta por tiempo limitado",
-                    ctaText: "Aprovechar ahora",
-                    ctaLink: "/quiz",
-                  },
-                },
-                fields: [
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "countdown", label: "Cuenta regresiva grande" },
-                      { value: "urgency", label: "Texto de urgencia" },
-                      { value: "limited", label: "Stock limitado" },
-                    ],
-                  },
-                  { type: "string", name: "headline", label: "Titulo" },
-                  { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
-                  { type: "datetime", name: "endDate", label: "Fecha de Fin", description: "Cuando termina la oferta" },
-                  ...ctaFields,
-                  { type: "string", name: "limitedText", label: "Texto de Stock (solo variante limited)", description: "Ej: Solo 10 lugares disponibles" },
-                ],
-              },
-              // PRESS LOGOS
-              {
-                name: "pressLogos",
-                label: "Logos de Prensa/Medios",
-                ui: {
-                  defaultItem: {
-                    headline: "Como se ha visto en",
-                    variant: "static",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "static", label: "Estatico" },
-                      { value: "slider", label: "Carrusel automatico" },
-                    ],
-                  },
-                  {
-                    type: "object",
-                    name: "logos",
-                    label: "Logos",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo logo",
-                      }),
-                      max: 10,
-                    },
-                    fields: [
-                      { type: "string", name: "image", label: "Imagen del Logo", required: true },
-                      { type: "string", name: "name", label: "Nombre del Medio", required: true },
-                      { type: "string", name: "url", label: "URL del Articulo (opcional)" },
-                    ],
-                  },
-                ],
-              },
-              // PRODUCT COMPARISON
-              {
-                name: "productComparison",
-                label: "Comparacion de Productos",
-                ui: {
-                  defaultItem: {
-                    headline: "Compara nuestros kits",
-                    variant: "table",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "table", label: "Tabla" },
-                      { value: "cards", label: "Tarjetas" },
-                    ],
-                  },
-                  {
-                    type: "object",
-                    name: "products",
-                    label: "Productos",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo producto",
-                      }),
-                      max: 4,
-                    },
-                    fields: [
-                      { type: "string", name: "name", label: "Nombre", required: true },
-                      { type: "string", name: "price", label: "Precio" },
-                      { type: "string", name: "priceNote", label: "Nota del Precio (ej: /mes)" },
-                      { type: "string", name: "ctaText", label: "Texto del Boton" },
-                      { type: "string", name: "ctaLink", label: "Enlace" },
-                      { type: "boolean", name: "isRecommended", label: "Es Recomendado?" },
-                    ],
-                  },
-                  {
-                    type: "object",
-                    name: "features",
-                    label: "Caracteristicas a Comparar",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nueva caracteristica",
-                      }),
-                    },
-                    fields: [
-                      { type: "string", name: "name", label: "Nombre de la Caracteristica", required: true },
-                      {
-                        type: "object",
-                        name: "included",
-                        label: "Incluido por Producto",
-                        list: true,
-                        fields: [
-                          { type: "boolean", name: "value", label: "Incluido?" },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
-              // BEFORE/AFTER (Slider Comparativo)
-              {
-                name: "beforeAfter",
-                label: "Antes/Despues (Slider)",
-                ui: {
-                  defaultItem: {
-                    headline: "Resultados reales de clientes",
-                    subheadline: "Desliza para comparar",
-                    variant: "slider",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  { type: "string", name: "subheadline", label: "Subtitulo" },
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "slider", label: "Slider (deslizable)" },
-                      { value: "sideBySide", label: "Lado a lado" },
-                      { value: "grid", label: "Cuadricula (multiples casos)" },
-                    ],
-                  },
-                  {
-                    type: "object",
-                    name: "cases",
-                    label: "Casos Before/After",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo caso",
-                      }),
-                      max: 6,
-                    },
-                    fields: [
-                      { type: "string", name: "beforeImage", label: "Imagen Antes", required: true },
-                      { type: "string", name: "afterImage", label: "Imagen Despues", required: true },
-                      { type: "string", name: "name", label: "Nombre del Cliente" },
-                      { type: "string", name: "duration", label: "Duracion del Tratamiento (ej: 6 meses)" },
-                      { type: "string", name: "product", label: "Producto Usado" },
-                      { type: "string", name: "testimonial", label: "Testimonio", ui: { component: "textarea" } },
-                    ],
-                  },
-                ],
-              },
-              // BENEFITS (Por que elegirnos)
-              {
-                name: "benefits",
-                label: "Beneficios (Por que elegirnos)",
-                ui: {
-                  defaultItem: {
-                    headline: "¿Por que elegir Choiz?",
-                    variant: "default",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "default", label: "Grid con iconos" },
-                      { value: "cards", label: "Tarjetas elevadas" },
-                      { value: "list", label: "Lista compacta" },
-                      { value: "comparison", label: "Comparacion (nosotros vs otros)" },
-                    ],
-                  },
-                  { type: "string", name: "competitorName", label: "Nombre del Competidor (solo variante comparison)", description: "Ej: Otros, Competencia, Tratamientos tradicionales" },
-                  {
-                    type: "object",
-                    name: "benefits",
-                    label: "Lista de Beneficios",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { title?: string }) => ({
-                        label: item?.title || "Nuevo beneficio",
-                      }),
-                      max: 8,
-                    },
-                    fields: [
-                      { type: "string", name: "icon", label: "Icono (ruta de imagen)" },
-                      { type: "string", name: "title", label: "Titulo", required: true },
-                      { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-                      { type: "boolean", name: "competitorHas", label: "El competidor lo tiene? (solo variante comparison)" },
-                    ],
-                  },
-                ],
-              },
-              // GUARANTEE NEW (con variantes)
-              {
-                name: "guaranteeNew",
-                label: "Garantia (Nuevo Diseño)",
-                ui: {
-                  defaultItem: {
-                    days: "180",
-                    headline: "Garantia de exito asegurada",
-                    description: "Si no ves resultados, te devolvemos tu dinero.",
-                    variant: "default",
-                  },
-                },
-                fields: [
-                  { type: "string", name: "days", label: "Dias de Garantia" },
-                  { type: "string", name: "headline", label: "Titulo" },
-                  { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "default", label: "Normal (badge + texto)" },
-                      { value: "centered", label: "Centrado" },
-                      { value: "minimal", label: "Minimalista" },
-                    ],
-                  },
-                  { type: "string", name: "ctaText", label: "Texto del Boton (opcional)" },
-                  { type: "string", name: "ctaLink", label: "Enlace del Boton" },
-                  { type: "string", name: "termsLink", label: "Enlace a Terminos", description: "Por defecto: /terminos" },
-                ],
-              },
-              // REVIEWS
-              {
-                name: "reviews",
-                label: "Reviews y Calificaciones",
-                ui: {
-                  defaultItem: {
-                    headline: "Lo que dicen nuestros clientes",
-                    variant: "stats",
-                    averageRating: 4.8,
-                    totalReviews: 1247,
-                  },
-                },
-                fields: [
-                  { type: "string", name: "headline", label: "Titulo" },
-                  {
-                    type: "string",
-                    name: "variant",
-                    label: "Variante",
-                    options: [
-                      { value: "compact", label: "Compacto (solo estrellas)" },
-                      { value: "detailed", label: "Detallado (reviews completas)" },
-                      { value: "stats", label: "Estadisticas (numero grande)" },
-                    ],
-                  },
-                  { type: "number", name: "averageRating", label: "Rating Promedio (1-5)" },
-                  { type: "number", name: "totalReviews", label: "Total de Reviews" },
-                  {
-                    type: "object",
-                    name: "breakdown",
-                    label: "Desglose por Estrellas",
-                    list: true,
-                    ui: { max: 5 },
-                    fields: [
-                      { type: "number", name: "stars", label: "Estrellas (1-5)" },
-                      { type: "number", name: "percentage", label: "Porcentaje" },
-                    ],
-                  },
-                  {
-                    type: "object",
-                    name: "reviews",
-                    label: "Reviews Individuales",
-                    list: true,
-                    ui: {
-                      itemProps: (item: { name?: string }) => ({
-                        label: item?.name || "Nuevo review",
-                      }),
-                      max: 10,
-                    },
-                    fields: [
-                      { type: "string", name: "name", label: "Nombre", required: true },
-                      { type: "string", name: "date", label: "Fecha" },
-                      { type: "number", name: "rating", label: "Calificacion (1-5)" },
-                      { type: "string", name: "text", label: "Texto del Review", ui: { component: "textarea" } },
-                      { type: "string", name: "productName", label: "Producto (opcional)" },
-                    ],
-                  },
-                ],
-              },
-            ],
+            templates: sectionTemplates,
           },
+
+          // LEGACY INLINE TEMPLATES REMOVED - Now using sectionTemplates array
+          // The following block was replaced with: templates: sectionTemplates
+          // Original inline templates for reference (removed to reduce file size):
+          // - hero, certifications, testimonials, problem, products, ingredients
+          // - effectiveness, whyChoose, guarantee, howItWorks, finalCta
+          // - activos, formulas, successStories, videoTestimonials
+          // - howItWorksNew, finalCtaNew, faq, footerNew
+          // - heroVideo, stats, ctaTimer, pressLogos, productComparison
+          // - beforeAfter, benefits, guaranteeNew, reviews
 
           // ----------------------------------------
           // FOOTER (fijo, no reordenable)
           // ----------------------------------------
+          {
+            type: "object",
+            name: "footer",
+            label: "Footer",
+            description: "Pie de pagina con links y contacto",
+            fields: [
+              {
+                type: "object",
+                name: "socialLinks",
+                label: "Redes Sociales",
+                list: true,
+                ui: {
+                  itemProps: (item: { platform?: string }) => ({
+                    label: item?.platform || "Nueva red",
+                  }),
+                  max: LIMITS.MAX_SOCIAL_LINKS,
+                },
+                fields: [
+                  {
+                    type: "string",
+                    name: "platform",
+                    label: "Plataforma",
+                    options: [
+                      { value: "Facebook", label: "Facebook" },
+                      { value: "Instagram", label: "Instagram" },
+                      { value: "TikTok", label: "TikTok" },
+                      { value: "YouTube", label: "YouTube" },
+                      { value: "LinkedIn", label: "LinkedIn" },
+                      { value: "Twitter", label: "Twitter/X" },
+                    ],
+                  },
+                  {
+                    type: "string",
+                    name: "url",
+                    label: "URL",
+                  },
+                ],
+              },
+              { type: "string", name: "logo", label: "Logo", description: "Ruta del logo (ej: /images/logo-white.svg)" },
+              { type: "string", name: "copyright", label: "Copyright" },
+              {
+                type: "object",
+                name: "certifications",
+                label: "Certificaciones",
+                list: true,
+                fields: [
+                  { type: "string", name: "logo", label: "Logo", description: "Ruta de imagen (ej: /images/cert-logo.png)" },
+                  { type: "string", name: "label", label: "Etiqueta" },
+                ],
+              },
+              {
+                type: "object",
+                name: "legalLinks",
+                label: "Enlaces Legales",
+                list: true,
+                ui: {
+                  itemProps: (item: { text?: string }) => ({
+                    label: item?.text || "Nuevo enlace",
+                  }),
+                },
+                fields: linkFields,
+              },
+              {
+                type: "object",
+                name: "resourceLinks",
+                label: "Recursos",
+                list: true,
+                ui: {
+                  itemProps: (item: { text?: string }) => ({
+                    label: item?.text || "Nuevo recurso",
+                  }),
+                },
+                fields: linkFields,
+              },
+              {
+                type: "object",
+                name: "founders",
+                label: "Fundadores",
+                list: true,
+                ui: {
+                  itemProps: (item: { name?: string }) => ({
+                    label: item?.name || "Nuevo fundador",
+                  }),
+                },
+                fields: [
+                  { type: "string", name: "name", label: "Nombre" },
+                ],
+              },
+              {
+                type: "object",
+                name: "contact",
+                label: "Contacto",
+                fields: [
+                  { type: "string", name: "phone", label: "Telefono" },
+                  { type: "string", name: "email", label: "Email" },
+                  { type: "string", name: "hours", label: "Horario" },
+                ],
+              },
+              {
+                type: "object",
+                name: "companyLinks",
+                label: "Enlaces Empresa",
+                list: true,
+                ui: {
+                  itemProps: (item: { text?: string }) => ({
+                    label: item?.text || "Nuevo enlace",
+                  }),
+                },
+                fields: linkFields,
+              },
+            ],
+          },
+        ],
+      },
+
+      // ========================================
+      // LANDING PAGES DINAMICAS (multiples landing pages)
+      // ========================================
+      {
+        name: "page",
+        label: "Landing Pages",
+        path: "content/pages",
+        format: "json",
+        ui: {
+          filename: {
+            slugify: (values: { title?: string }) =>
+              values?.title?.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "") || "nueva-pagina",
+          },
+          router: ({ document }) => `/${document._sys.filename}`,
+        },
+        fields: [
+          // Configuracion basica
+          {
+            type: "string",
+            name: "title",
+            label: "Titulo de la Pagina",
+            required: true,
+            description: "Nombre interno de la pagina (se usara para generar el URL)",
+          },
+          {
+            type: "string",
+            name: "status",
+            label: "Estado",
+            options: [
+              { value: "draft", label: "Borrador" },
+              { value: "published", label: "Publicada" },
+            ],
+          },
+
+          // SEO
+          ...seoFields,
+
+          // Navegacion
+          {
+            type: "object",
+            name: "navbar",
+            label: "Navegacion",
+            description: "Barra de navegacion superior",
+            ui: {
+              defaultItem: {
+                variant: "default",
+                ctaText: "Comenzar",
+                ctaLink: "/quiz",
+                loginLink: "/login",
+              },
+            },
+            fields: [
+              {
+                type: "string",
+                name: "variant",
+                label: "Estilo del Menu",
+                description: "Selecciona el estilo de navegacion",
+                options: [
+                  { value: "default", label: "Transparente con CTA (Hero)" },
+                  { value: "minimal", label: "Blanco minimalista (iconos)" },
+                ],
+              },
+              {
+                type: "string",
+                name: "logo",
+                label: "Logo",
+                description: "Ruta del logo (ej: /images/logo.svg)",
+              },
+              ...ctaFields,
+              {
+                type: "string",
+                name: "loginLink",
+                label: "Enlace de Login (solo minimal)",
+                description: "URL para el icono de usuario (ej: /login)",
+              },
+            ],
+          },
+
+          // Secciones reordenables (reutiliza los mismos templates)
+          {
+            type: "object",
+            name: "sections",
+            label: "Secciones de la Pagina",
+            description: "Arrastra para reordenar las secciones",
+            list: true,
+            templates: sectionTemplates,
+          },
+
+          // Footer
           {
             type: "object",
             name: "footer",

@@ -56,12 +56,15 @@ type Query {
   document(collection: String, relativePath: String): DocumentNode!
   landing(relativePath: String): Landing!
   landingConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LandingFilter): LandingConnection!
+  page(relativePath: String): Page!
+  pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
   blocks(relativePath: String): Blocks!
   blocksConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: BlocksFilter): BlocksConnection!
 }
 
 input DocumentFilter {
   landing: LandingFilter
+  page: PageFilter
   blocks: BlocksFilter
 }
 
@@ -88,7 +91,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Landing | Blocks | Folder
+union DocumentNode = Landing | Page | Blocks | Folder
 
 type LandingSeo {
   metaTitle: String
@@ -397,7 +400,140 @@ type LandingSectionsFooterNew {
   logoImage: String
 }
 
-union LandingSections = LandingSectionsHero | LandingSectionsCertifications | LandingSectionsTestimonials | LandingSectionsProblem | LandingSectionsProducts | LandingSectionsIngredients | LandingSectionsEffectiveness | LandingSectionsWhyChoose | LandingSectionsGuarantee | LandingSectionsHowItWorks | LandingSectionsFinalCta | LandingSectionsActivos | LandingSectionsFormulas | LandingSectionsSuccessStories | LandingSectionsVideoTestimonials | LandingSectionsHowItWorksNew | LandingSectionsFinalCtaNew | LandingSectionsFaq | LandingSectionsFooterNew
+type LandingSectionsHeroVideo {
+  variant: String
+  badge: String
+  headline: String
+  subheadline: String
+  ctaText: String
+  ctaLink: String
+  videoUrl: String
+  posterImage: String
+}
+
+type LandingSectionsStatsStats {
+  value: String!
+  label: String
+  icon: String
+}
+
+type LandingSectionsStats {
+  headline: String
+  variant: String
+  stats: [LandingSectionsStatsStats]
+}
+
+type LandingSectionsCtaTimer {
+  variant: String
+  headline: String
+  subheadline: String
+  endDate: String
+  ctaText: String
+  ctaLink: String
+  limitedText: String
+}
+
+type LandingSectionsPressLogosLogos {
+  image: String!
+  name: String!
+  url: String
+}
+
+type LandingSectionsPressLogos {
+  headline: String
+  variant: String
+  logos: [LandingSectionsPressLogosLogos]
+}
+
+type LandingSectionsProductComparisonProducts {
+  name: String!
+  price: String
+  priceNote: String
+  ctaText: String
+  ctaLink: String
+  isRecommended: Boolean
+}
+
+type LandingSectionsProductComparisonFeaturesIncluded {
+  value: Boolean
+}
+
+type LandingSectionsProductComparisonFeatures {
+  name: String!
+  included: [LandingSectionsProductComparisonFeaturesIncluded]
+}
+
+type LandingSectionsProductComparison {
+  headline: String
+  variant: String
+  products: [LandingSectionsProductComparisonProducts]
+  features: [LandingSectionsProductComparisonFeatures]
+}
+
+type LandingSectionsBeforeAfterCases {
+  beforeImage: String!
+  afterImage: String!
+  name: String
+  duration: String
+  product: String
+  testimonial: String
+}
+
+type LandingSectionsBeforeAfter {
+  headline: String
+  subheadline: String
+  variant: String
+  cases: [LandingSectionsBeforeAfterCases]
+}
+
+type LandingSectionsBenefitsBenefits {
+  icon: String
+  title: String!
+  description: String
+  competitorHas: Boolean
+}
+
+type LandingSectionsBenefits {
+  headline: String
+  subheadline: String
+  variant: String
+  competitorName: String
+  benefits: [LandingSectionsBenefitsBenefits]
+}
+
+type LandingSectionsGuaranteeNew {
+  days: String
+  headline: String
+  description: String
+  variant: String
+  ctaText: String
+  ctaLink: String
+  termsLink: String
+}
+
+type LandingSectionsReviewsBreakdown {
+  stars: Float
+  percentage: Float
+}
+
+type LandingSectionsReviewsReviews {
+  name: String!
+  date: String
+  rating: Float
+  text: String
+  productName: String
+}
+
+type LandingSectionsReviews {
+  headline: String
+  variant: String
+  averageRating: Float
+  totalReviews: Float
+  breakdown: [LandingSectionsReviewsBreakdown]
+  reviews: [LandingSectionsReviewsReviews]
+}
+
+union LandingSections = LandingSectionsHero | LandingSectionsCertifications | LandingSectionsTestimonials | LandingSectionsProblem | LandingSectionsProducts | LandingSectionsIngredients | LandingSectionsEffectiveness | LandingSectionsWhyChoose | LandingSectionsGuarantee | LandingSectionsHowItWorks | LandingSectionsFinalCta | LandingSectionsActivos | LandingSectionsFormulas | LandingSectionsSuccessStories | LandingSectionsVideoTestimonials | LandingSectionsHowItWorksNew | LandingSectionsFinalCtaNew | LandingSectionsFaq | LandingSectionsFooterNew | LandingSectionsHeroVideo | LandingSectionsStats | LandingSectionsCtaTimer | LandingSectionsPressLogos | LandingSectionsProductComparison | LandingSectionsBeforeAfter | LandingSectionsBenefits | LandingSectionsGuaranteeNew | LandingSectionsReviews
 
 type LandingFooterSocialLinks {
   platform: String
@@ -785,6 +921,147 @@ input LandingSectionsFooterNewFilter {
   logoImage: StringFilter
 }
 
+input LandingSectionsHeroVideoFilter {
+  variant: StringFilter
+  badge: StringFilter
+  headline: StringFilter
+  subheadline: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  videoUrl: StringFilter
+  posterImage: StringFilter
+}
+
+input LandingSectionsStatsStatsFilter {
+  value: StringFilter
+  label: StringFilter
+  icon: StringFilter
+}
+
+input LandingSectionsStatsFilter {
+  headline: StringFilter
+  variant: StringFilter
+  stats: LandingSectionsStatsStatsFilter
+}
+
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input LandingSectionsCtaTimerFilter {
+  variant: StringFilter
+  headline: StringFilter
+  subheadline: StringFilter
+  endDate: DatetimeFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  limitedText: StringFilter
+}
+
+input LandingSectionsPressLogosLogosFilter {
+  image: StringFilter
+  name: StringFilter
+  url: StringFilter
+}
+
+input LandingSectionsPressLogosFilter {
+  headline: StringFilter
+  variant: StringFilter
+  logos: LandingSectionsPressLogosLogosFilter
+}
+
+input LandingSectionsProductComparisonProductsFilter {
+  name: StringFilter
+  price: StringFilter
+  priceNote: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  isRecommended: BooleanFilter
+}
+
+input LandingSectionsProductComparisonFeaturesIncludedFilter {
+  value: BooleanFilter
+}
+
+input LandingSectionsProductComparisonFeaturesFilter {
+  name: StringFilter
+  included: LandingSectionsProductComparisonFeaturesIncludedFilter
+}
+
+input LandingSectionsProductComparisonFilter {
+  headline: StringFilter
+  variant: StringFilter
+  products: LandingSectionsProductComparisonProductsFilter
+  features: LandingSectionsProductComparisonFeaturesFilter
+}
+
+input LandingSectionsBeforeAfterCasesFilter {
+  beforeImage: StringFilter
+  afterImage: StringFilter
+  name: StringFilter
+  duration: StringFilter
+  product: StringFilter
+  testimonial: StringFilter
+}
+
+input LandingSectionsBeforeAfterFilter {
+  headline: StringFilter
+  subheadline: StringFilter
+  variant: StringFilter
+  cases: LandingSectionsBeforeAfterCasesFilter
+}
+
+input LandingSectionsBenefitsBenefitsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: StringFilter
+  competitorHas: BooleanFilter
+}
+
+input LandingSectionsBenefitsFilter {
+  headline: StringFilter
+  subheadline: StringFilter
+  variant: StringFilter
+  competitorName: StringFilter
+  benefits: LandingSectionsBenefitsBenefitsFilter
+}
+
+input LandingSectionsGuaranteeNewFilter {
+  days: StringFilter
+  headline: StringFilter
+  description: StringFilter
+  variant: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  termsLink: StringFilter
+}
+
+input LandingSectionsReviewsBreakdownFilter {
+  stars: NumberFilter
+  percentage: NumberFilter
+}
+
+input LandingSectionsReviewsReviewsFilter {
+  name: StringFilter
+  date: StringFilter
+  rating: NumberFilter
+  text: StringFilter
+  productName: StringFilter
+}
+
+input LandingSectionsReviewsFilter {
+  headline: StringFilter
+  variant: StringFilter
+  averageRating: NumberFilter
+  totalReviews: NumberFilter
+  breakdown: LandingSectionsReviewsBreakdownFilter
+  reviews: LandingSectionsReviewsReviewsFilter
+}
+
 input LandingSectionsFilter {
   hero: LandingSectionsHeroFilter
   certifications: LandingSectionsCertificationsFilter
@@ -805,6 +1082,15 @@ input LandingSectionsFilter {
   finalCtaNew: LandingSectionsFinalCtaNewFilter
   faq: LandingSectionsFaqFilter
   footerNew: LandingSectionsFooterNewFilter
+  heroVideo: LandingSectionsHeroVideoFilter
+  stats: LandingSectionsStatsFilter
+  ctaTimer: LandingSectionsCtaTimerFilter
+  pressLogos: LandingSectionsPressLogosFilter
+  productComparison: LandingSectionsProductComparisonFilter
+  beforeAfter: LandingSectionsBeforeAfterFilter
+  benefits: LandingSectionsBenefitsFilter
+  guaranteeNew: LandingSectionsGuaranteeNewFilter
+  reviews: LandingSectionsReviewsFilter
 }
 
 input LandingFooterSocialLinksFilter {
@@ -870,6 +1156,1045 @@ type LandingConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
   edges: [LandingConnectionEdges]
+}
+
+type PageSeo {
+  metaTitle: String
+  metaDescription: String
+  ogImage: String
+  ogType: String
+  canonicalUrl: String
+  noIndex: Boolean
+}
+
+type PageNavbar {
+  variant: String
+  logo: String
+  ctaText: String
+  ctaLink: String
+  loginLink: String
+}
+
+type PageSectionsHeroBenefits {
+  text: String
+}
+
+type PageSectionsHero {
+  badge: String
+  headline: String
+  benefits: [PageSectionsHeroBenefits]
+  ctaText: String
+  ctaLink: String
+  priceText: String
+  backgroundImage: String
+}
+
+type PageSectionsCertificationsBadges {
+  logo: String
+  label: String
+}
+
+type PageSectionsCertifications {
+  title: String
+  badges: [PageSectionsCertificationsBadges]
+}
+
+type PageSectionsTestimonialsVideos {
+  name: String!
+  backgroundImage: String
+  videoUrl: String
+  rating: Float
+  productName: String
+  productDescription: String
+  productImage: String
+}
+
+type PageSectionsTestimonials {
+  headline: String
+  subheadline: String
+  videos: [PageSectionsTestimonialsVideos]
+  ctaText: String
+  ctaLink: String
+  moreText: String
+  moreLink: String
+}
+
+type PageSectionsProblemHairLossTypes {
+  name: String
+  icon: String
+}
+
+type PageSectionsProblem {
+  headline: String
+  stat: String
+  statDescription: String
+  explanation: String
+  illustration: String
+  hairLossTypes: [PageSectionsProblemHairLossTypes]
+}
+
+type PageSectionsProductsItemsTags {
+  text: String
+}
+
+type PageSectionsProductsItems {
+  name: String!
+  tags: [PageSectionsProductsItemsTags]
+  image: String
+  selectText: String
+  moreText: String
+  link: String
+}
+
+type PageSectionsProducts {
+  headline: String
+  items: [PageSectionsProductsItems]
+}
+
+type PageSectionsIngredientsItems {
+  name: String!
+  description: String
+  image: String
+}
+
+type PageSectionsIngredients {
+  headline: String
+  items: [PageSectionsIngredientsItems]
+  ctaText: String
+  ctaLink: String
+}
+
+type PageSectionsEffectivenessStats {
+  label: String
+  percentage: Float
+}
+
+type PageSectionsEffectiveness {
+  headline: String
+  chartTitle: String
+  stats: [PageSectionsEffectivenessStats]
+  conclusion: String
+  sourcesTitle: String
+  sources: String
+  ctaText: String
+  ctaLink: String
+}
+
+type PageSectionsWhyChooseValueProps {
+  title: String!
+  description: String
+  icon: String
+}
+
+type PageSectionsWhyChoose {
+  headline: String
+  valueProps: [PageSectionsWhyChooseValueProps]
+  ctaText: String
+  ctaLink: String
+}
+
+type PageSectionsGuarantee {
+  days: String
+  headline: String
+  description: String
+}
+
+type PageSectionsHowItWorksSteps {
+  title: String!
+  description: String
+  icon: String
+}
+
+type PageSectionsHowItWorks {
+  headline: String
+  steps: [PageSectionsHowItWorksSteps]
+  ctaText: String
+  ctaLink: String
+}
+
+type PageSectionsFinalCta {
+  headline: String
+  subheadline: String
+  ctaText: String
+  ctaLink: String
+}
+
+type PageSectionsActivosActivos {
+  name: String!
+  description: String
+  image: String
+}
+
+type PageSectionsActivos {
+  headline: String
+  highlightText: String
+  ctaText: String
+  ctaLink: String
+  activos: [PageSectionsActivosActivos]
+}
+
+type PageSectionsFormulasFormulasTags {
+  text: String
+  variant: String
+}
+
+type PageSectionsFormulasFormulas {
+  name: String!
+  image: String
+  tags: [PageSectionsFormulasFormulasTags]
+  ctaText: String
+  ctaLink: String
+}
+
+type PageSectionsFormulas {
+  headline: String
+  highlightText: String
+  formulas: [PageSectionsFormulasFormulas]
+}
+
+type PageSectionsSuccessStoriesTestimonials {
+  name: String!
+  age: Float
+  quote: String
+  beforeImage: String
+  afterImage: String
+  monthsBefore: Float
+  monthsAfter: Float
+}
+
+type PageSectionsSuccessStories {
+  highlightText: String
+  normalText: String
+  ctaPrimaryText: String
+  ctaPrimaryLink: String
+  ctaSecondaryText: String
+  ctaSecondaryLink: String
+  testimonials: [PageSectionsSuccessStoriesTestimonials]
+}
+
+type PageSectionsVideoTestimonialsVideos {
+  name: String!
+  backgroundImage: String
+  videoUrl: String
+}
+
+type PageSectionsVideoTestimonials {
+  headline: String
+  highlightText: String
+  ctaText: String
+  ctaLink: String
+  videos: [PageSectionsVideoTestimonialsVideos]
+}
+
+type PageSectionsHowItWorksNewSteps {
+  title: String!
+  description: String
+  image: String
+}
+
+type PageSectionsHowItWorksNew {
+  headline: String
+  ctaText: String
+  ctaLink: String
+  steps: [PageSectionsHowItWorksNewSteps]
+}
+
+type PageSectionsFinalCtaNew {
+  headline: String
+  ctaText: String
+  ctaLink: String
+  backgroundImage: String
+}
+
+type PageSectionsFaqItems {
+  question: String
+  answer: String
+}
+
+type PageSectionsFaq {
+  headline: String
+  highlightText: String
+  items: [PageSectionsFaqItems]
+}
+
+type PageSectionsFooterNewCompanyLinks {
+  text: String
+  url: String
+}
+
+type PageSectionsFooterNewFounders {
+  name: String
+}
+
+type PageSectionsFooterNewResourceLinks {
+  text: String
+  url: String
+}
+
+type PageSectionsFooterNewTreatmentLinks {
+  text: String
+  url: String
+}
+
+type PageSectionsFooterNewLegalLinks {
+  text: String
+  url: String
+}
+
+type PageSectionsFooterNewSocialLinks {
+  platform: String
+  url: String
+}
+
+type PageSectionsFooterNew {
+  appTitle: String
+  appSubtitle: String
+  appImage: String
+  companyLinks: [PageSectionsFooterNewCompanyLinks]
+  founders: [PageSectionsFooterNewFounders]
+  resourceLinks: [PageSectionsFooterNewResourceLinks]
+  phone: String
+  email: String
+  hoursLabel: String
+  hoursValue: String
+  treatmentLinks: [PageSectionsFooterNewTreatmentLinks]
+  legalLinks: [PageSectionsFooterNewLegalLinks]
+  cofeprisCode: String
+  socialLinks: [PageSectionsFooterNewSocialLinks]
+  copyright: String
+  logoImage: String
+}
+
+type PageSectionsHeroVideo {
+  variant: String
+  badge: String
+  headline: String
+  subheadline: String
+  ctaText: String
+  ctaLink: String
+  videoUrl: String
+  posterImage: String
+}
+
+type PageSectionsStatsStats {
+  value: String!
+  label: String
+  icon: String
+}
+
+type PageSectionsStats {
+  headline: String
+  variant: String
+  stats: [PageSectionsStatsStats]
+}
+
+type PageSectionsCtaTimer {
+  variant: String
+  headline: String
+  subheadline: String
+  endDate: String
+  ctaText: String
+  ctaLink: String
+  limitedText: String
+}
+
+type PageSectionsPressLogosLogos {
+  image: String!
+  name: String!
+  url: String
+}
+
+type PageSectionsPressLogos {
+  headline: String
+  variant: String
+  logos: [PageSectionsPressLogosLogos]
+}
+
+type PageSectionsProductComparisonProducts {
+  name: String!
+  price: String
+  priceNote: String
+  ctaText: String
+  ctaLink: String
+  isRecommended: Boolean
+}
+
+type PageSectionsProductComparisonFeaturesIncluded {
+  value: Boolean
+}
+
+type PageSectionsProductComparisonFeatures {
+  name: String!
+  included: [PageSectionsProductComparisonFeaturesIncluded]
+}
+
+type PageSectionsProductComparison {
+  headline: String
+  variant: String
+  products: [PageSectionsProductComparisonProducts]
+  features: [PageSectionsProductComparisonFeatures]
+}
+
+type PageSectionsBeforeAfterCases {
+  beforeImage: String!
+  afterImage: String!
+  name: String
+  duration: String
+  product: String
+  testimonial: String
+}
+
+type PageSectionsBeforeAfter {
+  headline: String
+  subheadline: String
+  variant: String
+  cases: [PageSectionsBeforeAfterCases]
+}
+
+type PageSectionsBenefitsBenefits {
+  icon: String
+  title: String!
+  description: String
+  competitorHas: Boolean
+}
+
+type PageSectionsBenefits {
+  headline: String
+  subheadline: String
+  variant: String
+  competitorName: String
+  benefits: [PageSectionsBenefitsBenefits]
+}
+
+type PageSectionsGuaranteeNew {
+  days: String
+  headline: String
+  description: String
+  variant: String
+  ctaText: String
+  ctaLink: String
+  termsLink: String
+}
+
+type PageSectionsReviewsBreakdown {
+  stars: Float
+  percentage: Float
+}
+
+type PageSectionsReviewsReviews {
+  name: String!
+  date: String
+  rating: Float
+  text: String
+  productName: String
+}
+
+type PageSectionsReviews {
+  headline: String
+  variant: String
+  averageRating: Float
+  totalReviews: Float
+  breakdown: [PageSectionsReviewsBreakdown]
+  reviews: [PageSectionsReviewsReviews]
+}
+
+union PageSections = PageSectionsHero | PageSectionsCertifications | PageSectionsTestimonials | PageSectionsProblem | PageSectionsProducts | PageSectionsIngredients | PageSectionsEffectiveness | PageSectionsWhyChoose | PageSectionsGuarantee | PageSectionsHowItWorks | PageSectionsFinalCta | PageSectionsActivos | PageSectionsFormulas | PageSectionsSuccessStories | PageSectionsVideoTestimonials | PageSectionsHowItWorksNew | PageSectionsFinalCtaNew | PageSectionsFaq | PageSectionsFooterNew | PageSectionsHeroVideo | PageSectionsStats | PageSectionsCtaTimer | PageSectionsPressLogos | PageSectionsProductComparison | PageSectionsBeforeAfter | PageSectionsBenefits | PageSectionsGuaranteeNew | PageSectionsReviews
+
+type PageFooterSocialLinks {
+  platform: String
+  url: String
+}
+
+type PageFooterCertifications {
+  logo: String
+  label: String
+}
+
+type PageFooterLegalLinks {
+  text: String!
+  url: String!
+}
+
+type PageFooterResourceLinks {
+  text: String!
+  url: String!
+}
+
+type PageFooterFounders {
+  name: String
+}
+
+type PageFooterContact {
+  phone: String
+  email: String
+  hours: String
+}
+
+type PageFooterCompanyLinks {
+  text: String!
+  url: String!
+}
+
+type PageFooter {
+  socialLinks: [PageFooterSocialLinks]
+  logo: String
+  copyright: String
+  certifications: [PageFooterCertifications]
+  legalLinks: [PageFooterLegalLinks]
+  resourceLinks: [PageFooterResourceLinks]
+  founders: [PageFooterFounders]
+  contact: PageFooterContact
+  companyLinks: [PageFooterCompanyLinks]
+}
+
+type Page implements Node & Document {
+  title: String!
+  status: String
+  seo: PageSeo
+  navbar: PageNavbar
+  sections: [PageSections]
+  footer: PageFooter
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input PageSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+  ogImage: StringFilter
+  ogType: StringFilter
+  canonicalUrl: StringFilter
+  noIndex: BooleanFilter
+}
+
+input PageNavbarFilter {
+  variant: StringFilter
+  logo: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  loginLink: StringFilter
+}
+
+input PageSectionsHeroBenefitsFilter {
+  text: StringFilter
+}
+
+input PageSectionsHeroFilter {
+  badge: StringFilter
+  headline: StringFilter
+  benefits: PageSectionsHeroBenefitsFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  priceText: StringFilter
+  backgroundImage: StringFilter
+}
+
+input PageSectionsCertificationsBadgesFilter {
+  logo: StringFilter
+  label: StringFilter
+}
+
+input PageSectionsCertificationsFilter {
+  title: StringFilter
+  badges: PageSectionsCertificationsBadgesFilter
+}
+
+input PageSectionsTestimonialsVideosFilter {
+  name: StringFilter
+  backgroundImage: StringFilter
+  videoUrl: StringFilter
+  rating: NumberFilter
+  productName: StringFilter
+  productDescription: StringFilter
+  productImage: StringFilter
+}
+
+input PageSectionsTestimonialsFilter {
+  headline: StringFilter
+  subheadline: StringFilter
+  videos: PageSectionsTestimonialsVideosFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  moreText: StringFilter
+  moreLink: StringFilter
+}
+
+input PageSectionsProblemHairLossTypesFilter {
+  name: StringFilter
+  icon: StringFilter
+}
+
+input PageSectionsProblemFilter {
+  headline: StringFilter
+  stat: StringFilter
+  statDescription: StringFilter
+  explanation: StringFilter
+  illustration: StringFilter
+  hairLossTypes: PageSectionsProblemHairLossTypesFilter
+}
+
+input PageSectionsProductsItemsTagsFilter {
+  text: StringFilter
+}
+
+input PageSectionsProductsItemsFilter {
+  name: StringFilter
+  tags: PageSectionsProductsItemsTagsFilter
+  image: StringFilter
+  selectText: StringFilter
+  moreText: StringFilter
+  link: StringFilter
+}
+
+input PageSectionsProductsFilter {
+  headline: StringFilter
+  items: PageSectionsProductsItemsFilter
+}
+
+input PageSectionsIngredientsItemsFilter {
+  name: StringFilter
+  description: StringFilter
+  image: StringFilter
+}
+
+input PageSectionsIngredientsFilter {
+  headline: StringFilter
+  items: PageSectionsIngredientsItemsFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+}
+
+input PageSectionsEffectivenessStatsFilter {
+  label: StringFilter
+  percentage: NumberFilter
+}
+
+input PageSectionsEffectivenessFilter {
+  headline: StringFilter
+  chartTitle: StringFilter
+  stats: PageSectionsEffectivenessStatsFilter
+  conclusion: StringFilter
+  sourcesTitle: StringFilter
+  sources: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+}
+
+input PageSectionsWhyChooseValuePropsFilter {
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
+}
+
+input PageSectionsWhyChooseFilter {
+  headline: StringFilter
+  valueProps: PageSectionsWhyChooseValuePropsFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+}
+
+input PageSectionsGuaranteeFilter {
+  days: StringFilter
+  headline: StringFilter
+  description: StringFilter
+}
+
+input PageSectionsHowItWorksStepsFilter {
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
+}
+
+input PageSectionsHowItWorksFilter {
+  headline: StringFilter
+  steps: PageSectionsHowItWorksStepsFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+}
+
+input PageSectionsFinalCtaFilter {
+  headline: StringFilter
+  subheadline: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+}
+
+input PageSectionsActivosActivosFilter {
+  name: StringFilter
+  description: StringFilter
+  image: StringFilter
+}
+
+input PageSectionsActivosFilter {
+  headline: StringFilter
+  highlightText: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  activos: PageSectionsActivosActivosFilter
+}
+
+input PageSectionsFormulasFormulasTagsFilter {
+  text: StringFilter
+  variant: StringFilter
+}
+
+input PageSectionsFormulasFormulasFilter {
+  name: StringFilter
+  image: StringFilter
+  tags: PageSectionsFormulasFormulasTagsFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+}
+
+input PageSectionsFormulasFilter {
+  headline: StringFilter
+  highlightText: StringFilter
+  formulas: PageSectionsFormulasFormulasFilter
+}
+
+input PageSectionsSuccessStoriesTestimonialsFilter {
+  name: StringFilter
+  age: NumberFilter
+  quote: StringFilter
+  beforeImage: StringFilter
+  afterImage: StringFilter
+  monthsBefore: NumberFilter
+  monthsAfter: NumberFilter
+}
+
+input PageSectionsSuccessStoriesFilter {
+  highlightText: StringFilter
+  normalText: StringFilter
+  ctaPrimaryText: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondaryText: StringFilter
+  ctaSecondaryLink: StringFilter
+  testimonials: PageSectionsSuccessStoriesTestimonialsFilter
+}
+
+input PageSectionsVideoTestimonialsVideosFilter {
+  name: StringFilter
+  backgroundImage: StringFilter
+  videoUrl: StringFilter
+}
+
+input PageSectionsVideoTestimonialsFilter {
+  headline: StringFilter
+  highlightText: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  videos: PageSectionsVideoTestimonialsVideosFilter
+}
+
+input PageSectionsHowItWorksNewStepsFilter {
+  title: StringFilter
+  description: StringFilter
+  image: StringFilter
+}
+
+input PageSectionsHowItWorksNewFilter {
+  headline: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  steps: PageSectionsHowItWorksNewStepsFilter
+}
+
+input PageSectionsFinalCtaNewFilter {
+  headline: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  backgroundImage: StringFilter
+}
+
+input PageSectionsFaqItemsFilter {
+  question: StringFilter
+  answer: StringFilter
+}
+
+input PageSectionsFaqFilter {
+  headline: StringFilter
+  highlightText: StringFilter
+  items: PageSectionsFaqItemsFilter
+}
+
+input PageSectionsFooterNewCompanyLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input PageSectionsFooterNewFoundersFilter {
+  name: StringFilter
+}
+
+input PageSectionsFooterNewResourceLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input PageSectionsFooterNewTreatmentLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input PageSectionsFooterNewLegalLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input PageSectionsFooterNewSocialLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+}
+
+input PageSectionsFooterNewFilter {
+  appTitle: StringFilter
+  appSubtitle: StringFilter
+  appImage: StringFilter
+  companyLinks: PageSectionsFooterNewCompanyLinksFilter
+  founders: PageSectionsFooterNewFoundersFilter
+  resourceLinks: PageSectionsFooterNewResourceLinksFilter
+  phone: StringFilter
+  email: StringFilter
+  hoursLabel: StringFilter
+  hoursValue: StringFilter
+  treatmentLinks: PageSectionsFooterNewTreatmentLinksFilter
+  legalLinks: PageSectionsFooterNewLegalLinksFilter
+  cofeprisCode: StringFilter
+  socialLinks: PageSectionsFooterNewSocialLinksFilter
+  copyright: StringFilter
+  logoImage: StringFilter
+}
+
+input PageSectionsHeroVideoFilter {
+  variant: StringFilter
+  badge: StringFilter
+  headline: StringFilter
+  subheadline: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  videoUrl: StringFilter
+  posterImage: StringFilter
+}
+
+input PageSectionsStatsStatsFilter {
+  value: StringFilter
+  label: StringFilter
+  icon: StringFilter
+}
+
+input PageSectionsStatsFilter {
+  headline: StringFilter
+  variant: StringFilter
+  stats: PageSectionsStatsStatsFilter
+}
+
+input PageSectionsCtaTimerFilter {
+  variant: StringFilter
+  headline: StringFilter
+  subheadline: StringFilter
+  endDate: DatetimeFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  limitedText: StringFilter
+}
+
+input PageSectionsPressLogosLogosFilter {
+  image: StringFilter
+  name: StringFilter
+  url: StringFilter
+}
+
+input PageSectionsPressLogosFilter {
+  headline: StringFilter
+  variant: StringFilter
+  logos: PageSectionsPressLogosLogosFilter
+}
+
+input PageSectionsProductComparisonProductsFilter {
+  name: StringFilter
+  price: StringFilter
+  priceNote: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  isRecommended: BooleanFilter
+}
+
+input PageSectionsProductComparisonFeaturesIncludedFilter {
+  value: BooleanFilter
+}
+
+input PageSectionsProductComparisonFeaturesFilter {
+  name: StringFilter
+  included: PageSectionsProductComparisonFeaturesIncludedFilter
+}
+
+input PageSectionsProductComparisonFilter {
+  headline: StringFilter
+  variant: StringFilter
+  products: PageSectionsProductComparisonProductsFilter
+  features: PageSectionsProductComparisonFeaturesFilter
+}
+
+input PageSectionsBeforeAfterCasesFilter {
+  beforeImage: StringFilter
+  afterImage: StringFilter
+  name: StringFilter
+  duration: StringFilter
+  product: StringFilter
+  testimonial: StringFilter
+}
+
+input PageSectionsBeforeAfterFilter {
+  headline: StringFilter
+  subheadline: StringFilter
+  variant: StringFilter
+  cases: PageSectionsBeforeAfterCasesFilter
+}
+
+input PageSectionsBenefitsBenefitsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: StringFilter
+  competitorHas: BooleanFilter
+}
+
+input PageSectionsBenefitsFilter {
+  headline: StringFilter
+  subheadline: StringFilter
+  variant: StringFilter
+  competitorName: StringFilter
+  benefits: PageSectionsBenefitsBenefitsFilter
+}
+
+input PageSectionsGuaranteeNewFilter {
+  days: StringFilter
+  headline: StringFilter
+  description: StringFilter
+  variant: StringFilter
+  ctaText: StringFilter
+  ctaLink: StringFilter
+  termsLink: StringFilter
+}
+
+input PageSectionsReviewsBreakdownFilter {
+  stars: NumberFilter
+  percentage: NumberFilter
+}
+
+input PageSectionsReviewsReviewsFilter {
+  name: StringFilter
+  date: StringFilter
+  rating: NumberFilter
+  text: StringFilter
+  productName: StringFilter
+}
+
+input PageSectionsReviewsFilter {
+  headline: StringFilter
+  variant: StringFilter
+  averageRating: NumberFilter
+  totalReviews: NumberFilter
+  breakdown: PageSectionsReviewsBreakdownFilter
+  reviews: PageSectionsReviewsReviewsFilter
+}
+
+input PageSectionsFilter {
+  hero: PageSectionsHeroFilter
+  certifications: PageSectionsCertificationsFilter
+  testimonials: PageSectionsTestimonialsFilter
+  problem: PageSectionsProblemFilter
+  products: PageSectionsProductsFilter
+  ingredients: PageSectionsIngredientsFilter
+  effectiveness: PageSectionsEffectivenessFilter
+  whyChoose: PageSectionsWhyChooseFilter
+  guarantee: PageSectionsGuaranteeFilter
+  howItWorks: PageSectionsHowItWorksFilter
+  finalCta: PageSectionsFinalCtaFilter
+  activos: PageSectionsActivosFilter
+  formulas: PageSectionsFormulasFilter
+  successStories: PageSectionsSuccessStoriesFilter
+  videoTestimonials: PageSectionsVideoTestimonialsFilter
+  howItWorksNew: PageSectionsHowItWorksNewFilter
+  finalCtaNew: PageSectionsFinalCtaNewFilter
+  faq: PageSectionsFaqFilter
+  footerNew: PageSectionsFooterNewFilter
+  heroVideo: PageSectionsHeroVideoFilter
+  stats: PageSectionsStatsFilter
+  ctaTimer: PageSectionsCtaTimerFilter
+  pressLogos: PageSectionsPressLogosFilter
+  productComparison: PageSectionsProductComparisonFilter
+  beforeAfter: PageSectionsBeforeAfterFilter
+  benefits: PageSectionsBenefitsFilter
+  guaranteeNew: PageSectionsGuaranteeNewFilter
+  reviews: PageSectionsReviewsFilter
+}
+
+input PageFooterSocialLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+}
+
+input PageFooterCertificationsFilter {
+  logo: StringFilter
+  label: StringFilter
+}
+
+input PageFooterLegalLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input PageFooterResourceLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input PageFooterFoundersFilter {
+  name: StringFilter
+}
+
+input PageFooterContactFilter {
+  phone: StringFilter
+  email: StringFilter
+  hours: StringFilter
+}
+
+input PageFooterCompanyLinksFilter {
+  text: StringFilter
+  url: StringFilter
+}
+
+input PageFooterFilter {
+  socialLinks: PageFooterSocialLinksFilter
+  logo: StringFilter
+  copyright: StringFilter
+  certifications: PageFooterCertificationsFilter
+  legalLinks: PageFooterLegalLinksFilter
+  resourceLinks: PageFooterResourceLinksFilter
+  founders: PageFooterFoundersFilter
+  contact: PageFooterContactFilter
+  companyLinks: PageFooterCompanyLinksFilter
+}
+
+input PageFilter {
+  title: StringFilter
+  status: StringFilter
+  seo: PageSeoFilter
+  navbar: PageNavbarFilter
+  sections: PageSectionsFilter
+  footer: PageFooterFilter
+}
+
+type PageConnectionEdges {
+  cursor: String!
+  node: Page
+}
+
+type PageConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PageConnectionEdges]
 }
 
 type BlocksSectionsHeroBlockBenefits {
@@ -1009,18 +2334,22 @@ type Mutation {
   createFolder(collection: String, relativePath: String!): DocumentNode!
   updateLanding(relativePath: String!, params: LandingMutation!): Landing!
   createLanding(relativePath: String!, params: LandingMutation!): Landing!
+  updatePage(relativePath: String!, params: PageMutation!): Page!
+  createPage(relativePath: String!, params: PageMutation!): Page!
   updateBlocks(relativePath: String!, params: BlocksMutation!): Blocks!
   createBlocks(relativePath: String!, params: BlocksMutation!): Blocks!
 }
 
 input DocumentUpdateMutation {
   landing: LandingMutation
+  page: PageMutation
   blocks: BlocksMutation
   relativePath: String
 }
 
 input DocumentMutation {
   landing: LandingMutation
+  page: PageMutation
   blocks: BlocksMutation
 }
 
@@ -1331,6 +2660,139 @@ input LandingSectionsFooterNewMutation {
   logoImage: String
 }
 
+input LandingSectionsHeroVideoMutation {
+  variant: String
+  badge: String
+  headline: String
+  subheadline: String
+  ctaText: String
+  ctaLink: String
+  videoUrl: String
+  posterImage: String
+}
+
+input LandingSectionsStatsStatsMutation {
+  value: String
+  label: String
+  icon: String
+}
+
+input LandingSectionsStatsMutation {
+  headline: String
+  variant: String
+  stats: [LandingSectionsStatsStatsMutation]
+}
+
+input LandingSectionsCtaTimerMutation {
+  variant: String
+  headline: String
+  subheadline: String
+  endDate: String
+  ctaText: String
+  ctaLink: String
+  limitedText: String
+}
+
+input LandingSectionsPressLogosLogosMutation {
+  image: String
+  name: String
+  url: String
+}
+
+input LandingSectionsPressLogosMutation {
+  headline: String
+  variant: String
+  logos: [LandingSectionsPressLogosLogosMutation]
+}
+
+input LandingSectionsProductComparisonProductsMutation {
+  name: String
+  price: String
+  priceNote: String
+  ctaText: String
+  ctaLink: String
+  isRecommended: Boolean
+}
+
+input LandingSectionsProductComparisonFeaturesIncludedMutation {
+  value: Boolean
+}
+
+input LandingSectionsProductComparisonFeaturesMutation {
+  name: String
+  included: [LandingSectionsProductComparisonFeaturesIncludedMutation]
+}
+
+input LandingSectionsProductComparisonMutation {
+  headline: String
+  variant: String
+  products: [LandingSectionsProductComparisonProductsMutation]
+  features: [LandingSectionsProductComparisonFeaturesMutation]
+}
+
+input LandingSectionsBeforeAfterCasesMutation {
+  beforeImage: String
+  afterImage: String
+  name: String
+  duration: String
+  product: String
+  testimonial: String
+}
+
+input LandingSectionsBeforeAfterMutation {
+  headline: String
+  subheadline: String
+  variant: String
+  cases: [LandingSectionsBeforeAfterCasesMutation]
+}
+
+input LandingSectionsBenefitsBenefitsMutation {
+  icon: String
+  title: String
+  description: String
+  competitorHas: Boolean
+}
+
+input LandingSectionsBenefitsMutation {
+  headline: String
+  subheadline: String
+  variant: String
+  competitorName: String
+  benefits: [LandingSectionsBenefitsBenefitsMutation]
+}
+
+input LandingSectionsGuaranteeNewMutation {
+  days: String
+  headline: String
+  description: String
+  variant: String
+  ctaText: String
+  ctaLink: String
+  termsLink: String
+}
+
+input LandingSectionsReviewsBreakdownMutation {
+  stars: Float
+  percentage: Float
+}
+
+input LandingSectionsReviewsReviewsMutation {
+  name: String
+  date: String
+  rating: Float
+  text: String
+  productName: String
+}
+
+input LandingSectionsReviewsMutation {
+  headline: String
+  variant: String
+  averageRating: Float
+  totalReviews: Float
+  breakdown: [LandingSectionsReviewsBreakdownMutation]
+  reviews: [LandingSectionsReviewsReviewsMutation]
+}
+
 input LandingSectionsMutation {
   hero: LandingSectionsHeroMutation
   certifications: LandingSectionsCertificationsMutation
@@ -1351,6 +2813,15 @@ input LandingSectionsMutation {
   finalCtaNew: LandingSectionsFinalCtaNewMutation
   faq: LandingSectionsFaqMutation
   footerNew: LandingSectionsFooterNewMutation
+  heroVideo: LandingSectionsHeroVideoMutation
+  stats: LandingSectionsStatsMutation
+  ctaTimer: LandingSectionsCtaTimerMutation
+  pressLogos: LandingSectionsPressLogosMutation
+  productComparison: LandingSectionsProductComparisonMutation
+  beforeAfter: LandingSectionsBeforeAfterMutation
+  benefits: LandingSectionsBenefitsMutation
+  guaranteeNew: LandingSectionsGuaranteeNewMutation
+  reviews: LandingSectionsReviewsMutation
 }
 
 input LandingFooterSocialLinksMutation {
@@ -1405,6 +2876,533 @@ input LandingMutation {
   navbar: LandingNavbarMutation
   sections: [LandingSectionsMutation]
   footer: LandingFooterMutation
+}
+
+input PageSeoMutation {
+  metaTitle: String
+  metaDescription: String
+  ogImage: String
+  ogType: String
+  canonicalUrl: String
+  noIndex: Boolean
+}
+
+input PageNavbarMutation {
+  variant: String
+  logo: String
+  ctaText: String
+  ctaLink: String
+  loginLink: String
+}
+
+input PageSectionsHeroBenefitsMutation {
+  text: String
+}
+
+input PageSectionsHeroMutation {
+  badge: String
+  headline: String
+  benefits: [PageSectionsHeroBenefitsMutation]
+  ctaText: String
+  ctaLink: String
+  priceText: String
+  backgroundImage: String
+}
+
+input PageSectionsCertificationsBadgesMutation {
+  logo: String
+  label: String
+}
+
+input PageSectionsCertificationsMutation {
+  title: String
+  badges: [PageSectionsCertificationsBadgesMutation]
+}
+
+input PageSectionsTestimonialsVideosMutation {
+  name: String
+  backgroundImage: String
+  videoUrl: String
+  rating: Float
+  productName: String
+  productDescription: String
+  productImage: String
+}
+
+input PageSectionsTestimonialsMutation {
+  headline: String
+  subheadline: String
+  videos: [PageSectionsTestimonialsVideosMutation]
+  ctaText: String
+  ctaLink: String
+  moreText: String
+  moreLink: String
+}
+
+input PageSectionsProblemHairLossTypesMutation {
+  name: String
+  icon: String
+}
+
+input PageSectionsProblemMutation {
+  headline: String
+  stat: String
+  statDescription: String
+  explanation: String
+  illustration: String
+  hairLossTypes: [PageSectionsProblemHairLossTypesMutation]
+}
+
+input PageSectionsProductsItemsTagsMutation {
+  text: String
+}
+
+input PageSectionsProductsItemsMutation {
+  name: String
+  tags: [PageSectionsProductsItemsTagsMutation]
+  image: String
+  selectText: String
+  moreText: String
+  link: String
+}
+
+input PageSectionsProductsMutation {
+  headline: String
+  items: [PageSectionsProductsItemsMutation]
+}
+
+input PageSectionsIngredientsItemsMutation {
+  name: String
+  description: String
+  image: String
+}
+
+input PageSectionsIngredientsMutation {
+  headline: String
+  items: [PageSectionsIngredientsItemsMutation]
+  ctaText: String
+  ctaLink: String
+}
+
+input PageSectionsEffectivenessStatsMutation {
+  label: String
+  percentage: Float
+}
+
+input PageSectionsEffectivenessMutation {
+  headline: String
+  chartTitle: String
+  stats: [PageSectionsEffectivenessStatsMutation]
+  conclusion: String
+  sourcesTitle: String
+  sources: String
+  ctaText: String
+  ctaLink: String
+}
+
+input PageSectionsWhyChooseValuePropsMutation {
+  title: String
+  description: String
+  icon: String
+}
+
+input PageSectionsWhyChooseMutation {
+  headline: String
+  valueProps: [PageSectionsWhyChooseValuePropsMutation]
+  ctaText: String
+  ctaLink: String
+}
+
+input PageSectionsGuaranteeMutation {
+  days: String
+  headline: String
+  description: String
+}
+
+input PageSectionsHowItWorksStepsMutation {
+  title: String
+  description: String
+  icon: String
+}
+
+input PageSectionsHowItWorksMutation {
+  headline: String
+  steps: [PageSectionsHowItWorksStepsMutation]
+  ctaText: String
+  ctaLink: String
+}
+
+input PageSectionsFinalCtaMutation {
+  headline: String
+  subheadline: String
+  ctaText: String
+  ctaLink: String
+}
+
+input PageSectionsActivosActivosMutation {
+  name: String
+  description: String
+  image: String
+}
+
+input PageSectionsActivosMutation {
+  headline: String
+  highlightText: String
+  ctaText: String
+  ctaLink: String
+  activos: [PageSectionsActivosActivosMutation]
+}
+
+input PageSectionsFormulasFormulasTagsMutation {
+  text: String
+  variant: String
+}
+
+input PageSectionsFormulasFormulasMutation {
+  name: String
+  image: String
+  tags: [PageSectionsFormulasFormulasTagsMutation]
+  ctaText: String
+  ctaLink: String
+}
+
+input PageSectionsFormulasMutation {
+  headline: String
+  highlightText: String
+  formulas: [PageSectionsFormulasFormulasMutation]
+}
+
+input PageSectionsSuccessStoriesTestimonialsMutation {
+  name: String
+  age: Float
+  quote: String
+  beforeImage: String
+  afterImage: String
+  monthsBefore: Float
+  monthsAfter: Float
+}
+
+input PageSectionsSuccessStoriesMutation {
+  highlightText: String
+  normalText: String
+  ctaPrimaryText: String
+  ctaPrimaryLink: String
+  ctaSecondaryText: String
+  ctaSecondaryLink: String
+  testimonials: [PageSectionsSuccessStoriesTestimonialsMutation]
+}
+
+input PageSectionsVideoTestimonialsVideosMutation {
+  name: String
+  backgroundImage: String
+  videoUrl: String
+}
+
+input PageSectionsVideoTestimonialsMutation {
+  headline: String
+  highlightText: String
+  ctaText: String
+  ctaLink: String
+  videos: [PageSectionsVideoTestimonialsVideosMutation]
+}
+
+input PageSectionsHowItWorksNewStepsMutation {
+  title: String
+  description: String
+  image: String
+}
+
+input PageSectionsHowItWorksNewMutation {
+  headline: String
+  ctaText: String
+  ctaLink: String
+  steps: [PageSectionsHowItWorksNewStepsMutation]
+}
+
+input PageSectionsFinalCtaNewMutation {
+  headline: String
+  ctaText: String
+  ctaLink: String
+  backgroundImage: String
+}
+
+input PageSectionsFaqItemsMutation {
+  question: String
+  answer: String
+}
+
+input PageSectionsFaqMutation {
+  headline: String
+  highlightText: String
+  items: [PageSectionsFaqItemsMutation]
+}
+
+input PageSectionsFooterNewCompanyLinksMutation {
+  text: String
+  url: String
+}
+
+input PageSectionsFooterNewFoundersMutation {
+  name: String
+}
+
+input PageSectionsFooterNewResourceLinksMutation {
+  text: String
+  url: String
+}
+
+input PageSectionsFooterNewTreatmentLinksMutation {
+  text: String
+  url: String
+}
+
+input PageSectionsFooterNewLegalLinksMutation {
+  text: String
+  url: String
+}
+
+input PageSectionsFooterNewSocialLinksMutation {
+  platform: String
+  url: String
+}
+
+input PageSectionsFooterNewMutation {
+  appTitle: String
+  appSubtitle: String
+  appImage: String
+  companyLinks: [PageSectionsFooterNewCompanyLinksMutation]
+  founders: [PageSectionsFooterNewFoundersMutation]
+  resourceLinks: [PageSectionsFooterNewResourceLinksMutation]
+  phone: String
+  email: String
+  hoursLabel: String
+  hoursValue: String
+  treatmentLinks: [PageSectionsFooterNewTreatmentLinksMutation]
+  legalLinks: [PageSectionsFooterNewLegalLinksMutation]
+  cofeprisCode: String
+  socialLinks: [PageSectionsFooterNewSocialLinksMutation]
+  copyright: String
+  logoImage: String
+}
+
+input PageSectionsHeroVideoMutation {
+  variant: String
+  badge: String
+  headline: String
+  subheadline: String
+  ctaText: String
+  ctaLink: String
+  videoUrl: String
+  posterImage: String
+}
+
+input PageSectionsStatsStatsMutation {
+  value: String
+  label: String
+  icon: String
+}
+
+input PageSectionsStatsMutation {
+  headline: String
+  variant: String
+  stats: [PageSectionsStatsStatsMutation]
+}
+
+input PageSectionsCtaTimerMutation {
+  variant: String
+  headline: String
+  subheadline: String
+  endDate: String
+  ctaText: String
+  ctaLink: String
+  limitedText: String
+}
+
+input PageSectionsPressLogosLogosMutation {
+  image: String
+  name: String
+  url: String
+}
+
+input PageSectionsPressLogosMutation {
+  headline: String
+  variant: String
+  logos: [PageSectionsPressLogosLogosMutation]
+}
+
+input PageSectionsProductComparisonProductsMutation {
+  name: String
+  price: String
+  priceNote: String
+  ctaText: String
+  ctaLink: String
+  isRecommended: Boolean
+}
+
+input PageSectionsProductComparisonFeaturesIncludedMutation {
+  value: Boolean
+}
+
+input PageSectionsProductComparisonFeaturesMutation {
+  name: String
+  included: [PageSectionsProductComparisonFeaturesIncludedMutation]
+}
+
+input PageSectionsProductComparisonMutation {
+  headline: String
+  variant: String
+  products: [PageSectionsProductComparisonProductsMutation]
+  features: [PageSectionsProductComparisonFeaturesMutation]
+}
+
+input PageSectionsBeforeAfterCasesMutation {
+  beforeImage: String
+  afterImage: String
+  name: String
+  duration: String
+  product: String
+  testimonial: String
+}
+
+input PageSectionsBeforeAfterMutation {
+  headline: String
+  subheadline: String
+  variant: String
+  cases: [PageSectionsBeforeAfterCasesMutation]
+}
+
+input PageSectionsBenefitsBenefitsMutation {
+  icon: String
+  title: String
+  description: String
+  competitorHas: Boolean
+}
+
+input PageSectionsBenefitsMutation {
+  headline: String
+  subheadline: String
+  variant: String
+  competitorName: String
+  benefits: [PageSectionsBenefitsBenefitsMutation]
+}
+
+input PageSectionsGuaranteeNewMutation {
+  days: String
+  headline: String
+  description: String
+  variant: String
+  ctaText: String
+  ctaLink: String
+  termsLink: String
+}
+
+input PageSectionsReviewsBreakdownMutation {
+  stars: Float
+  percentage: Float
+}
+
+input PageSectionsReviewsReviewsMutation {
+  name: String
+  date: String
+  rating: Float
+  text: String
+  productName: String
+}
+
+input PageSectionsReviewsMutation {
+  headline: String
+  variant: String
+  averageRating: Float
+  totalReviews: Float
+  breakdown: [PageSectionsReviewsBreakdownMutation]
+  reviews: [PageSectionsReviewsReviewsMutation]
+}
+
+input PageSectionsMutation {
+  hero: PageSectionsHeroMutation
+  certifications: PageSectionsCertificationsMutation
+  testimonials: PageSectionsTestimonialsMutation
+  problem: PageSectionsProblemMutation
+  products: PageSectionsProductsMutation
+  ingredients: PageSectionsIngredientsMutation
+  effectiveness: PageSectionsEffectivenessMutation
+  whyChoose: PageSectionsWhyChooseMutation
+  guarantee: PageSectionsGuaranteeMutation
+  howItWorks: PageSectionsHowItWorksMutation
+  finalCta: PageSectionsFinalCtaMutation
+  activos: PageSectionsActivosMutation
+  formulas: PageSectionsFormulasMutation
+  successStories: PageSectionsSuccessStoriesMutation
+  videoTestimonials: PageSectionsVideoTestimonialsMutation
+  howItWorksNew: PageSectionsHowItWorksNewMutation
+  finalCtaNew: PageSectionsFinalCtaNewMutation
+  faq: PageSectionsFaqMutation
+  footerNew: PageSectionsFooterNewMutation
+  heroVideo: PageSectionsHeroVideoMutation
+  stats: PageSectionsStatsMutation
+  ctaTimer: PageSectionsCtaTimerMutation
+  pressLogos: PageSectionsPressLogosMutation
+  productComparison: PageSectionsProductComparisonMutation
+  beforeAfter: PageSectionsBeforeAfterMutation
+  benefits: PageSectionsBenefitsMutation
+  guaranteeNew: PageSectionsGuaranteeNewMutation
+  reviews: PageSectionsReviewsMutation
+}
+
+input PageFooterSocialLinksMutation {
+  platform: String
+  url: String
+}
+
+input PageFooterCertificationsMutation {
+  logo: String
+  label: String
+}
+
+input PageFooterLegalLinksMutation {
+  text: String
+  url: String
+}
+
+input PageFooterResourceLinksMutation {
+  text: String
+  url: String
+}
+
+input PageFooterFoundersMutation {
+  name: String
+}
+
+input PageFooterContactMutation {
+  phone: String
+  email: String
+  hours: String
+}
+
+input PageFooterCompanyLinksMutation {
+  text: String
+  url: String
+}
+
+input PageFooterMutation {
+  socialLinks: [PageFooterSocialLinksMutation]
+  logo: String
+  copyright: String
+  certifications: [PageFooterCertificationsMutation]
+  legalLinks: [PageFooterLegalLinksMutation]
+  resourceLinks: [PageFooterResourceLinksMutation]
+  founders: [PageFooterFoundersMutation]
+  contact: PageFooterContactMutation
+  companyLinks: [PageFooterCompanyLinksMutation]
+}
+
+input PageMutation {
+  title: String
+  status: String
+  seo: PageSeoMutation
+  navbar: PageNavbarMutation
+  sections: [PageSectionsMutation]
+  footer: PageFooterMutation
 }
 
 input BlocksSectionsHeroBlockBenefitsMutation {

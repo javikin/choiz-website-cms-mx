@@ -34,7 +34,7 @@ import {
   Benefits,
   Reviews,
 } from "@/components/sections";
-import type { LandingQuery } from "../../tina/__generated__/types";
+import type { PageQuery } from "../../tina/__generated__/types";
 
 // Helper to clean TinaCMS data (remove nulls and __typename)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -64,23 +64,23 @@ function cleanObject<T>(obj: any | null | undefined): T | undefined {
   return cleaned as T;
 }
 
-interface LandingPageClientProps {
+interface PageClientProps {
   query: string;
   variables: {
     relativePath: string;
   };
-  data: LandingQuery;
+  data: PageQuery;
 }
 
 // Section renderer - renders the appropriate component based on _template
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function renderSection(section: any, index: number, parentData: any) {
   // Get template name from _template or __typename
-  // Note: _template comes as-is (e.g., "hero"), __typename comes as "LandingSectionsHero"
+  // Note: _template comes as-is (e.g., "hero"), __typename comes as "PageSectionsHero"
   let templateName = section._template;
   if (!templateName && section.__typename) {
     // Extract the template name and convert first letter to lowercase
-    const extracted = section.__typename.replace("LandingSections", "");
+    const extracted = section.__typename.replace("PageSections", "");
     templateName = extracted.charAt(0).toLowerCase() + extracted.slice(1);
   }
 
@@ -100,6 +100,22 @@ function renderSection(section: any, index: number, parentData: any) {
           priceText={section.priceText || undefined}
           backgroundImage={section.backgroundImage || undefined}
           backgroundImageMobile={section.backgroundImageMobile || undefined}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "heroVideo":
+      return (
+        <HeroVideo
+          key={index}
+          variant={section.variant || undefined}
+          badge={section.badge || undefined}
+          headline={section.headline || undefined}
+          subheadline={section.subheadline || undefined}
+          ctaText={section.ctaText || undefined}
+          ctaLink={section.ctaLink || undefined}
+          videoUrl={section.videoUrl || undefined}
+          posterImage={section.posterImage || undefined}
           tinaField={sectionTinaField}
         />
       );
@@ -200,6 +216,21 @@ function renderSection(section: any, index: number, parentData: any) {
           days={section.days || undefined}
           headline={section.headline || undefined}
           description={section.description || undefined}
+          tinaField={sectionTinaField}
+        />
+      );
+
+    case "guaranteeNew":
+      return (
+        <GuaranteeNew
+          key={index}
+          days={section.days || undefined}
+          headline={section.headline || undefined}
+          description={section.description || undefined}
+          variant={section.variant || undefined}
+          ctaText={section.ctaText || undefined}
+          ctaLink={section.ctaLink || undefined}
+          termsLink={section.termsLink || undefined}
           tinaField={sectionTinaField}
         />
       );
@@ -339,22 +370,6 @@ function renderSection(section: any, index: number, parentData: any) {
         />
       );
 
-    case "heroVideo":
-      return (
-        <HeroVideo
-          key={index}
-          variant={section.variant || undefined}
-          badge={section.badge || undefined}
-          headline={section.headline || undefined}
-          subheadline={section.subheadline || undefined}
-          ctaText={section.ctaText || undefined}
-          ctaLink={section.ctaLink || undefined}
-          videoUrl={section.videoUrl || undefined}
-          posterImage={section.posterImage || undefined}
-          tinaField={sectionTinaField}
-        />
-      );
-
     case "stats":
       return (
         <Stats
@@ -429,21 +444,6 @@ function renderSection(section: any, index: number, parentData: any) {
         />
       );
 
-    case "guaranteeNew":
-      return (
-        <GuaranteeNew
-          key={index}
-          days={section.days || undefined}
-          headline={section.headline || undefined}
-          description={section.description || undefined}
-          variant={section.variant || undefined}
-          ctaText={section.ctaText || undefined}
-          ctaLink={section.ctaLink || undefined}
-          termsLink={section.termsLink || undefined}
-          tinaField={sectionTinaField}
-        />
-      );
-
     case "reviews":
       return (
         <Reviews
@@ -464,7 +464,7 @@ function renderSection(section: any, index: number, parentData: any) {
   }
 }
 
-export function LandingPageClient(props: LandingPageClientProps) {
+export function PageClient(props: PageClientProps) {
   // useTina enables real-time updates in the visual editor
   const { data: tinaData } = useTina({
     query: props.query,
@@ -472,7 +472,7 @@ export function LandingPageClient(props: LandingPageClientProps) {
     data: props.data,
   });
 
-  const data = tinaData.landing;
+  const data = tinaData.page;
   const sections = data?.sections || [];
 
   // Determine which navbar variant to render
@@ -501,7 +501,6 @@ export function LandingPageClient(props: LandingPageClientProps) {
         )}
       </main>
 
-{/* Footer temporalmente deshabilitado
       {data?.footer && (
         <Footer
           socialLinks={cleanArray(data?.footer?.socialLinks)}
@@ -516,7 +515,6 @@ export function LandingPageClient(props: LandingPageClientProps) {
           tinaField={tinaField(data, "footer")}
         />
       )}
-      */}
     </>
   );
 }
