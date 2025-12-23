@@ -1,6 +1,9 @@
 {
   "title": "Pagina de Ejemplo",
   "status": "published",
+  "abTest": {
+    "variant": "variant-a"
+  },
   "seo": {
     "metaTitle": "Pagina de Ejemplo | Choiz",
     "metaDescription": "Esta es una pagina de ejemplo creada desde TinaCMS."
@@ -18,6 +21,14 @@
       "ctaText": "Ver mas",
       "ctaLink": "#seccion",
       "_template": "heroVideo"
+    },
+    {
+      "badge": "+20,000 personas ya vieron resultados",
+      "headline": "El tratamiento mas efectivo de Mexico para la caida del cabello",
+      "ctaText": "Comienza hoy",
+      "ctaLink": "/quiz",
+      "priceText": "Desde $467/mes",
+      "_template": "hero"
     },
     {
       "headline": "Nuestros numeros",
@@ -52,6 +63,9 @@
         }
       ],
       "_template": "faq"
+    },
+    {
+      "_template": "effectiveness"
     }
   ],
   "footer": {
