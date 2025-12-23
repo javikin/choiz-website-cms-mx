@@ -1,12 +1,12 @@
 {
-  "title": "Pagina de Ejemplo",
-  "status": "published",
+  "title": "Promo Navidad",
+  "status": "draft",
   "abTest": {
     "variant": "variant-a"
   },
   "seo": {
-    "metaTitle": "Pagina de Ejemplo | Choiz",
-    "metaDescription": "Esta es una pagina de ejemplo creada desde TinaCMS."
+    "metaTitle": "Promo Navidad | Choiz",
+    "metaDescription": "Promocion especial de Navidad - Recupera tu cabello con Choiz"
   },
   "navbar": {
     "variant": "default",
@@ -15,12 +15,12 @@
   },
   "sections": [
     {
-      "badge": "+20,000 personas ya vieron resultados",
-      "headline": "El tratamiento mas efectivo de Mexico para la caida del cabello",
-      "ctaText": "Comienza hoy",
-      "ctaLink": "/quiz",
-      "priceText": "Desde $467/mes",
-      "_template": "hero"
+      "_template": "heroVideo",
+      "variant": "background",
+      "headline": "Promo Navidad - Recupera tu cabello",
+      "subheadline": "Aprovecha nuestra promocion especial de fin de año",
+      "ctaText": "Ver oferta",
+      "ctaLink": "/quiz"
     },
     {
       "headline": "Nuestros numeros",

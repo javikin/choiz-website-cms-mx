@@ -1,4 +1,10 @@
 {
+  "title": "Home",
+  "status": "published",
+  "seo": {
+    "metaTitle": "Choiz - Tratamiento para la caida del cabello",
+    "metaDescription": "El tratamiento mas efectivo de Mexico para la caida del cabello. Resultados en 90-180 dias."
+  },
   "navbar": {
     "variant": "default",
     "logo": "/images/choiz-logo.svg",

@@ -1,17 +1,21 @@
 import client from "../../tina/__generated__/client";
+import type { Metadata } from "next";
 
-const query = `query landing($relativePath: String!) {
-  landing(relativePath: $relativePath) {
+// GraphQL query for page collection
+const query = `query page($relativePath: String!) {
+  page(relativePath: $relativePath) {
     ... on Document {
       _sys { filename basename breadcrumbs path relativePath extension }
       id
     }
     __typename
+    title
+    status
     seo { __typename metaTitle metaDescription ogImage ogType canonicalUrl noIndex }
     navbar { __typename variant logo ctaText ctaLink loginLink }
     sections {
       __typename
-      ... on LandingSectionsHero {
+      ... on PageSectionsHero {
         badge
         headline
         benefits { __typename text }
@@ -20,11 +24,21 @@ const query = `query landing($relativePath: String!) {
         priceText
         backgroundImage
       }
-      ... on LandingSectionsCertifications {
+      ... on PageSectionsHeroVideo {
+        variant
+        badge
+        headline
+        subheadline
+        ctaText
+        ctaLink
+        videoUrl
+        posterImage
+      }
+      ... on PageSectionsCertifications {
         title
         badges { __typename logo label }
       }
-      ... on LandingSectionsTestimonials {
+      ... on PageSectionsTestimonials {
         headline
         subheadline
         videos { __typename name backgroundImage videoUrl rating productName productDescription productImage }
@@ -33,7 +47,7 @@ const query = `query landing($relativePath: String!) {
         moreText
         moreLink
       }
-      ... on LandingSectionsProblem {
+      ... on PageSectionsProblem {
         headline
         stat
         statDescription
@@ -41,17 +55,17 @@ const query = `query landing($relativePath: String!) {
         illustration
         hairLossTypes { __typename name icon }
       }
-      ... on LandingSectionsProducts {
+      ... on PageSectionsProducts {
         headline
         items { __typename name tags { __typename text } image selectText moreText link }
       }
-      ... on LandingSectionsIngredients {
+      ... on PageSectionsIngredients {
         headline
         items { __typename name description image }
         ctaText
         ctaLink
       }
-      ... on LandingSectionsEffectiveness {
+      ... on PageSectionsEffectiveness {
         headline
         chartTitle
         stats { __typename label percentage }
@@ -61,30 +75,39 @@ const query = `query landing($relativePath: String!) {
         ctaText
         ctaLink
       }
-      ... on LandingSectionsWhyChoose {
+      ... on PageSectionsWhyChoose {
         headline
         valueProps { __typename title description icon }
         ctaText
         ctaLink
       }
-      ... on LandingSectionsGuarantee {
+      ... on PageSectionsGuarantee {
         days
         headline
         description
       }
-      ... on LandingSectionsHowItWorks {
+      ... on PageSectionsGuaranteeNew {
+        days
+        headline
+        description
+        variant
+        ctaText
+        ctaLink
+        termsLink
+      }
+      ... on PageSectionsHowItWorks {
         headline
         steps { __typename title description icon }
         ctaText
         ctaLink
       }
-      ... on LandingSectionsFinalCta {
+      ... on PageSectionsFinalCta {
         headline
         subheadline
         ctaText
         ctaLink
       }
-      ... on LandingSectionsSuccessStories {
+      ... on PageSectionsSuccessStories {
         highlightText
         normalText
         ctaPrimaryText
@@ -93,43 +116,43 @@ const query = `query landing($relativePath: String!) {
         ctaSecondaryLink
         testimonials { __typename name age quote beforeImage afterImage monthsBefore monthsAfter }
       }
-      ... on LandingSectionsFormulas {
+      ... on PageSectionsFormulas {
         headline
         highlightText
         formulas { __typename name image tags { __typename text variant } ctaText ctaLink }
       }
-      ... on LandingSectionsActivos {
+      ... on PageSectionsActivos {
         headline
         highlightText
         ctaText
         ctaLink
         activos { __typename name description image }
       }
-      ... on LandingSectionsVideoTestimonials {
+      ... on PageSectionsVideoTestimonials {
         headline
         highlightText
         ctaText
         ctaLink
         videos { __typename name backgroundImage videoUrl }
       }
-      ... on LandingSectionsHowItWorksNew {
+      ... on PageSectionsHowItWorksNew {
         headline
         ctaText
         ctaLink
         steps { __typename title description image }
       }
-      ... on LandingSectionsFinalCtaNew {
+      ... on PageSectionsFinalCtaNew {
         headline
         ctaText
         ctaLink
         backgroundImage
       }
-      ... on LandingSectionsFaq {
+      ... on PageSectionsFaq {
         headline
         highlightText
         items { __typename question answer }
       }
-      ... on LandingSectionsFooterNew {
+      ... on PageSectionsFooterNew {
         appTitle
         appSubtitle
         appImage
@@ -147,6 +170,52 @@ const query = `query landing($relativePath: String!) {
         copyright
         logoImage
       }
+      ... on PageSectionsStats {
+        headline
+        variant
+        stats { __typename value label icon }
+      }
+      ... on PageSectionsCtaTimer {
+        variant
+        headline
+        subheadline
+        endDate
+        ctaText
+        ctaLink
+        limitedText
+      }
+      ... on PageSectionsPressLogos {
+        headline
+        variant
+        logos { __typename image name url }
+      }
+      ... on PageSectionsProductComparison {
+        headline
+        variant
+        products { __typename name price priceNote ctaText ctaLink isRecommended }
+        features { __typename name included { __typename value } }
+      }
+      ... on PageSectionsBeforeAfter {
+        headline
+        subheadline
+        variant
+        cases { __typename beforeImage afterImage name duration product testimonial }
+      }
+      ... on PageSectionsBenefits {
+        headline
+        subheadline
+        variant
+        competitorName
+        benefits { __typename icon title description competitorHas }
+      }
+      ... on PageSectionsReviews {
+        headline
+        variant
+        averageRating
+        totalReviews
+        breakdown { __typename stars percentage }
+        reviews { __typename name date rating text productName }
+      }
     }
     footer { __typename socialLinks { __typename platform url } logo copyright certifications { __typename logo label } legalLinks { __typename text url } resourceLinks { __typename text url } founders { __typename name } contact { __typename phone email hours } companyLinks { __typename text url } }
   }
@@ -154,14 +223,40 @@ const query = `query landing($relativePath: String!) {
 
 const variables = { relativePath: "home.json" };
 
-export default async function Home() {
-  const result = await client.queries.landing(variables);
+// Generate metadata for SEO
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const result = await client.queries.page(variables);
+    const page = result.data.page;
 
-  // Always use LandingPageClient which includes useTina hook for visual editing
-  // TinaCMS handles detection of edit mode internally via iframe communication
-  const { LandingPageClient } = await import("@/components/LandingPageClient");
+    return {
+      title: page?.seo?.metaTitle || page?.title || "Choiz",
+      description: page?.seo?.metaDescription || undefined,
+      openGraph: {
+        title: page?.seo?.metaTitle || page?.title || "Choiz",
+        description: page?.seo?.metaDescription || undefined,
+        images: page?.seo?.ogImage ? [page.seo.ogImage] : undefined,
+        type: (page?.seo?.ogType as "website" | "article") || "website",
+      },
+      alternates: {
+        canonical: page?.seo?.canonicalUrl || undefined,
+      },
+      robots: page?.seo?.noIndex ? { index: false } : undefined,
+    };
+  } catch {
+    return {
+      title: "Choiz - Tratamiento para la caida del cabello",
+    };
+  }
+}
+
+export default async function Home() {
+  const result = await client.queries.page(variables);
+
+  // Use PageClient for visual editing support
+  const { PageClient } = await import("@/components/PageClient");
   return (
-    <LandingPageClient
+    <PageClient
       query={query}
       variables={variables}
       data={result.data}
