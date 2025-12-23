@@ -9,19 +9,11 @@
     "metaDescription": "Esta es una pagina de ejemplo creada desde TinaCMS."
   },
   "navbar": {
-    "variant": "minimal",
+    "variant": "default",
     "ctaText": "Comenzar",
     "ctaLink": "/quiz"
   },
   "sections": [
-    {
-      "variant": "background",
-      "headline": "Bienvenido a la pagina de ejemplo",
-      "subheadline": "Esta es una demostracion del sistema de landing pages dinamicas",
-      "ctaText": "Ver mas",
-      "ctaLink": "#seccion",
-      "_template": "heroVideo"
-    },
     {
       "badge": "+20,000 personas ya vieron resultados",
       "headline": "El tratamiento mas efectivo de Mexico para la caida del cabello",
