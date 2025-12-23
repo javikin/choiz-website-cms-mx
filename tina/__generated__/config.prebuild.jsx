@@ -1112,17 +1112,23 @@ var ctaTimerSectionTemplate = {
       type: "string",
       name: "variant",
       label: "Variante",
+      description: "Selecciona el estilo. 'Stock limitado' habilita el campo 'Texto de Stock' abajo",
       options: [
-        { value: "countdown", label: "Cuenta regresiva grande" },
-        { value: "urgency", label: "Texto de urgencia" },
-        { value: "limited", label: "Stock limitado" }
+        { value: "countdown", label: "\u23F0 Cuenta regresiva grande" },
+        { value: "urgency", label: "\u26A1 Texto de urgencia" },
+        { value: "limited", label: "\u{1F4E6} Stock limitado (habilita campo extra)" }
       ]
     },
     { type: "string", name: "headline", label: "Titulo" },
     { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
     { type: "datetime", name: "endDate", label: "Fecha de Fin", description: "Cuando termina la oferta" },
     ...ctaFields,
-    { type: "string", name: "limitedText", label: "Texto de Stock (solo variante limited)", description: "Ej: Solo 10 lugares disponibles" }
+    {
+      type: "string",
+      name: "limitedText",
+      label: "\u{1F4E6} Texto de Stock",
+      description: "\u26A0\uFE0F SOLO se muestra con variante 'Stock limitado'. Ejemplo: 'Solo 10 lugares disponibles'"
+    }
   ]
 };
 var pressLogosSectionTemplate = {
@@ -1290,14 +1296,20 @@ var benefitsSectionTemplate = {
       type: "string",
       name: "variant",
       label: "Variante",
+      description: "Selecciona el estilo. 'Comparacion' habilita campos de competidor",
       options: [
-        { value: "default", label: "Grid con iconos" },
-        { value: "cards", label: "Tarjetas elevadas" },
-        { value: "list", label: "Lista compacta" },
-        { value: "comparison", label: "Comparacion (nosotros vs otros)" }
+        { value: "default", label: "\u{1F3AF} Grid con iconos" },
+        { value: "cards", label: "\u{1F0CF} Tarjetas elevadas" },
+        { value: "list", label: "\u{1F4DD} Lista compacta" },
+        { value: "comparison", label: "\u{1F19A} Comparacion (habilita campos extra)" }
       ]
     },
-    { type: "string", name: "competitorName", label: "Nombre del Competidor (solo variante comparison)", description: "Ej: Otros, Competencia, Tratamientos tradicionales" },
+    {
+      type: "string",
+      name: "competitorName",
+      label: "\u{1F19A} Nombre del Competidor",
+      description: "\u26A0\uFE0F SOLO se muestra con variante 'Comparacion'. Ejemplo: 'Otros', 'Competencia', 'Tratamientos tradicionales'"
+    },
     {
       type: "object",
       name: "benefits",
@@ -1313,7 +1325,12 @@ var benefitsSectionTemplate = {
         { type: "string", name: "icon", label: "Icono (ruta de imagen)" },
         { type: "string", name: "title", label: "Titulo", required: true },
         { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-        { type: "boolean", name: "competitorHas", label: "El competidor lo tiene? (solo variante comparison)" }
+        {
+          type: "boolean",
+          name: "competitorHas",
+          label: "\u{1F19A} El competidor lo tiene?",
+          description: "\u26A0\uFE0F SOLO aplica con variante 'Comparacion'"
+        }
       ]
     }
   ]
@@ -1639,8 +1656,10 @@ var guaranteeBlock = {
 };
 var config_default = defineConfig({
   branch,
-  clientId: isLocalDevelopment ? "" : process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-  token: isLocalDevelopment ? "" : process.env.TINA_TOKEN,
+  // Always use credentials when available (needed for tinacms build)
+  // In local dev mode with TINA_PUBLIC_IS_LOCAL=true, contentApiUrlOverride is used instead
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "",
+  token: process.env.TINA_TOKEN || "",
   build: {
     outputFolder: "admin",
     publicFolder: "public"
@@ -1652,204 +1671,7 @@ var config_default = defineConfig({
   schema: {
     collections: [
       // ========================================
-      // LANDING PAGE PRINCIPAL (con bloques reordenables)
-      // ========================================
-      {
-        name: "landing",
-        label: "Landing Page",
-        path: "content/landing",
-        format: "json",
-        ui: {
-          allowedActions: {
-            create: false,
-            delete: false
-          },
-          router: () => "/"
-        },
-        fields: [
-          // SEO
-          ...seoFields,
-          // ----------------------------------------
-          // NAVEGACION (fija, no reordenable)
-          // ----------------------------------------
-          {
-            type: "object",
-            name: "navbar",
-            label: "Navegacion",
-            description: "Barra de navegacion superior",
-            ui: {
-              defaultItem: {
-                variant: "default",
-                ctaText: "Comenzar",
-                ctaLink: "/quiz",
-                loginLink: "/login"
-              }
-            },
-            fields: [
-              {
-                type: "string",
-                name: "variant",
-                label: "Estilo del Menu",
-                description: "Selecciona el estilo de navegacion",
-                options: [
-                  { value: "default", label: "Transparente con CTA (Hero)" },
-                  { value: "minimal", label: "Blanco minimalista (iconos)" }
-                ]
-              },
-              {
-                type: "string",
-                name: "logo",
-                label: "Logo",
-                description: "Ruta del logo (ej: /images/logo.svg)"
-              },
-              ...ctaFields,
-              {
-                type: "string",
-                name: "loginLink",
-                label: "Enlace de Login (solo minimal)",
-                description: "URL para el icono de usuario (ej: /login)"
-              }
-            ]
-          },
-          // ----------------------------------------
-          // SECCIONES REORDENABLES (drag and drop)
-          // ----------------------------------------
-          {
-            type: "object",
-            name: "sections",
-            label: "Secciones de la Pagina",
-            description: "Arrastra para reordenar las secciones",
-            list: true,
-            templates: sectionTemplates
-          },
-          // LEGACY INLINE TEMPLATES REMOVED - Now using sectionTemplates array
-          // The following block was replaced with: templates: sectionTemplates
-          // Original inline templates for reference (removed to reduce file size):
-          // - hero, certifications, testimonials, problem, products, ingredients
-          // - effectiveness, whyChoose, guarantee, howItWorks, finalCta
-          // - activos, formulas, successStories, videoTestimonials
-          // - howItWorksNew, finalCtaNew, faq, footerNew
-          // - heroVideo, stats, ctaTimer, pressLogos, productComparison
-          // - beforeAfter, benefits, guaranteeNew, reviews
-          // ----------------------------------------
-          // FOOTER (fijo, no reordenable)
-          // ----------------------------------------
-          {
-            type: "object",
-            name: "footer",
-            label: "Footer",
-            description: "Pie de pagina con links y contacto",
-            fields: [
-              {
-                type: "object",
-                name: "socialLinks",
-                label: "Redes Sociales",
-                list: true,
-                ui: {
-                  itemProps: (item) => ({
-                    label: item?.platform || "Nueva red"
-                  }),
-                  max: LIMITS.MAX_SOCIAL_LINKS
-                },
-                fields: [
-                  {
-                    type: "string",
-                    name: "platform",
-                    label: "Plataforma",
-                    options: [
-                      { value: "Facebook", label: "Facebook" },
-                      { value: "Instagram", label: "Instagram" },
-                      { value: "TikTok", label: "TikTok" },
-                      { value: "YouTube", label: "YouTube" },
-                      { value: "LinkedIn", label: "LinkedIn" },
-                      { value: "Twitter", label: "Twitter/X" }
-                    ]
-                  },
-                  {
-                    type: "string",
-                    name: "url",
-                    label: "URL"
-                  }
-                ]
-              },
-              { type: "string", name: "logo", label: "Logo", description: "Ruta del logo (ej: /images/logo-white.svg)" },
-              { type: "string", name: "copyright", label: "Copyright" },
-              {
-                type: "object",
-                name: "certifications",
-                label: "Certificaciones",
-                list: true,
-                fields: [
-                  { type: "string", name: "logo", label: "Logo", description: "Ruta de imagen (ej: /images/cert-logo.png)" },
-                  { type: "string", name: "label", label: "Etiqueta" }
-                ]
-              },
-              {
-                type: "object",
-                name: "legalLinks",
-                label: "Enlaces Legales",
-                list: true,
-                ui: {
-                  itemProps: (item) => ({
-                    label: item?.text || "Nuevo enlace"
-                  })
-                },
-                fields: linkFields
-              },
-              {
-                type: "object",
-                name: "resourceLinks",
-                label: "Recursos",
-                list: true,
-                ui: {
-                  itemProps: (item) => ({
-                    label: item?.text || "Nuevo recurso"
-                  })
-                },
-                fields: linkFields
-              },
-              {
-                type: "object",
-                name: "founders",
-                label: "Fundadores",
-                list: true,
-                ui: {
-                  itemProps: (item) => ({
-                    label: item?.name || "Nuevo fundador"
-                  })
-                },
-                fields: [
-                  { type: "string", name: "name", label: "Nombre" }
-                ]
-              },
-              {
-                type: "object",
-                name: "contact",
-                label: "Contacto",
-                fields: [
-                  { type: "string", name: "phone", label: "Telefono" },
-                  { type: "string", name: "email", label: "Email" },
-                  { type: "string", name: "hours", label: "Horario" }
-                ]
-              },
-              {
-                type: "object",
-                name: "companyLinks",
-                label: "Enlaces Empresa",
-                list: true,
-                ui: {
-                  itemProps: (item) => ({
-                    label: item?.text || "Nuevo enlace"
-                  })
-                },
-                fields: linkFields
-              }
-            ]
-          }
-        ]
-      },
-      // ========================================
-      // LANDING PAGES DINAMICAS (multiples landing pages)
+      // LANDING PAGES (todas las landing pages)
       // ========================================
       {
         name: "page",
@@ -1860,7 +1682,7 @@ var config_default = defineConfig({
           filename: {
             slugify: (values) => values?.title?.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "") || "nueva-pagina"
           },
-          router: ({ document }) => `/${document._sys.filename}`
+          router: ({ document }) => document._sys.filename === "home" ? "/" : `/${document._sys.filename}`
         },
         fields: [
           // Configuracion basica

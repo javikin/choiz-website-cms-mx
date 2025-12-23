@@ -1814,8 +1814,10 @@ const guaranteeBlock: Template = {
 export default defineConfig({
   branch,
 
-  clientId: isLocalDevelopment ? "" : process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-  token: isLocalDevelopment ? "" : process.env.TINA_TOKEN,
+  // Always use credentials when available (needed for tinacms build)
+  // In local dev mode with TINA_PUBLIC_IS_LOCAL=true, contentApiUrlOverride is used instead
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "",
+  token: process.env.TINA_TOKEN || "",
 
   build: {
     outputFolder: "admin",

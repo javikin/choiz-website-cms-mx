@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tinacms dev -c \"next dev --turbopack\"",
     "dev:next": "next dev --turbopack",
-    "build": "tinacms build --skip-cloud-checks && next build",
+    "build": "next build",
     "build:local": "next build",
     "start": "tinacms build && next start",
     "start:local": "next start",
