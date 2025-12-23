@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request: NextRequest) {
   const { query, variables } = await request.json();
 
-  const result = await databaseClient.queries.landing({
+  const result = await databaseClient.queries.page({
     relativePath: variables?.relativePath || "home.json",
   });
 
