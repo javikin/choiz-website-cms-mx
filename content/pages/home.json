@@ -6,7 +6,7 @@
     "metaDescription": "El tratamiento mas efectivo de Mexico para la caida del cabello. Resultados en 90-180 dias."
   },
   "navbar": {
-    "variant": "default",
+    "variant": "minimal",
     "logo": "/images/choiz-logo.svg",
     "ctaText": "Comienza hoy",
     "ctaLink": "/quiz",
