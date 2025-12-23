@@ -1,0 +1,372 @@
+{
+  "title": "Home v2",
+  "status": "published",
+  "seo": {
+    "metaTitle": "Choiz - Tratamiento para la caida del cabello",
+    "metaDescription": "El tratamiento mas efectivo de Mexico para la caida del cabello. Resultados en 90-180 dias."
+  },
+  "navbar": {
+    "variant": "default",
+    "logo": "/images/choiz-logo.svg",
+    "ctaText": "Comienza hoy",
+    "ctaLink": "/quiz",
+    "loginLink": "/login"
+  },
+  "sections": [
+    {
+      "badge": "+30.000 personas ya vieron resultados",
+      "headline": "El tratamiento más efectivo de México para la caída del cabello",
+      "benefits": [
+        {
+          "text": "Resultados en 90 - 180 días"
+        },
+        {
+          "text": "Científicamente comprobado"
+        },
+        {
+          "text": "100% en línea, con envío gratis"
+        }
+      ],
+      "ctaText": "Comienza hoy",
+      "ctaLink": "/quiz",
+      "priceText": "Desde $467/mes",
+      "backgroundImage": "/images/bg-hero-desk.webp",
+      "_template": "hero"
+    },
+    {
+      "title": "Aprobados y certificados por",
+      "badges": [
+        {
+          "logo": "/images/cofepris-logo.png",
+          "label": "Lic. 2421055036X00214"
+        },
+        {
+          "logo": "/images/profeco-logo.png",
+          "label": "Folio DA24MT62411053"
+        }
+      ],
+      "_template": "certifications"
+    },
+    {
+      "highlightText": "+20.000 personas",
+      "normalText": "ya obtuvieron resultados",
+      "ctaPrimaryText": "Comienza hoy",
+      "ctaPrimaryLink": "/quiz",
+      "ctaSecondaryText": "Ver más casos de éxito",
+      "ctaSecondaryLink": "/casos-exito",
+      "testimonials": [
+        {
+          "name": "Roberto",
+          "age": 26,
+          "quote": "Llevo 3 meses de tratamiento y ya comienzo a ver avances, sin efectos secundarios y de fácil aplicación, estoy atento de ver los resultados a largo plazo.",
+          "beforeImage": "/images/testimonials/roberto-before.jpg",
+          "afterImage": "/images/testimonials/roberto-after.jpg",
+          "monthsBefore": 0,
+          "monthsAfter": 3
+        },
+        {
+          "name": "Sergio",
+          "age": 26,
+          "quote": "Uso Choiz hace 7 meses y la verdad es que estoy teniendo muy buenos resultados. Excelentes productos.",
+          "beforeImage": "/images/testimonials/sergio-before.jpg",
+          "afterImage": "/images/testimonials/sergio-after.jpg",
+          "monthsBefore": 0,
+          "monthsAfter": 7
+        },
+        {
+          "name": "Fernando",
+          "age": 46,
+          "quote": "Efectividad contra la caída y sin ningún efecto secundario, estoy muy contento de tomar la decisión de probarlo y de mantener la constancia de uso.",
+          "beforeImage": "/images/testimonials/fernando-before.jpg",
+          "afterImage": "/images/testimonials/fernando-after.jpg",
+          "monthsBefore": 0,
+          "monthsAfter": 10
+        },
+        {
+          "name": "Rafael",
+          "age": 36,
+          "quote": "Apenas voy a terminar mi tratamiento de 3 meses. La verdad mi mejor opción fue conocer choiz.",
+          "beforeImage": "/images/testimonials/rafael-before.jpg",
+          "afterImage": "/images/testimonials/rafael-after.jpg",
+          "monthsBefore": 0,
+          "monthsAfter": 3
+        }
+      ],
+      "_template": "successStories"
+    },
+    {
+      "headline": "Creamos",
+      "highlightText": "fórmulas personalizadas",
+      "formulas": [
+        {
+          "name": "Dutasteride 0.5mg + Minoxidil 1.25/2.5/3.75/5mg + Biotina 2.5mg (Oral)",
+          "image": "/images/products/capsulas-1.png",
+          "tags": [
+            {
+              "text": "Cápsulas",
+              "variant": "purple"
+            },
+            {
+              "text": "Fácil adopción",
+              "variant": "blue"
+            }
+          ],
+          "ctaText": "Ver si soy apto",
+          "ctaLink": "/quiz"
+        },
+        {
+          "name": "Dutasteride 0.25% + Minoxidil 7% + Tretinoína 0.0125% (Tópico)",
+          "image": "/images/products/locion-1.png",
+          "tags": [
+            {
+              "text": "Loción",
+              "variant": "purple"
+            }
+          ],
+          "ctaText": "Ver si soy apto",
+          "ctaLink": "/quiz"
+        },
+        {
+          "name": "Finasterida 1mg + Minoxidil 2.5/3.75/5mg (Oral)",
+          "image": "/images/products/capsulas-2.png",
+          "tags": [
+            {
+              "text": "Cápsulas",
+              "variant": "purple"
+            },
+            {
+              "text": "Fácil adopción",
+              "variant": "blue"
+            }
+          ],
+          "ctaText": "Ver si soy apto",
+          "ctaLink": "/quiz"
+        },
+        {
+          "name": "Minoxidil 2.5/3.75/5mg (Oral)",
+          "image": "/images/products/capsulas-3.png",
+          "tags": [
+            {
+              "text": "Cápsulas",
+              "variant": "purple"
+            },
+            {
+              "text": "Fácil adopción",
+              "variant": "blue"
+            }
+          ],
+          "ctaText": "Ver si soy apto",
+          "ctaLink": "/quiz"
+        }
+      ],
+      "_template": "formulas"
+    },
+    {
+      "headline": "Utilizamos activos de calidad y con",
+      "highlightText": "evidencia científica",
+      "ctaText": "Encontrar mi fórmula personalizada",
+      "ctaLink": "/quiz",
+      "activos": [
+        {
+          "name": "Dutasterida",
+          "description": "Detiene la caída y promueve el crecimiento del folículo",
+          "image": "/images/activos/dutasterida.png"
+        },
+        {
+          "name": "Minoxidil",
+          "description": "Reactiva los folículos dañados y favorece la circulación sanguínea",
+          "image": "/images/activos/minoxidil.png"
+        },
+        {
+          "name": "Finasterida",
+          "description": "Detiene la caída y promueve el crecimiento del folículo",
+          "image": "/images/activos/finasterida.png"
+        },
+        {
+          "name": "Biotina",
+          "description": "Mejora el grosor y la textura del cabello",
+          "image": "/images/activos/biotina.png"
+        },
+        {
+          "name": "Tretinoína",
+          "description": "Mejora la absorción del Minoxidil",
+          "image": "/images/activos/tretinoina.png"
+        }
+      ],
+      "_template": "activos"
+    },
+    {
+      "headline": "No lo decimos nosotros, lo dicen",
+      "highlightText": "nuestros usuarios",
+      "ctaText": "Comienza hoy",
+      "ctaLink": "/quiz",
+      "videos": [
+        {
+          "name": "Usuario 1",
+          "backgroundImage": "/images/testimonials/video-1.jpg",
+          "videoUrl": "#"
+        },
+        {
+          "name": "Usuario 2",
+          "backgroundImage": "/images/testimonials/video-2.jpg",
+          "videoUrl": "#"
+        },
+        {
+          "name": "Usuario 3",
+          "backgroundImage": "/images/testimonials/video-3.jpg",
+          "videoUrl": "#"
+        }
+      ],
+      "_template": "videoTestimonials"
+    },
+    {
+      "headline": "Cómo funciona Choiz",
+      "ctaText": "Comenzar hoy",
+      "ctaLink": "/quiz",
+      "steps": [
+        {
+          "title": "Completa el cuestionario",
+          "description": "Contestar el formulario te tomará 5 minutos. Tus respuestas nos permitirán crear una formula personalizada",
+          "image": "/images/how-it-works/step-1.png"
+        },
+        {
+          "title": "Recibe tu diagnóstico",
+          "description": "Tendrás una consulta con un doctor que evaluará tu caso y formulará un tratamiento a tu medida.",
+          "image": "/images/how-it-works/step-2.png"
+        },
+        {
+          "title": "Enviamos el tratamiento",
+          "description": "Recibe en tu puerta una cajita con tu tratamiento, incluye: cápsulas, loción, shampoo y vitaminas.",
+          "image": "/images/how-it-works/step-3.png"
+        },
+        {
+          "title": "Monitoreamos tus resultados",
+          "description": "Realizamos seguimiento a tu evolución para ajustar tu plan si es necesario.",
+          "image": "/images/how-it-works/step-4.png"
+        }
+      ],
+      "_template": "howItWorksNew"
+    },
+    {
+      "headline": "¿Tienes preguntas? Aquí te dejamos",
+      "highlightText": "respuestas",
+      "items": [
+        {
+          "question": "¿Qué es la Alopecia Androgénica?",
+          "answer": "La Alopecia Androgénica es una condición genética que causa la pérdida progresiva del cabello, principalmente en el cuero cabelludo. Esta forma de alopecia es común en los hombres y se caracteriza por el adelgazamiento del cabello en la parte superior y frontal de la cabeza, lo que se denomina comúnmente como calvicie."
+        },
+        {
+          "question": "¿Cuál es la causa más común de caída de cabello en hombres?",
+          "answer": "La causa más común es la Alopecia Androgénica, que afecta aproximadamente al 50% de los hombres mayores de 50 años. Esta condición está relacionada con factores genéticos y hormonales, específicamente con la sensibilidad de los folículos pilosos a la dihidrotestosterona (DHT)."
+        },
+        {
+          "question": "¿La Alopecia tiene cura?",
+          "answer": "Actualmente no existe una cura definitiva para la alopecia androgénica, pero existen tratamientos muy efectivos que pueden detener la caída del cabello y estimular el crecimiento de nuevo cabello. La clave está en comenzar el tratamiento lo antes posible."
+        },
+        {
+          "question": "¿Qué tratamientos sirven para la caída del cabello?",
+          "answer": "Los tratamientos más efectivos incluyen Minoxidil (que estimula el crecimiento capilar), Finasterida y Dutasterida (que bloquean la DHT), y tratamientos tópicos combinados. En Choiz creamos fórmulas personalizadas que combinan estos activos según tu caso específico."
+        },
+        {
+          "question": "¿Cómo funciona la Dutasterida?",
+          "answer": "La Dutasterida es un inhibidor de la enzima 5-alfa reductasa que reduce los niveles de DHT (la hormona responsable de la miniaturización del folículo). Es más potente que la Finasterida ya que bloquea ambos tipos de la enzima, logrando una reducción de DHT de hasta el 90%."
+        },
+        {
+          "question": "¿Cuánto tiempo dura el tratamiento para la alopecia masculina y cuando puedo ver resultados?",
+          "answer": "El tratamiento es continuo para mantener los resultados. Generalmente, se empiezan a notar mejoras significativas entre los 3 y 6 meses de uso constante. La mayoría de nuestros usuarios reportan resultados visibles a partir del tercer mes de tratamiento."
+        }
+      ],
+      "_template": "faq"
+    },
+    {
+      "headline": "Recupera tu cabello y tu confianza con Choiz",
+      "ctaText": "Comienza hoy",
+      "ctaLink": "/quiz",
+      "backgroundImage": "/images/hero-man-optimized.jpg",
+      "_template": "finalCtaNew"
+    },
+    {
+      "appTitle": "Tu salud en un solo lugar",
+      "appSubtitle": "Descarga la app",
+      "appImage": "/images/app-mockup.png",
+      "companyLinks": [
+        {
+          "text": "Sobre nosotros",
+          "url": "/nosotros"
+        },
+        {
+          "text": "Trabaja con nosotros",
+          "url": "/empleos"
+        }
+      ],
+      "founders": [
+        {
+          "name": "Franco Lacrampette"
+        },
+        {
+          "name": "Ignacio D'Anunzio"
+        }
+      ],
+      "resourceLinks": [
+        {
+          "text": "Blog",
+          "url": "/blog"
+        },
+        {
+          "text": "Preguntas frecuentes",
+          "url": "/faq"
+        }
+      ],
+      "phone": "+52 1 55 9225 6335",
+      "email": "hola@choiz.com.mx",
+      "hoursLabel": "Lunes a Viernes",
+      "hoursValue": "07 a 22 hs",
+      "treatmentLinks": [
+        {
+          "text": "Alopecia",
+          "url": "/alopecia"
+        },
+        {
+          "text": "Pérdida de peso",
+          "url": "/perdida-peso"
+        }
+      ],
+      "legalLinks": [
+        {
+          "text": "Políticas de privacidad",
+          "url": "/privacidad"
+        },
+        {
+          "text": "Términos y condiciones",
+          "url": "/terminos"
+        },
+        {
+          "text": "Consentimiento de Telemedicina",
+          "url": "/telemedicina"
+        }
+      ],
+      "cofeprisCode": "COFEPRIS 2421055036X00214",
+      "socialLinks": [
+        {
+          "platform": "instagram",
+          "url": "https://instagram.com/choiz"
+        },
+        {
+          "platform": "facebook",
+          "url": "https://facebook.com/choiz"
+        },
+        {
+          "platform": "tiktok",
+          "url": "https://tiktok.com/@choiz"
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://linkedin.com/company/choiz"
+        }
+      ],
+      "copyright": "© CHOIZ XCALE HEALTH S.A de C.V.. Todos los derechos reservados.",
+      "logoImage": "/images/choiz-logo-gray.svg",
+      "_template": "footerNew"
+    }
+  ]
+}
