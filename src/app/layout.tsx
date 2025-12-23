@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@/components/analytics";
 import "./globals.css";
+
+// Google Analytics Measurement ID
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
 
 // DM Sans para headlines (como en Figma)
 const dmSans = DM_Sans({
@@ -77,6 +81,7 @@ export default function RootLayout({
       >
         {children}
         <SpeedInsights />
+        <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
       </body>
     </html>
   );

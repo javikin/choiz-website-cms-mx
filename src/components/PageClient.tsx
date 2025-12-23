@@ -3,6 +3,7 @@
 import { useTina, tinaField } from "tinacms/dist/react";
 import { Navbar } from "@/components/layout/Navbar";
 import { NavbarMinimal } from "@/components/layout/NavbarMinimal";
+import { ABTestWrapper } from "@/components/analytics";
 import {
   Hero,
   HeroVideo,
@@ -478,8 +479,23 @@ export function PageClient(props: PageClientProps) {
   // Determine which navbar variant to render
   const navbarVariant = data?.navbar?.variant || "default";
 
+  // Extract page slug from relativePath (e.g., "ejemplo.json" -> "ejemplo")
+  const pageSlug = props.variables.relativePath.replace(".json", "");
+
+  // A/B Test configuration
+  const abTestConfig = data?.abTest
+    ? {
+        testId: data.abTest.testId || undefined,
+        variant: data.abTest.variant || undefined,
+        trafficPercentage: data.abTest.trafficPercentage || undefined,
+        isActive: data.abTest.isActive || undefined,
+        startDate: data.abTest.startDate || undefined,
+        endDate: data.abTest.endDate || undefined,
+      }
+    : undefined;
+
   return (
-    <>
+    <ABTestWrapper abTest={abTestConfig} pageSlug={pageSlug}>
       {navbarVariant === "minimal" ? (
         <NavbarMinimal
           logo={data?.navbar?.logo || undefined}
@@ -515,6 +531,6 @@ export function PageClient(props: PageClientProps) {
           tinaField={tinaField(data, "footer")}
         />
       )}
-    </>
+    </ABTestWrapper>
   );
 }

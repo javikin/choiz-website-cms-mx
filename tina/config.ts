@@ -1235,17 +1235,23 @@ const ctaTimerSectionTemplate: Template = {
       type: "string",
       name: "variant",
       label: "Variante",
+      description: "Selecciona el estilo. 'Stock limitado' habilita el campo 'Texto de Stock' abajo",
       options: [
-        { value: "countdown", label: "Cuenta regresiva grande" },
-        { value: "urgency", label: "Texto de urgencia" },
-        { value: "limited", label: "Stock limitado" },
+        { value: "countdown", label: "⏰ Cuenta regresiva grande" },
+        { value: "urgency", label: "⚡ Texto de urgencia" },
+        { value: "limited", label: "📦 Stock limitado (habilita campo extra)" },
       ],
     },
     { type: "string", name: "headline", label: "Titulo" },
     { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
     { type: "datetime", name: "endDate", label: "Fecha de Fin", description: "Cuando termina la oferta" },
     ...ctaFields,
-    { type: "string", name: "limitedText", label: "Texto de Stock (solo variante limited)", description: "Ej: Solo 10 lugares disponibles" },
+    {
+      type: "string",
+      name: "limitedText",
+      label: "📦 Texto de Stock",
+      description: "⚠️ SOLO se muestra con variante 'Stock limitado'. Ejemplo: 'Solo 10 lugares disponibles'",
+    },
   ],
 };
 
@@ -1421,14 +1427,20 @@ const benefitsSectionTemplate: Template = {
       type: "string",
       name: "variant",
       label: "Variante",
+      description: "Selecciona el estilo. 'Comparacion' habilita campos de competidor",
       options: [
-        { value: "default", label: "Grid con iconos" },
-        { value: "cards", label: "Tarjetas elevadas" },
-        { value: "list", label: "Lista compacta" },
-        { value: "comparison", label: "Comparacion (nosotros vs otros)" },
+        { value: "default", label: "🎯 Grid con iconos" },
+        { value: "cards", label: "🃏 Tarjetas elevadas" },
+        { value: "list", label: "📝 Lista compacta" },
+        { value: "comparison", label: "🆚 Comparacion (habilita campos extra)" },
       ],
     },
-    { type: "string", name: "competitorName", label: "Nombre del Competidor (solo variante comparison)", description: "Ej: Otros, Competencia, Tratamientos tradicionales" },
+    {
+      type: "string",
+      name: "competitorName",
+      label: "🆚 Nombre del Competidor",
+      description: "⚠️ SOLO se muestra con variante 'Comparacion'. Ejemplo: 'Otros', 'Competencia', 'Tratamientos tradicionales'",
+    },
     {
       type: "object",
       name: "benefits",
@@ -1444,7 +1456,12 @@ const benefitsSectionTemplate: Template = {
         { type: "string", name: "icon", label: "Icono (ruta de imagen)" },
         { type: "string", name: "title", label: "Titulo", required: true },
         { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-        { type: "boolean", name: "competitorHas", label: "El competidor lo tiene? (solo variante comparison)" },
+        {
+          type: "boolean",
+          name: "competitorHas",
+          label: "🆚 El competidor lo tiene?",
+          description: "⚠️ SOLO aplica con variante 'Comparacion'",
+        },
       ],
     },
   ],
@@ -2046,6 +2063,65 @@ export default defineConfig({
             options: [
               { value: "draft", label: "Borrador" },
               { value: "published", label: "Publicada" },
+            ],
+          },
+
+          // A/B Testing
+          {
+            type: "object",
+            name: "abTest",
+            label: "A/B Testing",
+            description: "Configuracion para pruebas A/B",
+            fields: [
+              {
+                type: "string",
+                name: "testId",
+                label: "ID del Test",
+                description: "Identificador unico del test (ej: black-friday-2025-hero)",
+              },
+              {
+                type: "string",
+                name: "variant",
+                label: "Variante",
+                description: "Tipo de variante para este test",
+                options: [
+                  { value: "control", label: "Control (Original)" },
+                  { value: "variant-a", label: "Variante A" },
+                  { value: "variant-b", label: "Variante B" },
+                  { value: "variant-c", label: "Variante C" },
+                ],
+              },
+              {
+                type: "number",
+                name: "trafficPercentage",
+                label: "% de Trafico",
+                description: "Porcentaje de trafico que recibe esta variante (0-100)",
+                ui: {
+                  validate: (value: number) => {
+                    if (value !== undefined && (value < 0 || value > 100)) {
+                      return "El porcentaje debe estar entre 0 y 100";
+                    }
+                  },
+                },
+              },
+              {
+                type: "boolean",
+                name: "isActive",
+                label: "Test Activo",
+                description: "Indica si este test esta actualmente activo",
+              },
+              {
+                type: "datetime",
+                name: "startDate",
+                label: "Fecha de Inicio",
+                description: "Cuando comienza el test",
+              },
+              {
+                type: "datetime",
+                name: "endDate",
+                label: "Fecha de Fin",
+                description: "Cuando termina el test",
+              },
             ],
           },
 

@@ -1,0 +1,7 @@
+<svg width="400" height="250" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="250" fill="#1a1a1a"/>
+  <rect x="20" y="20" width="360" height="210" rx="8" stroke="#333" stroke-width="2"/>
+  <text x="200" y="110" text-anchor="middle" fill="#555" font-family="system-ui" font-size="40">🔄</text>
+  <text x="200" y="150" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">Antes y Despues</text>
+  <text x="200" y="175" text-anchor="middle" fill="#444" font-family="monospace" font-size="12">beforeAfter</text>
+</svg>

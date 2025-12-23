@@ -1880,6 +1880,64 @@ var config_default = defineConfig({
               { value: "published", label: "Publicada" }
             ]
           },
+          // A/B Testing
+          {
+            type: "object",
+            name: "abTest",
+            label: "A/B Testing",
+            description: "Configuracion para pruebas A/B",
+            fields: [
+              {
+                type: "string",
+                name: "testId",
+                label: "ID del Test",
+                description: "Identificador unico del test (ej: black-friday-2025-hero)"
+              },
+              {
+                type: "string",
+                name: "variant",
+                label: "Variante",
+                description: "Tipo de variante para este test",
+                options: [
+                  { value: "control", label: "Control (Original)" },
+                  { value: "variant-a", label: "Variante A" },
+                  { value: "variant-b", label: "Variante B" },
+                  { value: "variant-c", label: "Variante C" }
+                ]
+              },
+              {
+                type: "number",
+                name: "trafficPercentage",
+                label: "% de Trafico",
+                description: "Porcentaje de trafico que recibe esta variante (0-100)",
+                ui: {
+                  validate: (value) => {
+                    if (value !== void 0 && (value < 0 || value > 100)) {
+                      return "El porcentaje debe estar entre 0 y 100";
+                    }
+                  }
+                }
+              },
+              {
+                type: "boolean",
+                name: "isActive",
+                label: "Test Activo",
+                description: "Indica si este test esta actualmente activo"
+              },
+              {
+                type: "datetime",
+                name: "startDate",
+                label: "Fecha de Inicio",
+                description: "Cuando comienza el test"
+              },
+              {
+                type: "datetime",
+                name: "endDate",
+                label: "Fecha de Fin",
+                description: "Cuando termina el test"
+              }
+            ]
+          },
           // SEO
           ...seoFields,
           // Navegacion

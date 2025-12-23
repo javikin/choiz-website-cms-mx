@@ -429,6 +429,15 @@ fragment PageParts on Page {
   __typename
   title
   status
+  abTest {
+    __typename
+    testId
+    variant
+    trafficPercentage
+    isActive
+    startDate
+    endDate
+  }
   seo {
     __typename
     metaTitle
