@@ -805,10 +805,17 @@ export type PageAbTestFilter = {
   endDate?: InputMaybe<DatetimeFilter>;
 };
 
+export type ImageFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type PageSeoFilter = {
   metaTitle?: InputMaybe<StringFilter>;
   metaDescription?: InputMaybe<StringFilter>;
-  ogImage?: InputMaybe<StringFilter>;
+  ogImage?: InputMaybe<ImageFilter>;
   ogType?: InputMaybe<StringFilter>;
   canonicalUrl?: InputMaybe<StringFilter>;
   noIndex?: InputMaybe<BooleanFilter>;
@@ -816,7 +823,7 @@ export type PageSeoFilter = {
 
 export type PageNavbarFilter = {
   variant?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   loginLink?: InputMaybe<StringFilter>;
@@ -833,11 +840,11 @@ export type PageSectionsHeroFilter = {
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   priceText?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsCertificationsBadgesFilter = {
-  logo?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
   label?: InputMaybe<StringFilter>;
 };
 
@@ -848,12 +855,12 @@ export type PageSectionsCertificationsFilter = {
 
 export type PageSectionsTestimonialsVideosFilter = {
   name?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
   videoUrl?: InputMaybe<StringFilter>;
   rating?: InputMaybe<NumberFilter>;
   productName?: InputMaybe<StringFilter>;
   productDescription?: InputMaybe<StringFilter>;
-  productImage?: InputMaybe<StringFilter>;
+  productImage?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsTestimonialsFilter = {
@@ -868,7 +875,7 @@ export type PageSectionsTestimonialsFilter = {
 
 export type PageSectionsProblemHairLossTypesFilter = {
   name?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsProblemFilter = {
@@ -876,7 +883,7 @@ export type PageSectionsProblemFilter = {
   stat?: InputMaybe<StringFilter>;
   statDescription?: InputMaybe<StringFilter>;
   explanation?: InputMaybe<StringFilter>;
-  illustration?: InputMaybe<StringFilter>;
+  illustration?: InputMaybe<ImageFilter>;
   hairLossTypes?: InputMaybe<PageSectionsProblemHairLossTypesFilter>;
 };
 
@@ -887,7 +894,7 @@ export type PageSectionsProductsItemsTagsFilter = {
 export type PageSectionsProductsItemsFilter = {
   name?: InputMaybe<StringFilter>;
   tags?: InputMaybe<PageSectionsProductsItemsTagsFilter>;
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
   selectText?: InputMaybe<StringFilter>;
   moreText?: InputMaybe<StringFilter>;
   link?: InputMaybe<StringFilter>;
@@ -901,7 +908,7 @@ export type PageSectionsProductsFilter = {
 export type PageSectionsIngredientsItemsFilter = {
   name?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsIngredientsFilter = {
@@ -930,7 +937,7 @@ export type PageSectionsEffectivenessFilter = {
 export type PageSectionsWhyChooseValuePropsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsWhyChooseFilter = {
@@ -949,7 +956,7 @@ export type PageSectionsGuaranteeFilter = {
 export type PageSectionsHowItWorksStepsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsHowItWorksFilter = {
@@ -969,7 +976,7 @@ export type PageSectionsFinalCtaFilter = {
 export type PageSectionsActivosActivosFilter = {
   name?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsActivosFilter = {
@@ -987,7 +994,7 @@ export type PageSectionsFormulasFormulasTagsFilter = {
 
 export type PageSectionsFormulasFormulasFilter = {
   name?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
   tags?: InputMaybe<PageSectionsFormulasFormulasTagsFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
@@ -1003,8 +1010,8 @@ export type PageSectionsSuccessStoriesTestimonialsFilter = {
   name?: InputMaybe<StringFilter>;
   age?: InputMaybe<NumberFilter>;
   quote?: InputMaybe<StringFilter>;
-  beforeImage?: InputMaybe<StringFilter>;
-  afterImage?: InputMaybe<StringFilter>;
+  beforeImage?: InputMaybe<ImageFilter>;
+  afterImage?: InputMaybe<ImageFilter>;
   monthsBefore?: InputMaybe<NumberFilter>;
   monthsAfter?: InputMaybe<NumberFilter>;
 };
@@ -1021,7 +1028,7 @@ export type PageSectionsSuccessStoriesFilter = {
 
 export type PageSectionsVideoTestimonialsVideosFilter = {
   name?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
   videoUrl?: InputMaybe<StringFilter>;
 };
 
@@ -1036,7 +1043,7 @@ export type PageSectionsVideoTestimonialsFilter = {
 export type PageSectionsHowItWorksNewStepsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsHowItWorksNewFilter = {
@@ -1050,7 +1057,7 @@ export type PageSectionsFinalCtaNewFilter = {
   headline?: InputMaybe<StringFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsFaqItemsFilter = {
@@ -1096,7 +1103,7 @@ export type PageSectionsFooterNewSocialLinksFilter = {
 export type PageSectionsFooterNewFilter = {
   appTitle?: InputMaybe<StringFilter>;
   appSubtitle?: InputMaybe<StringFilter>;
-  appImage?: InputMaybe<StringFilter>;
+  appImage?: InputMaybe<ImageFilter>;
   companyLinks?: InputMaybe<PageSectionsFooterNewCompanyLinksFilter>;
   founders?: InputMaybe<PageSectionsFooterNewFoundersFilter>;
   resourceLinks?: InputMaybe<PageSectionsFooterNewResourceLinksFilter>;
@@ -1109,7 +1116,7 @@ export type PageSectionsFooterNewFilter = {
   cofeprisCode?: InputMaybe<StringFilter>;
   socialLinks?: InputMaybe<PageSectionsFooterNewSocialLinksFilter>;
   copyright?: InputMaybe<StringFilter>;
-  logoImage?: InputMaybe<StringFilter>;
+  logoImage?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsHeroVideoFilter = {
@@ -1120,13 +1127,13 @@ export type PageSectionsHeroVideoFilter = {
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   videoUrl?: InputMaybe<StringFilter>;
-  posterImage?: InputMaybe<StringFilter>;
+  posterImage?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsStatsStatsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<ImageFilter>;
 };
 
 export type PageSectionsStatsFilter = {
@@ -1146,7 +1153,7 @@ export type PageSectionsCtaTimerFilter = {
 };
 
 export type PageSectionsPressLogosLogosFilter = {
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
   name?: InputMaybe<StringFilter>;
   url?: InputMaybe<StringFilter>;
 };
@@ -1183,8 +1190,8 @@ export type PageSectionsProductComparisonFilter = {
 };
 
 export type PageSectionsBeforeAfterCasesFilter = {
-  beforeImage?: InputMaybe<StringFilter>;
-  afterImage?: InputMaybe<StringFilter>;
+  beforeImage?: InputMaybe<ImageFilter>;
+  afterImage?: InputMaybe<ImageFilter>;
   name?: InputMaybe<StringFilter>;
   duration?: InputMaybe<StringFilter>;
   product?: InputMaybe<StringFilter>;
@@ -1199,7 +1206,7 @@ export type PageSectionsBeforeAfterFilter = {
 };
 
 export type PageSectionsBenefitsBenefitsFilter = {
-  icon?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<ImageFilter>;
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   competitorHas?: InputMaybe<BooleanFilter>;
@@ -1282,7 +1289,7 @@ export type PageFooterSocialLinksFilter = {
 };
 
 export type PageFooterCertificationsFilter = {
-  logo?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
   label?: InputMaybe<StringFilter>;
 };
 
@@ -1313,7 +1320,7 @@ export type PageFooterCompanyLinksFilter = {
 
 export type PageFooterFilter = {
   socialLinks?: InputMaybe<PageFooterSocialLinksFilter>;
-  logo?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
   copyright?: InputMaybe<StringFilter>;
   certifications?: InputMaybe<PageFooterCertificationsFilter>;
   legalLinks?: InputMaybe<PageFooterLegalLinksFilter>;
@@ -1421,18 +1428,18 @@ export type BlocksSectionsHeroBlockFilter = {
   benefits?: InputMaybe<BlocksSectionsHeroBlockBenefitsFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<StringFilter>;
-  backgroundImageMobile?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
+  backgroundImageMobile?: InputMaybe<ImageFilter>;
 };
 
 export type BlocksSectionsTestimonialsBlockVideosFilter = {
   name?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
   videoUrl?: InputMaybe<StringFilter>;
   rating?: InputMaybe<NumberFilter>;
   productName?: InputMaybe<StringFilter>;
   productDescription?: InputMaybe<StringFilter>;
-  productImage?: InputMaybe<StringFilter>;
+  productImage?: InputMaybe<ImageFilter>;
 };
 
 export type BlocksSectionsTestimonialsBlockFilter = {

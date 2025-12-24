@@ -640,10 +640,17 @@ input PageAbTestFilter {
   endDate: DatetimeFilter
 }
 
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
 input PageSeoFilter {
   metaTitle: StringFilter
   metaDescription: StringFilter
-  ogImage: StringFilter
+  ogImage: ImageFilter
   ogType: StringFilter
   canonicalUrl: StringFilter
   noIndex: BooleanFilter
@@ -651,7 +658,7 @@ input PageSeoFilter {
 
 input PageNavbarFilter {
   variant: StringFilter
-  logo: StringFilter
+  logo: ImageFilter
   ctaText: StringFilter
   ctaLink: StringFilter
   loginLink: StringFilter
@@ -668,11 +675,11 @@ input PageSectionsHeroFilter {
   ctaText: StringFilter
   ctaLink: StringFilter
   priceText: StringFilter
-  backgroundImage: StringFilter
+  backgroundImage: ImageFilter
 }
 
 input PageSectionsCertificationsBadgesFilter {
-  logo: StringFilter
+  logo: ImageFilter
   label: StringFilter
 }
 
@@ -683,12 +690,12 @@ input PageSectionsCertificationsFilter {
 
 input PageSectionsTestimonialsVideosFilter {
   name: StringFilter
-  backgroundImage: StringFilter
+  backgroundImage: ImageFilter
   videoUrl: StringFilter
   rating: NumberFilter
   productName: StringFilter
   productDescription: StringFilter
-  productImage: StringFilter
+  productImage: ImageFilter
 }
 
 input PageSectionsTestimonialsFilter {
@@ -703,7 +710,7 @@ input PageSectionsTestimonialsFilter {
 
 input PageSectionsProblemHairLossTypesFilter {
   name: StringFilter
-  icon: StringFilter
+  icon: ImageFilter
 }
 
 input PageSectionsProblemFilter {
@@ -711,7 +718,7 @@ input PageSectionsProblemFilter {
   stat: StringFilter
   statDescription: StringFilter
   explanation: StringFilter
-  illustration: StringFilter
+  illustration: ImageFilter
   hairLossTypes: PageSectionsProblemHairLossTypesFilter
 }
 
@@ -722,7 +729,7 @@ input PageSectionsProductsItemsTagsFilter {
 input PageSectionsProductsItemsFilter {
   name: StringFilter
   tags: PageSectionsProductsItemsTagsFilter
-  image: StringFilter
+  image: ImageFilter
   selectText: StringFilter
   moreText: StringFilter
   link: StringFilter
@@ -736,7 +743,7 @@ input PageSectionsProductsFilter {
 input PageSectionsIngredientsItemsFilter {
   name: StringFilter
   description: StringFilter
-  image: StringFilter
+  image: ImageFilter
 }
 
 input PageSectionsIngredientsFilter {
@@ -765,7 +772,7 @@ input PageSectionsEffectivenessFilter {
 input PageSectionsWhyChooseValuePropsFilter {
   title: StringFilter
   description: StringFilter
-  icon: StringFilter
+  icon: ImageFilter
 }
 
 input PageSectionsWhyChooseFilter {
@@ -784,7 +791,7 @@ input PageSectionsGuaranteeFilter {
 input PageSectionsHowItWorksStepsFilter {
   title: StringFilter
   description: StringFilter
-  icon: StringFilter
+  icon: ImageFilter
 }
 
 input PageSectionsHowItWorksFilter {
@@ -804,7 +811,7 @@ input PageSectionsFinalCtaFilter {
 input PageSectionsActivosActivosFilter {
   name: StringFilter
   description: StringFilter
-  image: StringFilter
+  image: ImageFilter
 }
 
 input PageSectionsActivosFilter {
@@ -822,7 +829,7 @@ input PageSectionsFormulasFormulasTagsFilter {
 
 input PageSectionsFormulasFormulasFilter {
   name: StringFilter
-  image: StringFilter
+  image: ImageFilter
   tags: PageSectionsFormulasFormulasTagsFilter
   ctaText: StringFilter
   ctaLink: StringFilter
@@ -838,8 +845,8 @@ input PageSectionsSuccessStoriesTestimonialsFilter {
   name: StringFilter
   age: NumberFilter
   quote: StringFilter
-  beforeImage: StringFilter
-  afterImage: StringFilter
+  beforeImage: ImageFilter
+  afterImage: ImageFilter
   monthsBefore: NumberFilter
   monthsAfter: NumberFilter
 }
@@ -856,7 +863,7 @@ input PageSectionsSuccessStoriesFilter {
 
 input PageSectionsVideoTestimonialsVideosFilter {
   name: StringFilter
-  backgroundImage: StringFilter
+  backgroundImage: ImageFilter
   videoUrl: StringFilter
 }
 
@@ -871,7 +878,7 @@ input PageSectionsVideoTestimonialsFilter {
 input PageSectionsHowItWorksNewStepsFilter {
   title: StringFilter
   description: StringFilter
-  image: StringFilter
+  image: ImageFilter
 }
 
 input PageSectionsHowItWorksNewFilter {
@@ -885,7 +892,7 @@ input PageSectionsFinalCtaNewFilter {
   headline: StringFilter
   ctaText: StringFilter
   ctaLink: StringFilter
-  backgroundImage: StringFilter
+  backgroundImage: ImageFilter
 }
 
 input PageSectionsFaqItemsFilter {
@@ -931,7 +938,7 @@ input PageSectionsFooterNewSocialLinksFilter {
 input PageSectionsFooterNewFilter {
   appTitle: StringFilter
   appSubtitle: StringFilter
-  appImage: StringFilter
+  appImage: ImageFilter
   companyLinks: PageSectionsFooterNewCompanyLinksFilter
   founders: PageSectionsFooterNewFoundersFilter
   resourceLinks: PageSectionsFooterNewResourceLinksFilter
@@ -944,7 +951,7 @@ input PageSectionsFooterNewFilter {
   cofeprisCode: StringFilter
   socialLinks: PageSectionsFooterNewSocialLinksFilter
   copyright: StringFilter
-  logoImage: StringFilter
+  logoImage: ImageFilter
 }
 
 input PageSectionsHeroVideoFilter {
@@ -955,13 +962,13 @@ input PageSectionsHeroVideoFilter {
   ctaText: StringFilter
   ctaLink: StringFilter
   videoUrl: StringFilter
-  posterImage: StringFilter
+  posterImage: ImageFilter
 }
 
 input PageSectionsStatsStatsFilter {
   value: StringFilter
   label: StringFilter
-  icon: StringFilter
+  icon: ImageFilter
 }
 
 input PageSectionsStatsFilter {
@@ -981,7 +988,7 @@ input PageSectionsCtaTimerFilter {
 }
 
 input PageSectionsPressLogosLogosFilter {
-  image: StringFilter
+  image: ImageFilter
   name: StringFilter
   url: StringFilter
 }
@@ -1018,8 +1025,8 @@ input PageSectionsProductComparisonFilter {
 }
 
 input PageSectionsBeforeAfterCasesFilter {
-  beforeImage: StringFilter
-  afterImage: StringFilter
+  beforeImage: ImageFilter
+  afterImage: ImageFilter
   name: StringFilter
   duration: StringFilter
   product: StringFilter
@@ -1034,7 +1041,7 @@ input PageSectionsBeforeAfterFilter {
 }
 
 input PageSectionsBenefitsBenefitsFilter {
-  icon: StringFilter
+  icon: ImageFilter
   title: StringFilter
   description: StringFilter
   competitorHas: BooleanFilter
@@ -1117,7 +1124,7 @@ input PageFooterSocialLinksFilter {
 }
 
 input PageFooterCertificationsFilter {
-  logo: StringFilter
+  logo: ImageFilter
   label: StringFilter
 }
 
@@ -1148,7 +1155,7 @@ input PageFooterCompanyLinksFilter {
 
 input PageFooterFilter {
   socialLinks: PageFooterSocialLinksFilter
-  logo: StringFilter
+  logo: ImageFilter
   copyright: StringFilter
   certifications: PageFooterCertificationsFilter
   legalLinks: PageFooterLegalLinksFilter
@@ -1247,18 +1254,18 @@ input BlocksSectionsHeroBlockFilter {
   benefits: BlocksSectionsHeroBlockBenefitsFilter
   ctaText: StringFilter
   ctaLink: StringFilter
-  backgroundImage: StringFilter
-  backgroundImageMobile: StringFilter
+  backgroundImage: ImageFilter
+  backgroundImageMobile: ImageFilter
 }
 
 input BlocksSectionsTestimonialsBlockVideosFilter {
   name: StringFilter
-  backgroundImage: StringFilter
+  backgroundImage: ImageFilter
   videoUrl: StringFilter
   rating: NumberFilter
   productName: StringFilter
   productDescription: StringFilter
-  productImage: StringFilter
+  productImage: ImageFilter
 }
 
 input BlocksSectionsTestimonialsBlockFilter {

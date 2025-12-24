@@ -60,10 +60,10 @@ var seoFields = [
         }
       },
       {
-        type: "string",
+        type: "image",
         name: "ogImage",
         label: "Imagen para Redes Sociales (og:image)",
-        description: "Ruta de imagen (ej: /images/og-image.jpg). 1200x630px recomendado"
+        description: "1200x630px recomendado"
       },
       {
         type: "string",
@@ -167,10 +167,10 @@ var testimonialVideoTemplate = {
       }
     },
     {
-      type: "string",
+      type: "image",
       name: "backgroundImage",
       label: "Foto del Cliente",
-      description: "Ruta de imagen (ej: /images/testimonial.jpg). 363x589px recomendado"
+      description: "363x589px recomendado"
     },
     {
       type: "string",
@@ -212,10 +212,9 @@ var testimonialVideoTemplate = {
       }
     },
     {
-      type: "string",
+      type: "image",
       name: "productImage",
-      label: "Imagen del Producto",
-      description: "Ruta de imagen (ej: /images/product.png)"
+      label: "Imagen del Producto"
     }
   ]
 };
@@ -269,10 +268,10 @@ var productTemplate = {
       ]
     },
     {
-      type: "string",
+      type: "image",
       name: "image",
       label: "Imagen del Producto",
-      description: "Ruta de imagen (ej: /images/product.png). 500x500px recomendado"
+      description: "500x500px recomendado"
     },
     {
       type: "string",
@@ -323,10 +322,9 @@ var ingredientTemplate = {
       }
     },
     {
-      type: "string",
+      type: "image",
       name: "image",
-      label: "Imagen",
-      description: "Ruta de imagen (ej: /images/ingredients/minoxidil.jpg)"
+      label: "Imagen"
     }
   ]
 };
@@ -361,10 +359,9 @@ var stepTemplate = {
       }
     },
     {
-      type: "string",
+      type: "image",
       name: "icon",
-      label: "Icono",
-      description: "Ruta de icono (ej: /images/icons/step.svg)"
+      label: "Icono"
     }
   ]
 };
@@ -399,10 +396,9 @@ var valuePropTemplate = {
       }
     },
     {
-      type: "string",
+      type: "image",
       name: "icon",
-      label: "Icono",
-      description: "Ruta de icono (ej: /images/icons/icon.svg)"
+      label: "Icono"
     }
   ]
 };
@@ -459,10 +455,9 @@ var heroSectionTemplate = {
       description: "Texto que aparece junto al boton (ej: Desde $467/mes)"
     },
     {
-      type: "string",
+      type: "image",
       name: "backgroundImage",
-      label: "Imagen de Fondo",
-      description: "Ruta de imagen (ej: /images/hero-background.jpg)"
+      label: "Imagen de Fondo"
     }
   ]
 };
@@ -487,7 +482,7 @@ var certificationsSectionTemplate = {
         max: LIMITS.MAX_BADGES
       },
       fields: [
-        { type: "string", name: "logo", label: "Logo", description: "Ruta de imagen (ej: /images/logo.png)" },
+        { type: "image", name: "logo", label: "Logo" },
         { type: "string", name: "label", label: "Texto/Licencia" }
       ]
     }
@@ -525,7 +520,7 @@ var problemSectionTemplate = {
     { type: "string", name: "stat", label: "Estadistica Principal" },
     { type: "string", name: "statDescription", label: "Descripcion de la Estadistica", ui: { component: "textarea" } },
     { type: "string", name: "explanation", label: "Explicacion Cientifica", ui: { component: "textarea" } },
-    { type: "string", name: "illustration", label: "Ilustracion DHT", description: "Ruta de imagen (ej: /images/dht.svg)" },
+    { type: "image", name: "illustration", label: "Ilustracion DHT" },
     {
       type: "object",
       name: "hairLossTypes",
@@ -549,7 +544,7 @@ var problemSectionTemplate = {
             { value: "Difusa", label: "Difusa" }
           ]
         },
-        { type: "string", name: "icon", label: "Icono", description: "Ruta de icono (ej: /images/icons/icon.svg)" }
+        { type: "image", name: "icon", label: "Icono" }
       ]
     }
   ]
@@ -713,7 +708,7 @@ var activosSectionTemplate = {
       fields: [
         { type: "string", name: "name", label: "Nombre del Activo", required: true },
         { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-        { type: "string", name: "image", label: "Imagen", description: "Ruta de imagen (ej: /images/activos/dutasterida.png)" }
+        { type: "image", name: "image", label: "Imagen" }
       ]
     }
   ]
@@ -743,7 +738,7 @@ var formulasSectionTemplate = {
       },
       fields: [
         { type: "string", name: "name", label: "Nombre de la Formula", required: true, ui: { component: "textarea" } },
-        { type: "string", name: "image", label: "Imagen del Producto", description: "Ruta de imagen (ej: /images/products/capsulas.png)" },
+        { type: "image", name: "image", label: "Imagen del Producto" },
         {
           type: "object",
           name: "tags",
@@ -809,8 +804,8 @@ var successStoriesSectionTemplate = {
         { type: "string", name: "name", label: "Nombre", required: true },
         { type: "number", name: "age", label: "Edad" },
         { type: "string", name: "quote", label: "Testimonio/Cita", ui: { component: "textarea" } },
-        { type: "string", name: "beforeImage", label: "Imagen Antes", description: "Ruta de imagen (ej: /images/testimonials/nombre-before.jpg)" },
-        { type: "string", name: "afterImage", label: "Imagen Despues", description: "Ruta de imagen (ej: /images/testimonials/nombre-after.jpg)" },
+        { type: "image", name: "beforeImage", label: "Imagen Antes" },
+        { type: "image", name: "afterImage", label: "Imagen Despues" },
         { type: "number", name: "monthsBefore", label: "Meses Antes (generalmente 0)" },
         { type: "number", name: "monthsAfter", label: "Meses Despues (duracion del tratamiento)" }
       ]
@@ -846,7 +841,7 @@ var videoTestimonialsSectionTemplate = {
       },
       fields: [
         { type: "string", name: "name", label: "Nombre del Usuario", required: true },
-        { type: "string", name: "backgroundImage", label: "Imagen de Fondo", description: "Ruta de imagen (ej: /images/testimonials/video-1.jpg)" },
+        { type: "image", name: "backgroundImage", label: "Imagen de Fondo" },
         { type: "string", name: "videoUrl", label: "URL del Video", description: "Link de YouTube, Vimeo o video directo" }
       ]
     }
@@ -880,7 +875,7 @@ var howItWorksNewSectionTemplate = {
       fields: [
         { type: "string", name: "title", label: "Titulo del Paso", required: true },
         { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
-        { type: "string", name: "image", label: "Imagen del Mockup", description: "Ruta de imagen del mockup del telefono (ej: /images/how-it-works/step-1.png)" }
+        { type: "image", name: "image", label: "Imagen del Mockup" }
       ]
     }
   ]
@@ -899,7 +894,7 @@ var finalCtaNewSectionTemplate = {
     { type: "string", name: "headline", label: "Titulo", description: "Titulo principal (ej: Recupera tu cabello y tu confianza con Choiz)" },
     { type: "string", name: "ctaText", label: "Texto del Boton" },
     { type: "string", name: "ctaLink", label: "Enlace del Boton" },
-    { type: "string", name: "backgroundImage", label: "Imagen de Fondo", description: "Ruta de imagen (ej: /images/final-cta-bg.jpg). 1024x318px recomendado para desktop" }
+    { type: "image", name: "backgroundImage", label: "Imagen de Fondo", description: "1024x318px recomendado para desktop" }
   ]
 };
 var faqSectionTemplate = {
@@ -950,7 +945,7 @@ var footerNewSectionTemplate = {
     // App Promo
     { type: "string", name: "appTitle", label: "Titulo App" },
     { type: "string", name: "appSubtitle", label: "Subtitulo App" },
-    { type: "string", name: "appImage", label: "Imagen App", description: "Mockup del telefono" },
+    { type: "image", name: "appImage", label: "Imagen App", description: "Mockup del telefono" },
     // Company Links
     {
       type: "object",
@@ -1024,7 +1019,7 @@ var footerNewSectionTemplate = {
       ]
     },
     { type: "string", name: "copyright", label: "Copyright" },
-    { type: "string", name: "logoImage", label: "Imagen Logo Footer", description: "Logo grande al final del footer" }
+    { type: "image", name: "logoImage", label: "Imagen Logo Footer", description: "Logo grande al final del footer" }
   ]
 };
 var heroVideoSectionTemplate = {
@@ -1054,7 +1049,7 @@ var heroVideoSectionTemplate = {
     { type: "string", name: "subheadline", label: "Subtitulo", ui: { component: "textarea" } },
     ...ctaFields,
     { type: "string", name: "videoUrl", label: "URL del Video", description: "YouTube, Vimeo o video directo" },
-    { type: "string", name: "posterImage", label: "Imagen de Respaldo", description: "Imagen mientras carga el video" }
+    { type: "image", name: "posterImage", label: "Imagen de Respaldo", description: "Imagen mientras carga el video" }
   ]
 };
 var statsSectionTemplate = {
@@ -1091,7 +1086,7 @@ var statsSectionTemplate = {
       fields: [
         { type: "string", name: "value", label: "Valor (ej: +10,000)", required: true },
         { type: "string", name: "label", label: "Descripcion" },
-        { type: "string", name: "icon", label: "Icono (opcional)" }
+        { type: "image", name: "icon", label: "Icono (opcional)" }
       ]
     }
   ]
@@ -1163,7 +1158,7 @@ var pressLogosSectionTemplate = {
         max: 10
       },
       fields: [
-        { type: "string", name: "image", label: "Imagen del Logo", required: true },
+        { type: "image", name: "image", label: "Imagen del Logo", required: true },
         { type: "string", name: "name", label: "Nombre del Medio", required: true },
         { type: "string", name: "url", label: "URL del Articulo (opcional)" }
       ]
@@ -1270,8 +1265,8 @@ var beforeAfterSectionTemplate = {
         max: 6
       },
       fields: [
-        { type: "string", name: "beforeImage", label: "Imagen Antes", required: true },
-        { type: "string", name: "afterImage", label: "Imagen Despues", required: true },
+        { type: "image", name: "beforeImage", label: "Imagen Antes", required: true },
+        { type: "image", name: "afterImage", label: "Imagen Despues", required: true },
         { type: "string", name: "name", label: "Nombre del Cliente" },
         { type: "string", name: "duration", label: "Duracion del Tratamiento (ej: 6 meses)" },
         { type: "string", name: "product", label: "Producto Usado" },
@@ -1322,7 +1317,7 @@ var benefitsSectionTemplate = {
         max: 8
       },
       fields: [
-        { type: "string", name: "icon", label: "Icono (ruta de imagen)" },
+        { type: "image", name: "icon", label: "Icono" },
         { type: "string", name: "title", label: "Titulo", required: true },
         { type: "string", name: "description", label: "Descripcion", ui: { component: "textarea" } },
         {
@@ -1522,16 +1517,16 @@ var heroBlock = {
     },
     ...ctaFields,
     {
-      type: "string",
+      type: "image",
       name: "backgroundImage",
       label: "Imagen de Fondo (Desktop)",
-      description: "Ruta de imagen desktop (ej: /images/bg-hero-desk.png). 1440x645px recomendado"
+      description: "1440x645px recomendado"
     },
     {
-      type: "string",
+      type: "image",
       name: "backgroundImageMobile",
       label: "Imagen de Fondo (Mobile)",
-      description: "Ruta de imagen mobile (ej: /images/bg-hero-mobile.png). 375x820px recomendado"
+      description: "375x820px recomendado"
     }
   ]
 };
@@ -1665,9 +1660,30 @@ var config_default = defineConfig({
     publicFolder: "public"
   },
   contentApiUrlOverride: isLocalDevelopment ? "/api/tina/gql" : void 0,
-  // Media Library - deshabilitado para usar imágenes del repositorio directamente
-  // Las imágenes se referencian con rutas absolutas como /images/...
-  // No usar media.tina para evitar transformación de URLs a assets.tina.io
+  // Media Library - habilitado para subir imágenes desde el editor
+  media: {
+    tina: {
+      publicFolder: "public",
+      mediaRoot: "uploads"
+    }
+  },
+  // Personalización del panel de administración
+  cmsCallback: (cms) => {
+    import("tinacms").then(({ RouteMappingPlugin }) => {
+      cms.plugins.add(
+        new RouteMappingPlugin((collection, document) => {
+          if (collection.name === "page") {
+            if (document._sys.filename === "home") {
+              return "/";
+            }
+            return `/${document._sys.filename}`;
+          }
+          return void 0;
+        })
+      );
+    });
+    return cms;
+  },
   schema: {
     collections: [
       // ========================================
@@ -1788,10 +1804,9 @@ var config_default = defineConfig({
                 ]
               },
               {
-                type: "string",
+                type: "image",
                 name: "logo",
-                label: "Logo",
-                description: "Ruta del logo (ej: /images/logo.svg)"
+                label: "Logo"
               },
               ...ctaFields,
               {
@@ -1850,7 +1865,7 @@ var config_default = defineConfig({
                   }
                 ]
               },
-              { type: "string", name: "logo", label: "Logo", description: "Ruta del logo (ej: /images/logo-white.svg)" },
+              { type: "image", name: "logo", label: "Logo" },
               { type: "string", name: "copyright", label: "Copyright" },
               {
                 type: "object",
@@ -1858,7 +1873,7 @@ var config_default = defineConfig({
                 label: "Certificaciones",
                 list: true,
                 fields: [
-                  { type: "string", name: "logo", label: "Logo", description: "Ruta de imagen (ej: /images/cert-logo.png)" },
+                  { type: "image", name: "logo", label: "Logo" },
                   { type: "string", name: "label", label: "Etiqueta" }
                 ]
               },

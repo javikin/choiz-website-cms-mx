@@ -1,0 +1,81 @@
+/* Personalización de colores del panel TinaCMS para Choiz */
+
+:root {
+  /* Colores principales de Choiz (morado) */
+  --tina-color-primary-light: #a855f7;
+  --tina-color-primary: #9333ea;
+  --tina-color-primary-dark: #7c3aed;
+
+  /* Colores de acento */
+  --tina-color-success: #22c55e;
+  --tina-color-warning: #f59e0b;
+  --tina-color-error: #ef4444;
+
+  /* Colores de interfaz */
+  --tina-color-grey-0: #ffffff;
+  --tina-color-grey-1: #f8fafc;
+  --tina-color-grey-2: #f1f5f9;
+  --tina-color-grey-3: #e2e8f0;
+  --tina-color-grey-4: #cbd5e1;
+  --tina-color-grey-5: #94a3b8;
+  --tina-color-grey-6: #64748b;
+  --tina-color-grey-7: #475569;
+  --tina-color-grey-8: #334155;
+  --tina-color-grey-9: #1e293b;
+  --tina-color-grey-10: #0f172a;
+}
+
+/* Botones primarios */
+button[class*="primary"],
+[class*="Button"][class*="primary"] {
+  background-color: var(--tina-color-primary) !important;
+}
+
+button[class*="primary"]:hover,
+[class*="Button"][class*="primary"]:hover {
+  background-color: var(--tina-color-primary-dark) !important;
+}
+
+/* Links y elementos activos */
+a[class*="active"],
+[class*="MenuItem"][class*="active"] {
+  color: var(--tina-color-primary) !important;
+}
+
+/* Sidebar active states */
+[class*="SidebarItem"][class*="active"] {
+  border-left-color: var(--tina-color-primary) !important;
+  background-color: rgba(147, 51, 234, 0.1) !important;
+}
+
+/* Focus states */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--tina-color-primary) !important;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2) !important;
+}
+
+/* Toggle switches cuando están activos */
+[class*="Toggle"][class*="checked"],
+[class*="Switch"][class*="checked"] {
+  background-color: var(--tina-color-primary) !important;
+}
+
+/* Progress bars y indicadores */
+[class*="progress"],
+[class*="Progress"] {
+  background-color: var(--tina-color-primary) !important;
+}
+
+/* Tabs activos */
+[class*="Tab"][class*="active"],
+[role="tab"][aria-selected="true"] {
+  border-bottom-color: var(--tina-color-primary) !important;
+  color: var(--tina-color-primary) !important;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: rgba(147, 51, 234, 0.3);
+}
