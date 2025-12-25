@@ -25,6 +25,72 @@
   margin: 0;
 }
 
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #222;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0.25rem;
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 0.25rem;
+}
+
+.viewBtn {
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.viewBtn:hover {
+  color: #fff;
+  background: #2a2a2a;
+}
+
+.viewBtnActive {
+  color: #fff;
+  background: #7c3aed;
+}
+
+.quickFilters {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #888;
+  font-size: 0.875rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox input {
+  accent-color: #7c3aed;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox:hover {
+  color: #fff;
+}
+
 /* Filters */
 .filters {
   padding: 1.5rem 2rem;
@@ -145,7 +211,7 @@
 /* Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
   padding: 0 2rem 2rem;
 }
@@ -161,11 +227,47 @@
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.2s;
+  position: relative;
 }
 
 .card:hover {
   border-color: #7c3aed;
   transform: translateY(-2px);
+}
+
+.cardUnused {
+  opacity: 0.7;
+  border-color: #2a2a2a;
+}
+
+.cardUnused:hover {
+  opacity: 1;
+}
+
+/* Usage Badge */
+.usageBadge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+}
+
+.usedBadge {
+  background: #22c55e;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.unusedBadge {
+  background: #ef4444;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .preview {
@@ -175,6 +277,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .previewImage {
@@ -189,6 +292,15 @@
   align-items: center;
   gap: 0.5rem;
   color: #444;
+  cursor: pointer;
+  transition: color 0.2s;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.placeholderPreview:hover {
+  color: #7c3aed;
 }
 
 .placeholderIcon {
@@ -196,8 +308,36 @@
 }
 
 .placeholderText {
-  font-family: monospace;
   font-size: 0.875rem;
+}
+
+.livePreviewSmall {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.25);
+  transform-origin: top left;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.miniPreviewWrapper {
+  width: 400%;
+  height: 400%;
+  background: #fff;
+}
+
+.noPreview {
+  color: #666;
+  font-size: 0.875rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loading {
+  color: #7c3aed;
+  font-size: 0.875rem;
+  padding: 2rem;
+  text-align: center;
 }
 
 .cardContent {
@@ -238,6 +378,33 @@
   color: #aaa;
 }
 
+/* Usage Info */
+.usageInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.usageLabel {
+  color: #666;
+}
+
+.pageLink {
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+.pageLink:hover {
+  text-decoration: underline;
+}
+
+.morePages {
+  color: #888;
+}
+
 .idBadge {
   margin-top: 0.5rem;
 }
@@ -248,6 +415,182 @@
   background: #2a2a2a;
   border-radius: 4px;
   color: #7c3aed;
+}
+
+/* List Mode */
+.listMode {
+  padding: 1rem 2rem;
+}
+
+.listItem {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.listItemUnused {
+  opacity: 0.7;
+}
+
+.listItemUnused:hover {
+  opacity: 1;
+}
+
+.listItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.listItemHeader:hover {
+  background: #222;
+}
+
+.listItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.listItemIcon {
+  color: #666;
+  font-size: 0.75rem;
+}
+
+.listItemName {
+  font-weight: 600;
+}
+
+.listItemId {
+  font-size: 0.75rem;
+  color: #7c3aed;
+  background: #2a2a2a;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+}
+
+.listItemRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.listItemCategory {
+  font-size: 0.75rem;
+  color: #888;
+  background: #2a2a2a;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.listItemExpanded {
+  padding: 1rem;
+  border-top: 1px solid #333;
+  background: #0f0f0f;
+}
+
+.listItemDesc {
+  color: #888;
+  margin: 0 0 1rem;
+}
+
+.usageDetail {
+  margin-bottom: 1rem;
+}
+
+.usageDetail strong {
+  color: #888;
+  font-size: 0.875rem;
+}
+
+.usageDetail ul {
+  margin: 0.5rem 0 0 1rem;
+  padding: 0;
+}
+
+.usageDetail li {
+  color: #888;
+  font-size: 0.875rem;
+}
+
+.usageDetail a {
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+.usageDetail a:hover {
+  text-decoration: underline;
+}
+
+.listItemPreview {
+  margin-top: 1rem;
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 400px;
+}
+
+/* Preview Mode */
+.previewMode {
+  padding: 2rem;
+}
+
+.livePreviewSection {
+  margin-bottom: 3rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.livePreviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #333;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.livePreviewTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.livePreviewDesc {
+  color: #888;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.livePreviewMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.livePreviewMeta code {
+  font-size: 0.75rem;
+  color: #7c3aed;
+  background: #2a2a2a;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.livePreviewContainer {
+  background: #fff;
+  min-height: 200px;
+}
+
+.fullPreviewWrapper {
+  /* Full width preview of the component */
 }
 
 /* No Results */
@@ -300,6 +643,19 @@
     font-size: 1.75rem;
   }
 
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .viewToggle {
+    justify-content: center;
+  }
+
+  .quickFilters {
+    justify-content: center;
+  }
+
   .filters {
     padding: 1rem;
   }
@@ -322,5 +678,28 @@
 
   .pill {
     white-space: nowrap;
+  }
+
+  .listMode {
+    padding: 1rem;
+  }
+
+  .listItemHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .listItemRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .previewMode {
+    padding: 1rem;
+  }
+
+  .livePreviewHeader {
+    flex-direction: column;
   }
 }
