@@ -1,0 +1,121 @@
+.container {
+  position: relative;
+}
+
+.highlight {
+  position: absolute;
+  cursor: pointer;
+  border: 2px dashed transparent;
+  transition: all 0.2s;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.highlight:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: #7c3aed;
+}
+
+.highlight.text:hover {
+  border-color: #7c3aed;
+}
+
+.highlight.image:hover {
+  border-color: #059669;
+}
+
+.highlight.button:hover {
+  border-color: #d97706;
+}
+
+.label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: #7c3aed;
+  color: white;
+  font-size: 0.625rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 11;
+}
+
+.highlight:hover .label {
+  opacity: 1;
+}
+
+.text .label {
+  background: #7c3aed;
+}
+
+.image .label {
+  background: #059669;
+}
+
+.button .label {
+  background: #d97706;
+}
+
+.inlineEditor {
+  position: absolute;
+  z-index: 100;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  min-width: 250px;
+}
+
+.inlineEditor textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  resize: vertical;
+}
+
+.inlineEditor textarea:focus {
+  outline: none;
+  border-color: #7c3aed;
+}
+
+.editorActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cancelBtn,
+.saveBtn {
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelBtn {
+  background: #f1f1f1;
+  color: #666;
+}
+
+.cancelBtn:hover {
+  background: #e0e0e0;
+}
+
+.saveBtn {
+  background: #7c3aed;
+  color: white;
+}
+
+.saveBtn:hover {
+  background: #6d28d9;
+}

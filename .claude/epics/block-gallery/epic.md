@@ -1,8 +1,9 @@
 ---
 name: block-gallery
-status: backlog
+status: completed
 created: 2025-12-24T18:32:08Z
-progress: 0%
+updated: 2025-12-26T14:49:02Z
+progress: 100%
 prd: .claude/prds/block-gallery.md
 github: https://github.com/javikin/choiz-website-cms-mx/issues/17
 ---

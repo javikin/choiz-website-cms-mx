@@ -1,8 +1,9 @@
 ---
 name: multiple-landings
-status: backlog
+status: completed
 created: 2025-12-23T04:44:40Z
-progress: 0%
+updated: 2025-12-26T14:49:02Z
+progress: 100%
 prd: .claude/prds/multiple-landings.md
 github: https://github.com/javikin/choiz-website-cms-mx/issues/12
 ---
