@@ -10,6 +10,7 @@ import {
   type BlockInfo,
 } from "@/lib/block-gallery";
 import { getPreviewData } from "@/lib/block-preview-data";
+import { BlockDetail } from "./components/BlockDetail";
 import styles from "./BlockGallery.module.css";
 
 // Lazy load all section components for previews
@@ -60,6 +61,7 @@ export function BlockGalleryClient() {
   const [blockUsage, setBlockUsage] = useState<Record<string, BlockUsageData>>({});
   const [showOnlyUsed, setShowOnlyUsed] = useState(false);
   const [showOnlyUnused, setShowOnlyUnused] = useState(false);
+  const [selectedBlock, setSelectedBlock] = useState<string | null>(null);
 
   const blocksByCategory = useMemo(() => getBlocksByCategory(), []);
   const categories = Object.keys(categoryLabels) as BlockCategory[];
@@ -118,6 +120,11 @@ export function BlockGalleryClient() {
 
   return (
     <div className={styles.container}>
+      {/* Block Detail Modal */}
+      {selectedBlock && (
+        <BlockDetail blockId={selectedBlock} onClose={() => setSelectedBlock(null)} />
+      )}
+
       {/* Header */}
       <header className={styles.header}>
         <h1 className={styles.title}>Galeria de Bloques</h1>
@@ -263,7 +270,7 @@ export function BlockGalleryClient() {
                 </div>
                 <div className={styles.grid}>
                   {categoryBlocks.map((block) => (
-                    <BlockCard key={block.id} block={block} usage={blockUsage[block.id]} />
+                    <BlockCard key={block.id} block={block} usage={blockUsage[block.id]} onSelect={() => setSelectedBlock(block.id)} />
                   ))}
                 </div>
               </section>
@@ -275,7 +282,7 @@ export function BlockGalleryClient() {
         <div className={styles.grid}>
           {filteredBlocks.length > 0 ? (
             filteredBlocks.map((block) => (
-              <BlockCard key={block.id} block={block} usage={blockUsage[block.id]} />
+              <BlockCard key={block.id} block={block} usage={blockUsage[block.id]} onSelect={() => setSelectedBlock(block.id)} />
             ))
           ) : (
             <div className={styles.noResults}>
@@ -299,23 +306,25 @@ export function BlockGalleryClient() {
       {/* Footer */}
       <footer className={styles.footer}>
         <p>
-          Para agregar bloques, ve a{" "}
+          <a href="/block-gallery/create" className={styles.link}>
+            Crear nuevo bloque
+          </a>{" "}
+          ·{" "}
           <a href="/admin" className={styles.link}>
             TinaCMS Admin
-          </a>{" "}
-          y edita una landing page.
+          </a>
         </p>
       </footer>
     </div>
   );
 }
 
-function BlockCard({ block, usage }: { block: BlockInfo; usage?: BlockUsageData }) {
+function BlockCard({ block, usage, onSelect }: { block: BlockInfo; usage?: BlockUsageData; onSelect: () => void }) {
   const [showPreview, setShowPreview] = useState(false);
   const usageCount = usage?.totalUsage || 0;
 
   return (
-    <div className={`${styles.card} ${usageCount === 0 ? styles.cardUnused : ""}`}>
+    <div className={`${styles.card} ${usageCount === 0 ? styles.cardUnused : ""}`} onClick={onSelect} role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onSelect()}>
       {/* Usage Badge */}
       <div className={styles.usageBadge}>
         {usageCount > 0 ? (
@@ -334,7 +343,7 @@ function BlockCard({ block, usage }: { block: BlockInfo; usage?: BlockUsageData 
             </Suspense>
           </div>
         ) : (
-          <div className={styles.placeholderPreview} onClick={() => setShowPreview(true)}>
+          <div className={styles.placeholderPreview} onClick={(e) => { e.stopPropagation(); setShowPreview(true); }}>
             <span className={styles.placeholderIcon}>👁</span>
             <span className={styles.placeholderText}>Click para preview</span>
           </div>
@@ -363,7 +372,7 @@ function BlockCard({ block, usage }: { block: BlockInfo; usage?: BlockUsageData 
           <div className={styles.usageInfo}>
             <span className={styles.usageLabel}>Usado en:</span>
             {usage.pages.slice(0, 2).map((page) => (
-              <a key={`${page.slug}-${page.sectionIndex}`} href={`/${page.slug}`} className={styles.pageLink}>
+              <a key={`${page.slug}-${page.sectionIndex}`} href={`/${page.slug}`} className={styles.pageLink} onClick={(e) => e.stopPropagation()}>
                 {page.title}
               </a>
             ))}
