@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  padding: 8px 12px;
+  background: #252526;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.tab {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: #808080;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  transition: all 0.15s;
+}
+
+.tab:hover {
+  color: #cccccc;
+}
+
+.tab.active {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.error {
+  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  font-size: 13px;
+}
+
+.editorContent {
+  flex: 1;
+  overflow: hidden;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #525252;
+  font-size: 14px;
+}
+
+.propsView {
+  padding: 24px;
+  color: #a3a3a3;
+}
+
+.propsInfo {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.propsHint {
+  font-size: 13px;
+  color: #525252;
+}
+
+.footer {
+  padding: 8px 12px;
+  background: #252526;
+  border-top: 1px solid #1e1e1e;
+}
+
+.hint {
+  font-size: 12px;
+  color: #525252;
+}
