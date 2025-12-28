@@ -75,6 +75,15 @@
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
 }
 
+.previewIframe {
+  border: none;
+  height: 800px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
 .loading {
   display: flex;
   align-items: center;
