@@ -42,6 +42,10 @@ function getBlockFilePath(blockId: string): string | null {
   return path.join(process.cwd(), "src", "components", "sections", `${fileName}.tsx`);
 }
 
+function getPreviewDataFilePath(): string {
+  return path.join(process.cwd(), "src", "lib", "block-preview-data.ts");
+}
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ blockId: string }> }
@@ -108,38 +112,63 @@ export async function PUT(
       );
     }
 
-    const filePath = getBlockFilePath(blockId);
-    if (!filePath) {
-      return NextResponse.json(
-        { error: "Archivo de bloque no encontrado" },
-        { status: 404 }
-      );
-    }
-
     const body = await request.json();
-    const { source } = body;
+    const { previewData } = body;
 
-    if (!source || typeof source !== "string") {
+    if (!previewData || typeof previewData !== "object") {
       return NextResponse.json(
-        { error: "Codigo fuente requerido" },
+        { error: "Preview data requerido" },
         { status: 400 }
       );
     }
 
-    // Write the source file
+    // Read current preview data file
+    const previewDataPath = getPreviewDataFilePath();
+    let fileContent = "";
     try {
-      await fs.writeFile(filePath, source, "utf-8");
+      fileContent = await fs.readFile(previewDataPath, "utf-8");
     } catch (error) {
-      console.error("Error writing file:", error);
+      console.error("Error reading preview data file:", error);
       return NextResponse.json(
-        { error: "No se pudo escribir el archivo" },
+        { error: "No se pudo leer el archivo de preview data" },
+        { status: 500 }
+      );
+    }
+
+    // Update the preview data for this block
+    // This is a simple find-replace approach
+    // In a real app, you might want to use AST parsing
+    const blockDataString = `  ${blockId}: ${JSON.stringify(previewData, null, 2).split('\n').join('\n  ')},`;
+
+    // Find and replace the block data
+    const blockRegex = new RegExp(
+      `  ${blockId}:\\s*{[\\s\\S]*?},(?=\\n\\n|\\n};)`,
+      "gm"
+    );
+
+    if (!blockRegex.test(fileContent)) {
+      return NextResponse.json(
+        { error: "Bloque no encontrado en preview data" },
+        { status: 404 }
+      );
+    }
+
+    const updatedContent = fileContent.replace(blockRegex, blockDataString);
+
+    // Write back to file
+    try {
+      await fs.writeFile(previewDataPath, updatedContent, "utf-8");
+    } catch (error) {
+      console.error("Error writing preview data file:", error);
+      return NextResponse.json(
+        { error: "No se pudo guardar el preview data" },
         { status: 500 }
       );
     }
 
     return NextResponse.json({
       success: true,
-      message: "Bloque guardado correctamente",
+      message: "Preview data guardado correctamente",
     });
   } catch (error) {
     console.error("Error saving block:", error);

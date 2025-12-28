@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Editor from "@monaco-editor/react";
 import styles from "./CodeEditor.module.css";
 
-type EditorTab = "tsx" | "data" | "props";
+type EditorTab = "data" | "tsx" | "props";
 
 interface CodeEditorProps {
   source: string;
@@ -25,7 +25,7 @@ export function CodeEditor({
   isLoading,
   error,
 }: CodeEditorProps) {
-  const [activeTab, setActiveTab] = useState<EditorTab>("tsx");
+  const [activeTab, setActiveTab] = useState<EditorTab>("data");
   const [previewDataString, setPreviewDataString] = useState("");
 
   // Sync previewData to string
@@ -61,8 +61,8 @@ export function CodeEditor({
   );
 
   const tabs: { id: EditorTab; label: string }[] = [
-    { id: "tsx", label: "TSX" },
     { id: "data", label: "Preview Data" },
+    { id: "tsx", label: "TSX (Read-only)" },
     { id: "props", label: "Props" },
   ];
 
@@ -80,6 +80,23 @@ export function CodeEditor({
           </button>
         ))}
       </div>
+
+      {/* Info Banner */}
+      {activeTab === "tsx" && (
+        <div className={styles.info}>
+          <span>
+            ℹ️ Código TSX es read-only. Para modificar el componente, edita el archivo directamente en tu IDE.
+          </span>
+        </div>
+      )}
+
+      {activeTab === "data" && (
+        <div className={styles.success}>
+          <span>
+            ✏️ Edita el Preview Data aquí. Los cambios se aplican en tiempo real y persisten al guardar.
+          </span>
+        </div>
+      )}
 
       {/* Error Banner */}
       {error && (
@@ -100,7 +117,6 @@ export function CodeEditor({
                 language="typescript"
                 theme="vs-dark"
                 value={source}
-                onChange={(value) => onSourceChange(value || "")}
                 options={{
                   minimap: { enabled: false },
                   fontSize: 13,
@@ -109,6 +125,8 @@ export function CodeEditor({
                   wordWrap: "on",
                   tabSize: 2,
                   automaticLayout: true,
+                  readOnly: true,
+                  domReadOnly: true,
                 }}
               />
             )}
@@ -128,6 +146,8 @@ export function CodeEditor({
                   wordWrap: "on",
                   tabSize: 2,
                   automaticLayout: true,
+                  formatOnPaste: true,
+                  formatOnType: true,
                 }}
               />
             )}
@@ -138,7 +158,7 @@ export function CodeEditor({
                   Las props se extraen automaticamente del codigo TSX.
                 </p>
                 <p className={styles.propsHint}>
-                  Edita el archivo TSX para modificar la interface de props.
+                  Edita el archivo TSX en tu IDE para modificar la interface de props.
                 </p>
               </div>
             )}
@@ -148,7 +168,11 @@ export function CodeEditor({
 
       {/* Footer */}
       <div className={styles.footer}>
-        <span className={styles.hint}>Cmd+S para guardar</span>
+        {activeTab === "data" ? (
+          <span className={styles.hint}>Cmd+S para guardar cambios en Preview Data</span>
+        ) : (
+          <span className={styles.hint}>Solo Preview Data es editable</span>
+        )}
       </div>
     </div>
   );

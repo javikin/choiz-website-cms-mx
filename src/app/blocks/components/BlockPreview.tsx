@@ -94,7 +94,7 @@ export function BlockPreview({
         ) : (
           <div
             className={styles.previewFrame}
-            style={{ width: viewportWidth, maxWidth: "100%" }}
+            style={{ maxWidth: viewportWidth }}
           >
             <Suspense fallback={<div className={styles.loading}>Cargando componente...</div>}>
               {BlockComponent ? (
