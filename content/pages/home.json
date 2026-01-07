@@ -14,33 +14,18 @@
   },
   "sections": [
     {
-      "badge": "+30.000 personas con alopecia ya vieron resultados",
-      "headline": "El tratamiento más efectivo de México para la caída del cabello",
-      "benefits": [
-        {
-          "text": "Resultados en 90 - 180 días"
-        },
-        {
-          "text": "Científicamente comprobado"
-        },
-        {
-          "text": "100% en línea, con envío gratis"
-        }
-      ],
+      "badge": "+30,000 personas ya vieron resultados",
+      "headline": "El tratamiento mas efectivo de Mexico para la caida del cabello",
       "ctaText": "Comienza hoy",
       "ctaLink": "/quiz",
       "priceText": "Desde $467/mes",
-      "backgroundImage": "/uploads/images/bg-hero-desk.webp",
       "_template": "hero"
     },
     {
+      "_template": "testimonials"
+    },
+    {
       "_template": "certifications"
-    },
-    {
-      "_template": "products"
-    },
-    {
-      "_template": "effectiveness"
     }
   ]
 }
